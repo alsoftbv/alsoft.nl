@@ -1,0 +1,65 @@
+---
+const links = [
+    { name: 'Services', href: '/services' },
+    { name: 'Industries', href: '/industries' },
+    { name: 'About Us', href: '/about' },
+]
+---
+
+<nav class="navbar">
+    <div class="logo">
+        <a href="/"><img src="/navbar-logo.png" alt="Logo" /></a>
+    </div>
+
+    <ul class="nav-links">
+        {links.map(link => (
+            <li><a href={link.href}>{link.name}</a></li>
+        ))}
+    </ul>
+
+    <a href="/contact" class="button">Get in Touch</a>
+</nav>
+
+<style>
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        background: #000;
+        color: #fff;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+        margin: 0;
+        padding: 3;
+        flex-grow: 1;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+
+    .logo img{
+        height: 55px;
+        display: block;
+    }
+
+    .button {
+        background: #FF9100;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .button:hover {
+        background: #FFD180;
+    }
+</style>
