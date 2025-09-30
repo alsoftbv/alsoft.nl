@@ -1,0 +1,99 @@
+---
+interface CardItem {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+}
+
+interface Props {
+  title: string;
+  items: CardItem[];
+}
+
+const { title, items } = Astro.props as Props;
+---
+
+<div class="card-slider-section">
+    <h2>{title}</h2>
+    <div class="slider-wrapper">
+        <div class="card-slider">
+            {items.map(item => (
+                <div class="card-item">
+                    <a href={`/${title.toLowerCase()}#${item.title.replace(/\s+/g, '').toLowerCase()}`}>
+                        <img src={item.image} alt={item.title} />
+                        <h3>{item.title}</h3>
+                        <p>{item.description}</p>
+                    </a>
+                </div>
+            ))}
+        </div>
+    </div>
+</div>
+
+<style>
+    .card-slider-section h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    .slider-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .card-slider {
+        display: flex;
+        gap: 1.5rem;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 1rem 0;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    
+    }
+    .card-slider::-webkit-scrollbar {
+        display: none;
+    }
+    .card-item {
+        min-width: 140px;
+        max-width: 300px;
+        height: 260px;
+        background: rgba(0,0,0,0.5);
+        border-radius: 1rem;
+        padding: 0.5rem 0.5rem 0.75rem 0.5rem;
+        flex-shrink: 0;
+        transition: box-shadow 0.2s, transform 0.2s;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+    }
+    .card-item img {
+        width: 90%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 0.5rem;
+        margin: 0.5rem 0 0.5rem 0;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .card-item h3 {
+        text-align: center;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: white;
+    }
+    .card-item p {
+        font-size: 0.98rem;
+        color: white;
+        margin: 0;
+        line-height: 1.5;
+        text-align: center;
+    }
+    .card-item a {
+        text-decoration: none;
+    }
+</style>
+

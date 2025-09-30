@@ -1,33 +1,109 @@
 ---
 const links = [
-    { name: 'Services', href: '/services' },
-    { name: 'Industries', href: '/industries' },
-    { name: 'About Us', href: '/about' },
-]
+    { name: "Services", href: "/services" },
+    { name: "Industries", href: "/industries" },
+    { name: "About Us", href: "/about" },
+];
 ---
 
 <nav class="navbar">
     <div class="logo">
         <a href="/"><img src="/navbar-logo.png" alt="Logo" /></a>
     </div>
-
-    <ul class="nav-links">
-        {links.map(link => (
-            <li><a href={link.href}>{link.name}</a></li>
-        ))}
+    <div
+        class="menu-toggle"
+        id="menu-toggle"
+        tabindex="0"
+        aria-label="Open menu"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+        {
+            links.map((link) => (
+                <li>
+                    <a href={link.href}>{link.name}</a>
+                </li>
+            ))
+        }
+        <li class="mobile-contact">
+            <a href="/contact" class="button">Get in Touch</a>
+        </li>
     </ul>
-
-    <a href="/contact" class="button">Get in Touch</a>
+    <a href="/contact" class="button desktop-contact">Get in Touch</a>
 </nav>
+
+<script>
+    const toggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+    if (toggle && navLinks) {
+        toggle.addEventListener("click", () => {
+            const isActive = navLinks.classList.contains("active");
+            if (!isActive) {
+                navLinks.classList.add("show");
+                navLinks.style.display = "flex";
+                setTimeout(() => navLinks.classList.add("active"), 10);
+            } else {
+                navLinks.classList.remove("active");
+                navLinks.addEventListener("transitionend", function handler() {
+                    navLinks.classList.remove("show");
+                    navLinks.style.display = "none";
+                    navLinks.removeEventListener("transitionend", handler);
+                });
+            }
+            toggle.classList.toggle("active");
+        });
+    }
+</script>
 
 <style>
     .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 0.5rem 1rem;
         background: #000;
         color: #fff;
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        margin-left: 1rem;
+    }
+    .menu-toggle span {
+        display: block;
+        width: 28px;
+        height: 3px;
+        background: #fff;
+        margin: 5px 0;
+        border-radius: 2px;ß
+        transition: 0.3s;
+    }
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(15px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+    .menu-toggle span {
+        transition:
+            transform 0.3s,
+            opacity 0.3s;
     }
 
     .nav-links {
@@ -35,31 +111,89 @@ const links = [
         display: flex;
         gap: 2rem;
         margin: 0;
-        padding: 3;
+        margin-left: 2rem;
+        padding: 0;
         flex-grow: 1;
+        transition: max-height 0.3s ease;
+        margin-left: 2rem;
     }
-
     .nav-links a {
         color: white;
         text-decoration: none;
         font-size: 1rem;
     }
 
-    .logo img{
+    @media (max-width: 900px) {
+        .nav-links {
+            margin-left: 0 ;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: #000;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            max-height: 0;
+            overflow: hidden;
+            visibility: hidden;
+            opacity: 0;
+            transition:
+                max-height 0.7s ease,
+                opacity 0.3s ease,
+                visibility 0.3s ease;
+            display: none;
+        }
+
+        
+        .nav-links.show {
+            visibility: visible;
+            opacity: 1;
+            display: flex;
+        }
+        .nav-links.show::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 5px;
+        }
+        .nav-links.active {
+            max-height: 500px;
+        }
+        .menu-toggle {
+            display: flex;
+        }
+        .desktop-contact {
+            display: none;
+        }
+        .mobile-contact {
+            display: block;
+        }
+    }
+    @media (min-width: 901px) {
+        .mobile-contact {
+            display: none;
+        }
+        .desktop-contact {
+            display: inline-block;
+        }
+    }
+
+    .logo img {
         height: 55px;
         display: block;
     }
 
     .button {
-        background: #FF9100;
+        background: #ff9100;
         color: #fff;
         padding: 0.5rem 1rem;
         border-radius: 4px;
         font-weight: bold;
         text-decoration: none;
+        transition: background 0.2s;
     }
-
     .button:hover {
-        background: #FFD180;
+        background: #ffd180;
     }
 </style>

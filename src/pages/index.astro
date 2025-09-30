@@ -1,6 +1,221 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import CardsSection from "../components/CardsSection.astro";
+
+const services = [
+  {
+    id: "rtos",
+    title: "RTOS",
+    description: "Description could go here",
+    image: "/placeholder.jpg",
+  },
+  {
+    id: "linux",
+    title: "Linux",
+    description: "Description could go here",
+    image: "/placeholder.jpg",
+  },
+  {
+    id: "iot",
+    title: "IoT",
+    description: "Description could go here",
+    image: "/placeholder.jpg",
+  },
+];
+
+const industries = [
+  {
+    id: "fintech",
+    title: "FinTech",
+    description: "Description could go here",
+    image: "/placeholder.jpg",
+  },
+  {
+    id: "manufacturing",
+    title: "Manufacturing",
+    description: "Description could go here",
+    image: "/placeholder.jpg",
+  },
+  {
+    id: "automotive",
+    title: "Automotive",
+    description: "Description could go here",
+    image: "/placeholder.jpg",
+  },
+];
 ---
 
 <BaseLayout>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Description goes here</h1>
+    </div>
+  </section>
+
+  <div class="cards-container">
+    <CardsSection title="Services" items={services} />
+    <CardsSection title="Industries" items={industries} />
+  </div>
+
+  <div class="contact-section">
+    <div class="contact-form">
+      <h2>Contact Us</h2>
+      <h4>Full Name</h4>
+      <input type="text" />
+      <h4>Email Address</h4>
+      <input type="email" />
+      <h4>Tell Us About Your Project</h4>
+      <textarea></textarea>
+      <button type="submit">Submit</button>
+    </div>
+    <div class="contact-image">
+      <img src="/contact-logo.png" alt="Project Image" />
+    </div>
+  </div>
 </BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("/placeholder.jpg") no-repeat center center;
+    background-size: cover;
+    filter: blur(2px);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5em;
+    margin: 0;
+  }
+
+  .cards-container {
+    color: white;
+    margin-top: 3rem;
+  }
+
+  .contact-section {
+    background: #000;
+    color: white;
+    padding: 2rem;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 3rem;
+    gap: 2rem;
+    position: relative;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 900px;
+    flex-basis: 900px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #3f3f3f;
+    color: white;
+  }
+
+  .contact-form button {
+    background: #ff9100;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    border: none;
+    width: 150px;
+    height: auto;
+    font: inherit;
+    margin-top: 5px;
+  }
+
+  .contact-form button:hover {
+    background: #ffd180;
+  }
+
+  .contact-image img {
+    width: 300px;
+    opacity: 0.5;
+    margin-top: 30%;
+  }
+
+  @media (min-width: 900px) {
+    .contact-form input,
+    .contact-form textarea {
+      max-width: 900px;
+    }
+    .contact-form {
+      margin-left: 5vw;
+    }
+    .contact-image {
+      margin-left: 0;
+      align-self: flex-start;
+      max-width: 300px;
+    }
+  }
+
+ @media (max-width: 768px) {
+  .contact-section {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+  }
+
+  .contact-form {
+    max-width: 100%;
+    flex-basis: auto;
+  }
+
+  .contact-image {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 80px;
+    margin: 0;
+  }
+
+  .contact-image img {
+    width: 100%;
+    opacity: 0.7;
+    display: block;
+    margin: 0;
+  }
+}
+
+
+</style>
