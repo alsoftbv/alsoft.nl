@@ -1,6 +1,129 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
+    <section class="header">
+        <h1>About Us</h1>
+    </section>
+
+    <section class="content">
+        <img src="/placeholder.jpg" alt="About Image" />
+        <p>A description can go here</p>
+        <p class="center-text">More description</p>
+        <img
+            src="/placeholder.jpg"
+            alt="More About Image"
+            class="large-image"
+        />
+        <h2 class="why-us">Why Us?</h2>
+        <p class="center-text">More description</p>
+        <h3 class="learn-more">Want to learn more?</h3>
+        <a href="/contact" class="contact-button"> Get in touch </a>
+    </section>
 </BaseLayout>
+
+<style>
+    .header {
+        background-color: #ffd180;
+        padding: 4rem 2rem;
+        text-align: left;
+        font-size: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .header {
+            text-align: center;
+            margin: 0;
+            padding: 3rem 1rem;
+        }
+
+        .content {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem !important;
+            padding: 1rem;
+        }
+
+        .content p {
+            width: 100%;
+            text-align: center;
+        }
+
+        .content img {
+            width: 100% !important;
+            margin-top: 1rem;
+        }
+
+        .center-text {
+            margin: 1.5rem 0;
+            padding: 0 1rem;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 2rem;
+        gap: 20%;
+        flex-wrap: wrap;
+        color: white;
+        font-size: 1.2rem;
+        line-height: 1.6;
+    }
+
+    .content img {
+        width: 50%;
+        display: block;
+        margin-top: 2rem;
+        border-radius: 4px;
+        justify-content: flex-end;
+    }
+
+    .center-text {
+        text-align: center;
+        width: 100%;
+        margin: 10%;
+    }
+
+    .large-image {
+        width: 100% !important;
+        height: 300px;
+        object-fit: cover;
+        margin-top: 2rem;
+    }
+
+    .why-us {
+        width: 100%;
+        color: #ffd180;
+        margin-top: 5%;
+        text-decoration: underline;
+    }
+
+    .contact-button {
+        background: #ff9100;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background 0.2s;
+        display: block;
+        margin: 0 auto 0;
+        text-align: center;
+    }
+
+    .learn-more {
+        width: 100%;
+        text-align: center;
+        margin-top: 3rem;
+        font-size: 1.5rem;
+    }
+
+    .contact-button:hover {
+        background-color: #ffd180;
+    }
+</style>
