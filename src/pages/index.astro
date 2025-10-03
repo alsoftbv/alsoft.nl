@@ -3,47 +3,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 import CardsSection from "../components/CardsSection.astro";
 
-const services = [
-  {
-    id: "rtos",
-    title: "RTOS",
-    description: "Description could go here",
-    image: "/placeholder.jpg",
-  },
-  {
-    id: "linux",
-    title: "Linux",
-    description: "Description could go here",
-    image: "/placeholder.jpg",
-  },
-  {
-    id: "iot",
-    title: "IoT",
-    description: "Description could go here",
-    image: "/placeholder.jpg",
-  },
-];
+import services from "../data/services"
+import industries from "../data/industries"
 
-const industries = [
-  {
-    id: "fintech",
-    title: "FinTech",
-    description: "Description could go here",
-    image: "/placeholder.jpg",
-  },
-  {
-    id: "manufacturing",
-    title: "Manufacturing",
-    description: "Description could go here",
-    image: "/placeholder.jpg",
-  },
-  {
-    id: "automotive",
-    title: "Automotive",
-    description: "Description could go here",
-    image: "/placeholder.jpg",
-  },
-];
 ---
 
 <BaseLayout>
@@ -52,6 +14,8 @@ const industries = [
       <h1>Description goes here</h1>
     </div>
   </section>
+
+  <!-- TODO: fix card section -->
 
   <div class="cards-container">
     <CardsSection title="Services" items={services} />

@@ -18,15 +18,19 @@ const { title, items } = Astro.props as Props;
     <h2>{title}</h2>
     <div class="slider-wrapper">
         <div class="card-slider">
-            {items.map(item => (
-                <div class="card-item">
-                    <a href={`/${title.toLowerCase()}#${item.title.replace(/\s+/g, '').toLowerCase()}`}>
-                        <img src={item.image} alt={item.title} />
-                        <h3>{item.title}</h3>
-                        <p>{item.description}</p>
-                    </a>
-                </div>
-            ))}
+            {items.map(item => {
+                const page = title.toLowerCase();
+                const anchor = (item as any).id ? (item as any).id : item.title.replace(/\s+/g, "").toLowerCase();
+                return (
+                    <div class="card-item">
+                        <a href={`/${page}#${anchor}`}>
+                            <img src={item.image} alt={item.title} />
+                            <h3>{item.title}</h3>
+                            <p>{item.description}</p>
+                        </a>
+                    </div>
+                );
+            })}
         </div>
     </div>
 </div>
