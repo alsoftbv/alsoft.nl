@@ -1,6 +1,130 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
+    <section class="header">
+        <h1>Contact Us</h1>
+    </section>
+
+    <div class="contact-section">
+        <div class="contact-form">
+            <h4>Full Name</h4>
+            <input type="text" />
+            <h4>Email Address</h4>
+            <input type="email" />
+            <h4>Tell Us About Your Project</h4>
+            <textarea></textarea>
+            <button type="submit">Submit</button>
+        </div>
+        <div class="contact-image">
+            <img src="/transparent-logo.png" alt="Project Image" />
+        </div>
+    </div>
 </BaseLayout>
+
+<style>
+    .header {
+        background-color: #ffd180;
+        padding: 4rem 2rem;
+        text-align: left;
+        font-size: 2.5rem;
+    }
+
+    .contact-section {
+        color: white;
+        padding: 2rem;
+        text-align: left;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: relative;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 900px;
+        flex-basis: 900px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        max-width: 600px;
+        box-sizing: border-box;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border: none;
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.4);
+        color: white;
+        font: inherit;
+    }
+
+    .contact-form button {
+        background: #ff9100;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-weight: bold;
+        border: none;
+        width: 150px;
+        height: auto;
+        font: inherit;
+        margin-top: 5px;
+    }
+
+    .contact-form button:hover {
+        background: #ffd180;
+    }
+
+    .contact-image img {
+        width: 300px;
+        margin-top: 30%;
+    }
+
+    @media (min-width: 900px) {
+        .contact-form input,
+        .contact-form textarea {
+            max-width: 900px;
+        }
+        .contact-form {
+            margin-left: 5vw;
+        }
+        .contact-image {
+            margin-left: 0;
+            align-self: flex-start;
+            max-width: 300px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .contact-section {
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .contact-form {
+            max-width: 100%;
+            flex-basis: auto;
+        }
+
+        .contact-image {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 80px;
+            margin: 0;
+        }
+
+        .contact-image img {
+            width: 100%;
+            display: block;
+            margin: 0;
+        }
+    }
+</style>
