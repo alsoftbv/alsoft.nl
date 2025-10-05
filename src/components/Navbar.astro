@@ -13,7 +13,6 @@ const links = [
     <div
         class="menu-toggle"
         id="menu-toggle"
-        tabindex="0"
         aria-label="Open menu"
     >
         <span></span>
@@ -38,25 +37,25 @@ const links = [
 <script>
     const toggle = document.getElementById("menu-toggle");
     const navLinks = document.getElementById("nav-links");
+
     if (toggle && navLinks) {
         toggle.addEventListener("click", () => {
-            const isActive = navLinks.classList.contains("active");
-            if (!isActive) {
-                navLinks.classList.add("show");
-                navLinks.style.display = "flex";
-                setTimeout(() => navLinks.classList.add("active"), 10);
-            } else {
-                navLinks.classList.remove("active");
-                navLinks.addEventListener("transitionend", function handler() {
-                    navLinks.classList.remove("show");
-                    navLinks.style.display = "none";
-                    navLinks.removeEventListener("transitionend", handler);
-                });
-            }
+            navLinks.classList.toggle("show");
+            navLinks.classList.toggle("active");
             toggle.classList.toggle("active");
+        });
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 900) {
+                navLinks.classList.remove("show", "active");
+                toggle.classList.remove("active");
+                navLinks.removeAttribute("style");
+            }
         });
     }
 </script>
+
+
 
 <style>
     .navbar {
@@ -77,28 +76,29 @@ const links = [
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 40px;
-        height: 40px;
+        width: 45px;
+        height: 45px;
         cursor: pointer;
         margin-left: 1rem;
     }
     .menu-toggle span {
         display: block;
-        width: 28px;
+        width: 30px;
         height: 3px;
         background: #fff;
-        margin: 5px 0;
-        border-radius: 2px;ß
+        margin: 4px 0;
+        border-radius: 2px;
         transition: 0.3s;
+        transform-origin: center;
     }
     .menu-toggle.active span:nth-child(1) {
-        transform: translateY(15px) rotate(45deg);
+        transform: translateY(11px) rotate(45deg);
     }
     .menu-toggle.active span:nth-child(2) {
         opacity: 0;
     }
     .menu-toggle.active span:nth-child(3) {
-        transform: translateY(-10px) rotate(-45deg);
+        transform: translateY(-11px) rotate(-45deg);
     }
     .menu-toggle span {
         transition:

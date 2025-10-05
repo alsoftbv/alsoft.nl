@@ -15,17 +15,42 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <input type="email" />
             <h4>Tell Us About Your Project</h4>
             <textarea></textarea>
-            <button type="submit">Submit</button>
+            <button type="submit" id="submit-contact">Submit</button>
         </div>
         <div class="contact-image">
-            <img src="/transparent-logo.png" alt="Project Image" />
+            <img src="/logo.png" alt="Project Image" />
         </div>
     </div>
 </BaseLayout>
 
+<script>
+    document.getElementById("submit-contact")?.addEventListener("click", () => {
+        const nameInput = document.querySelector(
+            'input[type="text"]',
+        ) as HTMLInputElement | null;
+        const emailInput = document.querySelector(
+            'input[type="email"]',
+        ) as HTMLInputElement | null;
+        const messageInput = document.querySelector(
+            "textarea",
+        ) as HTMLTextAreaElement | null;
+
+        const name = nameInput?.value || "";
+        const email = emailInput?.value || "";
+        const message = messageInput?.value || "";
+
+        const subject = encodeURIComponent("Contact Form Submission");
+        const body = encodeURIComponent(
+            `Full Name: ${name}\nEmail Address: ${email}\nTell Us About Your Project: ${message}`,
+        );
+
+        window.location.href = `mailto:altug@alsoft.nl?subject=${subject}&body=${body}`;
+    });
+</script>
+
 <style>
     .header {
-        background-color: #ffd180;
+        background: linear-gradient(-45deg, #ff9100 0%, #ffd180 100%);
         padding: 4rem 2rem;
         text-align: left;
         font-size: 2.5rem;

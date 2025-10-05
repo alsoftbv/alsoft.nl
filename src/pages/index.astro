@@ -3,9 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 import CardsSection from "../components/CardsSection.astro";
 
-import services from "../data/services"
-import industries from "../data/industries"
-
+import services from "../data/services";
+import industries from "../data/industries";
 ---
 
 <BaseLayout>
@@ -14,8 +13,6 @@ import industries from "../data/industries"
       <h1>Description goes here</h1>
     </div>
   </section>
-
-  <!-- TODO: fix card section -->
 
   <div class="cards-container">
     <CardsSection title="Services" items={services} />
@@ -31,13 +28,38 @@ import industries from "../data/industries"
       <input type="email" />
       <h4>Tell Us About Your Project</h4>
       <textarea></textarea>
-      <button type="submit">Submit</button>
+      <button type="button" id="submit-contact">Submit</button>
     </div>
     <div class="contact-image">
       <img src="/contact-logo.png" alt="Project Image" />
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  document.getElementById("submit-contact")?.addEventListener("click", () => {
+    const nameInput = document.querySelector(
+      'input[type="text"]',
+    ) as HTMLInputElement | null;
+    const emailInput = document.querySelector(
+      'input[type="email"]',
+    ) as HTMLInputElement | null;
+    const messageInput = document.querySelector(
+      "textarea",
+    ) as HTMLTextAreaElement | null;
+
+    const name = nameInput?.value || "";
+    const email = emailInput?.value || "";
+    const message = messageInput?.value || "";
+
+    const subject = encodeURIComponent("Contact Form Submission");
+    const body = encodeURIComponent(
+      `Full Name: ${name}\nEmail Address: ${email}\nTell Us About Your Project: ${message}`,
+    );
+
+    window.location.href = `mailto:altug@alsoft.nl?subject=${subject}&body=${body}`;
+  });
+</script>
 
 <style>
   .hero {
@@ -152,35 +174,33 @@ import industries from "../data/industries"
     }
   }
 
- @media (max-width: 768px) {
-  .contact-section {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1.5rem;
-    margin-top: 2rem;
-    position: relative;
+  @media (max-width: 768px) {
+    .contact-section {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      position: relative;
+    }
+
+    .contact-form {
+      max-width: 100%;
+      flex-basis: auto;
+    }
+
+    .contact-image {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 80px;
+      margin: 0;
+    }
+
+    .contact-image img {
+      width: 100%;
+      opacity: 0.7;
+      display: block;
+      margin: 0;
+    }
   }
-
-  .contact-form {
-    max-width: 100%;
-    flex-basis: auto;
-  }
-
-  .contact-image {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 80px;
-    margin: 0;
-  }
-
-  .contact-image img {
-    width: 100%;
-    opacity: 0.7;
-    display: block;
-    margin: 0;
-  }
-}
-
-
 </style>
