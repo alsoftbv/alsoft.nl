@@ -13,19 +13,28 @@ import industries from "../data/industries";
 
     {
         industries.map((industry, index) => (
-            <section class="industry-section">
+            <section
+                class={`industry-section ${index % 2 !== 0 ? "reverse" : ""}`}
+            >
                 <div class="industry-content">
-                    <h2
-                        id={industry.title.replace(/\s+/g, "").toLowerCase()}
-                        style={`--bg-img: url(${industry.image})`}
-                    >
-                        <span>{industry.title}</span>
-                    </h2>
-
-                    <p class="industry-description">{industry.description}</p>
-                    <a href="/contact" class="contact-button">
-                        Get in touch
-                    </a>
+                    <img
+                        class="industry-image"
+                        src={industry.image}
+                        alt={industry.title}
+                    />
+                    <div class="text-content">
+                        <h2
+                            id={industry.title.replace(/\s+/g, "").toLowerCase()}
+                        >
+                            {industry.title}
+                        </h2>
+                        <p class="industry-description">
+                            {industry.longDescription}
+                        </p>
+                        <a href="/contact" class="contact-button">
+                            Get in touch
+                        </a>
+                    </div>
                 </div>
             </section>
         ))
@@ -34,7 +43,7 @@ import industries from "../data/industries";
 
 <style>
     .header {
-                background: linear-gradient(-45deg, #ff9100 0%, #ffd180 100%);
+        background: linear-gradient(-45deg, #ff9100 0%, #ffd180 100%);
         padding: 4rem 2rem;
         text-align: left;
         font-size: 2.5rem;
@@ -42,28 +51,53 @@ import industries from "../data/industries";
 
     .general-description {
         text-align: center;
-        margin: 2rem;
-        max-width: 100vw;
+        margin: 4rem 2rem 2rem;
         font-size: 1.2rem;
         color: #fff;
-        margin-top: 4rem;
     }
 
     .industry-section {
         display: flex;
-        align-items: center;
         justify-content: center;
         padding: 2rem;
-        gap: 2rem;
-        flex-wrap: wrap;
     }
 
     .industry-content {
-        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: nowrap;
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    .industry-section.reverse .industry-content {
+        flex-direction: row-reverse;
+    }
+
+    .industry-image {
+        width: 50%;
+        max-width: 900px;
+        border-radius: 10px;
+    }
+
+    .text-content {
         display: flex;
         flex-direction: column;
-        align-items: center;
         gap: 1rem;
+        flex: 1;
+        text-align: center;
+    }
+
+    .text-content h2 {
+        margin: 0;
+        color: #fff;
+        font-size: 3rem;
+    }
+
+    .industry-description {
+        color: #fff;
+        font-size: 1.1rem;
     }
 
     .contact-button {
@@ -74,8 +108,7 @@ import industries from "../data/industries";
         font-weight: bold;
         text-decoration: none;
         transition: background 0.2s;
-        align-self: flex-end;
-        margin-right: 10%;
+        align-self: center;
     }
 
     .contact-button:hover {
@@ -83,56 +116,18 @@ import industries from "../data/industries";
     }
 
     @media (max-width: 768px) {
-        .header {
-            text-align: center;
-            margin: 0;
+        .industry-section.reverse .industry-content {
+            flex-direction: column;
         }
 
-        .contact-button {
-            align-self: center;
-            margin: 0;
+        .industry-content {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .industry-image {
+            width: 90%;
         }
     }
-
-    .industry-content h2 {
-        scroll-margin-top: 70px;
-        position: relative;
-        overflow: hidden;
-        text-align: center;
-        color: black;
-        padding: 3rem 0;
-        margin: 0;
-        width: 100vw;
-        background: none;
-    }
-
-    .industry-description {
-        margin: 2rem;
-        font-size: 1.1rem;
-        color: #fff;
-        text-align: center;
-    }
-
-    .industry-content h2::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image: var(--bg-img);
-        background-size: cover;
-        background-position: center;
-        filter: blur(4px);
-        transform: scale(1.1);
-        z-index: 0;
-        width: 100%;
-    }
-
-    .industry-content h2 span {
-        position: relative;
-        z-index: 1;
-    }
-
-    .industry-content h2 > * {
-        position: relative;
-        z-index: 2;
-    }
+  
 </style>

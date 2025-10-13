@@ -59,6 +59,12 @@ const { title, items } = Astro.props as Props;
         padding: 1rem;
         scrollbar-width: none;
         -ms-overflow-style: none;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .card-slider.overflowing {
+        justify-content: flex-start;
     }
 
     .card-slider::-webkit-scrollbar {
@@ -98,8 +104,9 @@ const { title, items } = Astro.props as Props;
 
     .card-item img {
         width: 90%;
+        aspect-ratio: 2820 / 1885;
         height: auto;
-        max-height: 180px; 
+        max-height: 180px;
         object-fit: cover;
         border-radius: 0.5rem;
         margin: 0.5rem 0;
@@ -129,6 +136,10 @@ const { title, items } = Astro.props as Props;
         .card-item {
             max-width: 200px;
             height: 300px;
+        }
+
+        .card-slider {
+            justify-content: flex-start !important;
         }
     }
 </style>

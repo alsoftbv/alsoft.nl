@@ -13,19 +13,28 @@ import services from "../data/services";
 
     {
         services.map((service, index) => (
-            <section class="service-section">
+            <section
+                class={`service-section ${index % 2 !== 0 ? "reverse" : ""}`}
+            >
                 <div class="service-content">
-                    <h2
-                        id={service.title.replace(/\s+/g, "").toLowerCase()}
-                        style={`--bg-img: url(${service.image})`}
-                    >
-                        <span>{service.title}</span>
-                    </h2>
-
-                    <p class="service-description">{service.description}</p>
-                    <a href="/contact" class="contact-button">
-                        Get in touch
-                    </a>
+                    <img
+                        class="service-image"
+                        src={service.image}
+                        alt={service.title}
+                    />
+                    <div class="text-content">
+                        <h2
+                            id={service.title.replace(/\s+/g, "").toLowerCase()}
+                        >
+                            {service.title}
+                        </h2>
+                        <p class="service-description">
+                            {service.longDescription}
+                        </p>
+                        <a href="/contact" class="contact-button">
+                            Get in touch
+                        </a>
+                    </div>
                 </div>
             </section>
         ))
@@ -37,35 +46,58 @@ import services from "../data/services";
         background: linear-gradient(-45deg, #ff9100 0%, #ffd180 100%);
         padding: 4rem 2rem;
         text-align: left;
-        padding: 4rem 2rem;
-        text-align: left;
         font-size: 2.5rem;
     }
 
     .general-description {
         text-align: center;
-        margin: 2rem;
-        max-width: 100vw;
+        margin: 4rem 2rem 2rem;
         font-size: 1.2rem;
         color: #fff;
-        margin-top: 4rem;
     }
 
     .service-section {
         display: flex;
-        align-items: center;
         justify-content: center;
         padding: 2rem;
-        gap: 2rem;
-        flex-wrap: wrap;
     }
 
     .service-content {
-        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: nowrap;
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    .service-section.reverse .service-content {
+        flex-direction: row-reverse;
+    }
+
+    .service-image {
+        width: 50%;
+        max-width: 900px;
+        border-radius: 10px;
+    }
+
+    .text-content {
         display: flex;
         flex-direction: column;
-        align-items: center;
         gap: 1rem;
+        flex: 1;
+        text-align: center;
+    }
+
+    .text-content h2 {
+        margin: 0;
+        color: #fff;
+        font-size: 3rem;
+    }
+
+    .service-description {
+        color: #fff;
+        font-size: 1.1rem;
     }
 
     .contact-button {
@@ -76,8 +108,7 @@ import services from "../data/services";
         font-weight: bold;
         text-decoration: none;
         transition: background 0.2s;
-        align-self: flex-end;
-        margin-right: 10%;
+        align-self: center;
     }
 
     .contact-button:hover {
@@ -85,56 +116,18 @@ import services from "../data/services";
     }
 
     @media (max-width: 768px) {
-        .header {
-            text-align: center;
-            margin: 0;
+        .service-section.reverse .service-content {
+            flex-direction: column;
         }
 
-        .contact-button {
-            align-self: center;
-            margin: 0;
+        .service-content {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .service-image {
+            width: 90%;
         }
     }
-
-    .service-content h2 {
-        scroll-margin-top: 70px;
-        position: relative;
-        overflow: hidden;
-        text-align: center;
-        color: black;
-        padding: 3rem 0;
-        margin: 0;
-        width: 100vw;
-        background: none;
-    }
-
-    .service-description {
-        margin: 2rem;
-        font-size: 1.1rem;
-        color: #fff;
-        text-align: center;
-    }
-
-    .service-content h2::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image: var(--bg-img);
-        background-size: cover;
-        background-position: center;
-        filter: blur(4px);
-        transform: scale(1.1);
-        z-index: 0;
-        width: 100%;
-    }
-
-    .service-content h2 span {
-        position: relative;
-        z-index: 1;
-    }
-
-    .service-content h2 > * {
-        position: relative;
-        z-index: 2;
-    }
+  
 </style>
