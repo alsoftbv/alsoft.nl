@@ -1,165 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactForm from "../components/ContactForm.astro";
 ---
 
 <BaseLayout>
-    <section class="header">
-        <h1>Contact Us</h1>
-    </section>
-
-    <div class="contact-section">
-        <div class="contact-form">
-            <h4>Full Name</h4>
-            <input type="text" />
-            <h4>Email Address</h4>
-            <input type="email" />
-            <h4>Tell Us About Your Project</h4>
-            <textarea></textarea>
-            <button type="submit" id="submit-contact">Submit</button>
-        </div>
-        <div class="contact-image">
-            <img src="/logo.png" alt="Project Image" />
-        </div>
-    </div>
+  <section class="header">
+    <h1>Contact Us</h1>
+  </section>
+  <ContactForm />
 </BaseLayout>
 
-<script>
-    document.getElementById("submit-contact")?.addEventListener("click", () => {
-        const nameInput = document.querySelector(
-            'input[type="text"]',
-        ) as HTMLInputElement | null;
-        const emailInput = document.querySelector(
-            'input[type="email"]',
-        ) as HTMLInputElement | null;
-        const messageInput = document.querySelector(
-            "textarea",
-        ) as HTMLTextAreaElement | null;
-
-        const name = nameInput?.value || "";
-        const email = emailInput?.value || "";
-        const message = messageInput?.value || "";
-
-        const subject = encodeURIComponent("Contact Form Submission");
-        const body = encodeURIComponent(
-            `Full Name: ${name}\nEmail Address: ${email}\nTell Us About Your Project: ${message}`,
-        );
-
-        window.location.href = `mailto:altug@alsoft.nl?subject=${subject}&body=${body}`;
-    });
-</script>
-
 <style>
-    .header {
-        background: linear-gradient(-45deg, #ff9100 0%, #ffd180 100%);
-        padding: 4rem 2rem;
-        text-align: left;
-        font-size: 2.5rem;
-    }
-
-    .contact-section {
-        color: white;
-        padding: 2rem;
-        text-align: left;
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        position: relative;
-    }
-
-    .contact-form {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: 900px;
-        flex-basis: 900px;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-        width: 100%;
-        max-width: 600px;
-        box-sizing: border-box;
-        padding: 0.5rem;
-        margin-bottom: 1rem;
-        border: none;
-        border-radius: 4px;
-        background-color: rgba(0, 0, 0, 0.4);
-        color: white;
-        font: inherit;
-    }
-
-    .contact-form button {
-        background: #ff9100;
-        color: #fff;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        font-weight: bold;
-        border: none;
-        width: 150px;
-        height: auto;
-        font: inherit;
-        margin-top: 5px;
-    }
-
-    .contact-form button:hover {
-        background: #ffd180;
-    }
-
-    .contact-image img {
-        width: 300px;
-        margin-top: 30%;
-    }
-
-    .contact-form textarea {
-        resize: none;
-        height: 150px;
-    }
-
-    @media (min-width: 900px) {
-        .contact-form input,
-        .contact-form textarea {
-            max-width: 900px;
-        }
-        .contact-form {
-            margin-left: 5vw;
-        }
-        .contact-image {
-            margin-left: 0;
-            align-self: flex-start;
-            max-width: 300px;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .contact-section {
-            flex-direction: column;
-            gap: 1rem;
-            padding: 1.5rem;
-            position: relative;
-        }
-
-        .contact-form {
-            max-width: 100%;
-            flex-basis: auto;
-        }
-
-        .contact-image {
-            position: absolute;
-            top: 0.5rem;
-            right: 1rem;
-            width: 80px;
-            margin: 0;
-        }
-
-        .contact-image img {
-            width: 100%;
-            display: block;
-            margin: 0;
-        }
-
-        .header {
-            text-align: center;
-            margin: 0;
-        }
-    }
+  .header {
+    background: linear-gradient(-45deg, #ff9100 0%, #ffd180 100%);
+    padding: 4rem 2rem;
+    text-align: left;
+    font-size: 2.5rem;
+  }
 </style>

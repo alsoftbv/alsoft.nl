@@ -39,13 +39,13 @@ import industries from "../data/industries";
 <script>
   document.getElementById("submit-contact")?.addEventListener("click", () => {
     const nameInput = document.querySelector(
-      'input[type="text"]',
+      'input[type="text"]'
     ) as HTMLInputElement | null;
     const emailInput = document.querySelector(
-      'input[type="email"]',
+      'input[type="email"]'
     ) as HTMLInputElement | null;
     const messageInput = document.querySelector(
-      "textarea",
+      "textarea"
     ) as HTMLTextAreaElement | null;
 
     const name = nameInput?.value || "";
@@ -54,7 +54,7 @@ import industries from "../data/industries";
 
     const subject = encodeURIComponent("Contact Form Submission");
     const body = encodeURIComponent(
-      `Full Name: ${name}\nEmail Address: ${email}\nTell Us About Your Project: ${message}`,
+      `Full Name: ${name}\nEmail Address: ${email}\nTell Us About Your Project: ${message}`
     );
 
     window.location.href = `mailto:altug@alsoft.nl?subject=${subject}&body=${body}`;
@@ -83,7 +83,7 @@ import industries from "../data/industries";
     background: url("/home-screen-hero.jpg") no-repeat center center;
     background-size: cover;
     filter: blur(2px) brightness(0.7);
-    z-index: 1;;
+    z-index: 1;
   }
 
   .hero-content {
