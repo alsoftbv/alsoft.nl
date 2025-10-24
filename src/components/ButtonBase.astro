@@ -1,0 +1,56 @@
+---
+const { label, href, type = "button", id } = Astro.props;
+---
+
+{
+    href ? (
+        <a href={href} id={id} class="button-base get-in-touch-button">
+            {label}
+        </a>
+    ) : (
+        <button type={type} id={id} class="button-base submit-button">
+            {label}
+        </button>
+    )
+}
+
+<style>
+    .button-base {
+        background: #ff9100;
+        color: #fff;
+        padding: 0.9rem 2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        font-family: inherit;
+        transition:
+            background 0.2s ease,
+            transform 0.1s ease;
+    }
+
+    .button-base:hover {
+        background: #ffa733;
+        transform: translateY(-2px);
+    }
+
+    .button-base {
+        margin: 0 auto;
+    }
+
+    .submit-button {
+        margin: 0;
+        display: inline-flex;
+        align-self: flex-start !important;
+    }
+
+    .get-in-touch-button {
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

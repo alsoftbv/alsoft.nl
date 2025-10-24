@@ -5,6 +5,7 @@ import CardsSection from "../components/CardsSection.astro";
 
 import services from "../data/services";
 import industries from "../data/industries";
+import SubmitButton from "../components/SubmitButton.astro";
 ---
 
 <BaseLayout>
@@ -28,7 +29,7 @@ import industries from "../data/industries";
       <input type="email" />
       <h4>Tell Us About Your Project</h4>
       <textarea></textarea>
-      <button type="button" id="submit-contact">Submit</button>
+      <SubmitButton id="submit-contact" />
     </div>
     <div class="contact-image">
       <img src="/contact-logo.png" alt="Project Image" />
@@ -134,23 +135,6 @@ import industries from "../data/industries";
     background-color: #3f3f3f;
     color: white;
     font: inherit;
-  }
-
-  .contact-form button {
-    background: #ff9100;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-weight: bold;
-    border: none;
-    width: 150px;
-    height: auto;
-    font: inherit;
-    margin-top: 5px;
-  }
-
-  .contact-form button:hover {
-    background: #ffd180;
   }
 
   .contact-image img {

@@ -1,10 +1,14 @@
+---
+import SubmitButton from "./SubmitButton.astro";
+---
+
 <div class="contact-section">
   <div class="contact-form">
     <h4>Your name</h4>
     <input type="text" />
     <h4>Tell us about your project</h4>
     <textarea></textarea>
-    <button type="submit" id="submit-contact">Submit</button>
+    <SubmitButton id="submit-contact" />
   </div>
   <div class="contact-image">
     <img src="/logo.png" alt="Project Image" />
@@ -14,10 +18,10 @@
 <script>
   document.getElementById("submit-contact")?.addEventListener("click", () => {
     const nameInput = document.querySelector(
-      'input[type="text"]'
+      'input[type="text"]',
     ) as HTMLInputElement | null;
     const messageInput = document.querySelector(
-      "textarea"
+      "textarea",
     ) as HTMLTextAreaElement | null;
 
     const name = nameInput?.value || "";
@@ -79,26 +83,6 @@
   .contact-form textarea {
     resize: vertical;
     min-height: 150px;
-  }
-
-  .contact-form button {
-    background: #ff9100;
-    color: #fff;
-    padding: 0.9rem 2rem;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    border: none;
-    cursor: pointer;
-    align-self: flex-start;
-    transition:
-      background 0.2s ease,
-      transform 0.1s ease;
-  }
-
-  .contact-form button:hover {
-    background: #ffa733;
-    transform: translateY(-2px);
   }
 
   .contact-image {

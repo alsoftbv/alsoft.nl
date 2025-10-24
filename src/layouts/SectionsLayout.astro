@@ -1,4 +1,5 @@
 ---
+import GetInTouchButton from "../components/GetInTouchButton.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const { pageTitle, data } = Astro.props;
@@ -35,9 +36,7 @@ const { pageTitle, data } = Astro.props;
                             <p class="content-description">
                                 {item.longDescription}
                             </p>
-                            <a href="/contact" class="contact-button">
-                                Get in touch
-                            </a>
+                            <GetInTouchButton />
                         </div>
                     </div>
                 </section>
@@ -103,21 +102,6 @@ const { pageTitle, data } = Astro.props;
 
     [id] {
         scroll-margin-top: 300px;
-    }
-
-    .contact-button {
-        background: #ff9100;
-        color: #fff;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        font-weight: bold;
-        text-decoration: none;
-        transition: background 0.2s;
-        align-self: center;
-    }
-
-    .contact-button:hover {
-        background-color: #ffd180;
     }
 
     @media (max-width: 768px) {
