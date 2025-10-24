@@ -1,0 +1,141 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const { pageTitle, data } = Astro.props;
+---
+
+<BaseLayout>
+    <section class="header">
+        <h1>{pageTitle}</h1>
+    </section>
+
+    {
+        data.map(
+            (
+                item: { image: string; title: string; longDescription: string },
+                index: number,
+            ) => (
+                <section
+                    class={`content-section ${index % 2 !== 0 ? "reverse" : ""}`}
+                >
+                    <div class="content-wrapper">
+                        <img
+                            class="content-image"
+                            src={item.image}
+                            alt={item.title}
+                        />
+                        <div class="text-content">
+                            <h2
+                                id={item.title
+                                    .replace(/\s+/g, "")
+                                    .toLowerCase()}
+                            >
+                                {item.title}
+                            </h2>
+                            <p class="content-description">
+                                {item.longDescription}
+                            </p>
+                            <a href="/contact" class="contact-button">
+                                Get in touch
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            ),
+        )
+    }
+</BaseLayout>
+
+<style>
+    .header {
+        background: linear-gradient(-45deg, #ff9100 0%, #ffd180 100%);
+        padding: 4rem 2rem;
+        text-align: left;
+        font-size: 2.5rem;
+    }
+
+    .content-section {
+        display: flex;
+        justify-content: center;
+        padding: 2rem;
+    }
+
+    .content-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: nowrap;
+        max-width: 1200px;
+        width: 100%;
+        padding: 3rem;
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .content-section.reverse .content-wrapper {
+        flex-direction: row-reverse;
+    }
+
+    .content-image {
+        width: 50%;
+        max-width: 900px;
+        border-radius: 10px;
+    }
+
+    .text-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        flex: 1;
+        text-align: center;
+    }
+
+    .text-content h2 {
+        margin: 0;
+        color: #fff;
+        font-size: 3rem;
+    }
+
+    .content-description {
+        color: #fff;
+        font-size: 1.1rem;
+    }
+
+    [id] {
+        scroll-margin-top: 300px;
+    }
+
+    .contact-button {
+        background: #ff9100;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background 0.2s;
+        align-self: center;
+    }
+
+    .contact-button:hover {
+        background-color: #ffd180;
+    }
+
+    @media (max-width: 768px) {
+        .content-section.reverse .content-wrapper {
+            flex-direction: column;
+        }
+
+        .content-wrapper {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .content-image {
+            width: 90%;
+        }
+
+        [id] {
+            scroll-margin-top: 600px;
+        }
+    }
+</style>
