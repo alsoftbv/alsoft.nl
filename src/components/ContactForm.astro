@@ -1,5 +1,5 @@
 ---
-import SubmitButton from "./SubmitButton.astro";
+import SubmitButton from "./button/SubmitButton.astro";
 ---
 
 <div class="contact-section">
@@ -36,37 +36,35 @@ import SubmitButton from "./SubmitButton.astro";
 
 <style>
   .contact-section {
-    color: #fff;
+    color: white;
+    padding: 1.5rem;
+    text-align: left;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 3rem 5vw;
-    gap: 3rem;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+    position: relative;
   }
 
   .contact-form {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    max-width: 700px;
-  }
-
-  .contact-form h4 {
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
+    width: 100%;
+    max-width: 900px;
+    flex-basis: 900px;
   }
 
   .contact-form input,
   .contact-form textarea {
     width: 100%;
-    padding: 0.75rem 1rem;
-    margin-bottom: 1.5rem;
+    max-width: 600px;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
     border: none;
     border-radius: 6px;
     background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
+    color: white;
     font: inherit;
     outline: none;
     transition:
@@ -80,44 +78,31 @@ import SubmitButton from "./SubmitButton.astro";
     box-shadow: 0 0 0 2px #ff9100;
   }
 
+  .contact-image img {
+    width: 300px;
+    margin-top: 20%;
+  }
+
   .contact-form textarea {
     resize: vertical;
-    min-height: 150px;
-  }
-
-  .contact-image {
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .contact-image img {
-    width: 200px;
-    height: auto;
-    opacity: 0.9;
+    height: 150px;
   }
 
   @media (max-width: 768px) {
     .contact-section {
       flex-direction: column;
-      padding: 2rem 1.5rem;
-      align-items: center;
-      text-align: left;
+      gap: 1rem;
+      padding: 0rem 1.5rem;
+      position: relative;
     }
 
     .contact-form {
-      width: 100%;
-      max-width: 500px;
+      max-width: 100%;
+      flex-basis: auto;
     }
 
     .contact-image {
-      margin-top: 1rem;
-    }
-
-    .contact-image img {
-      width: 100px;
-      opacity: 0.8;
+      display: none;
     }
   }
 </style>

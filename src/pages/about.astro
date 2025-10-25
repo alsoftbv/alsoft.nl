@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import GetInTouchButton from "../components/button/GetInTouchButton.astro";
 ---
 
 <BaseLayout>
-    <section class="header">
-        <h1>About Us</h1>
-    </section>
+    <Header siteTitle="About Us" />
 
     <section class="content">
         <img src="/about/altug.jpg" alt="About Image" class="altug-image" />
@@ -19,18 +19,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <h2 class="why-us">Why Us?</h2>
         <p class="center-text">More description</p>
         <h3 class="learn-more">Want to learn more?</h3>
-        <a href="/contact" class="contact-button"> Get in touch </a>
+        <GetInTouchButton />
     </section>
 </BaseLayout>
 
 <style>
-    .header {
-        background: linear-gradient(-45deg, #ff9100 0%, #ffd180 100%);
-        padding: 4rem 2rem;
-        text-align: left;
-        font-size: 2.5rem;
-    }
-
     .altug-image {
         border-radius: 50% !important;
     }
@@ -108,27 +101,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         text-decoration: underline;
     }
 
-    .contact-button {
-        background: #ff9100;
-        color: #fff;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        font-weight: bold;
-        text-decoration: none;
-        transition: background 0.2s;
-        display: block;
-        margin: 0 auto 0;
-        text-align: center;
-    }
-
     .learn-more {
         width: 100%;
         text-align: center;
         margin-top: 3rem;
         font-size: 1.5rem;
-    }
-
-    .contact-button:hover {
-        background-color: #ffd180;
     }
 </style>

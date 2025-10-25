@@ -1,0 +1,22 @@
+---
+const { siteTitle } = Astro.props;
+---
+
+<section class="header">
+    <h1>{siteTitle}</h1>
+</section>
+
+<style>
+    .header {
+        background: linear-gradient(-45deg, #ff9100 0%, #ffd180 100%);
+        padding: 4rem 2rem;
+        text-align: left;
+        font-size: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .header {
+            padding: 0.5rem 1rem;
+        }
+    }
+</style>

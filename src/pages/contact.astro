@@ -1,20 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactForm from "../components/ContactForm.astro";
+import Header from "../components/Header.astro";
 ---
 
 <BaseLayout>
-  <section class="header">
-    <h1>Contact Us</h1>
-  </section>
+  <Header siteTitle="Contact Us" />
   <ContactForm />
 </BaseLayout>
-
-<style>
-  .header {
-    background: linear-gradient(-45deg, #ff9100 0%, #ffd180 100%);
-    padding: 4rem 2rem;
-    text-align: left;
-    font-size: 2.5rem;
-  }
-</style>

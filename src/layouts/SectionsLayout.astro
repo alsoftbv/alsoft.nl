@@ -1,14 +1,13 @@
 ---
-import GetInTouchButton from "../components/GetInTouchButton.astro";
+import GetInTouchButton from "../components/button/GetInTouchButton.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
 
 const { pageTitle, data } = Astro.props;
 ---
 
 <BaseLayout>
-    <section class="header">
-        <h1>{pageTitle}</h1>
-    </section>
+    <Header siteTitle={pageTitle} />
 
     {
         data.map(
@@ -105,6 +104,10 @@ const { pageTitle, data } = Astro.props;
     }
 
     @media (max-width: 768px) {
+        .header {
+            padding: 1rem;
+        }
+
         .content-section.reverse .content-wrapper {
             flex-direction: column;
         }
