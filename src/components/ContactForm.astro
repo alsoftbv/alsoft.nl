@@ -18,10 +18,10 @@ import SubmitButton from "./button/SubmitButton.astro";
 <script>
   document.getElementById("submit-contact")?.addEventListener("click", () => {
     const nameInput = document.querySelector(
-      'input[type="text"]',
+      'input[type="text"]'
     ) as HTMLInputElement | null;
     const messageInput = document.querySelector(
-      "textarea",
+      "textarea"
     ) as HTMLTextAreaElement | null;
 
     const name = nameInput?.value || "";
@@ -36,7 +36,6 @@ import SubmitButton from "./button/SubmitButton.astro";
 
 <style>
   .contact-section {
-    color: white;
     padding: 1.5rem;
     text-align: left;
     display: flex;
@@ -64,7 +63,6 @@ import SubmitButton from "./button/SubmitButton.astro";
     border: none;
     border-radius: 6px;
     background-color: rgba(255, 255, 255, 0.1);
-    color: white;
     font: inherit;
     outline: none;
     transition:

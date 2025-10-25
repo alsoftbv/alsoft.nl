@@ -5,106 +5,101 @@ import GetInTouchButton from "../components/button/GetInTouchButton.astro";
 ---
 
 <BaseLayout>
-    <Header siteTitle="About Us" />
+  <Header siteTitle="About Us" />
 
-    <section class="content">
-        <img src="/about/altug.jpg" alt="About Image" class="altug-image" />
-        <p>A description can go here</p>
-        <p class="center-text">More description</p>
-        <img
-            src="/about/divider.jpg"
-            alt="More About Image"
-            class="large-image"
-        />
-        <h2 class="why-us">Why Us?</h2>
-        <p class="center-text">More description</p>
-        <h3 class="learn-more">Want to learn more?</h3>
-        <GetInTouchButton />
-    </section>
+  <section class="content">
+    <img src="/about/altug.jpg" alt="About Image" class="altug-image" />
+    <p>A description can go here</p>
+    <p class="center-text">More description</p>
+    <img src="/about/divider.jpg" alt="More About Image" class="large-image" />
+    <h2 class="why-us">Why Us?</h2>
+    <p class="center-text">More description</p>
+    <h3 class="learn-more">Want to learn more?</h3>
+    <GetInTouchButton />
+  </section>
 </BaseLayout>
 
 <style>
-    .altug-image {
-        border-radius: 50% !important;
-    }
+  .altug-image {
+    border-radius: 50% !important;
+  }
 
-    @media (max-width: 768px) {
-        .header {
-            text-align: center;
-            margin: 0;
-            padding: 3rem 1rem;
-        }
-
-        .content {
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem !important;
-            padding: 1rem;
-        }
-
-        .content p {
-            width: 100%;
-            text-align: center;
-        }
-
-        .content img {
-            width: 100% !important;
-            margin-top: 1rem;
-        }
-
-        .center-text {
-            margin: 1.5rem 0;
-            padding: 0 1rem;
-        }
+  @media (max-width: 768px) {
+    .header {
+      text-align: center;
+      margin: 0;
+      padding: 3rem 1rem;
     }
 
     .content {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 2rem;
-        gap: 20%;
-        flex-wrap: wrap;
-        color: white;
-        font-size: 1.2rem;
-        line-height: 1.6;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem !important;
+      padding: 1rem;
+    }
+
+    .content p {
+      width: 100%;
+      text-align: center;
     }
 
     .content img {
-        width: 50%;
-        display: block;
-        height: auto;
-        margin-top: 2rem;
-        border-radius: 4px;
-        justify-content: flex-end;
+      width: 100% !important;
+      margin-top: 1rem;
     }
 
     .center-text {
-        text-align: center;
-        width: 100%;
-        margin: 10%;
+      margin: 1.5rem 0;
+      padding: 0 1rem;
     }
+  }
 
-    .large-image {
-        width: 100% !important;
-        height: 300px;
-        object-fit: cover;
-        margin-top: 2rem;
-    }
+  .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    gap: 20%;
+    flex-wrap: wrap;
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
 
-    .why-us {
-        width: 100%;
-        color: #ffd180;
-        margin-top: 5%;
-        text-decoration: underline;
-    }
+  .content img {
+    width: 50%;
+    display: block;
+    height: auto;
+    margin-top: 2rem;
+    border-radius: 4px;
+    justify-content: flex-end;
+  }
 
-    .learn-more {
-        width: 100%;
-        text-align: center;
-        margin-top: 3rem;
-        font-size: 1.5rem;
-    }
+  .center-text {
+    text-align: center;
+    width: 100%;
+    margin: 10%;
+  }
+
+  .large-image {
+    width: 100% !important;
+    height: 300px;
+    object-fit: cover;
+    margin-top: 2rem;
+  }
+
+  .why-us {
+    width: 100%;
+    color: #ffd180;
+    margin-top: 5%;
+    text-decoration: underline;
+  }
+
+  .learn-more {
+    width: 100%;
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 1.5rem;
+  }
 </style>
