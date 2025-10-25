@@ -1,15 +1,16 @@
 ---
-const { label, href, type = "button", id } = Astro.props;
+const { href, id, class: externalClass = "" } = Astro.props;
+const baseClass = `button-base ${href ? "get-in-touch-button" : "submit-button"} ${externalClass}`;
 ---
 
 {
   href ? (
-    <a href={href} id={id} class="button-base get-in-touch-button">
-      {label}
+    <a href={href} id={id} class={baseClass}>
+      <slot />
     </a>
   ) : (
-    <button type={type} id={id} class="button-base submit-button">
-      {label}
+    <button id={id} class={baseClass}>
+      <slot />
     </button>
   )
 }

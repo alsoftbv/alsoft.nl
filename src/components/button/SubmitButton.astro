@@ -1,5 +1,6 @@
 ---
+const { class: className = "" } = Astro.props;
 import ButtonBase from "./ButtonBase.astro";
 ---
 
-<ButtonBase label="Submit" id="submit-contact" />
+<ButtonBase class={className}>Submit</ButtonBase>

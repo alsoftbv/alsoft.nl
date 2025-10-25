@@ -26,10 +26,10 @@ const links = [
       ))
     }
     <li class="mobile-contact">
-      <a href="/contact" class="button">Get in touch</a>
+      <GetInTouchButton />
     </li>
   </ul>
-  <GetInTouchButton />
+  <GetInTouchButton class="desktop-contact" />
 </nav>
 
 <script>
@@ -117,7 +117,7 @@ const links = [
     font-size: 1rem;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
     .nav-links {
       margin-left: 0;
       position: absolute;
@@ -156,19 +156,19 @@ const links = [
     .menu-toggle {
       display: flex;
     }
-    .desktop-contact {
-      display: none;
-    }
     .mobile-contact {
       display: block;
     }
+    .desktop-contact {
+      display: none;
+    }
   }
-  @media (min-width: 901px) {
+  @media (min-width: 769px) {
     .mobile-contact {
       display: none;
     }
     .desktop-contact {
-      display: inline-block;
+      display: block;
     }
   }
 
