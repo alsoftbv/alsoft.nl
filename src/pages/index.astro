@@ -5,173 +5,168 @@ import CardsSection from "../components/CardsSection.astro";
 
 import services from "../data/services";
 import industries from "../data/industries";
-import SubmitButton from "../components/button/SubmitButton.astro";
+import { Image } from "astro:assets";
 ---
 
 <BaseLayout>
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Description goes here</h1>
+  <section class="header">
+    <div class="header-text">
+      <h1>Firmware that makes your hardware shine.</h1>
+      <p>
+        We help you build reliable, efficient embedded systems — from early
+        prototypes to production-ready products.
+      </p>
+      <p class="sub">
+        At <strong>alsoft</strong>, we make sure your device does what it’s
+        meant to do: collect, connect, and perform — without the crashes or
+        quirks that hold great hardware back.
+      </p>
+      <button class="primary-btn">Let’s make it work right</button>
+    </div>
+    <div class="header-img">
+      <Image
+        src="/services/iot.jpg"
+        alt="IoT device"
+        width={360}
+        height={360}
+      />
     </div>
   </section>
 
-  <div class="cards-container">
+  <section class="solution-tease">
+    <div class="benefit">
+      <Image
+        src="/icons/reliability.svg"
+        alt="Reliability"
+        width={32}
+        height={32}
+      />
+      <p>No more random bugs — firmware that just works, day after day.</p>
+    </div>
+    <div class="benefit">
+      <Image
+        src="/icons/performance.svg"
+        alt="Performance"
+        width={32}
+        height={32}
+      />
+      <p>Smarter use of resources — optimized for your exact hardware.</p>
+    </div>
+    <div class="benefit">
+      <Image
+        src="/icons/development.svg"
+        alt="Development"
+        width={32}
+        height={32}
+      />
+      <p>
+        Smoother development — clean, testable code that’s easy to maintain.
+      </p>
+    </div>
+  </section>
+
+  <section class="problems">
+    <h2>You’ve built great hardware.</h2>
+    <p>
+      But when it freezes, misbehaves, or just won’t talk to other devices —
+      people assume the whole thing is bad. We get it. Debugging firmware under
+      pressure isn’t fun, and those little issues can make or break your
+      product’s reputation.
+    </p>
+  </section>
+
+  <section class="solution">
+    <h2>
+      We bring the same care to your firmware that you bring to your hardware.
+    </h2>
+    <p>
+      We design, test, and refine every part until it feels solid. Whether you
+      need firmware from scratch or help improving what you already have, we’ll
+      make sure it’s stable, efficient, and production-ready.
+    </p>
+  </section>
+
+  <section class="proof">
+    <h2>Trusted in high-stakes industries.</h2>
+    <p>
+      From avionics to industrial automation, we’ve built and tested systems
+      where reliability isn’t optional. You can trust that what we build for you
+      won’t just work — it’ll keep working.
+    </p>
+  </section>
+
+  <section class="cards-container">
     <CardsSection title="Services" items={services} />
     <CardsSection title="Industries" items={industries} />
-  </div>
+  </section>
 
-  <div class="contact-section">
-    <div class="contact-form">
-      <h2>Contact Us</h2>
-      <h4>Full Name</h4>
-      <input type="text" />
-      <h4>Email Address</h4>
-      <input type="email" />
-      <h4>Tell Us About Your Project</h4>
-      <textarea></textarea>
-      <SubmitButton id="submit-contact" />
-    </div>
-    <div class="contact-image">
-      <img src="/contact-logo.png" alt="Project Image" />
-    </div>
-  </div>
+  <section class="plan">
+    <h2>Here’s how we usually roll:</h2>
+    <ol>
+      <li>
+        <strong>Chat:</strong> A quick call to understand your product and goals.
+      </li>
+      <li>
+        <strong>Plan or audit:</strong> A clear roadmap or a report for your existing
+        code.
+      </li>
+      <li>
+        <strong>Build:</strong> Development and testing until it’s ready for production.
+      </li>
+    </ol>
+    <p>Simple, transparent, and built around your timeline.</p>
+  </section>
+
+  <section class="more-proof">
+    <h2>Trusted by teams who build things that matter.</h2>
+    <p>
+      Add company logos, certifications, or industries here — “From prototype
+      labs to production floors.”
+    </p>
+  </section>
+
+  <section class="about">
+    <h2>Hey, I’m Altuğ.</h2>
+    <p>
+      I’ve spent years working on embedded systems in industries where failure
+      isn’t an option. These days, I help companies turn hardware ideas into
+      dependable products — without chasing firmware bugs at midnight.
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Let’s talk about your device.</h2>
+    <p>
+      Whether you’re launching something new or improving what you already have,
+      I’d love to hear what you’re building.
+    </p>
+    <button class="primary-btn">Start a conversation</button>
+  </section>
 </BaseLayout>
 
-<script>
-  document.getElementById("submit-contact")?.addEventListener("click", () => {
-    const nameInput = document.querySelector(
-      'input[type="text"]'
-    ) as HTMLInputElement | null;
-    const emailInput = document.querySelector(
-      'input[type="email"]'
-    ) as HTMLInputElement | null;
-    const messageInput = document.querySelector(
-      "textarea"
-    ) as HTMLTextAreaElement | null;
-
-    const name = nameInput?.value || "";
-    const email = emailInput?.value || "";
-    const message = messageInput?.value || "";
-
-    const subject = encodeURIComponent("Contact Form Submission");
-    const body = encodeURIComponent(
-      `Full Name: ${name}\nEmail Address: ${email}\nTell Us About Your Project: ${message}`
-    );
-
-    window.location.href = `mailto:altug@alsoft.nl?subject=${subject}&body=${body}`;
-  });
-</script>
-
 <style>
-  .hero {
-    position: relative;
-    height: 400px;
+  .header {
     display: flex;
+    gap: 3rem;
+    padding: 2rem 0;
+  }
+
+  .solution-tease {
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: black;
-    text-align: center;
-    overflow: hidden;
+    gap: 2rem;
   }
 
-  .hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("/home-screen-hero.jpg") no-repeat center center;
-    background-size: cover;
-    filter: blur(2px) brightness(0.7);
-    z-index: 1;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero-content h1 {
-    font-size: 2.5em;
-    margin: 0;
+  .benefit {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
   }
 
   .cards-container {
     margin-top: 3rem;
-  }
-
-  .contact-section {
-    background: #000000;
-    padding: 2rem;
-    text-align: left;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-top: 3rem;
-    gap: 2rem;
-    position: relative;
-  }
-
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 900px;
-    flex-basis: 900px;
-  }
-
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    max-width: 600px;
-    box-sizing: border-box;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: none;
-    border-radius: 4px;
-    background-color: #3f3f3f;
-    font: inherit;
-  }
-
-  .contact-image img {
-    width: 300px;
-    opacity: 0.5;
-    margin-top: 50%;
-  }
-
-  .contact-form textarea {
-    resize: none;
-    height: 150px;
-  }
-
-  @media (max-width: 768px) {
-    .contact-section {
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1.5rem;
-      margin-top: 2rem;
-      position: relative;
-    }
-
-    .contact-form {
-      max-width: 100%;
-      flex-basis: auto;
-    }
-
-    .contact-image {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      width: 80px;
-      margin: 0;
-    }
-
-    .contact-image img {
-      width: 100%;
-      opacity: 0.7;
-      display: block;
-      margin: 0;
-    }
   }
 </style>
