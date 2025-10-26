@@ -8,12 +8,13 @@ import GetInTouchButton from "./button/GetInTouchButton.astro";
     <p>Valkenswaard, Netherlands</p>
     <p>Contact:</p>
     <a href="mailto:info@alsoft.nl?subject=Contact%20Form%20Submission">
-      info@alsoft.nl
+      <p>info@alsoft.nl</p>
     </a>
     <a
       href="https://www.linkedin.com/company/alsoftbv"
       target="_blank"
       aria-label="LinkedIn"
+      class="linkedin-image"
     >
       <img src="/linkedin.png" alt="LinkedIn" />
     </a>
@@ -35,17 +36,12 @@ import GetInTouchButton from "./button/GetInTouchButton.astro";
     justify-content: space-between;
     align-items: flex-start;
     padding: 1.5rem 2rem;
-    flex-wrap: wrap;
   }
 
   .footer-left {
     display: flex;
     flex-direction: column;
-  }
-
-  .footer-left p {
-    margin: 0;
-    padding: 0.2rem 0;
+    margin-left: 10%;
   }
 
   .footer-right {
@@ -54,12 +50,17 @@ import GetInTouchButton from "./button/GetInTouchButton.astro";
     align-items: end;
     justify-content: right;
     text-align: right;
-    gap: 0.5rem;
+    gap: 0.7rem;
+    margin-right: 10%;
+  }
+
+  p {
+    margin: 0;
+    padding: 0.2rem 0;
   }
 
   a {
     text-decoration: none;
-    font-size: 0.95rem;
     transition: text-decoration 0.2s ease;
   }
 
@@ -68,18 +69,19 @@ import GetInTouchButton from "./button/GetInTouchButton.astro";
   }
 
   img {
-    height: 22px;
+    height: 1.5rem;
     width: auto;
-    opacity: 0.9;
-    transition: opacity 0.2s ease;
-  }
-
-  img:hover {
-    opacity: 1;
+    display: block;
+    margin: 0;
+    padding: 0.2rem 0;
   }
 
   .small-button {
-    transform: scale(0.65);
+    font-size: 0.7rem;
+  }
+
+  .small-button:hover {
+    text-decoration: none;
   }
 
   @media (max-width: 768px) {
@@ -94,12 +96,12 @@ import GetInTouchButton from "./button/GetInTouchButton.astro";
       font-size: 0.7rem;
     }
 
-    .small-button {
-      transform: scale(0.5);
+    img {
+      height: 1rem;
     }
 
-    img {
-      height: 20px;
+    .small-button {
+      font-size: 0.5rem;
     }
   }
 </style>
