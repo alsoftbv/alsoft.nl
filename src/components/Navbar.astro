@@ -1,5 +1,5 @@
 ---
-import GetInTouchButton from "./button/GetInTouchButton.astro";
+import Button from "./Button.astro";
 
 const links = [
   { name: "Services", href: "/services" },
@@ -26,10 +26,10 @@ const links = [
       ))
     }
     <li class="mobile-contact">
-      <GetInTouchButton />
+      <Button href="/contact">Get in touch</Button>
     </li>
   </ul>
-  <GetInTouchButton class="desktop-contact" />
+  <Button href="/contact" class="desktop-contact">Get in touch</Button>
 </nav>
 
 <script>

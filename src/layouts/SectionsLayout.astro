@@ -1,7 +1,7 @@
 ---
-import GetInTouchButton from "../components/button/GetInTouchButton.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
+import Button from "../components/Button.astro";
 
 const { pageTitle, data } = Astro.props;
 ---
@@ -23,7 +23,7 @@ const { pageTitle, data } = Astro.props;
                 {item.title}
               </h2>
               <p class="content-description">{item.longDescription}</p>
-              <GetInTouchButton />
+              <Button href="/contact">Get in touch</Button>
             </div>
           </div>
         </section>
