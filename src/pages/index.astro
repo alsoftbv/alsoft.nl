@@ -6,6 +6,7 @@ import CardsSection from "../components/CardsSection.astro";
 import services from "../data/services";
 import industries from "../data/industries";
 import { Image } from "astro:assets";
+import Button from "../components/Button.astro";
 ---
 
 <BaseLayout>
@@ -21,7 +22,7 @@ import { Image } from "astro:assets";
         meant to do: collect, connect, and perform — without the crashes or
         quirks that hold great hardware back.
       </p>
-      <button class="primary-btn">Let’s make it work right</button>
+      <Button>Let’s make it work right</Button>
     </div>
     <div class="header-img">
       <Image
@@ -134,14 +135,13 @@ import { Image } from "astro:assets";
     </p>
   </section>
 
-  <!-- CTA -->
   <section class="cta">
     <h2>Let’s talk about your device.</h2>
     <p>
       Whether you’re launching something new or improving what you already have,
       I’d love to hear what you’re building.
     </p>
-    <button class="primary-btn">Start a conversation</button>
+    <Button href="/contact">Start a conversation</Button>
   </section>
 </BaseLayout>
 
