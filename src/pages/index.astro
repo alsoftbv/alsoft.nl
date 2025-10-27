@@ -102,7 +102,7 @@ import Button from "../components/Button.astro";
   </section>
 
   <section class="plan">
-    <h2>Here’s how we usually roll:</h2>
+    <h2>Here’s how we usually work:</h2>
     <ol>
       <li>
         <strong>Chat:</strong> A quick call to understand your product and goals.
@@ -146,27 +146,64 @@ import Button from "../components/Button.astro";
 </BaseLayout>
 
 <style>
+  section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+
+  h1,
+  h2 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
   .header {
     display: flex;
-    gap: 3rem;
-    padding: 2rem 0;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding-top: 4rem;
+  }
+
+  .header-text {
+    flex: 1 1 320px;
+  }
+
+  .header-img {
+    flex: 1 1 320px;
+    text-align: center;
   }
 
   .solution-tease {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.5rem;
+    text-align: left;
   }
 
   .benefit {
     display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
+    align-items: flex-start;
+    gap: 1rem;
+    flex: 1 1 280px;
   }
 
-  .cards-container {
+  .plan ol {
+    padding-left: 1.2rem;
+    line-height: 1.8;
+  }
+
+  .cta {
+    text-align: center;
+    border-radius: 0.75rem;
     margin-top: 3rem;
+    padding: 4rem 2rem;
   }
 </style>
