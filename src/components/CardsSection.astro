@@ -1,9 +1,11 @@
 ---
+import { Image } from "astro:assets";
+
 interface CardItem {
   id: string;
   title: string;
   description: string;
-  image: string;
+  image: ImageMetadata;
 }
 
 interface Props {
@@ -27,7 +29,7 @@ const { title, items } = Astro.props as Props;
           return (
             <div class="card-item">
               <a href={`/${page}#${anchor}`}>
-                <img src={item.image} alt={item.title} />
+                <Image src={item.image} alt={item.title} />
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </a>

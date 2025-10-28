@@ -7,6 +7,12 @@ import services from "../data/services";
 import industries from "../data/industries";
 import { Image } from "astro:assets";
 import Button from "../components/Button.astro";
+
+import headerImage from "../images/index/header-image.jpg";
+import reliabilityIcon from "../images/index/icons/reliability.svg";
+
+import performanceIcon from "../images/index/icons/performance.svg";
+import developmentIcon from "../images/index/icons/development.svg";
 ---
 
 <BaseLayout>
@@ -25,41 +31,21 @@ import Button from "../components/Button.astro";
       <Button>Let’s make it work right</Button>
     </div>
     <div class="header-img">
-      <Image
-        src="/header-image.jpg"
-        alt="IoT device"
-        width={360}
-        height={360}
-      />
+      <Image src={headerImage} alt="IoT device" layout="full-width" />
     </div>
   </section>
 
   <section class="solution-tease">
     <div class="benefit">
-      <Image
-        src="/icons/reliability.svg"
-        alt="Reliability"
-        width={32}
-        height={32}
-      />
+      <Image src={reliabilityIcon} alt="Reliability" width={32} height={32} />
       <p>No more random bugs — firmware that just works, day after day.</p>
     </div>
     <div class="benefit">
-      <Image
-        src="/icons/performance.svg"
-        alt="Performance"
-        width={32}
-        height={32}
-      />
+      <Image src={performanceIcon} alt="Performance" width={32} height={32} />
       <p>Smarter use of resources — optimized for your exact hardware.</p>
     </div>
     <div class="benefit">
-      <Image
-        src="/icons/development.svg"
-        alt="Development"
-        width={32}
-        height={32}
-      />
+      <Image src={developmentIcon} alt="Development" width={32} height={32} />
       <p>
         Smoother development — clean, testable code that’s easy to maintain.
       </p>
@@ -180,6 +166,12 @@ import Button from "../components/Button.astro";
     text-align: center;
   }
 
+  .header-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
   .solution-tease {
     display: flex;
     flex-wrap: wrap;
@@ -193,6 +185,10 @@ import Button from "../components/Button.astro";
     align-items: flex-start;
     gap: 1rem;
     flex: 1 1 280px;
+  }
+
+  .benefit svg {
+    fill: #ff9100 !important;
   }
 
   .plan ol {

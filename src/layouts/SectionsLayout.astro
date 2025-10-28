@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Button from "../components/Button.astro";
+import { Image } from "astro:assets";
 
 const { pageTitle, data } = Astro.props;
 ---
@@ -12,12 +13,14 @@ const { pageTitle, data } = Astro.props;
   {
     data.map(
       (
-        item: { image: string; title: string; longDescription: string },
-        index: number
+        item: { image: ImageMetadata; title: string; longDescription: string },
+        index: number,
       ) => (
         <section class={`content-section ${index % 2 !== 0 ? "reverse" : ""}`}>
           <div class="content-wrapper">
-            <img class="content-image" src={item.image} alt={item.title} />
+            <div class="image-wrapper">
+              <Image class="content-image" src={item.image} alt={item.title} />
+            </div>
             <div class="text-content">
               <h2 id={item.title.replace(/\s+/g, "").toLowerCase()}>
                 {item.title}
@@ -27,19 +30,12 @@ const { pageTitle, data } = Astro.props;
             </div>
           </div>
         </section>
-      )
+      ),
     )
   }
 </BaseLayout>
 
 <style>
-  .header {
-    background: linear-gradient(-45deg, #ff9100 0%, #ffd180 100%);
-    padding: 4rem 2rem;
-    text-align: left;
-    font-size: 2.5rem;
-  }
-
   .content-section {
     display: flex;
     justify-content: center;
@@ -62,10 +58,16 @@ const { pageTitle, data } = Astro.props;
     flex-direction: row-reverse;
   }
 
-  .content-image {
+  .image-wrapper {
     width: 50%;
-    max-width: 900px;
     border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .text-content {
@@ -90,10 +92,6 @@ const { pageTitle, data } = Astro.props;
   }
 
   @media (max-width: 768px) {
-    .header {
-      padding: 1rem;
-    }
-
     .content-section.reverse .content-wrapper {
       flex-direction: column;
     }
@@ -101,10 +99,15 @@ const { pageTitle, data } = Astro.props;
     .content-wrapper {
       flex-direction: column;
       gap: 1.5rem;
+      max-width: fit-content;
     }
 
-    .content-image {
-      width: 90%;
+    .text-content h2 {
+      font-size: 2rem;
+    }
+
+    .image-wrapper {
+      width: 100%;
     }
 
     [id] {

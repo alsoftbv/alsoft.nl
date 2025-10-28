@@ -1,5 +1,8 @@
 ---
 import Button from "./Button.astro";
+import { Image } from "astro:assets";
+
+import logoImage from "../images/logo.png";
 ---
 
 <section class="contact-section">
@@ -11,7 +14,7 @@ import Button from "./Button.astro";
     <Button id="submit-contact">Submit</Button>
   </div>
   <div class="contact-image">
-    <img src="/logo.png" alt="Project Image" />
+    <Image src={logoImage} alt="Logo" />
   </div>
 </section>
 
@@ -71,6 +74,7 @@ import Button from "./Button.astro";
 
   .contact-image img {
     width: 100%;
+    height: auto;
   }
 
   @media (max-width: 768px) {
@@ -87,10 +91,10 @@ import Button from "./Button.astro";
 <script>
   document.getElementById("submit-contact")?.addEventListener("click", () => {
     const nameInput = document.querySelector(
-      "input"
+      "input",
     ) as HTMLInputElement | null;
     const messageInput = document.querySelector(
-      "textarea"
+      "textarea",
     ) as HTMLTextAreaElement | null;
 
     const name = nameInput?.value || "";
