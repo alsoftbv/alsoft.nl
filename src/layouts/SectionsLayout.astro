@@ -14,12 +14,17 @@ const { pageTitle, data } = Astro.props;
     data.map(
       (
         item: { image: ImageMetadata; title: string; longDescription: string },
-        index: number,
+        index: number
       ) => (
         <section class={`content-section ${index % 2 !== 0 ? "reverse" : ""}`}>
           <div class="content-wrapper">
             <div class="image-wrapper">
-              <Image class="content-image" src={item.image} alt={item.title} />
+              <Image
+                class="content-image"
+                src={item.image}
+                alt={item.title}
+                loading={index === 0 ? "eager" : "lazy"}
+              />
             </div>
             <div class="text-content">
               <h2 id={item.title.replace(/\s+/g, "").toLowerCase()}>
@@ -30,7 +35,7 @@ const { pageTitle, data } = Astro.props;
             </div>
           </div>
         </section>
-      ),
+      )
     )
   }
 </BaseLayout>
