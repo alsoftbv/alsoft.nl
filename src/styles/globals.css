@@ -1,14 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    background-color: #3f3f3f;
-    color: #ffffff;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  background-color: #3f3f3f;
+  color: #ffffff;
 }
 
-a, p, input, textarea, button {
-    color: #ffffff;
+a,
+p,
+input,
+textarea,
+button {
+  color: #ffffff;
+}
+
+p {
+  line-height: 1.6;
 }
