@@ -1,8 +1,9 @@
 import fintechImage from "../images/industries/fintech.jpg";
 import manufacturingImage from "../images/industries/manufacturing.jpg";
 import automotiveImage from "../images/industries/automotive.jpg";
+import type { CardItem } from "./card-item";
 
-const industries = [
+export const industries : CardItem[] = [
   {
     id: "fintech",
     title: "FinTech",
@@ -25,5 +26,3 @@ const industries = [
     image: automotiveImage,
   },
 ];
-
-export default industries;

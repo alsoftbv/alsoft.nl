@@ -1,12 +1,6 @@
 ---
 import { Image } from "astro:assets";
-
-interface CardItem {
-  id: string;
-  title: string;
-  description: string;
-  image: ImageMetadata;
-}
+import type { CardItem } from "../data/card-item";
 
 interface Props {
   title: string;
@@ -21,11 +15,9 @@ const { title, items } = Astro.props as Props;
   <div class="slider-wrapper">
     <div class="card-slider">
       {
-        items.map((item) => {
+        items.map((item: CardItem) => {
           const page = title.toLowerCase();
-          const anchor = (item as any).id
-            ? (item as any).id
-            : item.title.replace(/\s+/g, "").toLowerCase();
+          const anchor = item.id;
           return (
             <div class="card-item">
               <a href={`/${page}#${anchor}`}>

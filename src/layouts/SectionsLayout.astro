@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Button from "../components/Button.astro";
 import { Image } from "astro:assets";
+import type { CardItem } from "../data/card-item";
 
 const { pageTitle, data } = Astro.props;
 ---
@@ -11,32 +12,25 @@ const { pageTitle, data } = Astro.props;
   <Header siteTitle={pageTitle} />
 
   {
-    data.map(
-      (
-        item: { image: ImageMetadata; title: string; longDescription: string },
-        index: number
-      ) => (
-        <section class={`content-section ${index % 2 !== 0 ? "reverse" : ""}`}>
-          <div class="content-wrapper">
-            <div class="image-wrapper">
-              <Image
-                class="content-image"
-                src={item.image}
-                alt={item.title}
-                loading={index === 0 ? "eager" : "lazy"}
-              />
-            </div>
-            <div class="text-content">
-              <h2 id={item.title.replace(/\s+/g, "").toLowerCase()}>
-                {item.title}
-              </h2>
-              <p class="content-description">{item.longDescription}</p>
-              <Button href="/contact">Get in touch</Button>
-            </div>
+    data.map((item: CardItem, index: number) => (
+      <section class={`content-section ${index % 2 !== 0 ? "reverse" : ""}`}>
+        <div class="content-wrapper">
+          <div class="image-wrapper">
+            <Image
+              class="content-image"
+              src={item.image}
+              alt={item.title}
+              loading={index === 0 ? "eager" : "lazy"}
+            />
           </div>
-        </section>
-      )
-    )
+          <div class="text-content">
+            <h2 id={item.id}>{item.title}</h2>
+            <p class="content-description">{item.description}</p>
+            <Button href="/contact">Get in touch</Button>
+          </div>
+        </div>
+      </section>
+    ))
   }
 </BaseLayout>
 
