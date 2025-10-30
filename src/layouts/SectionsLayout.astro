@@ -10,7 +10,6 @@ const { pageTitle, data } = Astro.props;
 
 <BaseLayout>
   <Header siteTitle={pageTitle} />
-
   {
     data.map((item: CardItem, index: number) => (
       <section class={`content-section ${index % 2 !== 0 ? "reverse" : ""}`}>
@@ -74,7 +73,7 @@ const { pageTitle, data } = Astro.props;
     flex-direction: column;
     gap: 1rem;
     flex: 1;
-    text-align: center;
+    text-align: left;
   }
 
   .text-content h2 {
