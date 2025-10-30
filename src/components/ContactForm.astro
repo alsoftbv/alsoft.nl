@@ -12,6 +12,9 @@ import logoImage from "../images/logo.png";
     <h2>Tell us about your project</h2>
     <textarea></textarea>
     <Button id="submit-contact">Submit</Button>
+    <p class="get-back">
+      Thanks! We will get back to you within one business day.
+    </p>
   </div>
   <div class="contact-image">
     <Image src={logoImage} alt="Logo" />
@@ -24,15 +27,18 @@ import logoImage from "../images/logo.png";
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
     background-color: #202020;
+    width: 100vw;
   }
 
   .contact-form {
     display: flex;
     flex-direction: column;
     flex: 0 0 auto;
-    min-width: 60%;
+    min-width: 60vw;
+    width: 60%;
   }
 
   .contact-form h2 {
@@ -77,9 +83,19 @@ import logoImage from "../images/logo.png";
     height: auto;
   }
 
+  .get-back {
+    display: block;
+    font-size: 0.9em;
+    text-align: center;
+  }
+
   @media (max-width: 768px) {
+    .contact-section {
+      padding: 1.5rem 0;
+    }
+
     .contact-form {
-      min-width: 100%;
+      width: 90%;
     }
 
     .contact-image {
@@ -90,15 +106,13 @@ import logoImage from "../images/logo.png";
 
 <script>
   document.getElementById("submit-contact")?.addEventListener("click", () => {
-    const nameInput = document.querySelector(
-      "input",
-    ) as HTMLInputElement | null;
+    const nameInput = document.querySelector("input") as HTMLInputElement;
     const messageInput = document.querySelector(
-      "textarea",
-    ) as HTMLTextAreaElement | null;
+      "textarea"
+    ) as HTMLTextAreaElement;
 
-    const name = nameInput?.value || "";
-    const message = messageInput?.value || "";
+    const name = nameInput.value || "";
+    const message = messageInput.value || "";
 
     const subject = encodeURIComponent(`Contact Form Submission - ${name}`);
     const body = encodeURIComponent(`From: ${name}\n\n${message}`);
