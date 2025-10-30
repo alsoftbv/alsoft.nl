@@ -19,6 +19,7 @@ const { pageTitle, data } = Astro.props;
               class="content-image"
               src={item.image}
               alt={item.title}
+              decoding="async"
               loading={index === 0 ? "eager" : "lazy"}
             />
           </div>
