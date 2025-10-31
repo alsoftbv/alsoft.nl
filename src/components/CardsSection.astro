@@ -10,7 +10,7 @@ interface Props {
 const { title, items } = Astro.props as Props;
 ---
 
-<div class="card-slider-section">
+<section class="card-slider-section">
   <h2>{title}</h2>
   <div class="slider-wrapper">
     <div class="card-slider">
@@ -19,21 +19,28 @@ const { title, items } = Astro.props as Props;
           const page = title.toLowerCase();
           const anchor = item.id;
           return (
-            <div class="card-item">
-              <a href={`/${page}#${anchor}`}>
+            <a href={`/${page}#${anchor}`}>
+              <div class="card-item">
                 <Image src={item.image} alt={item.title} />
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
-              </a>
-            </div>
+              </div>
+            </a>
           );
         })
       }
     </div>
   </div>
-</div>
+</section>
 
 <style>
+  a {
+    height: 100%;
+    text-decoration: none;
+    flex-shrink: 0;
+    display: flex;
+  }
+
   .card-slider-section h2 {
     text-align: center;
     margin-bottom: 1.5rem;
@@ -51,34 +58,21 @@ const { title, items } = Astro.props as Props;
     overflow-x: auto;
     scroll-behavior: smooth;
     padding: 1rem;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
     width: 100%;
+    scrollbar-width: none;
     justify-content: flex-start;
   }
 
-  .card-slider::-webkit-scrollbar {
-    display: none;
-  }
-
-  .card-slider::before,
-  .card-slider::after {
-    content: "";
-    flex: 0 0 1rem;
-  }
-
   .card-item {
-    min-width: 140px;
-    max-width: 300px;
-    height: 300px;
+    width: 300px;
     background-color: #202020;
     border-radius: 1rem;
-    padding: 1rem;
-    flex-shrink: 0;
+    padding: 2rem 1rem;
     transition:
       box-shadow 0.2s,
       transform 0.2s;
-    display: flex;
+    display: grid;
+    grid-template-rows: 50% 20% 30%;
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -93,34 +87,31 @@ const { title, items } = Astro.props as Props;
 
   .card-item img {
     width: 90%;
-    aspect-ratio: 2820 / 1885;
-    height: auto;
+    aspect-ratio: 16 / 9;
     max-height: 180px;
     object-fit: cover;
     border-radius: 0.5rem;
     margin: 0.5rem 0;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    align-self: center;
+    justify-self: center;
   }
 
   .card-item h3 {
-    text-align: center;
     font-size: 1.15rem;
     font-weight: 700;
+    align-self: start;
+    justify-self: center;
   }
 
   .card-item p {
     margin: 0;
-    text-align: center;
-  }
-
-  .card-item a {
-    text-decoration: none;
+    align-self: start;
+    justify-self: center;
   }
 
   @media (max-width: 768px) {
     .card-item {
-      max-width: 200px;
-      height: 300px;
+      width: 250px;
     }
   }
 </style>

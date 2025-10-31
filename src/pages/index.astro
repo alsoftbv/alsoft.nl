@@ -30,7 +30,7 @@ import developmentIcon from "../images/index/icons/development.svg";
           quirks that hold great hardware back.
         </p>
       </div>
-      <Button class="work-button">Let’s make it work right</Button>
+      <Button class="work-button" href="#plan">Let’s make it work right</Button>
     </div>
     <div class="header-img">
       <Image
@@ -111,23 +111,6 @@ import developmentIcon from "../images/index/icons/development.svg";
     <CardsSection title="Industries" items={industries} />
   </section>
 
-  <section class="plan">
-    <h2>Here’s how we usually work:</h2>
-    <ol>
-      <li>
-        <strong>Chat:</strong> A quick call to understand your product and goals.
-      </li>
-      <li>
-        <strong>Plan or audit:</strong> A clear roadmap or a report for your existing
-        code.
-      </li>
-      <li>
-        <strong>Build:</strong> Development and testing until it’s ready for production.
-      </li>
-    </ol>
-    <p>Simple, transparent, and built around your timeline.</p>
-  </section>
-
   <section class="more-proof">
     <h2>Trusted by teams who build things that matter.</h2>
     <p>
@@ -145,6 +128,23 @@ import developmentIcon from "../images/index/icons/development.svg";
     </p>
   </section>
 
+  <section id="plan" class="plan">
+    <h2>Here’s how we usually work:</h2>
+    <ol>
+      <li>
+        <strong>Chat:</strong> A quick call to understand your product and goals.
+      </li>
+      <li>
+        <strong>Plan or audit:</strong> A clear roadmap or a report for your existing
+        code.
+      </li>
+      <li>
+        <strong>Build:</strong> Development and testing until it’s ready for production.
+      </li>
+    </ol>
+    <p>Simple, transparent, and built around your timeline.</p>
+  </section>
+
   <section class="cta">
     <h2>Let’s talk about your device.</h2>
     <p>
@@ -160,6 +160,11 @@ import developmentIcon from "../images/index/icons/development.svg";
     max-width: 960px;
     margin: 0 auto;
     padding: 3rem 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    text-align: center;
   }
 
   h1,
@@ -210,6 +215,10 @@ import developmentIcon from "../images/index/icons/development.svg";
 
   .benefit svg {
     fill: #ff9100 !important;
+  }
+
+  .plan {
+    scroll-margin-top: 1rem;
   }
 
   .plan ol {
