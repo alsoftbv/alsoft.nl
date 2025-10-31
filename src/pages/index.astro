@@ -13,6 +13,7 @@ import reliabilityIcon from "../images/index/icons/reliability.svg";
 import me from "../images/index/me.jpg";
 import performanceIcon from "../images/index/icons/performance.svg";
 import developmentIcon from "../images/index/icons/development.svg";
+import agreement from "../images/index/agreement.png";
 ---
 
 <BaseLayout>
@@ -83,7 +84,9 @@ import developmentIcon from "../images/index/icons/development.svg";
       pressure isn’t fun, and those little issues can make or break your
       product’s reputation.
     </p>
-    <strong>We want show people how great your product is.</strong>
+    <strong class="underline"
+      >We want show people how great your product is.</strong
+    >
   </section>
 
   <section class="solution">
@@ -136,20 +139,26 @@ import developmentIcon from "../images/index/icons/development.svg";
   </section>
 
   <section id="plan" class="plan">
-    <h2>Here’s how we usually work:</h2>
-    <ol>
-      <li>
-        <strong>Chat:</strong> A quick call to understand your product and goals.
-      </li>
-      <li>
-        <strong>Plan or audit:</strong> A clear roadmap or a report for your existing
-        code.
-      </li>
-      <li>
-        <strong>Build:</strong> Development and testing until it’s ready for production.
-      </li>
-    </ol>
-    <p>Simple, transparent, and built around your timeline.</p>
+    <div class="plan-text">
+      <h2>Here’s how we usually work:</h2>
+      <ol>
+        <li>
+          <strong>Chat:</strong> A quick call to understand your product and goals.
+        </li>
+        <li>
+          <strong>Plan or audit:</strong> A clear roadmap or a report for your existing
+          code.
+        </li>
+        <li>
+          <strong>Agree:</strong> Agree on an actionable and fully transparent plan.
+        </li>
+        <li>
+          <strong>Build:</strong> Development and testing until it’s ready for production.
+        </li>
+      </ol>
+      <p>Simple, transparent, and built around your timeline.</p>
+    </div>
+    <Image src={agreement} alt="Agreement" />
   </section>
 
   <section class="cta">
@@ -203,6 +212,15 @@ import developmentIcon from "../images/index/icons/development.svg";
     border-radius: 10px;
   }
 
+  .underline {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: rgba(255, 145, 0, 0.5);
+    text-decoration-thickness: 0.5rem;
+    text-decoration-skip-ink: none;
+    text-underline-offset: -0.2rem;
+  }
+
   .solution-tease {
     display: flex;
     flex-wrap: wrap;
@@ -245,11 +263,25 @@ import developmentIcon from "../images/index/icons/development.svg";
 
   .plan {
     scroll-margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
 
   .plan ol {
     padding-left: 1.2rem;
     line-height: 1.8;
+  }
+
+  .plan p {
+    font-size: 0.9em;
+  }
+
+  .plan img {
+    height: 15rem;
+    width: auto;
   }
 
   .cta {

@@ -51,7 +51,6 @@ const { title, page, items } = Astro.props as Props;
     justify-content: center;
     position: relative;
     padding: 0 1rem;
-
     mask: linear-gradient(
       to right,
       transparent,
@@ -120,7 +119,17 @@ const { title, page, items } = Astro.props as Props;
 
   @media (max-width: 768px) {
     .card-item {
-      width: 250px;
+      width: 220px;
+    }
+
+    .slider-wrapper {
+      mask: linear-gradient(
+        to right,
+        transparent,
+        black 15%,
+        black 85%,
+        transparent
+      );
     }
   }
 </style>
