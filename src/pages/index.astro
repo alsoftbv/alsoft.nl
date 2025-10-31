@@ -10,7 +10,7 @@ import Button from "../components/Button.astro";
 
 import headerImage from "../images/index/header-image.jpg";
 import reliabilityIcon from "../images/index/icons/reliability.svg";
-
+import me from "../images/index/me.jpg";
 import performanceIcon from "../images/index/icons/performance.svg";
 import developmentIcon from "../images/index/icons/development.svg";
 ---
@@ -124,12 +124,15 @@ import developmentIcon from "../images/index/icons/development.svg";
   </section>
 
   <section class="about">
-    <h2>Hey, I’m Altuğ.</h2>
-    <p>
-      I’ve spent years working on embedded systems in industries where failure
-      isn’t an option. These days, I help companies turn hardware ideas into
-      dependable products — without chasing firmware bugs at midnight.
-    </p>
+    <Image src={me} alt="My Image" loading="lazy" />
+    <div class="about-text">
+      <h2>Hey, I’m Altuğ.</h2>
+      <p>
+        I’ve spent years working on embedded systems in industries where failure
+        isn’t an option. These days, I help companies turn hardware ideas into
+        dependable products — without chasing firmware bugs at midnight.
+      </p>
+    </div>
   </section>
 
   <section id="plan" class="plan">
@@ -168,7 +171,6 @@ import developmentIcon from "../images/index/icons/development.svg";
 
   h1 {
     font-size: 2rem;
-    text-align: center;
   }
 
   h1,
@@ -225,6 +227,20 @@ import developmentIcon from "../images/index/icons/development.svg";
     display: flex;
     flex-direction: column;
     gap: 3rem;
+  }
+
+  .about {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .about img {
+    max-height: 240px;
+    width: auto;
+    border-radius: 100%;
   }
 
   .plan {
