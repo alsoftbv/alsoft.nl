@@ -26,7 +26,9 @@ const { pageTitle, data } = Astro.props;
           <div class="text-content">
             <h2>{item.title}</h2>
             <p class="content-description">{item.longDescription}</p>
-            <Button href="/contact">Get in touch</Button>
+            <Button href="/contact" class="get-in-touch">
+              Get in touch
+            </Button>
           </div>
         </div>
       </section>
@@ -81,6 +83,11 @@ const { pageTitle, data } = Astro.props;
     margin: 0;
     font-size: 3rem;
     text-align: center;
+  }
+
+  .get-in-touch {
+    width: fit-content;
+    margin: 0 auto;
   }
 
   @media (max-width: 768px) {
