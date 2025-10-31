@@ -50,6 +50,15 @@ const { title, items } = Astro.props as Props;
     display: flex;
     justify-content: center;
     position: relative;
+    padding: 0 1rem;
+
+    mask: linear-gradient(
+      to right,
+      transparent,
+      black 7%,
+      black 93%,
+      transparent
+    );
   }
 
   .card-slider {
