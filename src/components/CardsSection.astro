@@ -4,10 +4,11 @@ import type { CardItem } from "../data/card-item";
 
 interface Props {
   title: string;
+  page: string;
   items: CardItem[];
 }
 
-const { title, items } = Astro.props as Props;
+const { title, page, items } = Astro.props as Props;
 ---
 
 <section class="card-slider-section">
@@ -16,7 +17,6 @@ const { title, items } = Astro.props as Props;
     <div class="card-slider">
       {
         items.map((item: CardItem) => {
-          const page = title.toLowerCase();
           const anchor = item.id;
           return (
             <a href={`/${page}#${anchor}`}>
