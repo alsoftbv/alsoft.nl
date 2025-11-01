@@ -149,13 +149,18 @@ const { title, page, items } = Astro.props as Props;
 
   .card-item p {
     margin: 0;
-    align-self: start;
     justify-self: center;
   }
 
   @media (max-width: 768px) {
     .card-item {
-      width: 220px;
+      width: 200px;
+      padding: 1rem 0.5rem;
+      grid-template-rows: 40% 25% 35%;
+    }
+
+    .card-item img {
+      max-height: 120px;
     }
 
     .scroll-btn {
