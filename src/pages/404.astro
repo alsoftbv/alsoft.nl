@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import { Image } from "astro:assets";
+import brokenDevice from "../images/404/broken.jpg";
+---
+
+<BaseLayout>
+  <section class="not-found">
+    <div class="text-content">
+      <h1>Oops, something went wrong.</h1>
+      <p>
+        We couldn’t find the page you were looking for. Don’t worry — your
+        device isn’t broken, just this link.
+      </p>
+      <p class="sub">
+        Let’s get you back on track to building something amazing.
+      </p>
+      <Button href="/">Go Back Home</Button>
+    </div>
+    <Image src={brokenDevice} alt="Lost device" />
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+    text-align: center;
+  }
+
+  .text-content {
+    flex: 1 1 320px;
+  }
+
+  .text-content h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .text-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .text-content .sub {
+    font-size: 0.9rem;
+  }
+
+  img {
+    width: 30vw;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  Button {
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    img {
+      width: 80vw;
+    }
+  }
+</style>
