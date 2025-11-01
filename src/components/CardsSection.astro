@@ -14,6 +14,7 @@ const { title, page, items } = Astro.props as Props;
 <section class="card-slider-section">
   <h2>{title}</h2>
   <div class="slider-wrapper">
+    <button class="scroll-btn left" aria-label="Scroll left">←</button>
     <div class="card-slider">
       {
         items.map((item: CardItem) => {
@@ -30,6 +31,7 @@ const { title, page, items } = Astro.props as Props;
         })
       }
     </div>
+    <button class="scroll-btn right" aria-label="Scroll right">→</button>
   </div>
 </section>
 
@@ -51,13 +53,40 @@ const { title, page, items } = Astro.props as Props;
     justify-content: center;
     position: relative;
     padding: 0 1rem;
-    mask: linear-gradient(
-      to right,
-      transparent,
-      black 7%,
-      black 93%,
-      transparent
-    );
+  }
+
+  .scroll-btn {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .scroll-btn.left {
+    left: 0.25rem;
+  }
+
+  .scroll-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .scroll-btn.right {
+    right: 0.25rem;
   }
 
   .card-slider {
@@ -69,6 +98,13 @@ const { title, page, items } = Astro.props as Props;
     width: 100%;
     scrollbar-width: none;
     justify-content: flex-start;
+    mask: linear-gradient(
+      to right,
+      transparent,
+      black 7%,
+      black 93%,
+      transparent
+    );
   }
 
   .card-item {
@@ -122,14 +158,39 @@ const { title, page, items } = Astro.props as Props;
       width: 220px;
     }
 
-    .slider-wrapper {
+    .scroll-btn {
+      display: none;
+    }
+
+    .card-slider {
       mask: linear-gradient(
         to right,
         transparent,
-        black 15%,
-        black 85%,
+        black 10%,
+        black 90%,
         transparent
       );
     }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sliders = document.querySelectorAll(".card-slider-section");
+    sliders.forEach((section) => {
+      const slider = section.querySelector(".card-slider");
+      const leftBtn = section.querySelector(".scroll-btn.left");
+      const rightBtn = section.querySelector(".scroll-btn.right");
+
+      const scrollAmount = 300;
+
+      leftBtn?.addEventListener("click", () => {
+        slider?.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      });
+
+      rightBtn?.addEventListener("click", () => {
+        slider?.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      });
+    });
+  });
+</script>
