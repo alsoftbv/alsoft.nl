@@ -9,11 +9,25 @@ import { Image } from "astro:assets";
 import Button from "../components/Button.astro";
 
 import headerImage from "../images/index/header-image.jpg";
-import reliabilityIcon from "../images/index/icons/reliability.svg";
+import agreement from "../images/index/agreement.png";
 import me from "../images/index/me.jpg";
+import iai from "../images/index/companies/iai.svg";
+import idd from "../images/index/companies/idd.png";
+import valinso from "../images/index/companies/valinso.svg";
+
+import reliabilityIcon from "../images/index/icons/reliability.svg";
 import performanceIcon from "../images/index/icons/performance.svg";
 import developmentIcon from "../images/index/icons/development.svg";
-import agreement from "../images/index/agreement.png";
+import pencilIcon from "../images/index/icons/pencil.svg";
+import checkIcon from "../images/index/icons/check.svg";
+import adjustmentIcon from "../images/index/icons/adjustment.svg";
+import Carousel from "../components/Carousel.astro";
+
+const carouselImages = [
+  { src: valinso, href: "https://valinso.nl", name: "Valinso" },
+  { src: idd, href: "https://idend.nl", name: "ID&D" },
+  { src: iai, href: "https://iai.nl", name: "IAI" },
+];
 ---
 
 <BaseLayout>
@@ -93,10 +107,58 @@ import agreement from "../images/index/agreement.png";
     <h2>
       We bring the same care to your firmware that you bring to your hardware.
     </h2>
+    <div class="solution-steps">
+      <div class="solution-box">
+        <Image
+          src={pencilIcon}
+          alt="Design"
+          width={32}
+          height={32}
+          loading="lazy"
+        />
+        <div class="step">
+          <h3 class="label">Design</h3>
+          <p class="desc">We design every part until it feels solid.</p>
+        </div>
+      </div>
+
+      <div class="solution-box">
+        <Image
+          src={checkIcon}
+          alt="Test"
+          width={32}
+          height={32}
+          loading="lazy"
+        />
+        <div class="step">
+          <h3 class="label">Test</h3>
+          <p class="desc">
+            Whether firmware from scratch or improvements, we check stability.
+          </p>
+        </div>
+      </div>
+
+      <div class="solution-box">
+        <Image
+          src={adjustmentIcon}
+          alt="Refine"
+          width={32}
+          height={32}
+          loading="lazy"
+        />
+        <div class="step">
+          <h3 class="label">Refine</h3>
+          <p class="desc">
+            We iterate until it’s stable, efficient, and production-ready.
+          </p>
+        </div>
+      </div>
+    </div>
     <p>
-      We design, test, and refine every part until it feels solid. Whether you
-      need firmware from scratch or help improving what you already have, we’ll
-      make sure it’s stable, efficient, and production-ready.
+      From concept to completion, our approach ensures every solution is
+      designed with precision, tested for reliability, and refined for lasting
+      performance. Whether you’re starting a new project or improving existing
+      systems, we deliver results you can trust.
     </p>
   </section>
 
@@ -120,10 +182,8 @@ import agreement from "../images/index/agreement.png";
 
   <section class="more-proof">
     <h2>Trusted by teams who build things that matter.</h2>
-    <p>
-      Add company logos, certifications, or industries here — “From prototype
-      labs to production floors.”
-    </p>
+    <Carousel images={carouselImages} />
+    <p class="proof-text">From prototype labs to production floors</p>
   </section>
 
   <section class="about">
@@ -229,22 +289,54 @@ import agreement from "../images/index/agreement.png";
     text-align: left;
   }
 
+  .solution-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    text-align: left;
+  }
+
+  .solution-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    margin: 1rem 0;
+    gap: 0 1rem;
+  }
+
+  .solution-steps h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .solution-steps p {
+    margin: 0;
+  }
+
   .benefit {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 1rem;
     flex: 1 1 280px;
   }
 
-  .benefit svg {
-    fill: #ff9100;
+  .step {
+    max-width: 200px;
   }
 
   .cards-container {
     display: flex;
     flex-direction: column;
     gap: 3rem;
+  }
+
+  .proof-text {
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 0.5em;
   }
 
   .about {

@@ -1,0 +1,118 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  images: { src: ImageMetadata; href: string; name: string }[];
+}
+
+const { images } = Astro.props as Props;
+const slides = [...images, ...images];
+---
+
+<div class="carousel">
+  <div class="track">
+    {
+      slides.map((image, i) => (
+        <div class="slide">
+          <a href={image.href} target="_blank">
+            <Image
+              src={image.src}
+              alt={`Company logo for ${image.name}`}
+              draggable="false"
+              loading="lazy"
+            />
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .carousel {
+    width: 100%;
+    height: 10vh;
+    overflow: hidden;
+  }
+
+  .track {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: max-content;
+    animation: scroll 20s linear infinite;
+    gap: 3rem;
+  }
+
+  .slide {
+    flex: 0 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .slide a {
+    height: 100%;
+  }
+
+  .slide img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%);
+    transform: scale(1);
+    transition:
+      filter 300ms ease,
+      transform 300ms ease;
+  }
+
+  .slide:hover img,
+  .slide:focus-within img,
+  .slide.active img {
+    filter: none;
+    transform: scale(1.05);
+  }
+
+  .slide img,
+  .slide svg {
+    user-select: none;
+  }
+
+  .carousel:hover .track,
+  .carousel:focus-within .track {
+    animation-play-state: paused;
+  }
+
+  .carousel:focus-within {
+    outline: 2px solid rgba(0, 0, 0, 0.12);
+    outline-offset: 4px;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 1.5rem));
+    }
+  }
+</style>
+
+<script is:inline type="module">
+  const track = document.querySelector(".track");
+  let isPaused = false;
+
+  function setPaused(val) {
+    isPaused = !!val;
+    track.style.animationPlayState = isPaused ? "paused" : "running";
+  }
+
+  track.addEventListener("pointerenter", () => setPaused(true));
+  track.addEventListener("pointerleave", () => setPaused(false));
+</script>
