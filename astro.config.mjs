@@ -4,6 +4,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://alsoft.nl",
   scopedStyleStrategy: "class",
   prefetch: true,
   integrations: [sitemap()],
