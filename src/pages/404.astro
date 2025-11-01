@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Button from "../components/Button.astro";
 import { Image } from "astro:assets";
-import brokenDevice from "../images/404/broken.jpg";
+import brokenDevice from "../images/404/broken.png";
 ---
 
 <BaseLayout>
@@ -18,7 +18,7 @@ import brokenDevice from "../images/404/broken.jpg";
       </p>
       <Button href="/">Go Back Home</Button>
     </div>
-    <Image src={brokenDevice} alt="Lost device" />
+    <Image src={brokenDevice} alt="Lost device" loading="eager" />
   </section>
 </BaseLayout>
 
