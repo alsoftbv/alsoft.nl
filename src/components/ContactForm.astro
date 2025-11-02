@@ -30,7 +30,6 @@ import logoImage from "../images/logo.png";
     justify-content: center;
     gap: 2rem;
     background-color: #202020;
-    width: 100vw;
   }
 
   .contact-form {
@@ -108,7 +107,7 @@ import logoImage from "../images/logo.png";
   document.getElementById("submit-contact")?.addEventListener("click", () => {
     const nameInput = document.querySelector("input") as HTMLInputElement;
     const messageInput = document.querySelector(
-      "textarea"
+      "textarea",
     ) as HTMLTextAreaElement;
 
     const name = nameInput.value || "";
