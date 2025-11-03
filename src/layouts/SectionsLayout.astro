@@ -84,6 +84,10 @@ const { pageTitle, data } = Astro.props;
     flex: 1;
   }
 
+  .text-content p {
+    margin: 0;
+  }
+
   .text-content h2 {
     margin: 0;
     font-size: 3rem;
@@ -96,9 +100,14 @@ const { pageTitle, data } = Astro.props;
   }
 
   @media (max-width: 768px) {
+    .content-section {
+      padding: 1rem;
+    }
+
     .content-wrapper {
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1rem;
+      padding: 1.5rem;
     }
 
     .text-content h2 {
