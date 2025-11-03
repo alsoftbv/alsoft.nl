@@ -10,10 +10,13 @@ const { pageTitle, data } = Astro.props;
 
 <BaseLayout>
   <Header siteTitle={pageTitle} />
-  {
-    data.map((item: CardItem, index: number) => (
-      <section id={item.id} class="content-section">
-        <div class={`content-wrapper ${index % 2 !== 0 ? "reverse" : ""}`}>
+  <section class="content-section">
+    {
+      data.map((item: CardItem, index: number) => (
+        <div
+          class={`content-wrapper ${index % 2 !== 0 ? "reverse" : ""}`}
+          id={item.id}
+        >
           <div class="image-wrapper">
             <Image
               class="content-image"
@@ -31,30 +34,31 @@ const { pageTitle, data } = Astro.props;
             </Button>
           </div>
         </div>
-      </section>
-    ))
-  }
+      ))
+    }
+  </section>
 </BaseLayout>
 
 <style>
   .content-section {
     display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
     justify-content: center;
-    margin: 2rem;
-    scroll-margin-top: 6.5rem;
+    margin: 3rem;
   }
 
   .content-wrapper {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    flex-wrap: nowrap;
-    max-width: 1200px;
     width: 100%;
     padding: 3rem;
+    gap: 2rem;
     border-radius: 10px;
     background-color: #202020;
-    height: 100%;
+    scroll-margin-top: 4.5rem;
+    max-width: 80vw;
   }
 
   .reverse {
@@ -92,13 +96,9 @@ const { pageTitle, data } = Astro.props;
   }
 
   @media (max-width: 768px) {
-    .content-section {
-      scroll-margin-top: 4.5rem;
-    }
     .content-wrapper {
       flex-direction: column;
       gap: 1.5rem;
-      max-width: fit-content;
     }
 
     .text-content h2 {
