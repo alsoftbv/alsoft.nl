@@ -23,20 +23,19 @@ import logoImage from "../images/logo.png";
 
 <style>
   .contact-section {
-    padding: 1.5rem;
+    padding: 5rem;
     display: flex;
+    gap: 5rem;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
     background-color: #202020;
   }
 
   .contact-form {
     display: flex;
     flex-direction: column;
-    flex: 0 0 auto;
-    min-width: 60vw;
+    min-width: 50vw;
     width: 60%;
   }
 
@@ -73,8 +72,7 @@ import logoImage from "../images/logo.png";
   }
 
   .contact-image {
-    flex: 1;
-    max-height: 100%;
+    max-width: 20%;
   }
 
   .contact-image img {
@@ -107,7 +105,7 @@ import logoImage from "../images/logo.png";
   document.getElementById("submit-contact")?.addEventListener("click", () => {
     const nameInput = document.querySelector("input") as HTMLInputElement;
     const messageInput = document.querySelector(
-      "textarea",
+      "textarea"
     ) as HTMLTextAreaElement;
 
     const name = nameInput.value || "";
