@@ -1,24 +1,41 @@
 ---
 import Button from "./Button.astro";
 import { Image } from "astro:assets";
-import linkedinImage from "../images/linkedin.png";
+
+import linkedinImage from "../images/footer/linkedin.png";
+import kvkImage from "../images/footer/kvk.jpg";
+import btwImage from "../images/footer/btw.jpg";
+import locationImage from "../images/footer/location.svg";
+import mailImage from "../images/footer/mail.svg";
 ---
 
 <section class="footer">
   <div class="footer-left">
-    <p>KvK: 96553863</p>
-    <p>BTW: NL867658472B01</p>
-    <p>Valkenswaard, Netherlands</p>
-    <a href="mailto:info@alsoft.nl?subject=Contact%20Form%20Submission">
+    <div class="icon-text">
+      <Image src={kvkImage} alt="KvK" /><p>96553863</p>
+    </div>
+    <div class="icon-text">
+      <Image src={btwImage} alt="BTW" />
+      <p>NL867658472B01</p>
+    </div>
+    <div class="icon-text">
+      <Image src={locationImage} alt="Location" />
+      <p>Valkenswaard, Netherlands</p>
+    </div>
+    <a
+      href="mailto:info@alsoft.nl?subject=Contact%20Form%20Submission"
+      class="icon-text"
+    >
+      <Image src={mailImage} alt="e-mail" />
       <p>info@alsoft.nl</p>
     </a>
     <a
       href="https://www.linkedin.com/company/alsoftbv"
       target="_blank"
-      aria-label="LinkedIn"
-      class="linkedin-image"
+      class="icon-text"
     >
       <Image src={linkedinImage} alt="LinkedIn" />
+      <p>alsoftbv</p>
     </a>
   </div>
 
@@ -45,7 +62,8 @@ import linkedinImage from "../images/linkedin.png";
   .footer-left,
   .footer-right {
     display: grid;
-    grid-template-rows: repeat(5, 20%);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 0.3rem;
   }
 
   .footer-right {
@@ -57,7 +75,6 @@ import linkedinImage from "../images/linkedin.png";
   br {
     line-height: 1em;
     margin: 0;
-    padding: 0.2rem 0;
   }
 
   br {
@@ -78,7 +95,14 @@ import linkedinImage from "../images/linkedin.png";
     width: auto;
     display: block;
     margin: 0;
-    padding: 0.2rem 0;
+    border-radius: 10%;
+  }
+
+  .icon-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
   }
 
   .small-button {
