@@ -1,0 +1,87 @@
+{
+  "indexHeader": "Firmware die uw hardware laat schitteren.",
+  "indexFirst": "We helpen u betrouwbare en efficiënte embedded systemen te bouwen, of u nu vroege prototypes ontwikkelt of volledig productieklare producten.",
+  "indexSecond": "Bij alsoft zorgen we ervoor dat uw apparaat doet waarvoor het bedoeld is: verzamelen, verbinden en presteren, zonder de crashes of eigenaardigheden die geweldige hardware tegenhouden.",
+  "indexButton": "Laten we het goed laten werken",
+  "benefitFirst": "Geen willekeurige bugs meer",
+  "benefitSecond": "Slimmer gebruik van middelen",
+  "benefitThird": "Vlottere ontwikkeling",
+  "problemsHeader": "U heeft geweldige hardware gebouwd.",
+  "problemsText": "Maar wanneer het vastloopt, zich vreemd gedraagt of niet met andere apparaten wil communiceren, denken mensen dat het hele apparaat slecht is. We begrijpen het. Firmware debuggen onder druk is niet leuk, en die kleine problemen kunnen het succes van uw product maken of breken.",
+  "problemsHighlight": "We willen mensen laten zien hoe geweldig uw product is.",
+  "solutionHeader": "We besteden dezelfde zorg aan uw firmware als u aan uw hardware.",
+  "solutionStepsDesign": {
+    "label": "Ontwerpen",
+    "desc": "We ontwerpen elk onderdeel totdat het solide aanvoelt."
+  },
+  "solutionStepsTest": {
+    "label": "Testen",
+    "desc": "Of het nu firmware from scratch is of verbeteringen, we controleren de stabiliteit."
+  },
+  "solutionStepsRefine": {
+    "label": "Optimaliseren",
+    "desc": "We itereren totdat het stabiel, efficiënt en productie-klaar is."
+  },
+  "solutionText": "Van concept tot voltooiing, onze aanpak zorgt ervoor dat elke oplossing met precisie wordt ontworpen, getest op betrouwbaarheid en geoptimaliseerd voor duurzame prestaties. Of u nu een nieuw project start of bestaande systemen verbetert, wij leveren resultaten waarop u kunt vertrouwen.",
+  "proofHeader": "Vertrouwd in veeleisende sectoren.",
+  "proofText": "Van avionica tot industriële automatisering, we hebben systemen gebouwd en getest waar betrouwbaarheid geen optie is. U kunt erop vertrouwen dat wat wij voor u bouwen niet alleen werkt, maar blijft werken.",
+  "moreProofHeader": "Vertrouwd door teams die dingen bouwen die ertoe doen.",
+  "moreProofSubtext": "Van prototype-labs tot productievloeren",
+  "aboutHeader": "Hoi, ik ben Altuğ.",
+  "aboutText": "Ik heb jaren gewerkt aan embedded systemen in sectoren waar falen geen optie is. Tegenwoordig help ik bedrijven om hardware-ideeën om te zetten in betrouwbare producten — zonder 's nachts achter firmware-bugs aan te jagen.",
+  "planHeader": "Zo werken we meestal:",
+  "planLabels": {
+    "chat": "Chat",
+    "plan": "Plan of audit",
+    "agree": "Akkoord",
+    "build": "Bouwen"
+  },
+  "planSteps": {
+    "chat": "Een kort gesprek om uw product en doelen te begrijpen.",
+    "plan": "Een duidelijke roadmap of een rapport voor uw bestaande code.",
+    "agree": "Akkoord gaan met een uitvoerbaar en volledig transparant plan.",
+    "build": "Ontwikkeling en testen totdat het productie-klaar is."
+  },
+  "planNote": "Eenvoudig, transparant en afgestemd op uw planning.",
+  "ctaHeader": "Laten we praten over uw apparaat.",
+  "ctaText": "Of u nu iets nieuws lanceert of iets bestaands verbetert, ik hoor graag wat u aan het bouwen bent.",
+  "ctaButton": "Begin een gesprek",
+  "cards": {
+    "rtos": {
+      "title": "RTOS Firmware-oplossingen",
+      "description": "Snelle, betrouwbare realtime prestaties voor uw embedded producten.",
+      "longDescription": "Onze RTOS-ontwikkelingsdiensten helpen u betrouwbare, realtime functionaliteit naar uw apparaten te brengen. We ontwerpen firmware die nauwkeurige timing, voorspelbare prestaties en systeemstabiliteit garandeert—waardoor uw producten vlekkeloos presteren in veeleisende omgevingen zoals robotica, industriële besturing en automotive systemen."
+    },
+    "linux": {
+      "title": "Embedded Linux-oplossingen",
+      "description": "Op maat gemaakte Linux-platformen voor prestaties, flexibiliteit en schaalbaarheid.",
+      "longDescription": "We bouwen aangepaste Linux-omgevingen die uw producten voorzien van de flexibiliteit en kracht van open-source technologie. Van het optimaliseren van opstarttijden tot het waarborgen van lange-termijn onderhoudbaarheid, wij creëren veilige, high-performance systemen die uw time-to-market verkorten en u volledige controle geven over uw embedded platform."
+    },
+    "iot": {
+      "title": "IoT-connectiviteit met MQTT",
+      "description": "Naadloze apparaat-tot-cloud communicatie voor uw verbonden ecosysteem.",
+      "longDescription": "Onze MQTT-integratiediensten maken efficiënte, schaalbare communicatie in uw IoT-netwerk mogelijk. We ontwerpen en implementeren oplossingen die ervoor zorgen dat uw apparaten veilig en realtime gegevens delen—waardoor u sneller inzichten krijgt, processen stroomlijnt en een basis legt voor toekomstbestendige verbonden producten."
+    },
+    "fintech": {
+      "title": "FinTech & Slimme Betalingssystemen",
+      "description": "Veilige embedded oplossingen voor next-generation betaal- en verkoopapparaten.",
+      "longDescription": "We maken de toekomst van cashless betalingen mogelijk met embedded betaaltechnologieën, speciaal voor FinTech-toepassingen. Van automaten en kassasystemen tot geautomatiseerde kiosken: onze oplossingen garanderen betrouwbare, veilige en schaalbare verwerking van betalingen, voorraadtracking en inventarisbeheer—waardoor uw bedrijf voorop blijft in de digitale betalingswereld."
+    },
+    "manufacturing": {
+      "title": "Industriële & Productie Automatisering",
+      "description": "Slimme, verbonden systemen die fabrieksoperaties en productiviteit optimaliseren.",
+      "longDescription": "Onze embedded en IoT-oplossingen stellen fabrikanten in staat productiviteit te verhogen, kwaliteit te verbeteren en traceerbaarheid op de fabrieksvloer te vergroten. Door realtime data-acquisitie, voorspellend onderhoud en procesautomatisering te integreren, helpen we productielijnen te moderniseren en digitale transformatie te versnellen."
+    },
+    "defense": {
+      "title": "Defensie & Lucht- en Ruimtevaart Systemen",
+      "description": "Kritieke embedded oplossingen ontworpen voor betrouwbaarheid, veiligheid en precisie.",
+      "longDescription": "We ontwikkelen hoogbetrouwbare embedded systemen die voldoen aan de veeleisende standaarden van de defensie- en lucht- en ruimtevaartsector. Onze expertise omvat realtime besturing, veilige communicatie en robuuste hardware-integratie, waardoor betrouwbare prestaties voor kritieke operaties en veeleisende omgevingen worden gegarandeerd."
+    },
+    "automotive": {
+      "title": "Automotive & Mobiliteit",
+      "description": "Embedded intelligentie die innovatie in voertuigen en mobiliteit aandrijft.",
+      "longDescription": "Van geavanceerde rijhulpsystemen (ADAS) tot in-voertuig connectiviteit en diagnostiek, wij leveren software die de volgende generatie automobieltechnologie aandrijft. Onze oplossingen richten zich op veiligheid, prestaties en realtime reactievermogen, waardoor fabrikanten slimmere, meer verbonden en efficiëntere voertuigen kunnen bouwen."
+    }
+  },
+  "getInTouchButton": "Neem contact op"
+}

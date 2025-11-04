@@ -8,4 +8,8 @@ export default defineConfig({
   scopedStyleStrategy: "class",
   prefetch: true,
   integrations: [sitemap()],
+  i18n: {
+    locales: ["en", "nl"],
+    defaultLocale: "en",
+  },
 });
