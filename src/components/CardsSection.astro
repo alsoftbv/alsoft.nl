@@ -24,13 +24,12 @@ const t = Astro.currentLocale === "nl" ? nl : en;
     >
     <div class="card-slider">
       {
-        // Merge translations into each card first
         items.map((item: CardItem) => {
           const anchor = item.id;
           const translated = t.cards[item.id as keyof typeof t.cards];
 
           return (
-            <a href={`/${page}#${anchor}`}>
+            <a href={`${page}#${anchor}`}>
               <div class="card-item">
                 <Image src={item.image} alt={translated.title} />
                 <h3>{translated.title}</h3>
