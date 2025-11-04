@@ -16,13 +16,13 @@ const targetPath =
     ? currentPath.replace("nl/", "")
     : getRelativeLocaleUrl("nl", currentPath);
 
-const links = [
-  { name: "Services", href: "/services" },
-  { name: "Industries", href: "/industries" },
-];
-
 const flag = locale === "nl" ? enFlag : nlFlag;
 const t = locale === "nl" ? nl : en;
+
+const links = [
+  { name: t.services, href: "/services" },
+  { name: t.industries, href: "/industries" },
+];
 ---
 
 <nav class="navbar">
@@ -50,7 +50,9 @@ const t = locale === "nl" ? nl : en;
       >
     </li>
     <li class="mobile-contact">
-      <Button href="/contact">{t.getInTouch}</Button>
+      <Button href={getRelativeLocaleUrl(locale, "/contact")}
+        >{t.getInTouch}</Button
+      >
     </li>
   </ul>
   <div class="menu-toggle" id="menu-toggle" aria-label="Open menu">

@@ -46,8 +46,10 @@
   "ctaHeader": "Let’s talk about your device.",
   "ctaText": "Whether you’re launching something new or improving what you already have, I’d love to hear what you’re building.",
   "ctaButton": "Start a conversation",
-  "services": "Our Services",
-  "industries": "Industries We Work With",
+  "services": "Services",
+  "industries": "Industries",
+  "ourServices": "Our Services",
+  "industriesWeWork": "Industries We Work With",
   "cards": {
     "rtos": {
       "title": "RTOS Firmware Solutions",
@@ -85,5 +87,13 @@
       "longDescription": "From advanced driver assistance systems (ADAS) to in-vehicle connectivity and diagnostics, we deliver software that powers the next generation of automotive technology. Our solutions focus on safety, performance, and real-time responsiveness, helping manufacturers build smarter, more connected, and more efficient vehicles."
     }
   },
-  "getInTouch": "Get in touch"
+  "getInTouch": "Get in touch",
+  "address": "Valkenswaard, the Netherlands",
+  "contactUs": "Contact Us",
+  "contact": {
+    "yourName": "Your name",
+    "tellUs": "Tell us about your project",
+    "submit": "Submit",
+    "getBack": "Thanks! We will get back to you within one business day."
+  }
 }

@@ -1,6 +1,9 @@
 ---
 import { services } from "@data/services";
 import SectionsLayout from "@layouts/SectionsLayout.astro";
+import en from "@locales/en.json";
+
+const t = en;
 ---
 
-<SectionsLayout pageTitle="Services" data={services} />
+<SectionsLayout pageTitle={t.services} data={services} />

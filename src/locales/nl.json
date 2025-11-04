@@ -46,8 +46,10 @@
   "ctaHeader": "Laten we praten over uw apparaat.",
   "ctaText": "Of u nu iets nieuws lanceert of iets bestaands verbetert, ik hoor graag wat u aan het bouwen bent.",
   "ctaButton": "Begin een gesprek",
-  "services": "Onze Diensten",
-  "industries": "Sectoren Waarmee We Werken",
+  "services": "Diensten",
+  "industries": "Sectoren",
+  "ourServices": "Onze Diensten",
+  "industriesWeWork": "Sectoren Waarmee We Werken",
   "cards": {
     "rtos": {
       "title": "RTOS Firmware-oplossingen",
@@ -85,5 +87,13 @@
       "longDescription": "Van geavanceerde rijhulpsystemen (ADAS) tot in-voertuig connectiviteit en diagnostiek, wij leveren software die de volgende generatie automobieltechnologie aandrijft. Onze oplossingen richten zich op veiligheid, prestaties en realtime reactievermogen, waardoor fabrikanten slimmere, meer verbonden en efficiëntere voertuigen kunnen bouwen."
     }
   },
-  "getInTouch": "Neem contact op"
+  "getInTouch": "Neem contact op",
+  "address": "Valkenswaard, Nederland",
+  "contactUs": "Neem contact met ons op",
+  "contact": {
+    "yourName": "Uw naam",
+    "tellUs": "Vertel ons over uw project",
+    "submit": "Versturen",
+    "getBack": "Bedankt! We nemen binnen één werkdag contact met uw op."
+  }
 }
