@@ -3,21 +3,26 @@ import Button from "./Button.astro";
 import { Image } from "astro:assets";
 
 import logoImage from "@images/logo.png";
+
+import en from "@locales/en.json";
+import nl from "@locales/nl.json";
+
+const t = Astro.currentLocale == "nl" ? nl : en;
 ---
 
 <section class="contact-section">
   <div class="contact-form">
-    <h2>Your name</h2>
+    <h2>{t.contact.yourName}</h2>
     <input type="text" />
-    <h2>Tell us about your project</h2>
+    <h2>{t.contact.tellUs}</h2>
     <textarea></textarea>
-    <Button id="submit-contact">Submit</Button>
+    <Button id="submit-contact">{t.contact.submit}</Button>
     <p class="get-back">
-      Thanks! We will get back to you within one business day.
+      {t.contact.getBack}
     </p>
   </div>
   <div class="contact-image">
-    <Image src={logoImage} alt="Logo" />
+    <Image src={logoImage} alt="Logo" loading="eager" />
   </div>
 </section>
 

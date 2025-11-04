@@ -148,12 +148,12 @@ const t = nl;
 
   <section class="cards-container">
     <CardsSection
-      title={t.services}
+      title={t.ourServices}
       page={getRelativeLocaleUrl(Astro.currentLocale ?? "en", "services")}
       items={services}
     />
     <CardsSection
-      title={t.industries}
+      title={t.industriesWeWork}
       page={getRelativeLocaleUrl(Astro.currentLocale ?? "en", "industries")}
       items={industries}
     />
@@ -190,7 +190,9 @@ const t = nl;
   <section class="cta">
     <h2>{t.ctaHeader}</h2>
     <p>{t.ctaText}</p>
-    <Button href="/contact">{t.ctaButton}</Button>
+    <Button href={getRelativeLocaleUrl(Astro.currentLocale ?? "en", "/contact")}
+      >{t.ctaButton}</Button
+    >
   </section>
 </BaseLayout>
 

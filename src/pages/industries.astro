@@ -1,6 +1,9 @@
 ---
 import { industries } from "@data/industries";
 import SectionsLayout from "@layouts/SectionsLayout.astro";
+import en from "@locales/en.json";
+
+const t = en;
 ---
 
-<SectionsLayout pageTitle="Industries" data={industries} />
+<SectionsLayout pageTitle={t.industries} data={industries} />

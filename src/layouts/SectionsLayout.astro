@@ -1,9 +1,10 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Header from "../components/Header.astro";
-import Button from "../components/Button.astro";
 import { Image } from "astro:assets";
-import type { CardItem } from "../data/card-item";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Header from "@components/Header.astro";
+import Button from "@components/Button.astro";
+import type { CardItem } from "@data/card-item";
 import en from "@locales/en.json";
 import nl from "@locales/nl.json";
 
@@ -12,7 +13,7 @@ const t = Astro.currentLocale === "nl" ? nl : en;
 ---
 
 <BaseLayout>
-  <Header siteTitle={pageTitle} />
+  <Header title={pageTitle} />
   <section class="content-section">
     {
       data.map((item: CardItem, index: number) => {
@@ -35,7 +36,13 @@ const t = Astro.currentLocale === "nl" ? nl : en;
             <div class="text-content">
               <h2>{translated.title}</h2>
               <p class="content-description">{translated.longDescription}</p>
-              <Button href="/contact" class="get-in-touch">
+              <Button
+                href={getRelativeLocaleUrl(
+                  Astro.currentLocale ?? "en",
+                  "/contact"
+                )}
+                class="get-in-touch"
+              >
                 {t.getInTouch}
               </Button>
             </div>

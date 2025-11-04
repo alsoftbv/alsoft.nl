@@ -1,12 +1,19 @@
 ---
 import Button from "./Button.astro";
 import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 import linkedinImage from "@images/footer/linkedin.png";
 import kvkImage from "@images/footer/kvk.jpg";
 import btwImage from "@images/footer/btw.jpg";
 import locationImage from "@images/footer/location.svg";
 import mailImage from "@images/footer/mail.svg";
+
+import en from "@locales/en.json";
+import nl from "@locales/nl.json";
+
+const locale = Astro.currentLocale ?? "en";
+const t = Astro.currentLocale === "nl" ? nl : en;
 ---
 
 <section class="footer">
@@ -20,7 +27,7 @@ import mailImage from "@images/footer/mail.svg";
     </div>
     <div class="icon-text">
       <Image src={locationImage} alt="Location" loading="lazy" />
-      <p>Valkenswaard, Netherlands</p>
+      <p>{t.address}</p>
     </div>
     <a
       href="mailto:info@alsoft.nl?subject=Contact%20Form%20Submission"
@@ -40,11 +47,14 @@ import mailImage from "@images/footer/mail.svg";
   </div>
 
   <div class="footer-right">
-    <a href="/services">Services</a>
-    <a href="/industries">Industries</a>
+    <a href={getRelativeLocaleUrl(locale, "/services")}>{t.services}</a>
+    <a href={getRelativeLocaleUrl(locale, "/industries")}>{t.industries}</a>
     <span></span>
     <span></span>
-    <Button href="/contact" class="small-button">Get in touch</Button>
+    <Button
+      href={getRelativeLocaleUrl(Astro.currentLocale ?? "en", "/contact")}
+      class="small-button">{t.getInTouch}</Button
+    >
   </div>
 </section>
 
