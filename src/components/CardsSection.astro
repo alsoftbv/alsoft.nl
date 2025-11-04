@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import type { CardItem } from "../data/card-item";
+import left from "../images/cards/left.svg";
+import right from "../images/cards/right.svg";
 
 interface Props {
   title: string;
@@ -14,7 +16,9 @@ const { title, page, items } = Astro.props as Props;
 <section class="card-slider-section">
   <h2>{title}</h2>
   <div class="slider-wrapper">
-    <button class="scroll-btn left" aria-label="Scroll left">←</button>
+    <button class="scroll-btn left" aria-label="Scroll left"
+      ><Image src={left} alt="Left arrow" /></button
+    >
     <div class="card-slider">
       {
         items.map((item: CardItem) => {
@@ -31,7 +35,9 @@ const { title, page, items } = Astro.props as Props;
         })
       }
     </div>
-    <button class="scroll-btn right" aria-label="Scroll right">→</button>
+    <button class="scroll-btn right" aria-label="Scroll right"
+      ><Image src={right} alt="Right arrow" /></button
+    >
   </div>
 </section>
 
