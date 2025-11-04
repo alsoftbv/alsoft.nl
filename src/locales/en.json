@@ -46,6 +46,8 @@
   "ctaHeader": "Let’s talk about your device.",
   "ctaText": "Whether you’re launching something new or improving what you already have, I’d love to hear what you’re building.",
   "ctaButton": "Start a conversation",
+  "services": "Our Services",
+  "industries": "Industries We Work With",
   "cards": {
     "rtos": {
       "title": "RTOS Firmware Solutions",

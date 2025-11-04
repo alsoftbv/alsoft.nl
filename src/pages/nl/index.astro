@@ -1,11 +1,12 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { Image } from "astro:assets";
 
+import BaseLayout from "@layouts/BaseLayout.astro";
 import CardsSection from "@components/CardsSection.astro";
 
 import { services } from "@data/services";
 import { industries } from "@data/industries";
-import { Image } from "astro:assets";
 import Button from "@components/Button.astro";
 
 import headerImage from "@images/index/header-image.jpg";
@@ -22,6 +23,7 @@ import pencilIcon from "@images/index/icons/pencil.svg";
 import checkIcon from "@images/index/icons/check.svg";
 import adjustmentIcon from "@images/index/icons/adjustment.svg";
 import Carousel from "@components/Carousel.astro";
+import nl from "@locales/nl.json";
 
 const carouselImages = [
   { src: valinso, href: "https://valinso.nl", name: "Valinso" },
@@ -29,7 +31,6 @@ const carouselImages = [
   { src: iai, href: "https://iai.nl", name: "IAI" },
 ];
 
-import nl from "@locales/nl.json";
 const t = nl;
 ---
 
@@ -146,10 +147,14 @@ const t = nl;
   </section>
 
   <section class="cards-container">
-    <CardsSection title="Our Services" page="services" items={services} />
     <CardsSection
-      title="Industries We Work With"
-      page="industries"
+      title={t.services}
+      page={getRelativeLocaleUrl(Astro.currentLocale ?? "en", "services")}
+      items={services}
+    />
+    <CardsSection
+      title={t.industries}
+      page={getRelativeLocaleUrl(Astro.currentLocale ?? "en", "industries")}
       items={industries}
     />
   </section>
