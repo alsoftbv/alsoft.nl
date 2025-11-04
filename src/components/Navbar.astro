@@ -1,36 +1,75 @@
 ---
-import Button from "./Button.astro";
+import Button from "@components/Button.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import { Image } from "astro:assets";
 import logoImage from "@images/logo.png";
+import en from "@locales/en.json";
+import nl from "@locales/nl.json";
+import enFlag from "@images/nav/en.svg";
+import nlFlag from "@images/nav/nl.svg";
+
+const locale = Astro.currentLocale ?? "en";
+
+const currentPath = Astro.url.pathname;
+const targetPath =
+  locale === "nl"
+    ? currentPath.replace("nl/", "")
+    : getRelativeLocaleUrl("nl", currentPath);
 
 const links = [
   { name: "Services", href: "/services" },
   { name: "Industries", href: "/industries" },
 ];
+
+const flag = locale === "nl" ? enFlag : nlFlag;
+const t = locale === "nl" ? nl : en;
 ---
 
 <nav class="navbar">
   <div class="logo">
-    <a href="/"><Image src={logoImage} alt="Logo" loading="eager" /></a>
-  </div>
-  <div class="menu-toggle" id="menu-toggle" aria-label="Open menu">
-    <span></span>
-    <span></span>
-    <span></span>
+    <a href={getRelativeLocaleUrl(locale)}
+      ><Image src={logoImage} alt="Logo" loading="eager" /></a
+    >
   </div>
   <ul class="nav-links" id="nav-links">
     {
       links.map((link) => (
         <li>
-          <a href={link.href}>{link.name}</a>
+          <a href={getRelativeLocaleUrl(locale, link.href)}>{link.name}</a>
         </li>
       ))
     }
+    <li>
+      <a href={targetPath} class="mobile-flag"
+        ><Image
+          class="change-language"
+          src={flag}
+          alt="Change language"
+          loading="eager"
+        /></a
+      >
+    </li>
     <li class="mobile-contact">
-      <Button href="/contact">Get in touch</Button>
+      <Button href="/contact">{t.getInTouch}</Button>
     </li>
   </ul>
-  <Button href="/contact" class="desktop-contact">Get in touch</Button>
+  <div class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <a href={targetPath} class="desktop-flag"
+    ><Image
+      class="change-language"
+      src={flag}
+      alt="Change language"
+      loading="eager"
+    /></a
+  >
+  <Button
+    href={getRelativeLocaleUrl(locale, "/contact")}
+    class="desktop-contact">{t.getInTouch}</Button
+  >
 </nav>
 
 <script>
@@ -45,7 +84,7 @@ const links = [
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 900) {
+      if (window.innerWidth > 768) {
         navLinks.classList.remove("show", "active");
         toggle.classList.remove("active");
         navLinks.removeAttribute("style");
@@ -75,8 +114,8 @@ const links = [
     width: 45px;
     height: 45px;
     cursor: pointer;
-    margin-left: 1rem;
   }
+
   .menu-toggle span {
     display: block;
     width: 30px;
@@ -123,6 +162,28 @@ const links = [
     font-size: 1rem;
   }
 
+  .change-language {
+    height: 1.5rem;
+    width: auto;
+  }
+
+  .mobile-flag {
+    display: none;
+  }
+
+  .desktop-flag {
+    display: block;
+    margin-right: 2em;
+  }
+
+  .mobile-contact {
+    display: none;
+  }
+
+  .desktop-contact {
+    display: block;
+  }
+
   @media (max-width: 768px) {
     .nav-links {
       margin-left: 0;
@@ -156,25 +217,28 @@ const links = [
       width: 100%;
       height: 5px;
     }
+
     .nav-links.active {
       max-height: 500px;
     }
+
     .menu-toggle {
       display: flex;
     }
+
+    .mobile-flag {
+      display: block;
+    }
+
+    .desktop-flag {
+      display: none;
+    }
+
     .mobile-contact {
       display: block;
     }
     .desktop-contact {
       display: none;
-    }
-  }
-  @media (min-width: 769px) {
-    .mobile-contact {
-      display: none;
-    }
-    .desktop-contact {
-      display: block;
     }
   }
 

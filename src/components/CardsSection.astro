@@ -13,7 +13,7 @@ interface Props {
 }
 
 const { title, page, items } = Astro.props as Props;
-const t = Astro.currentLocale == "nl" ? nl : en;
+const t = Astro.currentLocale === "nl" ? nl : en;
 ---
 
 <section class="card-slider-section">
