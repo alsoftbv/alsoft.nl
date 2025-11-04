@@ -1,0 +1,87 @@
+{
+  "indexHeader": "Firmware that makes your hardware shine.",
+  "indexFirst": "We help you build reliable and efficient embedded systems, whether you are developing early prototypes or full production-ready products.",
+  "indexSecond": "At alsoft, we make sure your device does what it’s meant to do: collect, connect, and perform, without the crashes or quirks that hold great hardware back.",
+  "indexButton": "Let’s make it work right",
+  "benefitFirst": "No more random bugs",
+  "benefitSecond": "Smarter use of resources",
+  "benefitThird": "Smoother development",
+  "problemsHeader": "You’ve built great hardware.",
+  "problemsText": "But when it freezes, misbehaves, or just won’t talk to other devices — people assume the whole thing is bad. We get it. Debugging firmware under pressure isn’t fun, and those little issues can make or break your product’s reputation.",
+  "problemsHighlight": "We want to show people how great your product is.",
+  "solutionHeader": "We bring the same care to your firmware that you bring to your hardware.",
+  "solutionStepsDesign": {
+    "label": "Design",
+    "desc": "We design every part until it feels solid."
+  },
+  "solutionStepsTest": {
+    "label": "Test",
+    "desc": "Whether firmware from scratch or improvements, we check stability."
+  },
+  "solutionStepsRefine": {
+    "label": "Refine",
+    "desc": "We iterate until it’s stable, efficient, and production-ready."
+  },
+  "solutionText": "From concept to completion, our approach ensures every solution is designed with precision, tested for reliability, and refined for lasting performance. Whether you are starting a new project or improving existing systems, we deliver results you can trust.",
+  "proofHeader": "Trusted in high-stakes industries.",
+  "proofText": "From avionics to industrial automation, we have built and tested systems where reliability isn’t optional. You can trust that what we build for you won’t just work, it will keep working.",
+  "moreProofHeader": "Trusted by teams who build things that matter.",
+  "moreProofSubtext": "From prototype labs to production floors",
+  "aboutHeader": "Hey, I’m Altuğ.",
+  "aboutText": "I’ve spent years working on embedded systems in industries where failure isn’t an option. These days, I help companies turn hardware ideas into dependable products — without chasing firmware bugs at midnight.",
+  "planHeader": "Here’s how we usually work:",
+  "planLabels": {
+    "chat": "Chat",
+    "plan": "Plan or audit",
+    "agree": "Agree",
+    "build": "Build"
+  },
+  "planSteps": {
+    "chat": "A quick call to understand your product and goals.",
+    "plan": "A clear roadmap or a report for your existing code.",
+    "agree": "Agree on an actionable and fully transparent plan.",
+    "build": "Development and testing until it’s ready for production."
+  },
+  "planNote": "Simple, transparent, and built around your timeline.",
+  "ctaHeader": "Let’s talk about your device.",
+  "ctaText": "Whether you’re launching something new or improving what you already have, I’d love to hear what you’re building.",
+  "ctaButton": "Start a conversation",
+  "cards": {
+    "rtos": {
+      "title": "RTOS Firmware Solutions",
+      "description": "Delivering fast, reliable real-time performance for your embedded products.",
+      "longDescription": "Our RTOS development services help you bring reliable, real-time functionality to your devices. We design firmware that ensures precision timing, predictable performance, and system stability—helping your products perform flawlessly in demanding environments like robotics, industrial control, and automotive systems."
+    },
+    "linux": {
+      "title": "Embedded Linux Solutions",
+      "description": "Custom Linux platforms built for performance, flexibility, and scalability.",
+      "longDescription": "We build tailored Linux environments that empower your products with the flexibility and power of open-source technology. From optimizing boot times to ensuring long-term maintainability, we create secure, high-performance systems that reduce your time to market and give you full control over your embedded platform."
+    },
+    "iot": {
+      "title": "IoT Connectivity with MQTT",
+      "description": "Seamless device-to-cloud communication for your connected ecosystem.",
+      "longDescription": "Our MQTT integration services enable efficient, scalable communication across your IoT network. We design and implement solutions that ensure your devices share data securely and in real time—helping you gain insights faster, streamline operations, and build a foundation for future-ready connected products."
+    },
+    "fintech": {
+      "title": "FinTech & Smart Payment Systems",
+      "description": "Secure embedded solutions powering next-generation payment and vending devices.",
+      "longDescription": "We enable the future of cashless transactions through embedded payment technologies tailored for FinTech applications. From vending machines and point-of-sale systems to automated kiosks, our solutions ensure reliable, secure, and scalable handling of payments, item tracking, and inventory management—helping your business stay ahead in the digital payments landscape."
+    },
+    "manufacturing": {
+      "title": "Industrial & Manufacturing Automation",
+      "description": "Smart, connected systems that optimize factory operations and production efficiency.",
+      "longDescription": "Our embedded and IoT solutions empower manufacturers to increase productivity, enhance quality, and improve traceability across the factory floor. By integrating real-time data acquisition, predictive maintenance, and process automation, we help modernize production lines and accelerate digital transformation in industrial environments."
+    },
+    "defense": {
+      "title": "Defense & Aerospace Systems",
+      "description": "Mission-critical embedded solutions built for reliability, security, and precision.",
+      "longDescription": "We develop high-assurance embedded systems designed to meet the demanding standards of the defense and aerospace sectors. Our expertise includes real-time control, secure communications, and ruggedized hardware integration, delivering dependable performance for critical operations and high-stakes environments."
+    },
+    "automotive": {
+      "title": "Automotive & Mobility",
+      "description": "Embedded intelligence driving innovation in vehicles and mobility systems.",
+      "longDescription": "From advanced driver assistance systems (ADAS) to in-vehicle connectivity and diagnostics, we deliver software that powers the next generation of automotive technology. Our solutions focus on safety, performance, and real-time responsiveness, helping manufacturers build smarter, more connected, and more efficient vehicles."
+    }
+  },
+  "getInTouchButton": "Get in touch"
+}

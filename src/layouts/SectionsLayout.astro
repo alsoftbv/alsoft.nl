@@ -4,37 +4,44 @@ import Header from "../components/Header.astro";
 import Button from "../components/Button.astro";
 import { Image } from "astro:assets";
 import type { CardItem } from "../data/card-item";
+import en from "@locales/en.json";
+import nl from "@locales/nl.json";
 
 const { pageTitle, data } = Astro.props;
+const t = Astro.currentLocale == "nl" ? nl : en;
 ---
 
 <BaseLayout>
   <Header siteTitle={pageTitle} />
   <section class="content-section">
     {
-      data.map((item: CardItem, index: number) => (
-        <div
-          class={`content-wrapper ${index % 2 !== 0 ? "reverse" : ""}`}
-          id={item.id}
-        >
-          <div class="image-wrapper">
-            <Image
-              class="content-image"
-              src={item.image}
-              alt={item.title}
-              decoding="async"
-              loading={index === 0 ? "eager" : "lazy"}
-            />
+      data.map((item: CardItem, index: number) => {
+        const translated = t.cards[item.id as keyof typeof t.cards];
+
+        return (
+          <div
+            class={`content-wrapper ${index % 2 !== 0 ? "reverse" : ""}`}
+            id={item.id}
+          >
+            <div class="image-wrapper">
+              <Image
+                class="content-image"
+                src={item.image}
+                alt={translated.title}
+                decoding="async"
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+            </div>
+            <div class="text-content">
+              <h2>{translated.title}</h2>
+              <p class="content-description">{translated.longDescription}</p>
+              <Button href="/contact" class="get-in-touch">
+                Get in touch
+              </Button>
+            </div>
           </div>
-          <div class="text-content">
-            <h2>{item.title}</h2>
-            <p class="content-description">{item.longDescription}</p>
-            <Button href="/contact" class="get-in-touch">
-              Get in touch
-            </Button>
-          </div>
-        </div>
-      ))
+        );
+      })
     }
   </section>
 </BaseLayout>
