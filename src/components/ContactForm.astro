@@ -7,7 +7,10 @@ import logoImage from "@images/logo.png";
 import en from "@locales/en.json";
 import nl from "@locales/nl.json";
 
-const t = Astro.currentLocale == "nl" ? nl : en;
+const locale = Astro.currentLocale ?? "en";
+const t = locale === "nl" ? nl : en;
+const contactText =
+  locale === "nl" ? "Contactformulier" : "Contact Form Submission";
 ---
 
 <section class="contact-section">
@@ -106,18 +109,16 @@ const t = Astro.currentLocale == "nl" ? nl : en;
   }
 </style>
 
-<script>
+<script is:inline define:vars={{ contactText }}>
   document.getElementById("submit-contact")?.addEventListener("click", () => {
-    const nameInput = document.querySelector("input") as HTMLInputElement;
-    const messageInput = document.querySelector(
-      "textarea"
-    ) as HTMLTextAreaElement;
+    const nameInput = document.querySelector("input");
+    const messageInput = document.querySelector("textarea");
 
     const name = nameInput.value || "";
     const message = messageInput.value || "";
 
-    const subject = encodeURIComponent(`Contact Form Submission - ${name}`);
-    const body = encodeURIComponent(`From: ${name}\n\n${message}`);
+    const subject = encodeURIComponent(`${contactText} - ${name}`);
+    const body = encodeURIComponent(message);
 
     window.location.href = `mailto:altug@alsoft.nl?subject=${subject}&body=${body}`;
   });
