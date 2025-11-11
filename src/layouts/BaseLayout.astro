@@ -1,25 +1,41 @@
 ---
-import Navbar from "@components/Navbar.astro";
 import Footer from "@components/Footer.astro";
+import Navbar from "@components/Navbar.astro";
 
-const locale = Astro.currentLocale ?? "en";
+const {
+  title = "alsoft",
+  description = "Firmware that makes your hardware shine",
+  image = "/logo.png",
+  canonical = "https://alsoft.nl",
+  type = "website",
+  locale = Astro.currentLocale ?? "en",
+} = Astro.props;
 ---
 
 <html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="alsoft" />
-    <meta
-      property="og:description"
-      content="Firmware that makes your hardware shine"
-    />
-    <meta property="og:image" content="/logo.png" />
-    <meta property="og:type" content="website" />
-    <title>alsoft</title>
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonical} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
     <link rel="stylesheet" href="/globals.css" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   </head>
+
   <body>
     <Navbar />
     <main>
