@@ -30,26 +30,23 @@ const t = Astro.currentLocale === "nl" ? nl : en;
       <Image src={locationImage} alt="Location" loading="lazy" />
       <p>{t.address}</p>
     </div>
-    <a
-      href="mailto:info@alsoft.nl?subject=Contact%20Form%20Submission"
-      class="icon-text"
-    >
+    <div class="icon-text">
       <Image src={mailImage} alt="e-mail" loading="lazy" />
-      <p>info@alsoft.nl</p>
-    </a>
-    <div class="links">
-      <a
-        href="https://www.linkedin.com/company/alsoftbv"
-        target="_blank"
-        class="icon-text"
+      <a href="mailto:info@alsoft.nl?subject=Contact%20Form%20Submission"
+        >info@alsoft.nl</a
       >
+    </div>
+    <div class="links">
+      <div class="icon-text">
         <Image src={linkedinImage} alt="LinkedIn" loading="lazy" />
-        <p>alsoftbv</p>
-      </a>
-      <a href="https://github.com/alsoftbv" target="_blank" class="icon-text">
+        <a href="https://www.linkedin.com/company/alsoftbv" target="_blank"
+          >alsoftbv</a
+        >
+      </div>
+      <div class="icon-text">
         <Image src={githubImage} alt="GitHub" loading="lazy" />
-        <p>alsoftbv</p>
-      </a>
+        <a href="https://github.com/alsoftbv" target="_blank">alsoftbv</a>
+      </div>
     </div>
   </div>
 
