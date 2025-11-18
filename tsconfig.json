@@ -24,6 +24,9 @@
             "@locales/*": [
                 "./src/locales/*"
             ],
+            "@content/*": [
+                "./src/content/*"
+            ],
         }
     },
 }

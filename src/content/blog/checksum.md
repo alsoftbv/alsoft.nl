@@ -10,7 +10,7 @@ image: "images/og-crc16.jpg"
 
 *How to reverse-engineer undocumented CRCs quickly and reliably.*
 
-![Hero Image: Testing CRC16 variants](./images/hero-crc16.jpg)
+![Hero Image: Testing CRC16 variants](./images/checksum/hero-crc16.jpg)
 *Caption: Testing CRC16 variants to identify the correct algorithm.*
 
 ---
@@ -34,7 +34,7 @@ CRC16 isn’t a single algorithm — it has many variants, each defined by multi
 
 Even two CRC16 implementations with the same polynomial can produce different results if any of these parameters differ.
 
-![CRC Parameters Diagram](./images/crc16-parameters.png)
+![CRC Parameters Diagram](./images/checksum/crc16-parameters.jpg)
 *Caption: Key CRC parameters that can affect checksum results.*
 
 ---
@@ -50,7 +50,7 @@ Instead of guessing, use a real packet with its known CRC to identify the correc
 
 You can experiment with settings like bit reflection, polynomial, or initial value. crccalc updates in real time, making trial-and-error much faster.
 
-![crccalc Example Screenshot](./images/crccalc-screenshot.png)
+![crccalc Example Screenshot](./images/checksum/crccalc-screenshot.jpg)
 *Caption: Using crccalc.com to test CRC16 variants with a known packet.*
 
 ---
@@ -81,7 +81,7 @@ Reverse-engineering checksums doesn’t have to be trial and error. Tools like [
 
 If you’re stuck with “CRC mismatch” errors or a vague *CRC16* line in a datasheet, try this method — or reach out if you need help analyzing a tricky protocol.
 
-![Debugging Icon](./images/debugging-icon.png)
+![Debugging Icon](./images/checksum/debugging-icon.jpg)
 *Caption: Quick CRC analysis saves hours of debugging.*
 
 ---
