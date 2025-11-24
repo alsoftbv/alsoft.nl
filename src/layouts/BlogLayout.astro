@@ -8,24 +8,82 @@ const { frontmatter } = Astro.props;
   description={frontmatter.description}
   image={frontmatter.image}
 >
-  <slot />
+  <div class="post-content">
+    <h1 class="title">{frontmatter.title}</h1>
+    <p class="date">
+      {
+        frontmatter.date
+          .toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+          })
+          .replace(/\//g, "-")
+      }
+    </p>
+    <slot />
+  </div>
 </BaseLayout>
-<style>
-  a {
-    color: #00539f;
+
+<style is:inline>
+  .post-content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
   }
 
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
+  .post-content h1 {
+    font-size: 2rem;
+    padding-top: 2rem;
+  }
+  .post-content h1,
+  .post-content h2 {
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1rem;
   }
 
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: 0.5em;
-    padding: 0.5em 1em;
-    font-size: 1.15em;
-    background-color: #f8fcfd;
+  .post-content h3 {
+    font-weight: 600;
+    margin: 0.8rem 0;
+  }
+
+  .post-content img {
+    width: 60%;
+    height: auto;
+    padding: 2rem 20% 0 20%;
+  }
+
+  .post-content blockquote {
+    text-align: center;
+    font-style: italic;
+    margin: 0;
+    padding-bottom: 2rem;
+  }
+
+  .post-content hr {
+    width: 240px; /* shorten it */
+    margin: 2rem auto; /* center it and keep spacing */
+    border: none; /* remove default border */
+    height: 2px; /* thickness */
+    background-color: #4f4f4f; /* slightly darker than #3f3f3f */
+    opacity: 1; /* make sure it doesn't fade */
+  }
+
+  .post-content p {
+    margin: 0;
+  }
+
+  .post-content li {
+    line-height: 2;
+  }
+
+  .post-content .date {
+    color: #cfcfcf;
+    margin-bottom: 1rem;
+  }
+
+  .post-content .title {
+    margin-bottom: 0;
   }
 </style>
