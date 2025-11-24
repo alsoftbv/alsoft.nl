@@ -3,7 +3,7 @@ title: "When “CRC16” is not Enough"
 description: "Learn how to reverse-engineer unknown CRC checksums using real data and crccalc.com — fast, practical, and essential for embedded developers."
 date: 2025-11-24
 language: "en"
-image: "/images/og-crc16.jpg"
+image: "/blog/checksum.jpg"
 ---
 
 There are a ton of possible checksum implementations. What's worse is there can also be custom polynomials, and non-standard checksums. Thankfully, most of us software engineers are lazy, so we just use an existing implementation.

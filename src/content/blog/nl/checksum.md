@@ -3,7 +3,7 @@ title: "Wanneer “CRC16” niet genoeg is"
 description: "Leer hoe je onbekende CRC-controles kunt terugrekenen met echte data en crccalc.com — snel, praktisch en onmisbaar voor embedded ontwikkelaars."
 date: 2025-11-24
 language: "nl"
-image: "/images/og-crc16.jpg"
+image: "/blog/checksum.jpg"
 ---
 
 Er bestaan enorm veel checksum-implementaties. Nog vervelender: er kunnen ook aangepaste polynomen en niet-standaard checksums in omloop zijn. Gelukkig zijn de meeste van ons software-ontwikkelaars een beetje lui, dus gebruiken we meestal gewoon een bestaande implementatie.
