@@ -6,7 +6,7 @@ const { frontmatter } = Astro.props;
 <BaseLayout
   title={frontmatter.title}
   description={frontmatter.description}
-  image={frontmatter.image}
+  image={`https://alsoft.nl/og/${frontmatter.image}.png`}
 >
   <div class="post-content">
     <h1 class="title">{frontmatter.title}</h1>
