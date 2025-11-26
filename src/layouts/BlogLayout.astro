@@ -86,4 +86,15 @@ const { data, image } = Astro.props;
   .post-content .title {
     margin-bottom: 0;
   }
+
+  @media (max-width: 768px) {
+    .post-content img {
+      width: 100%;
+      padding: 1rem 0 0 0;
+    }
+
+    .post-content blockquote {
+      padding-bottom: 1rem;
+    }
+  }
 </style>
