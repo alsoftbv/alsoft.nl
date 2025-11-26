@@ -1,18 +1,18 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-const { frontmatter } = Astro.props;
+const { data, image } = Astro.props;
 ---
 
 <BaseLayout
-  title={frontmatter.title}
-  description={frontmatter.description}
-  image={`https://alsoft.nl/og/${frontmatter.image}.png`}
+  title={data.title}
+  description={data.description}
+  image={`https://alsoft.nl/og/${image}.png`}
 >
   <div class="post-content">
-    <h1 class="title">{frontmatter.title}</h1>
+    <h1 class="title">{data.title}</h1>
     <p class="date">
       {
-        frontmatter.date
+        data.date
           .toLocaleDateString("en-GB", {
             day: "2-digit",
             month: "2-digit",
@@ -62,12 +62,12 @@ const { frontmatter } = Astro.props;
   }
 
   .post-content hr {
-    width: 240px; /* shorten it */
-    margin: 2rem auto; /* center it and keep spacing */
-    border: none; /* remove default border */
-    height: 2px; /* thickness */
-    background-color: #4f4f4f; /* slightly darker than #3f3f3f */
-    opacity: 1; /* make sure it doesn't fade */
+    width: 240px;
+    margin: 2rem auto;
+    border: none;
+    height: 2px;
+    background-color: #4f4f4f;
+    opacity: 1;
   }
 
   .post-content p {
