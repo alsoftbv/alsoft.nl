@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-const { data, image } = Astro.props;
+const { data, slug, canonical } = Astro.props;
 ---
 
 <BaseLayout
   title={data.title}
   description={data.description}
-  image={`https://alsoft.nl/og/${image}.png`}
+  image={`https://alsoft.nl/og/${slug}.png`}
+  canonical={`https://alsoft.nl/${canonical}`}
 >
   <div class="post-content">
     <h1 class="title">{data.title}</h1>
