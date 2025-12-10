@@ -60,19 +60,19 @@ const t = Astro.currentLocale === "nl" ? nl : en;
     gap: 2rem;
     align-items: center;
     justify-content: center;
-    padding: 3rem;
+    padding: 3rem 2rem;
+    margin: 0 auto;
+    max-width: 960px;
   }
 
   .content-wrapper {
     display: flex;
     align-items: center;
-    width: 100%;
-    padding: 3rem;
+    padding: 2rem;
     gap: 2rem;
     border-radius: 8px;
     background-color: #202020;
-    scroll-margin-top: 4.5rem;
-    max-width: 80vw;
+    scroll-margin-top: 5rem;
   }
 
   .reverse {
@@ -115,13 +115,13 @@ const t = Astro.currentLocale === "nl" ? nl : en;
 
   @media (max-width: 768px) {
     .content-section {
-      padding: 1rem;
+      padding: 1rem 0.5rem;
     }
 
     .content-wrapper {
       flex-direction: column;
       gap: 1rem;
-      padding: 1.5rem;
+      padding: 1rem;
     }
 
     .text-content h2 {

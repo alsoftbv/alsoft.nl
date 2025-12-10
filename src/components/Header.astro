@@ -3,10 +3,17 @@ const { title } = Astro.props;
 ---
 
 <section class="header">
-  <h1>{title}</h1>
+  <div class="content">
+    <h1>{title}</h1>
+  </div>
 </section>
 
 <style>
+  .content {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
   .header {
     position: relative;
     background: linear-gradient(-45deg, #ff9100 0%, #ffd180 100%);
