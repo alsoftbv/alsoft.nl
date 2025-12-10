@@ -14,41 +14,43 @@ const contactText =
 ---
 
 <section class="contact-section">
-  <div class="contact-form">
-    <h2>{t.contact.yourName}</h2>
-    <input type="text" />
-    <h2>{t.contact.tellUs}</h2>
-    <textarea></textarea>
-    <Button id="submit-contact">{t.contact.submit}</Button>
-    <p class="get-back">
-      {t.contact.getBack}
-    </p>
-  </div>
-  <div class="contact-image">
-    <Image src={logoImage} alt="Logo" loading="eager" />
+  <div class="content">
+    <div class="contact-form">
+      <h2>{t.contact.yourName}</h2>
+      <input type="text" />
+      <h2>{t.contact.tellUs}</h2>
+      <textarea></textarea>
+      <Button id="submit-contact">{t.contact.submit}</Button>
+      <p class="get-back">
+        {t.contact.getBack}
+      </p>
+    </div>
+    <div class="contact-image">
+      <Image src={logoImage} alt="Logo" loading="eager" />
+    </div>
   </div>
 </section>
 
 <style>
   .contact-section {
-    padding: 5rem;
+    background-color: #202020;
+  }
+
+  .content {
+    padding: 2rem;
     display: flex;
-    gap: 5rem;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    background-color: #202020;
+    justify-content: space-between;
+    gap: 3rem;
+    max-width: 960px;
+    margin: 0 auto;
   }
 
   .contact-form {
     display: flex;
     flex-direction: column;
-    min-width: 50vw;
-    width: 60%;
-  }
-
-  .contact-form h2 {
-    margin: 0 0 1rem 0;
+    width: 100%;
   }
 
   .contact-form input,
@@ -95,12 +97,12 @@ const contactText =
   }
 
   @media (max-width: 768px) {
-    .contact-section {
-      padding: 1.5rem 0;
+    .content {
+      padding: 1rem;
     }
 
-    .contact-form {
-      width: 90%;
+    .contact-section {
+      padding: 1.5rem 0;
     }
 
     .contact-image {
