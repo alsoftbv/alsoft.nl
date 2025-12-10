@@ -17,50 +17,52 @@ const locale = Astro.currentLocale ?? "en";
 const t = Astro.currentLocale === "nl" ? nl : en;
 ---
 
-<section class="footer">
-  <div class="footer-left">
-    <div class="icon-text">
-      <Image src={kvkImage} alt="KvK" loading="lazy" /><p>96553863</p>
-    </div>
-    <div class="icon-text">
-      <Image src={btwImage} alt="BTW" loading="lazy" />
-      <p>NL867658472B01</p>
-    </div>
-    <div class="icon-text">
-      <Image src={locationImage} alt="Location" loading="lazy" />
-      <p>{t.address}</p>
-    </div>
-    <div class="icon-text">
-      <Image src={mailImage} alt="e-mail" loading="lazy" />
-      <a href="mailto:info@alsoft.nl?subject=Contact%20Form%20Submission"
-        >info@alsoft.nl</a
-      >
-    </div>
-    <div class="links">
+<footer class="footer">
+  <div class="content">
+    <div class="footer-left">
       <div class="icon-text">
-        <Image src={linkedinImage} alt="LinkedIn" loading="lazy" />
-        <a href="https://www.linkedin.com/company/alsoftbv" target="_blank"
-          >alsoftbv</a
+        <Image src={kvkImage} alt="KvK" loading="lazy" /><p>96553863</p>
+      </div>
+      <div class="icon-text">
+        <Image src={btwImage} alt="BTW" loading="lazy" />
+        <p>NL867658472B01</p>
+      </div>
+      <div class="icon-text">
+        <Image src={locationImage} alt="Location" loading="lazy" />
+        <p>{t.address}</p>
+      </div>
+      <div class="icon-text">
+        <Image src={mailImage} alt="e-mail" loading="lazy" />
+        <a href="mailto:info@alsoft.nl?subject=Contact%20Form%20Submission"
+          >info@alsoft.nl</a
         >
       </div>
-      <div class="icon-text">
-        <Image src={githubImage} alt="GitHub" loading="lazy" />
-        <a href="https://github.com/alsoftbv" target="_blank">alsoftbv</a>
+      <div class="links">
+        <div class="icon-text">
+          <Image src={linkedinImage} alt="LinkedIn" loading="lazy" />
+          <a href="https://www.linkedin.com/company/alsoftbv" target="_blank"
+            >alsoftbv</a
+          >
+        </div>
+        <div class="icon-text">
+          <Image src={githubImage} alt="GitHub" loading="lazy" />
+          <a href="https://github.com/alsoftbv" target="_blank">alsoftbv</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="footer-right">
-    <a href={getRelativeLocaleUrl(locale, "/services")}>{t.services}</a>
-    <a href={getRelativeLocaleUrl(locale, "/industries")}>{t.industries}</a>
-    <span></span>
-    <span></span>
-    <Button
-      href={getRelativeLocaleUrl(Astro.currentLocale ?? "en", "/contact")}
-      class="small-button">{t.getInTouch}</Button
-    >
+    <div class="footer-right">
+      <a href={getRelativeLocaleUrl(locale, "/services")}>{t.services}</a>
+      <a href={getRelativeLocaleUrl(locale, "/industries")}>{t.industries}</a>
+      <span></span>
+      <span></span>
+      <Button
+        href={getRelativeLocaleUrl(Astro.currentLocale ?? "en", "/contact")}
+        class="small-button">{t.getInTouch}</Button
+      >
+    </div>
   </div>
-</section>
+</footer>
 
 <style>
   p,
@@ -93,11 +95,14 @@ const t = Astro.currentLocale === "nl" ? nl : en;
 
   .footer {
     background-color: #000000;
+  }
+
+  .content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 1.5rem 2rem;
-    max-width: 60vw;
+    padding: 1.5rem 1rem;
+    max-width: 960px;
     margin: 0 auto;
   }
 
@@ -134,10 +139,6 @@ const t = Astro.currentLocale === "nl" ? nl : en;
   }
 
   @media (max-width: 768px) {
-    .footer {
-      max-width: none;
-    }
-
     p,
     a {
       font-size: 0.7rem;
