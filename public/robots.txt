@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://yourdomain.com/sitemap-index.xml
+Sitemap: https://alsoft.nl/sitemap-index.xml
