@@ -1,0 +1,13 @@
+import en from "@locales/en.json";
+import nl from "@locales/nl.json";
+
+export const tools = {
+  "tools/websocket-client": {
+    title: en.websocket.title,
+    description: en.websocket.description,
+  },
+  "nl/tools/websocket-client": {
+    title: nl.websocket.title,
+    description: nl.websocket.description,
+  },
+};
