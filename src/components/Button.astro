@@ -1,11 +1,13 @@
 ---
 const { href, id, class: externalClass = "" } = Astro.props;
+
+const linkClass = `link-wrapper ${externalClass}`;
 ---
 
 {
   href ? (
-    <a href={href} id={id} class={externalClass} role="button">
-      <button>
+    <a href={href} id={id} class={linkClass} role="button">
+      <button class={externalClass}>
         <slot />
       </button>
     </a>
@@ -15,3 +17,9 @@ const { href, id, class: externalClass = "" } = Astro.props;
     </button>
   )
 }
+
+<style>
+  .link-wrapper {
+    text-decoration: none;
+  }
+</style>
