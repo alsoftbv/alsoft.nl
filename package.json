@@ -9,8 +9,15 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.6.0",
+    "@types/react-dom": "^19.2.3",
     "astro": "^5.15.5",
-    "astro-og-canvas": "^0.7.2"
+    "astro-og-canvas": "^0.7.2",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.7"
   }
 }
