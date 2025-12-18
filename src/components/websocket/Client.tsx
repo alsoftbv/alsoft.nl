@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, type HTMLAttributes } from "react";
 import WSControls from "./Controls";
 import WSMessageList from "./MessageList";
 import WSStatus from "./Status";
@@ -6,7 +6,7 @@ import { createMessage, formatMessage, type Message } from "./Message";
 
 export type MessageType = "text" | "binary";
 
-export default function WSClient() {
+export default function WSClient(props: HTMLAttributes<HTMLDivElement>) {
   const [messages, setMessages] = useState<string[]>([]);
   const [status, setStatus] = useState("disconnected");
   const socketRef = useRef<WebSocket | null>(null);
@@ -46,7 +46,7 @@ export default function WSClient() {
   };
 
   return (
-    <div style={{ fontFamily: "sans-serif", maxWidth: 600 }}>
+    <div {...props}>
       <WSControls
         connect={connect}
         disconnect={disconnect}

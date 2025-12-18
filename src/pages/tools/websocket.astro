@@ -1,5 +1,5 @@
 ---
-import WSClient from "@components/websocket/Client";
+import WebSocketClient from "@components/websocket/Client";
 import BaseLayout from "@layouts/BaseLayout.astro";
 
 import en from "@locales/en.json";
@@ -17,5 +17,13 @@ const locale = Astro.currentLocale;
   canonical={canonical}
   locale={locale}
 >
-  <WSClient client:only="react" />
+  <WebSocketClient client:only="react" className="client" />
 </BaseLayout>
+
+<style>
+  .client {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3rem 0;
+  }
+</style>
