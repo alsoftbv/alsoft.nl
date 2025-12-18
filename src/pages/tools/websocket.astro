@@ -17,10 +17,16 @@ const locale = Astro.currentLocale;
   canonical={canonical}
   locale={locale}
 >
-  <WebSocketClient client:only="react" className="client" />
+  <div class="background">
+    <WebSocketClient client:only="react" className="client" />
+  </div>
 </BaseLayout>
 
 <style>
+  .background {
+    background: #202020;
+  }
+
   .client {
     max-width: 960px;
     margin: 0 auto;
