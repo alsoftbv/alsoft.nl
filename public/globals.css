@@ -60,7 +60,7 @@ p {
   line-height: 1.6;
 }
 
-.button-base {
+button {
   display: inline-block;
   background: #ff9100;
   padding: 0.75em 1.5em;
@@ -73,7 +73,28 @@ p {
   transition: background 0.2s ease, transform 0.1s ease;
 }
 
-.button-base:hover {
+button:hover {
   background: #ffa733;
   transform: translateY(-2px);
+}
+
+input,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #3f3f3f;
+  font: inherit;
+  outline: none;
+  resize: none;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+  filter: brightness(1.2);
+  box-shadow: 0 0 0 2px #ff9100;
 }

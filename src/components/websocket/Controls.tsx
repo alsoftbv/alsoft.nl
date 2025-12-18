@@ -24,12 +24,8 @@ export default function WSControls({
         placeholder="wss://example.com"
         style={{ width: "70%" }}
       />
-      <button className="button-base" onClick={() => connect(url)}>
-        Connect
-      </button>
-      <button className="button-base" onClick={disconnect}>
-        Disconnect
-      </button>
+      <button onClick={() => connect(url)}>Connect</button>
+      <button onClick={disconnect}>Disconnect</button>
 
       <div style={{ marginTop: 8 }}>
         <input
@@ -46,7 +42,6 @@ export default function WSControls({
           <option value="binary">Binary</option>
         </select>
         <button
-          className="button-base"
           onClick={() => {
             sendMessage(input, type);
             setInput("");
