@@ -1,9 +1,17 @@
 import { getCollection } from "astro:content";
 import { OGImageRoute } from "astro-og-canvas";
+import { tools } from "@data/tools";
 
 const posts = await getCollection("blog");
 
-const pages = Object.fromEntries(posts.map(({ slug, data }) => [slug, data]));
+const blogPages = Object.fromEntries(
+  posts.map(({ slug, data }) => [slug, data])
+);
+
+const pages = {
+  ...blogPages,
+  ...tools,
+};
 
 export const { getStaticPaths, GET } = OGImageRoute({
   param: "route",

@@ -1,8 +1,21 @@
 ---
 import WSClient from "@components/websocket/Client";
 import BaseLayout from "@layouts/BaseLayout.astro";
+
+import en from "@locales/en.json";
+
+const t = en;
+const canonical = `${Astro.url.href}`;
+const ogImage = `${Astro.url.origin}/og${Astro.url.pathname}`;
+const locale = Astro.currentLocale;
 ---
 
-<BaseLayout>
+<BaseLayout
+  title={t.websocket.title}
+  description={t.websocket.description}
+  image={ogImage}
+  canonical={canonical}
+  locale={locale}
+>
   <WSClient client:only="react" />
 </BaseLayout>
