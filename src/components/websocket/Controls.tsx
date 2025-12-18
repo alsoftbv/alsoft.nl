@@ -1,13 +1,16 @@
 import { useState } from "react";
-import type { MessageType } from "./Client";
+import type { MessageType } from "@components/websocket/Client";
+import Status from "@components/websocket/Status";
 
 type Props = {
+  status: string;
   connect: (url: string) => void;
   disconnect: () => void;
   sendMessage: (msg: string, type: MessageType) => void;
 };
 
-export default function WSControls({
+export default function Controls({
+  status,
   connect,
   disconnect,
   sendMessage,
@@ -16,23 +19,65 @@ export default function WSControls({
   const [input, setInput] = useState("");
   const [type, setType] = useState<MessageType>("text");
 
-  return (
-    <div>
-      <input
-        value={url}
-        onChange={(e) => setUrl(e.target.value)}
-        placeholder="wss://example.com"
-        style={{ width: "70%" }}
-      />
-      <button onClick={() => connect(url)}>Connect</button>
-      <button onClick={disconnect}>Disconnect</button>
+  const toggleConnection = () => {
+    if (status === "connected") {
+      disconnect();
+    } else {
+      connect(url);
+    }
+  };
 
-      <div style={{ marginTop: 8 }}>
+  return (
+    <>
+      <section
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          gap: "0.5rem",
+        }}
+      >
+        <input
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          placeholder="wss://example.com"
+          style={{
+            flex: 1,
+            minWidth: 0,
+          }}
+        />
+
+        <button
+          onClick={toggleConnection}
+          style={{
+            display: "flex",
+            alignItems: "start",
+            gap: "0.5rem",
+            paddingLeft: "0.8rem",
+          }}
+        >
+          <Status status={status} />
+          {status === "connected" ? "Disconnect" : "Connect"}
+        </button>
+      </section>
+
+      <section
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          gap: "0.5rem",
+          margin: "1rem 0",
+        }}
+      >
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Message"
-          style={{ width: "70%" }}
+          style={{
+            flex: 1,
+            minWidth: 0,
+          }}
         />
         <select
           value={type}
@@ -46,10 +91,11 @@ export default function WSControls({
             sendMessage(input, type);
             setInput("");
           }}
+          disabled={status !== "connected"}
         >
           Send
         </button>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
