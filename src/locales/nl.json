@@ -97,6 +97,7 @@
     "getBack": "Bedankt! We nemen binnen één werkdag contact met uw op."
   },
   "websocket": {
+    "client": "WebSocket-client",
     "title": "Online WebSocket-client",
     "description": "Online WebSocket-client om realtime API’s te testen. Verzend tekst- of binaire berichten, bekijk hex-uitvoer en inspecteer live WebSocket-verkeer rechtstreeks in je browser."
   }

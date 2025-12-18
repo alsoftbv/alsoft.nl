@@ -1,8 +1,11 @@
 import { useState, useRef, type HTMLAttributes } from "react";
-import WSControls from "./Controls";
-import WSMessageList from "./MessageList";
-import WSStatus from "./Status";
-import { createMessage, formatMessage, type Message } from "./Message";
+import Controls from "@components/websocket/Controls";
+import MessageList from "@components/websocket/MessageList";
+import {
+  createMessage,
+  formatMessage,
+  type Message,
+} from "@components/websocket/Message";
 
 export type MessageType = "text" | "binary";
 
@@ -16,19 +19,18 @@ export default function WSClient(props: HTMLAttributes<HTMLDivElement>) {
     socketRef.current = new WebSocket(url);
 
     socketRef.current.onopen = () => setStatus("connected");
-    socketRef.current.onclose = () => setStatus("disconnected");
-    socketRef.current.onerror = () => setStatus("error");
+
+    socketRef.current.onclose = () => {
+      setStatus("disconnected");
+    };
+
+    socketRef.current.onerror = () => {
+      setStatus("error");
+    };
 
     socketRef.current.onmessage = async (e) => {
       const msg: Message = await createMessage(e);
       setMessages((prev) => [...prev, formatMessage(msg)]);
-
-      if (messagesRef.current) {
-        const el = messagesRef.current;
-        if (el.scrollTop + el.clientHeight >= el.scrollHeight - 10) {
-          el.scrollTop = el.scrollHeight;
-        }
-      }
     };
   };
 
@@ -47,13 +49,13 @@ export default function WSClient(props: HTMLAttributes<HTMLDivElement>) {
 
   return (
     <div {...props}>
-      <WSControls
+      <Controls
+        status={status}
         connect={connect}
         disconnect={disconnect}
         sendMessage={sendMessage}
       />
-      <WSStatus status={status} />
-      <WSMessageList messages={messages} ref={messagesRef} />
+      <MessageList messages={messages} ref={messagesRef} />
     </div>
   );
 }

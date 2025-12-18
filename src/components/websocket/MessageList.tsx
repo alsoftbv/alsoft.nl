@@ -1,19 +1,20 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 type Props = {
   messages: string[];
 };
 
-const WSMessageList = forwardRef<HTMLUListElement, Props>(({ messages }, ref) => (
+const MessageList = forwardRef<HTMLUListElement, Props>(({ messages }, ref) => (
   <ul
     ref={ref}
     style={{
-      height: 300,
+      height: "400px",
       overflowY: "auto",
-      border: "1px solid #ccc",
-      padding: 8,
+      border: "1px solid #3f3f3f",
+      borderRadius: "8px",
+      padding: "1rem",
       listStyle: "none",
-      marginTop: 8,
+      marginTop: "1rem",
     }}
   >
     {messages.map((msg, i) => (
@@ -24,4 +25,4 @@ const WSMessageList = forwardRef<HTMLUListElement, Props>(({ messages }, ref) =>
   </ul>
 ));
 
-export default WSMessageList;
+export default MessageList;

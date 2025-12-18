@@ -97,6 +97,7 @@
     "getBack": "Thanks! We will get back to you within one business day."
   },
   "websocket": {
+    "client": "WebSocket Client",
     "title": "Online WebSocket Client",
     "description": "Online WebSocket client to test real-time APIs. Send text or binary messages, view hex output, and inspect live WebSocket traffic in your browser."
   }
