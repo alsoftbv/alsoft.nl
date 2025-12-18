@@ -3,7 +3,9 @@ import { getCollection, render } from "astro:content";
 import BlogLayout from "@layouts/BlogLayout.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = (await getCollection("blog")).filter((post) =>
+    post.slug.startsWith("nl/")
+  );
   return posts.map((post) => ({
     params: { slug: post.slug.slice(3) },
     props: {
