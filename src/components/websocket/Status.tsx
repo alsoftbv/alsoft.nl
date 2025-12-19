@@ -12,9 +12,6 @@ export default function Status({ status }: Props) {
     case "error":
       color = "red";
       break;
-    case "warning":
-      color = "yellow";
-      break;
     default:
       color = "transparent";
   }
