@@ -128,7 +128,12 @@ export default function WSClient(props: HTMLAttributes<HTMLDivElement>) {
 
   useEffect(() => {
     if (messagesRef.current) {
-      messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+      if (
+        messagesRef.current.scrollTop + messagesRef.current.clientHeight >
+        messagesRef.current.scrollHeight - 100
+      ) {
+        messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+      }
     }
   }, [messages]);
 
