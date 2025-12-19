@@ -12,7 +12,7 @@ export default function Status({ status }: Props) {
     case "error":
       color = "red";
       break;
-    case "hostname not found":
+    case "warning":
       color = "yellow";
       break;
     default:
