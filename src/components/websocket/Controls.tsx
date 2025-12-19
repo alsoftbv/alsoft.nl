@@ -35,6 +35,15 @@ export default function Controls({
     }
   };
 
+  const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    switch (e.key) {
+      case "Enter":
+        e.preventDefault();
+        sendMessage(input, type, binaryFormat);
+        break;
+    }
+  };
+
   return (
     <>
       <section
@@ -84,6 +93,7 @@ export default function Controls({
           type={type}
           binaryFormat={binaryFormat}
           onValidityChange={setIsValid}
+          onKey={onKeyPress}
           style={{
             flex: 1,
             minWidth: 0,
