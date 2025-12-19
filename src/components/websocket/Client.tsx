@@ -11,7 +11,11 @@ import {
 
 export type BinaryFormat = "hex" | "utf8" | "base64";
 
-export default function WSClient(props: HTMLAttributes<HTMLDivElement>) {
+type Props = {
+  lang: "en" | "nl";
+} & HTMLAttributes<HTMLDivElement>;
+
+export default function WebSocketClient({ lang, ...props }: Props) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [status, setStatus] = useState("disconnected");
   const socketRef = useRef<WebSocket | null>(null);
@@ -45,6 +49,8 @@ export default function WSClient(props: HTMLAttributes<HTMLDivElement>) {
   };
 
   const disconnect = () => socketRef.current?.close();
+
+  const clear = () => setMessages([]);
 
   const sendMessage = (
     msg: string,
@@ -141,8 +147,10 @@ export default function WSClient(props: HTMLAttributes<HTMLDivElement>) {
     <div {...props}>
       <Controls
         status={status}
+        lang={lang}
         connect={connect}
         disconnect={disconnect}
+        clear={clear}
         sendMessage={sendMessage}
       />
       <MessageList messages={messages} ref={messagesRef} />

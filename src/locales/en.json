@@ -99,6 +99,11 @@
   "websocket": {
     "client": "WebSocket Client",
     "title": "Online WebSocket Client",
-    "description": "Online WebSocket client to test real-time APIs. Send text or binary messages, view hex output, and inspect live WebSocket traffic in your browser."
+    "description": "Online WebSocket client to test real-time APIs. Send text or binary messages, view hex output, and inspect live WebSocket traffic in your browser.",
+    "send": "Send",
+    "connect": "Connect",
+    "disconnect": "Disconnect",
+    "message": "Message",
+    "clear": "Clear"
   }
 }

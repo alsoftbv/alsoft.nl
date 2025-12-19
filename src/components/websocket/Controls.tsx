@@ -3,11 +3,15 @@ import type { BinaryFormat } from "@components/websocket/Client";
 import Status from "@components/websocket/Status";
 import MessageInput from "@components/websocket/MessageInput";
 import type { MessageType } from "@components/websocket/Message";
+import en from "@locales/en.json";
+import nl from "@locales/nl.json";
 
 type Props = {
   status: string;
+  lang: "en" | "nl";
   connect: (url: string) => void;
   disconnect: () => void;
+  clear: () => void;
   sendMessage: (
     msg: string,
     type: MessageType,
@@ -17,8 +21,10 @@ type Props = {
 
 export default function Controls({
   status,
+  lang,
   connect,
   disconnect,
+  clear,
   sendMessage,
 }: Props) {
   const [url, setUrl] = useState("");
@@ -26,6 +32,7 @@ export default function Controls({
   const [type, setType] = useState<MessageType>("text");
   const [binaryFormat, setBinaryFormat] = useState<BinaryFormat>("hex");
   const [isValid, setIsValid] = useState(true);
+  const t = lang === "en" ? en : nl;
 
   const toggleConnection = () => {
     if (status === "connected") {
@@ -74,8 +81,12 @@ export default function Controls({
           }}
         >
           <Status status={status} />
-          {status === "connected" ? "Disconnect" : "Connect"}
+          {status === "connected"
+            ? t.websocket.disconnect
+            : t.websocket.connect}
         </button>
+
+        <button onClick={clear}>{t.websocket.clear}</button>
       </section>
 
       <section
@@ -89,6 +100,7 @@ export default function Controls({
       >
         <MessageInput
           value={input}
+          lang={lang}
           onValueChange={setInput}
           type={type}
           binaryFormat={binaryFormat}
@@ -125,7 +137,7 @@ export default function Controls({
           }}
           disabled={status !== "connected" || !isValid}
         >
-          Send
+          {t.websocket.send}
         </button>
       </section>
     </>

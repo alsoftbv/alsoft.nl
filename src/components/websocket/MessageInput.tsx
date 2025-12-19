@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import type { BinaryFormat } from "@components/websocket/Client";
 import type { MessageType } from "@components/websocket/Message";
+import en from "@locales/en.json";
+import nl from "@locales/nl.json";
 
 type Props = {
   value: string;
+  lang: "en" | "nl";
   onValueChange: (value: string) => void;
   type: MessageType;
   binaryFormat: BinaryFormat;
@@ -13,6 +16,7 @@ type Props = {
 
 export default function MessageInput({
   value,
+  lang,
   onValueChange,
   type,
   binaryFormat,
@@ -20,7 +24,8 @@ export default function MessageInput({
   onKey,
   style,
 }: Props) {
-  let placeholder = "Message";
+  const t = lang === "en" ? en : nl;
+  let placeholder = t.websocket.message;
   let valid = true;
 
   if (type === "binary") {
@@ -40,7 +45,7 @@ export default function MessageInput({
         break;
 
       case "utf8":
-        placeholder = "Message";
+        placeholder = t.websocket.message;
         valid = true;
         break;
     }
