@@ -27,6 +27,46 @@ const MessageList = forwardRef<HTMLUListElement, Props>(({ messages }, ref) => (
         minute: "2-digit",
       });
 
+      if (msg.type === "status") {
+        return (
+          <li
+            key={i}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              margin: "0.5rem 0",
+            }}
+          >
+            <div
+              style={{
+                flex: 1,
+                height: "1px",
+                backgroundColor: "#3f3f3f",
+                margin: "0 1rem",
+              }}
+            />
+            <span
+              style={{
+                fontSize: "0.75rem",
+                color: "#999",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {msg.text}
+            </span>
+            <div
+              style={{
+                flex: 1,
+                height: "1px",
+                backgroundColor: "#3f3f3f",
+                margin: "0 1rem",
+              }}
+            />
+          </li>
+        );
+      }
+
       return (
         <li
           key={i}

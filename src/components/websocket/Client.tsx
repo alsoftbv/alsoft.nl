@@ -8,6 +8,8 @@ import {
   type Message,
   type MessageType,
 } from "@components/websocket/Message";
+import en from "@locales/en.json";
+import nl from "@locales/nl.json";
 
 export type BinaryFormat = "hex" | "utf8" | "base64";
 
@@ -20,14 +22,35 @@ export default function WebSocketClient({ lang, ...props }: Props) {
   const [status, setStatus] = useState("disconnected");
   const socketRef = useRef<WebSocket | null>(null);
   const messagesRef = useRef<HTMLUListElement>(null);
+  const t = lang === "en" ? en : nl;
 
   const connect = (url: string) => {
     socketRef.current = new WebSocket(url);
 
-    socketRef.current.onopen = () => setStatus("connected");
+    socketRef.current.onopen = () => {
+      setStatus("connected");
+      setMessages((prev) => [
+        ...prev,
+        {
+          text: `${t.websocket.connected} ${socketRef.current?.url}`,
+          type: "status",
+          messageType: "text",
+          timestamp: new Date(),
+        },
+      ]);
+    };
 
     socketRef.current.onclose = () => {
       setStatus("disconnected");
+      setMessages((prev) => [
+        ...prev,
+        {
+          text: `${t.websocket.disconnected} ${socketRef.current?.url}`,
+          type: "status",
+          messageType: "text",
+          timestamp: new Date(),
+        },
+      ]);
     };
 
     socketRef.current.onerror = () => {

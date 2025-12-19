@@ -8,7 +8,7 @@ export interface Message {
 
 export interface ChatMessage {
   text: string;
-  type: "sent" | "received";
+  type: "sent" | "received" | "status";
   messageType: "text" | "binary";
   timestamp: Date;
 }

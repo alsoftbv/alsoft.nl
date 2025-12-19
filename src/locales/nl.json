@@ -104,6 +104,8 @@
     "connect": "Verbind",
     "disconnect": "Verbreek",
     "message": "Bericht",
-    "clear": "Wissen"
+    "clear": "Wissen",
+    "disconnected": "Verbroken verbinding met",
+    "connected": "Verbonden met"
   }
 }

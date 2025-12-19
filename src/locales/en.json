@@ -104,6 +104,8 @@
     "connect": "Connect",
     "disconnect": "Disconnect",
     "message": "Message",
-    "clear": "Clear"
+    "clear": "Clear",
+    "disconnected": "Disconnected from",
+    "connected": "Connected to"
   }
 }
