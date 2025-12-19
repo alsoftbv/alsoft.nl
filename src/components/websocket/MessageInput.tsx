@@ -8,6 +8,7 @@ type Props = {
   type: MessageType;
   binaryFormat: BinaryFormat;
   onValidityChange?: (valid: boolean) => void;
+  onKey: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export default function MessageInput({
@@ -16,6 +17,7 @@ export default function MessageInput({
   type,
   binaryFormat,
   onValidityChange,
+  onKey,
   style,
 }: Props) {
   let placeholder = "Message";
@@ -53,6 +55,9 @@ export default function MessageInput({
       value={value}
       onChange={(e) => {
         onValueChange(e.target.value);
+      }}
+      onKeyDown={(e) => {
+        onKey(e);
       }}
       placeholder={placeholder}
       style={{
