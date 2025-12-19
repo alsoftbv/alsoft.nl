@@ -6,6 +6,13 @@ export interface Message {
   timestamp: Date;
 }
 
+export interface ChatMessage {
+  text: string;
+  type: "sent" | "received";
+  messageType: "text" | "binary";
+  timestamp: Date;
+}
+
 export async function createMessage(event: MessageEvent): Promise<Message> {
   let content: string;
   const type: MessageType = typeof event.data === "string" ? "text" : "binary";
@@ -20,9 +27,7 @@ export async function createMessage(event: MessageEvent): Promise<Message> {
       buffer = event.data;
     }
     const bytes = new Uint8Array(buffer);
-    content = Array.from(bytes)
-      .map((b) => b.toString(16).padStart(2, "0"))
-      .join(" ");
+    content = formatMessage(bytes);
   }
 
   return {
@@ -32,7 +37,8 @@ export async function createMessage(event: MessageEvent): Promise<Message> {
   };
 }
 
-export function formatMessage(message: Message): string {
-  const time = message.timestamp.toLocaleTimeString();
-  return `[${time}] [${message.type}] ${message.content}`;
+export function formatMessage(message: Uint8Array): string {
+  return Array.from(message)
+    .map((b) => b.toString(16).padStart(2, "0").toUpperCase())
+    .join(" ");
 }
