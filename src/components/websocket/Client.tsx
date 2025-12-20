@@ -1,4 +1,4 @@
-import { useState, useRef, type HTMLAttributes, useEffect } from "react";
+import { useState, useRef, type HTMLAttributes } from "react";
 import Controls from "@components/websocket/Controls";
 import MessageList from "@components/websocket/MessageList";
 import {
@@ -20,8 +20,7 @@ type Props = {
 export default function WebSocketClient({ lang, ...props }: Props) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [status, setStatus] = useState("disconnected");
-  const socketRef = useRef<WebSocket | null>(null);
-  const messagesRef = useRef<HTMLUListElement>(null);
+  const socketRef = useRef<WebSocket>(null);
   const t = lang === "en" ? en : nl;
 
   const connect = (url: string) => {
@@ -155,17 +154,6 @@ export default function WebSocketClient({ lang, ...props }: Props) {
     }
   };
 
-  useEffect(() => {
-    if (messagesRef.current) {
-      if (
-        messagesRef.current.scrollTop + messagesRef.current.clientHeight >
-        messagesRef.current.scrollHeight - 100
-      ) {
-        messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
-      }
-    }
-  }, [messages]);
-
   return (
     <div {...props}>
       <Controls
@@ -176,7 +164,7 @@ export default function WebSocketClient({ lang, ...props }: Props) {
         clear={clear}
         sendMessage={sendMessage}
       />
-      <MessageList messages={messages} ref={messagesRef} />
+      <MessageList messages={messages} />
     </div>
   );
 }
