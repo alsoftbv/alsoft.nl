@@ -52,9 +52,12 @@ const t = Astro.currentLocale === "nl" ? nl : en;
     </div>
 
     <div class="footer-right">
-      <a href={getRelativeLocaleUrl(locale, "/services")}>{t.services}</a>
-      <a href={getRelativeLocaleUrl(locale, "/industries")}>{t.industries}</a>
-      <span></span>
+      <a href={getRelativeLocaleUrl(locale, "/services")}>{t.services.header}</a
+      >
+      <a href={getRelativeLocaleUrl(locale, "/industries")}
+        >{t.industries.header}</a
+      >
+      <a href={getRelativeLocaleUrl(locale, "/tools")}>{t.tools.header}</a>
       <span></span>
       <Button
         href={getRelativeLocaleUrl(Astro.currentLocale ?? "en", "/contact")}
