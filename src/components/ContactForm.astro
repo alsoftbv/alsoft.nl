@@ -6,6 +6,7 @@ import logoImage from "@images/logo.png";
 
 import en from "@locales/en.json";
 import nl from "@locales/nl.json";
+import Card from "./Card.astro";
 
 const locale = Astro.currentLocale ?? "en";
 const t = locale === "nl" ? nl : en;
@@ -14,7 +15,7 @@ const contactText =
 ---
 
 <section class="contact-section">
-  <div class="content">
+  <Card class="content">
     <div class="contact-form">
       <h2>{t.contact.yourName}</h2>
       <input type="text" />
@@ -28,12 +29,12 @@ const contactText =
     <div class="contact-image">
       <Image src={logoImage} alt="Logo" loading="eager" />
     </div>
-  </div>
+  </Card>
 </section>
 
 <style>
   .contact-section {
-    background: #202020;
+    padding: 1.5rem 1rem;
   }
 
   .content {
@@ -102,11 +103,16 @@ const contactText =
     }
 
     .contact-section {
-      padding: 1.5rem 0;
+      padding: 0.5rem;
     }
 
     .contact-image {
       display: none;
+    }
+
+    .contact-form textarea {
+      min-height: 12rem;
+      margin-bottom: 2rem;
     }
   }
 </style>

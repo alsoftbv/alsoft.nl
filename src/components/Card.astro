@@ -1,0 +1,24 @@
+---
+const { class: className = "", id } = Astro.props;
+---
+
+<div class={`card ${className}`} id={id}>
+  <slot />
+</div>
+
+<style>
+  .card {
+    padding: 2rem;
+    gap: 2rem;
+    border-radius: 8px;
+    background: #202020;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 768px) {
+    .card {
+      gap: 1rem;
+      padding: 1rem;
+    }
+  }
+</style>

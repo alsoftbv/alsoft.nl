@@ -7,6 +7,7 @@ import Button from "@components/Button.astro";
 import type { CardItem } from "@data/card-item";
 import en from "@locales/en.json";
 import nl from "@locales/nl.json";
+import Card from "@components/Card.astro";
 
 const { pageTitle, data } = Astro.props;
 const t = Astro.currentLocale === "nl" ? nl : en;
@@ -20,7 +21,7 @@ const t = Astro.currentLocale === "nl" ? nl : en;
         const translated = t.cards[item.id as keyof typeof t.cards];
 
         return (
-          <div
+          <Card
             class={`content-wrapper ${index % 2 !== 0 ? "reverse" : ""}`}
             id={item.id}
           >
@@ -46,7 +47,7 @@ const t = Astro.currentLocale === "nl" ? nl : en;
                 {t.getInTouch}
               </Button>
             </div>
-          </div>
+          </Card>
         );
       })
     }
@@ -68,10 +69,6 @@ const t = Astro.currentLocale === "nl" ? nl : en;
   .content-wrapper {
     display: flex;
     align-items: center;
-    padding: 2rem;
-    gap: 2rem;
-    border-radius: 8px;
-    background: #202020;
     scroll-margin-top: 5rem;
   }
 
