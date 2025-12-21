@@ -9,11 +9,18 @@ import en from "@locales/en.json";
 import nl from "@locales/nl.json";
 import Card from "@components/Card.astro";
 
-const { pageTitle, data } = Astro.props;
+interface Props {
+  pageTitle: string;
+  data: CardItem[];
+  title: string;
+  description: string;
+}
+
+const { pageTitle = "test", data, title, description }: Props = Astro.props;
 const t = Astro.currentLocale === "nl" ? nl : en;
 ---
 
-<BaseLayout>
+<BaseLayout title={title} description={description}>
   <Header>{pageTitle}</Header>
   <section class="content-section">
     {

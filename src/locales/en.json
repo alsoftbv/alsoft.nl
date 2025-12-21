@@ -46,8 +46,6 @@
   "ctaHeader": "Let’s talk about your device.",
   "ctaText": "Whether you’re launching something new or improving what you already have, I’d love to hear what you’re building.",
   "ctaButton": "Start a conversation",
-  "services": "Services",
-  "industries": "Industries",
   "ourServices": "Our Services",
   "industriesWeWork": "Industries We Work With",
   "cards": {
@@ -107,5 +105,20 @@
     "clear": "Clear",
     "disconnected": "Disconnected from",
     "connected": "Connected to"
+  },
+  "services": {
+    "header": "Services",
+    "title": "Embedded Software Services for Firmware Development",
+    "description": "Offering professional services in RTOS, Linux, and IoT development, including firmware design, debugging, and custom embedded solutions."
+  },
+  "industries": {
+    "header": "Industries",
+    "title": "Embedded Software Expertise Across Industries",
+    "description": "We provide embedded software solutions for fintech, manufacturing, defense, and automotive sectors, delivering reliable firmware and system integration."
+  },
+  "tools": {
+    "header": "Tools",
+    "title": "Embedded Software Tools for Firmware Engineers",
+    "description": "A collection of web-based tools for embedded and firmware development, including CRC calculators, protocol utilities, and debugging helpers."
   }
 }

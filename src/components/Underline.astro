@@ -1,0 +1,18 @@
+---
+const { class: className = "", thickness = "0.5rem" } = Astro.props;
+---
+
+<strong class={`underline ${className}`}>
+  <slot />
+</strong>
+
+<style define:vars={{ thickness: thickness }}>
+  .underline {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: rgba(255, 145, 0, 0.5);
+    text-decoration-thickness: var(--thickness);
+    text-decoration-skip-ink: none;
+    text-underline-offset: -0.2rem;
+  }
+</style>

@@ -46,8 +46,16 @@
   "ctaHeader": "Laten we praten over uw apparaat.",
   "ctaText": "Of u nu iets nieuws lanceert of iets bestaands verbetert, ik hoor graag wat u aan het bouwen bent.",
   "ctaButton": "Begin een gesprek",
-  "services": "Diensten",
-  "industries": "Sectoren",
+  "services": {
+    "header": "Diensten",
+    "title": "Embedded softwarediensten voor firmwareontwikkeling",
+    "description": "Wij bieden professionele diensten op het gebied van RTOS, Linux en IoT, inclusief firmwareontwerp, debugging en maatwerk embedded oplossingen."
+  },
+  "industries": {
+    "header": "Sectoren",
+    "title": "Expertise in embedded software voor diverse sectoren",
+    "description": "Wij leveren embedded softwareoplossingen voor fintech, productie, defensie en automotive, met betrouwbare firmware en systeemintegratie."
+  },
   "ourServices": "Onze Diensten",
   "industriesWeWork": "Sectoren Waarmee We Werken",
   "cards": {
@@ -107,5 +115,10 @@
     "clear": "Wissen",
     "disconnected": "Verbroken verbinding met",
     "connected": "Verbonden met"
+  },
+  "tools": {
+    "header": "Tools",
+    "title": "Embedded softwaretools voor firmware-ontwikkelaars",
+    "description": "Een verzameling webgebaseerde tools voor embedded- en firmwareontwikkeling, zoals CRC-calculators, protocoltools en hulpmiddelen voor debugging."
   }
 }

@@ -1,0 +1,46 @@
+---
+import Card from "@components/Card.astro";
+import Header from "@components/Header.astro";
+import Underline from "@components/Underline.astro";
+import { tools } from "@data/tools";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+import nl from "@locales/nl.json";
+
+const t = nl;
+const toolList = Object.entries(tools)
+  .filter(([path]) => path.includes("nl"))
+  .map(([path, tool]) => ({ path: `/${path}`, tool }));
+---
+
+<BaseLayout
+  title={t.tools.title}
+  description={t.tools.description}
+  canonical="https://alsoft.nl/tools"
+  locale="en"
+>
+  <Header>{t.tools.header}</Header>
+  {
+    toolList.map(({ path, tool }) => (
+      <Card class="card">
+        <h1>
+          <a href={path}>
+            <Underline>{tool.title}</Underline>
+          </a>
+        </h1>
+        <p>{tool.description}</p>
+      </Card>
+    ))
+  }
+</BaseLayout>
+
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  .card {
+    max-width: 960px;
+    margin: 2rem auto;
+  }
+</style>

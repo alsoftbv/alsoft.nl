@@ -24,6 +24,7 @@ import checkIcon from "@images/index/icons/check.svg";
 import adjustmentIcon from "@images/index/icons/adjustment.svg";
 import Carousel from "@components/Carousel.astro";
 import en from "@locales/en.json";
+import Underline from "@components/Underline.astro";
 
 const carouselImages = [
   { src: valinso, href: "https://valinso.nl", name: "Valinso" },
@@ -90,7 +91,7 @@ const t = en;
   <section class="problems">
     <h2>{t.problemsHeader}</h2>
     <p>{t.problemsText}</p>
-    <strong class="underline">{t.problemsHighlight}</strong>
+    <Underline>{t.problemsHighlight}</Underline>
   </section>
 
   <section class="solution">
@@ -162,7 +163,7 @@ const t = en;
   <section class="more-proof">
     <h2>{t.moreProofHeader}</h2>
     <Carousel images={carouselImages} />
-    <p class="proof-text underline">{t.moreProofSubtext}</p>
+    <Underline class="proof-text">{t.moreProofSubtext}</Underline>
   </section>
 
   <section class="about">
@@ -237,15 +238,6 @@ const t = en;
     border-radius: 8px;
   }
 
-  .underline {
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-color: rgba(255, 145, 0, 0.5);
-    text-decoration-thickness: 0.5rem;
-    text-decoration-skip-ink: none;
-    text-underline-offset: -0.2rem;
-  }
-
   .solution-tease {
     display: flex;
     flex-wrap: wrap;
@@ -301,6 +293,9 @@ const t = en;
   .proof-text {
     font-size: 0.9em;
     text-align: center;
+    display: block;
+    margin-top: 1rem;
+    font-weight: normal;
   }
 
   .about {
