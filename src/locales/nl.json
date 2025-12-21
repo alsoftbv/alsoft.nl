@@ -46,16 +46,6 @@
   "ctaHeader": "Laten we praten over uw apparaat.",
   "ctaText": "Of u nu iets nieuws lanceert of iets bestaands verbetert, ik hoor graag wat u aan het bouwen bent.",
   "ctaButton": "Begin een gesprek",
-  "services": {
-    "header": "Diensten",
-    "title": "Embedded softwarediensten voor firmwareontwikkeling",
-    "description": "Wij bieden professionele diensten op het gebied van RTOS, Linux en IoT, inclusief firmwareontwerp, debugging en maatwerk embedded oplossingen."
-  },
-  "industries": {
-    "header": "Sectoren",
-    "title": "Expertise in embedded software voor diverse sectoren",
-    "description": "Wij leveren embedded softwareoplossingen voor fintech, productie, defensie en automotive, met betrouwbare firmware en systeemintegratie."
-  },
   "ourServices": "Onze Diensten",
   "industriesWeWork": "Sectoren Waarmee We Werken",
   "cards": {
@@ -115,6 +105,21 @@
     "clear": "Wissen",
     "disconnected": "Verbroken verbinding met",
     "connected": "Verbonden met"
+  },
+  "services": {
+    "header": "Diensten",
+    "title": "Embedded softwarediensten voor firmwareontwikkeling",
+    "description": "Wij bieden professionele diensten op het gebied van RTOS, Linux en IoT, inclusief firmwareontwerp, debugging en maatwerk embedded oplossingen."
+  },
+  "industries": {
+    "header": "Sectoren",
+    "title": "Expertise in embedded software voor diverse sectoren",
+    "description": "Wij leveren embedded softwareoplossingen voor fintech, productie, defensie en automotive, met betrouwbare firmware en systeemintegratie."
+  },
+  "blog": {
+    "header": "Blog",
+    "title": "Inzichten in Embedded Software en Firmware Engineering",
+    "description": "Artikelen en tutorials over embedded systemen, RTOS, Linux, IoT en best practices voor firmwareontwikkeling, met praktische inzichten uit echte projecten."
   },
   "tools": {
     "header": "Tools",

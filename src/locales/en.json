@@ -116,6 +116,11 @@
     "title": "Embedded Software Expertise Across Industries",
     "description": "We provide embedded software solutions for fintech, manufacturing, defense, and automotive sectors, delivering reliable firmware and system integration."
   },
+  "blog": {
+    "header": "Blog",
+    "title": "Insights on Embedded Software and Firmware Engineering",
+    "description": "Articles and tutorials covering embedded systems, RTOS, Linux, IoT, and firmware development best practices, with practical insights from real-world projects."
+  },
   "tools": {
     "header": "Tools",
     "title": "Embedded Software Tools for Firmware Engineers",

@@ -1,0 +1,55 @@
+---
+import Card from "@components/Card.astro";
+import Header from "@components/Header.astro";
+import Underline from "@components/Underline.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+import nl from "@locales/nl.json";
+
+const t = nl;
+const posts = (await getCollection("blog"))
+  .sort((a, b) => a.data.date.getUTCSeconds() - b.data.date.getUTCSeconds())
+  .filter((p) => p.slug.includes("nl"))
+  .map((p) => ({
+    ...p,
+    slug: `/${p.slug.replace("/", "/blog/")}`,
+  }));
+---
+
+<BaseLayout
+  title={t.blog.title}
+  description={t.blog.description}
+  canonical="https://alsoft.nl/blog"
+>
+  <Header>{t.blog.header}</Header>
+  {
+    posts.map((post) => (
+      <Card class="card">
+        <h1>
+          <a href={post.slug}>
+            <Underline>{post.data.title}</Underline>
+          </a>
+        </h1>
+        <p>{post.data.description}</p>
+      </Card>
+    ))
+  }
+</BaseLayout>
+
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  .card {
+    max-width: 960px;
+    margin: 2rem auto;
+  }
+
+  @media (max-width: 960px) {
+    .card {
+      margin: 1rem 0.5rem;
+    }
+  }
+</style>
