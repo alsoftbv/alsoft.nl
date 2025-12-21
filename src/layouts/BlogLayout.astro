@@ -3,7 +3,6 @@ import BaseLayout from "./BaseLayout.astro";
 const { data, slug, canonical } = Astro.props;
 
 const url = Astro.url.origin;
-const locale = Astro.currentLocale;
 ---
 
 <BaseLayout
@@ -11,7 +10,6 @@ const locale = Astro.currentLocale;
   description={data.description}
   image={`${url}/og/${slug}.png`}
   canonical={`${url}/${canonical}`}
-  locale={locale}
 >
   <div class="post-content">
     <h1 class="title">{data.title}</h1>
