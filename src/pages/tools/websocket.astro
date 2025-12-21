@@ -9,7 +9,7 @@ const t = en;
 ---
 
 <ToolLayout title={t.websocket.title} description={t.websocket.description}>
-  <Header title={t.websocket.client} />
+  <Header>{t.websocket.client}</Header>
   <div class="background">
     <WebSocketClient lang="en" client:only="react" className="client" />
   </div>

@@ -1,10 +1,8 @@
----
-const { title } = Astro.props;
----
-
 <section class="header">
   <div class="content">
-    <h1>{title}</h1>
+    <h1>
+      <slot />
+    </h1>
   </div>
 </section>
 
