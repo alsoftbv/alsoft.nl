@@ -33,7 +33,7 @@ const t = Astro.currentLocale === "nl" ? nl : en;
       </div>
       <div class="icon-text">
         <Image src={mailImage} alt="e-mail" loading="lazy" />
-        <a href="mailto:info@alsoft.nl?subject=Contact%20Form%20Submission"
+        <a href="mailto:info@alsoft.nl?subject=Get%20In%20Touch"
           >info@alsoft.nl</a
         >
       </div>
@@ -57,8 +57,8 @@ const t = Astro.currentLocale === "nl" ? nl : en;
       <a href={getRelativeLocaleUrl(locale, "/industries")}
         >{t.industries.header}</a
       >
+      <a href={getRelativeLocaleUrl(locale, "/blog")}>{t.blog.header}</a>
       <a href={getRelativeLocaleUrl(locale, "/tools")}>{t.tools.header}</a>
-      <span></span>
       <Button
         href={getRelativeLocaleUrl(Astro.currentLocale ?? "en", "/contact")}
         class="small-button">{t.getInTouch}</Button
