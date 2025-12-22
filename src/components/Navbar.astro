@@ -89,10 +89,15 @@ const links = [
       toggle.classList.toggle("active");
     });
 
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 768) {
-        navLinks.classList.remove("show", "active");
+    document.addEventListener("click", (e) => {
+      if (!(e.target instanceof Node)) {
+        return;
+      }
+
+      if (!toggle.contains(e.target) && !navLinks.contains(e.target)) {
         toggle.classList.remove("active");
+        navLinks.classList.remove("show");
+        navLinks.classList.remove("active");
       }
     });
   }
@@ -159,6 +164,7 @@ const links = [
     padding: 0;
     flex-grow: 1;
     transition: max-height 0.3s ease;
+    border-radius: 8px;
   }
 
   .nav-links a {
@@ -193,12 +199,11 @@ const links = [
       margin: 0;
       position: absolute;
       top: 4rem;
-      left: 0;
-      width: 100%;
+      right: 0;
       background: #000000;
       flex-direction: column;
       gap: 1.5rem;
-      align-items: center;
+      align-items: end;
       max-height: 0;
       overflow: hidden;
       visibility: hidden;
@@ -214,7 +219,7 @@ const links = [
       visibility: visible;
       opacity: 1;
       display: flex;
-      padding: 2rem 0;
+      padding: 2rem;
     }
 
     .nav-links.active {

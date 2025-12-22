@@ -210,6 +210,7 @@ const t = nl;
   h1,
   h2 {
     font-weight: 700;
+    margin-top: 0;
     margin-bottom: 1rem;
   }
 
@@ -219,7 +220,6 @@ const t = nl;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 2rem;
-    padding-top: 4rem;
   }
 
   .header-info {
@@ -235,15 +235,6 @@ const t = nl;
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-  }
-
-  .underline {
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-color: rgba(255, 145, 0, 0.5);
-    text-decoration-thickness: 0.5rem;
-    text-decoration-skip-ink: none;
-    text-underline-offset: -0.2rem;
   }
 
   .solution-tease {
@@ -301,6 +292,9 @@ const t = nl;
   .proof-text {
     font-size: 0.9em;
     text-align: center;
+    display: block;
+    margin-top: 1rem;
+    font-weight: normal;
   }
 
   .about {
