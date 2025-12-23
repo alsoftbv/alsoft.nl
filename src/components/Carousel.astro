@@ -1,8 +1,14 @@
 ---
 import { Image } from "astro:assets";
 
+export interface CarouselImage {
+  src: ImageMetadata;
+  href: string;
+  name: string;
+}
+
 interface Props {
-  images: { src: ImageMetadata; href: string; name: string }[];
+  images: CarouselImage[];
 }
 
 const { images } = Astro.props as Props;

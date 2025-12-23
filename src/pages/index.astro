@@ -15,6 +15,8 @@ import me from "@images/index/me.jpg";
 import iai from "@images/index/companies/iai.svg";
 import idd from "@images/index/companies/idd.png";
 import valinso from "@images/index/companies/valinso.svg";
+import renault from "@images/index/companies/renault.png";
+import sony from "@images/index/companies/sony.svg";
 
 import reliabilityIcon from "@images/index/icons/reliability.svg";
 import performanceIcon from "@images/index/icons/performance.svg";
@@ -22,11 +24,13 @@ import developmentIcon from "@images/index/icons/development.svg";
 import pencilIcon from "@images/index/icons/pencil.svg";
 import checkIcon from "@images/index/icons/check.svg";
 import adjustmentIcon from "@images/index/icons/adjustment.svg";
-import Carousel from "@components/Carousel.astro";
+import Carousel, { type CarouselImage } from "@components/Carousel.astro";
 import en from "@locales/en.json";
 import Underline from "@components/Underline.astro";
 
-const carouselImages = [
+const carouselImages: CarouselImage[] = [
+  { src: sony, href: "https://www.sony.com", name: "Sony" },
+  { src: renault, href: "https://www.renaultgroup.com", name: "Renault" },
   { src: valinso, href: "https://valinso.nl", name: "Valinso" },
   { src: idd, href: "https://idend.nl", name: "ID&D" },
   { src: iai, href: "https://iai.nl", name: "IAI" },
