@@ -81,8 +81,13 @@ export default function WebSocketClient({ lang, ...props }: Props) {
   ) => {
     const cleaned = normalize(msg, type, binaryFormat);
 
-    if (!socketRef.current || socketRef.current.readyState !== WebSocket.OPEN)
+    if (
+      cleaned.length === 0 ||
+      !socketRef.current ||
+      socketRef.current.readyState !== WebSocket.OPEN
+    ) {
       return;
+    }
 
     let message: string;
     if (type === "text") {
