@@ -9,8 +9,10 @@ import en from "@locales/en.json";
 
 const t = en;
 const posts = (await getCollection("blog"))
-  .sort((a, b) => a.data.date.getUTCSeconds() - b.data.date.getUTCSeconds())
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .filter((p) => !p.slug.includes("nl"));
+
+console.log(posts);
 ---
 
 <BaseLayout
