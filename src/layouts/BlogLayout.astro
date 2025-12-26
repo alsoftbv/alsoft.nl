@@ -31,23 +31,23 @@ const url = Astro.url.origin;
 <style is:inline>
   .post-content {
     max-width: 960px;
-    margin: 0 auto;
-    padding: 3rem 1.5rem;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
   }
 
   .post-content h1 {
     font-size: 2rem;
   }
+
   .post-content h1,
   .post-content h2 {
     font-weight: 700;
-    margin-top: 0;
-    margin-bottom: 1rem;
+    margin: 1.2rem 0 1rem 0;
   }
 
   .post-content h3 {
     font-weight: 600;
-    margin: 0.8rem 0;
+    margin: 1rem 0;
   }
 
   .post-content img {
@@ -93,6 +93,11 @@ const url = Astro.url.origin;
   }
 
   @media (max-width: 768px) {
+    .post-content {
+      margin: 2rem auto;
+      padding: 0 0.8rem;
+    }
+
     .post-content img {
       width: 100%;
       margin: 1rem 0 0 0;
