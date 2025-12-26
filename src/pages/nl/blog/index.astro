@@ -27,13 +27,11 @@ const posts = (await getCollection("blog"))
     posts.map((post) => (
       <Card class="card">
         <small>
-          {post.data.date
-            .toLocaleDateString("en-GB", {
-              day: "2-digit",
-              month: "2-digit",
-              year: "numeric",
-            })
-            .replace(/\//g, "-")}
+          {post.data.date.toLocaleDateString("nl-NL", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+          })}
         </small>
         <h1>
           <a href={post.slug}>
