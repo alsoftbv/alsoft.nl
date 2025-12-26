@@ -53,14 +53,13 @@ const url = Astro.url.origin;
   .post-content img {
     width: 60%;
     height: auto;
-    padding: 2rem 20% 0 20%;
+    margin: 2rem 20% 0 20%;
   }
 
   .post-content blockquote {
     text-align: center;
     font-style: italic;
-    margin: 0;
-    padding-bottom: 2rem;
+    margin: 0 0 2rem 0;
   }
 
   .post-content hr {
@@ -73,7 +72,11 @@ const url = Astro.url.origin;
   }
 
   .post-content p {
-    margin: 0;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .post-content ul {
+    margin: 0.8rem 0;
   }
 
   .post-content li {
@@ -92,11 +95,11 @@ const url = Astro.url.origin;
   @media (max-width: 768px) {
     .post-content img {
       width: 100%;
-      padding: 1rem 0 0 0;
+      margin: 1rem 0 0 0;
     }
 
     .post-content blockquote {
-      padding-bottom: 1rem;
+      margin-bottom: 1rem;
     }
   }
 </style>
