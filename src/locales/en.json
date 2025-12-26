@@ -118,7 +118,7 @@
   },
   "blog": {
     "header": "Blog",
-    "title": "Insights on Embedded Software and Firmware Engineering",
+    "title": "Insights on Embedded Software Engineering",
     "description": "Articles and tutorials covering embedded systems, RTOS, Linux, IoT, and firmware development best practices, with practical insights from real-world projects."
   },
   "tools": {
