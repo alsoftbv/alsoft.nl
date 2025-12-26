@@ -11,8 +11,6 @@ const t = en;
 const posts = (await getCollection("blog"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .filter((p) => !p.slug.includes("nl"));
-
-console.log(posts);
 ---
 
 <BaseLayout
@@ -24,6 +22,15 @@ console.log(posts);
   {
     posts.map((post) => (
       <Card class="card">
+        <small>
+          {post.data.date
+            .toLocaleDateString("en-GB", {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+            })
+            .replace(/\//g, "-")}
+        </small>
         <h1>
           <a href={post.slug}>
             <Underline>{post.data.title}</Underline>
@@ -38,6 +45,14 @@ console.log(posts);
 <style>
   a {
     text-decoration: none;
+  }
+
+  small {
+    color: #cfcfcf;
+  }
+
+  h1 {
+    margin: 0.6rem 0 1rem 0;
   }
 
   .card {
