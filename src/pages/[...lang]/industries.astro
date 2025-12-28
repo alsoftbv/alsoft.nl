@@ -1,9 +1,13 @@
 ---
 import { industries } from "@data/industries";
 import SectionsLayout from "@layouts/SectionsLayout.astro";
-import nl from "@locales/nl.json";
+import { i18nPaths, useTranslations } from "@locales/utils";
 
-const t = nl;
+export function getStaticPaths() {
+  return i18nPaths;
+}
+
+const t = useTranslations(Astro.params.lang);
 ---
 
 <SectionsLayout
