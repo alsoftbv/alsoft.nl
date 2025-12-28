@@ -1,3 +1,4 @@
+import { tools } from "@data/tools";
 import en from "@locales/en.json";
 import nl from "@locales/nl.json";
 import type { GetStaticPathsItem } from "astro";
@@ -15,6 +16,20 @@ export function useTranslations(lang: string | undefined | number) {
   return lang === "nl" ? nl : en;
 }
 
-export function getPath(lang: string, path: string): string {
-  return getRelativeLocaleUrl(lang === "nl" ? "nl" : "en", path);
+export function getPath(
+  lang: string | undefined | number,
+  path: string
+): string {
+  return getRelativeLocaleUrl(getLanguage(lang), path);
+}
+
+export function getLocalizedTools(lang: string | undefined | number) {
+  return Object.entries(tools)
+    .filter(([path]) => {
+      return lang === "nl" ? path.startsWith("nl/") : !path.startsWith("nl/");
+    })
+    .map(([path, tool]) => ({
+      path: `/${path}`,
+      tool,
+    }));
 }

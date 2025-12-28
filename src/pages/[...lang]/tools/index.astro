@@ -2,15 +2,20 @@
 import Card from "@components/Card.astro";
 import Header from "@components/Header.astro";
 import Underline from "@components/Underline.astro";
-import { tools } from "@data/tools";
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-import nl from "@locales/nl.json";
+import {
+  getLocalizedTools,
+  getTranslationPaths,
+  useTranslations,
+} from "@locales/utils";
 
-const t = nl;
-const toolList = Object.entries(tools)
-  .filter(([path]) => path.includes("nl"))
-  .map(([path, tool]) => ({ path: `/${path}`, tool }));
+export function getStaticPaths() {
+  return getTranslationPaths();
+}
+
+const t = useTranslations(Astro.params.lang);
+const toolList = getLocalizedTools(Astro.params.lang);
 ---
 
 <BaseLayout
