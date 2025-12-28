@@ -3,16 +3,24 @@ import Card from "@components/Card.astro";
 import Header from "@components/Header.astro";
 import WebSocketClient from "@components/websocket/Client";
 import ToolLayout from "@layouts/ToolLayout.astro";
+import {
+  getLanguage,
+  getTranslationPaths,
+  useTranslations,
+} from "@locales/utils";
 
-import nl from "@locales/nl.json";
+export function getStaticPaths() {
+  return getTranslationPaths();
+}
 
-const t = nl;
+const lang = getLanguage(Astro.params.lang);
+const t = useTranslations(lang);
 ---
 
 <ToolLayout title={t.websocket.title} description={t.websocket.description}>
   <Header>{t.websocket.client}</Header>
   <Card class="client">
-    <WebSocketClient lang="nl" client:only="react" />
+    <WebSocketClient lang={lang} client:only="react" />
   </Card>
 </ToolLayout>
 
