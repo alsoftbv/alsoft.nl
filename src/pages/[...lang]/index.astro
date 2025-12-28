@@ -26,7 +26,12 @@ import checkIcon from "@images/index/icons/check.svg";
 import adjustmentIcon from "@images/index/icons/adjustment.svg";
 import Carousel, { type CarouselImage } from "@components/Carousel.astro";
 import Underline from "@components/Underline.astro";
-import { getPath, getTranslationPaths, useTranslations } from "@locales/utils";
+import {
+  getLanguage,
+  getPath,
+  getTranslationPaths,
+  useTranslations,
+} from "@locales/utils";
 
 export function getStaticPaths() {
   return getTranslationPaths();
@@ -40,8 +45,7 @@ const carouselImages: CarouselImage[] = [
   { src: iai, href: "https://iai.nl", name: "IAI" },
 ];
 
-const { lang } = Astro.params;
-
+const lang = getLanguage(Astro.params.lang);
 const t = useTranslations(lang);
 ---
 

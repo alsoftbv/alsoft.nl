@@ -7,13 +7,14 @@ export function getTranslationPaths(): GetStaticPathsItem[] {
   return [{ params: { lang: undefined } }, { params: { lang: "nl" } }];
 }
 
+export function getLanguage(lang: string | undefined | number): "nl" | "en" {
+  return lang === "nl" ? "nl" : "en";
+}
+
 export function useTranslations(lang: string | undefined | number) {
   return lang === "nl" ? nl : en;
 }
 
-export function getPath(
-  lang: string | number | undefined,
-  path: string
-): string {
+export function getPath(lang: string, path: string): string {
   return getRelativeLocaleUrl(lang === "nl" ? "nl" : "en", path);
 }
