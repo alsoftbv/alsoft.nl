@@ -15,6 +15,8 @@ import me from "@images/index/me.jpg";
 import iai from "@images/index/companies/iai.svg";
 import idd from "@images/index/companies/idd.png";
 import valinso from "@images/index/companies/valinso.svg";
+import renault from "@images/index/companies/renault.png";
+import sony from "@images/index/companies/sony.svg";
 
 import reliabilityIcon from "@images/index/icons/reliability.svg";
 import performanceIcon from "@images/index/icons/performance.svg";
@@ -22,16 +24,25 @@ import developmentIcon from "@images/index/icons/development.svg";
 import pencilIcon from "@images/index/icons/pencil.svg";
 import checkIcon from "@images/index/icons/check.svg";
 import adjustmentIcon from "@images/index/icons/adjustment.svg";
-import Carousel from "@components/Carousel.astro";
-import nl from "@locales/nl.json";
+import Carousel, { type CarouselImage } from "@components/Carousel.astro";
+import Underline from "@components/Underline.astro";
+import { getPath, getTranslationPaths, useTranslations } from "@locales/utils";
 
-const carouselImages = [
+export function getStaticPaths() {
+  return getTranslationPaths();
+}
+
+const carouselImages: CarouselImage[] = [
+  { src: sony, href: "https://www.sony.com", name: "Sony" },
+  { src: renault, href: "https://www.renaultgroup.com", name: "Renault" },
   { src: valinso, href: "https://valinso.nl", name: "Valinso" },
   { src: idd, href: "https://idend.nl", name: "ID&D" },
   { src: iai, href: "https://iai.nl", name: "IAI" },
 ];
 
-const t = nl;
+const { lang } = Astro.params;
+
+const t = useTranslations(lang);
 ---
 
 <BaseLayout>
@@ -90,7 +101,7 @@ const t = nl;
   <section class="problems">
     <h2>{t.problemsHeader}</h2>
     <p>{t.problemsText}</p>
-    <strong class="underline">{t.problemsHighlight}</strong>
+    <Underline>{t.problemsHighlight}</Underline>
   </section>
 
   <section class="solution">
@@ -149,12 +160,12 @@ const t = nl;
   <section class="cards-container">
     <CardsSection
       title={t.ourServices}
-      page={getRelativeLocaleUrl(Astro.currentLocale ?? "en", "services")}
+      page={getPath(lang, "/services")}
       items={services}
     />
     <CardsSection
       title={t.industriesWeWork}
-      page={getRelativeLocaleUrl(Astro.currentLocale ?? "en", "industries")}
+      page={getPath(lang, "/industries")}
       items={industries}
     />
   </section>
@@ -162,7 +173,7 @@ const t = nl;
   <section class="more-proof">
     <h2>{t.moreProofHeader}</h2>
     <Carousel images={carouselImages} />
-    <p class="proof-text underline">{t.moreProofSubtext}</p>
+    <Underline class="proof-text">{t.moreProofSubtext}</Underline>
   </section>
 
   <section class="about">
@@ -190,9 +201,7 @@ const t = nl;
   <section class="cta">
     <h2>{t.ctaHeader}</h2>
     <p>{t.ctaText}</p>
-    <Button href={getRelativeLocaleUrl(Astro.currentLocale ?? "en", "/contact")}
-      >{t.ctaButton}</Button
-    >
+    <Button href={getPath(lang, "/contact")}>{t.ctaButton}</Button>
   </section>
 </BaseLayout>
 
