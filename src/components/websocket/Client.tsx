@@ -1,4 +1,4 @@
-import { useState, useRef, type HTMLAttributes } from "react";
+import { useState, useRef } from "react";
 import Controls from "@components/websocket/Controls";
 import MessageList from "@components/websocket/MessageList";
 import {
@@ -15,9 +15,9 @@ export type BinaryFormat = "hex" | "utf8" | "base64";
 
 type Props = {
   lang: "en" | "nl";
-} & HTMLAttributes<HTMLDivElement>;
+};
 
-export default function WebSocketClient({ lang, ...props }: Props) {
+export default function WebSocketClient({ lang }: Props) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [status, setStatus] = useState("disconnected");
   const socketRef = useRef<WebSocket>(null);
@@ -160,7 +160,7 @@ export default function WebSocketClient({ lang, ...props }: Props) {
   };
 
   return (
-    <div {...props}>
+    <div>
       <Controls
         status={status}
         lang={lang}

@@ -1,4 +1,5 @@
 ---
+import Card from "@components/Card.astro";
 import Header from "@components/Header.astro";
 import WebSocketClient from "@components/websocket/Client";
 import ToolLayout from "@layouts/ToolLayout.astro";
@@ -10,20 +11,14 @@ const t = nl;
 
 <ToolLayout title={t.websocket.title} description={t.websocket.description}>
   <Header>{t.websocket.client}</Header>
-  <div class="background">
-    <WebSocketClient lang="nl" client:only="react" className="client" />
-  </div>
+  <Card class="client">
+    <WebSocketClient lang="nl" client:only="react" />
+  </Card>
 </ToolLayout>
 
 <style>
-  .background {
-    background: #202020;
-    padding: 0 1rem;
-  }
-
   .client {
     max-width: 960px;
-    margin: 0 auto;
-    padding: 3rem 0;
+    margin: 2rem auto;
   }
 </style>
