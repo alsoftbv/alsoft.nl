@@ -1,0 +1,34 @@
+---
+import { getCollection, render } from "astro:content";
+import BlogLayout from "@layouts/BlogLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => {
+    const isDutch = post.slug.startsWith("nl/");
+
+    const lang = isDutch ? "nl" : undefined;
+    const cleanSlug = isDutch
+      ? post.slug.split("/").slice(1).join("/")
+      : post.slug;
+
+    return {
+      params: { lang, slug: cleanSlug },
+      props: {
+        post,
+        slug: post.slug,
+        data: post.data,
+        canonical: isDutch ? `nl/blog/${cleanSlug}` : `blog/${cleanSlug}`,
+      },
+    };
+  });
+}
+
+const { slug, data, post, canonical } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BlogLayout {slug} {data} {canonical}>
+  <Content />
+</BlogLayout>
