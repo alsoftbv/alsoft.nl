@@ -2,6 +2,8 @@ import { useState, useMemo, useEffect } from "react";
 import { ASCII_START, ASCII_END } from "@components/sfont/Config";
 import { parseHexToGlyphs } from "@components/sfont/Utils";
 import type { GlyphMap } from "@components/sfont/Types";
+import Card from "@components/ui/Card";
+import MultiStateButton from "@components/ui/MultiStateButton";
 
 interface CodePreviewProps {
   width: number;
@@ -10,6 +12,7 @@ interface CodePreviewProps {
   glyphData: GlyphMap;
   onGlyphDataChange: (data: GlyphMap) => void;
   onConfigChange: (config: { width: number; height: number }) => void;
+  onReset: () => void;
 }
 
 export default function CodePreview({
@@ -19,14 +22,14 @@ export default function CodePreview({
   glyphData,
   onGlyphDataChange,
   onConfigChange,
+  onReset,
 }: CodePreviewProps) {
-  const [copied, setCopied] = useState(false);
-  const [localCode, setLocalCode] = useState("");
-
   const safeFontName =
     fontName.replace(/[^a-zA-Z0-9_]/g, "") || `Font${width}x${height}`;
 
-  // Helper moved inside or imported to keep it fresh with current width/height
+  const [copied, setCopied] = useState(false);
+  const [localCode, setLocalCode] = useState("");
+
   const generateHexForChar = (
     pixels: boolean[] | undefined,
     charCode: number
@@ -62,7 +65,6 @@ export default function CodePreview({
     return lines.join("\n");
   };
 
-  // Memoize the code generation to prevent lag when typing
   const fullSource = useMemo(() => {
     let output = `#include "fonts.h"\n\n`;
     output += `const uint8_t ${safeFontName}_Table[] = {\n`;
@@ -73,7 +75,6 @@ export default function CodePreview({
     return output;
   }, [width, height, safeFontName, glyphData]);
 
-  // Sync local text state when the source changes from the grid
   useEffect(() => {
     setLocalCode(fullSource);
   }, [fullSource]);
@@ -100,17 +101,43 @@ export default function CodePreview({
   };
 
   return (
-    <div className="code-preview">
+    <Card
+      className="code-preview"
+      style={{
+        touchAction: "none",
+        WebkitUserSelect: "none",
+        userSelect: "none",
+        display: "flex",
+        justifyContent: "center",
+        padding: "1rem",
+        gap: "1rem",
+      }}
+    >
       <div
         className="preview-toolbar"
-        style={{ display: "flex", gap: "8px", marginBottom: "12px" }}
+        style={{
+          display: "flex",
+          gap: "0.5rem",
+          justifyContent: "space-between",
+        }}
       >
-        <button onClick={handleImport} className="import-btn">
-          Sync from Code
-        </button>
-        <button onClick={handleCopy} className="copy-btn">
-          {copied ? "✓ Copied!" : "Copy to Clipboard"}
-        </button>
+        <MultiStateButton
+          idleText="Sync from Code"
+          confirmText="Really Sync?"
+          doneText="Synced!"
+          onAction={handleImport}
+        />
+        <MultiStateButton
+          idleText="Copy to Clipboard"
+          doneText="Copied!"
+          onAction={handleCopy}
+        />
+        <MultiStateButton
+          idleText="Reset Font"
+          confirmText="Really Reset?"
+          doneText="Font Reset!"
+          onAction={onReset}
+        />
       </div>
 
       <textarea
@@ -119,6 +146,6 @@ export default function CodePreview({
         onChange={(e) => setLocalCode(e.target.value)}
         spellCheck={false}
       />
-    </div>
+    </Card>
   );
 }
