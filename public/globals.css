@@ -143,8 +143,5 @@ select option {
 }
 
 small {
-  text-align: center;
-  font-style: italic;
-  margin: 0 auto 1rem auto;
-  display: block;
+  font-size: 0.8rem;
 }
