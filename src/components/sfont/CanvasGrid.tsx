@@ -1,5 +1,5 @@
-import { Card } from "@components/ui/Card";
-import React, { useEffect } from "react";
+import Card from "@components/ui/Card";
+import { useEffect, type CSSProperties } from "react";
 
 interface CanvasGridProps {
   width: number;
@@ -10,21 +10,21 @@ interface CanvasGridProps {
   onDrawEnd: () => void;
 }
 
-const CanvasGrid: React.FC<CanvasGridProps> = ({
+export default function CanvasGrid({
   width,
   pixels,
   drawMode,
   onDrawStart,
   onDrawMove,
   onDrawEnd,
-}) => {
+}: CanvasGridProps) {
   useEffect(() => {
     const handleGlobalMouseUp = () => onDrawEnd();
     window.addEventListener("mouseup", handleGlobalMouseUp);
     return () => window.removeEventListener("mouseup", handleGlobalMouseUp);
   }, [onDrawEnd]);
 
-  const gridStyle: React.CSSProperties = {
+  const gridStyle: CSSProperties = {
     display: "grid",
     gridTemplateColumns: `repeat(${width}, 20px)`,
     gap: "1px",
@@ -57,6 +57,4 @@ const CanvasGrid: React.FC<CanvasGridProps> = ({
       </div>
     </Card>
   );
-};
-
-export default CanvasGrid;
+}
