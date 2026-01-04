@@ -36,7 +36,6 @@ export default function App() {
     }
     return parseRawTable(FONT12_HEX, 7, 12);
   });
-  const [drawMode, setDrawMode] = useState<"paint" | "erase" | null>(null);
 
   useEffect(() => {
     localStorage.setItem("sfont_config", JSON.stringify(config));
@@ -46,22 +45,20 @@ export default function App() {
     localStorage.setItem("sfont_data", JSON.stringify(glyphData));
   }, [glyphData]);
 
-  const setPixel = (index: number, mode: "paint" | "erase") => {
-    const current =
-      glyphData[charCode] ||
-      new Array(config.width * config.height).fill(false);
+  const handleResetToDefault = () => {
+    setConfig({
+      width: DEFAULT_WIDTH,
+      height: DEFAULT_HEIGHT,
+      fontName: DEFAULT_FONT_NAME,
+    });
 
-    // Only update if the pixel actually needs to change
-    const newValue = mode === "paint";
-    if (current[index] === newValue) return;
-
-    const next = [...current];
-    next[index] = newValue;
-
-    setGlyphData((prev) => ({
-      ...prev,
-      [charCode]: next,
-    }));
+    const defaultPixels = parseRawTable(
+      FONT12_HEX,
+      DEFAULT_WIDTH,
+      DEFAULT_HEIGHT
+    );
+    setGlyphData(defaultPixels);
+    setCharCode(ASCII_A);
   };
 
   const clearCurrentGlyph = () => {
@@ -113,11 +110,92 @@ export default function App() {
     setGlyphData(newData);
   };
 
-  const currentPixels =
-    glyphData[charCode] || new Array(config.width * config.height).fill(false);
-
   return (
     <div className="app-container">
+      <style>
+        {`
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .main-layout {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: stretch;
+        }
+
+        .editor-pane {
+            flex: 1;
+            min-width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .preview-pane {
+            flex: 1;
+            min-width: 350px;
+        }
+
+        .controls-container {
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .control-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .preview-char {
+            font-size: 2rem;
+            font-weight: bold;
+            border: 1px solid #ddd;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            margin-top: auto;
+        }
+
+        .code-preview {
+            display: flex;
+            flex-direction: column;
+            height: 100%; 
+        }
+
+        .code-preview textarea {
+            flex-grow: 1;
+            font-family: monospace;
+            padding: 15px;
+            background: #3f3f3f;
+            resize: none;
+        }
+        
+        @media (max-width: 900px) {
+            .main-layout {
+                flex-direction: column;
+            }
+
+            .code-preview textarea {
+                height: 400px;
+            }
+        }`}
+      </style>
       <main className="main-layout">
         <div className="editor-pane">
           <Controls
@@ -129,17 +207,15 @@ export default function App() {
           />
           <CanvasGrid
             width={config.width}
-            pixels={currentPixels}
-            drawMode={drawMode}
-            onDrawStart={(index) => {
-              const mode = currentPixels[index] ? "erase" : "paint";
-              setDrawMode(mode);
-              setPixel(index, mode);
+            height={config.height}
+            selectedChar={charCode}
+            glyphData={glyphData}
+            onGlyphUpdate={(char, newPixels) => {
+              setGlyphData((prev) => ({
+                ...prev,
+                [char]: newPixels,
+              }));
             }}
-            onDrawMove={(index) => {
-              if (drawMode) setPixel(index, drawMode);
-            }}
-            onDrawEnd={() => setDrawMode(null)}
           />
         </div>
         <div className="preview-pane">
@@ -150,6 +226,7 @@ export default function App() {
             glyphData={glyphData}
             onGlyphDataChange={handleGlyphDataChange}
             onConfigChange={handleImportConfig}
+            onReset={handleResetToDefault}
           />
         </div>
       </main>
