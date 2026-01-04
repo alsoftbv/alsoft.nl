@@ -27,7 +27,6 @@ export default function CodePreview({
   const safeFontName =
     fontName.replace(/[^a-zA-Z0-9_]/g, "") || `Font${width}x${height}`;
 
-  const [copied, setCopied] = useState(false);
   const [localCode, setLocalCode] = useState("");
 
   const generateHexForChar = (
@@ -81,8 +80,6 @@ export default function CodePreview({
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(localCode);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
   };
 
   const handleImport = () => {

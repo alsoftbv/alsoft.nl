@@ -28,7 +28,9 @@ export default function CanvasGrid({
 
   useEffect(() => {
     const updateSize = () => {
-      if (!containerRef.current) return;
+      if (!containerRef.current) {
+        return;
+      }
 
       const padding = 40;
       const availableWidth = containerRef.current.offsetWidth - padding;

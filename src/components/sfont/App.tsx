@@ -34,7 +34,7 @@ export default function App() {
       const saved = localStorage.getItem("sfont_data");
       if (saved) return JSON.parse(saved);
     }
-    return parseRawTable(FONT12_HEX, 7, 12);
+    return parseRawTable(FONT12_HEX, DEFAULT_WIDTH, DEFAULT_HEIGHT);
   });
 
   useEffect(() => {
@@ -100,7 +100,6 @@ export default function App() {
       setGlyphData(newGlyphData);
       setConfig((prev) => ({ ...prev, [key]: val }));
     } else if (key === "fontName") {
-      // Specifically handle string for fontName to satisfy TS
       const val = String(value);
       setConfig((prev) => ({ ...prev, fontName: val }));
     }

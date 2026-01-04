@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent } from "react";
+import { type ChangeEvent } from "react";
 import { ASCII_START, ASCII_END } from "@components/sfont/Config";
 import type { ControlConfig, ConfigKey } from "@components/sfont/Types";
 import Card from "@components/ui/Card";

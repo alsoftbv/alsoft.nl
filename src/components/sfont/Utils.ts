@@ -37,9 +37,7 @@ export const parseHexToGlyphs = (text: string) => {
   let detectedWidth = 0;
   let detectedHeight = 0;
 
-  // 1. STRATEGY A: The sFONT Struct (The most reliable)
   // We look for the pattern: sFONT ... { ... TableName, Width, Height ... }
-  // This version ignores newlines (\n) and tabs
   const sFontMatch = text.match(
     /sFONT[\s\S]*?\{[\s\S]*?,[\s\S]*?(\d+)[\s\S]*?,[\s\S]*?(\d+)/
   );
@@ -48,7 +46,7 @@ export const parseHexToGlyphs = (text: string) => {
     detectedWidth = parseInt(sFontMatch[1], 10);
     detectedHeight = parseInt(sFontMatch[2], 10);
   }
-  // 2. STRATEGY B: The comment headers (backup)
+  // If there's no match, try to read comment headers
   else {
     const widthComment = text.match(/(\d+)\s+pixels wide/i);
     const heightComment =
@@ -63,7 +61,6 @@ export const parseHexToGlyphs = (text: string) => {
     return { data: null, width: 0, height: 0 };
   }
 
-  // 3. HEX EXTRACTION
   const hexMatch = text.match(/0[xX][0-9A-Fa-f]{1,2}/g);
   if (!hexMatch)
     return { data: null, width: detectedWidth, height: detectedHeight };
