@@ -1,7 +1,7 @@
-import React from "react";
+import { type ChangeEvent } from "react";
 import { ASCII_START, ASCII_END } from "@components/sfont/Config";
 import type { ControlConfig, ConfigKey } from "@components/sfont/Types";
-import { Card } from "@components/ui/Card";
+import Card from "@components/ui/Card";
 
 interface ControlsProps {
   config: ControlConfig;
@@ -11,13 +11,13 @@ interface ControlsProps {
   onClear: () => void;
 }
 
-const Controls: React.FC<ControlsProps> = ({
+export default function Controls({
   config,
   charCode,
   onConfigChange,
   onCharChange,
   onClear,
-}) => {
+}: ControlsProps) {
   const asciiOptions = Array.from(
     { length: ASCII_END - ASCII_START + 1 },
     (_, i) => i + ASCII_START
@@ -25,7 +25,7 @@ const Controls: React.FC<ControlsProps> = ({
 
   const handleIntChange = (
     key: ConfigKey,
-    e: React.ChangeEvent<HTMLInputElement>
+    e: ChangeEvent<HTMLInputElement>
   ) => {
     const val = parseInt(e.target.value, 10);
     onConfigChange(key, isNaN(val) ? 1 : val);
@@ -88,6 +88,4 @@ const Controls: React.FC<ControlsProps> = ({
       </div>
     </Card>
   );
-};
-
-export default Controls;
+}

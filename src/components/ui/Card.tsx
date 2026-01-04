@@ -1,12 +1,12 @@
-import React from "react";
+import { type ReactNode } from "react";
 
 interface CardProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   id?: string;
 }
 
-export const Card: React.FC<CardProps> = ({ children, className = "", id }) => {
+export default function Card({ children, className = "", id }: CardProps) {
   return (
     <>
       <style>{`
@@ -33,4 +33,4 @@ export const Card: React.FC<CardProps> = ({ children, className = "", id }) => {
       </div>
     </>
   );
-};
+}

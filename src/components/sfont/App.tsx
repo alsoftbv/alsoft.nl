@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Controls from "./Controls";
 import CanvasGrid from "./CanvasGrid";
 import CodePreview from "./CodePreview";
@@ -6,7 +6,6 @@ import {
   DEFAULT_WIDTH,
   DEFAULT_HEIGHT,
   DEFAULT_FONT_NAME,
-  ASCII_START,
   FONT12_HEX,
   ASCII_A,
 } from "@components/sfont/Config";
@@ -18,17 +17,34 @@ import type {
 import { parseRawTable } from "@components/sfont/Utils";
 
 export default function App() {
-  const [config, setConfig] = useState<ControlConfig>({
-    width: DEFAULT_WIDTH,
-    height: DEFAULT_HEIGHT,
-    fontName: DEFAULT_FONT_NAME,
+  const [config, setConfig] = useState<ControlConfig>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("sfont_config");
+      if (saved) return JSON.parse(saved);
+    }
+    return {
+      width: DEFAULT_WIDTH,
+      height: DEFAULT_HEIGHT,
+      fontName: DEFAULT_FONT_NAME,
+    };
   });
-
   const [charCode, setCharCode] = useState<number>(ASCII_A);
-  const [glyphData, setGlyphData] = useState<GlyphMap>(() =>
-    parseRawTable(FONT12_HEX, 7, 12)
-  );
+  const [glyphData, setGlyphData] = useState<GlyphMap>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("sfont_data");
+      if (saved) return JSON.parse(saved);
+    }
+    return parseRawTable(FONT12_HEX, 7, 12);
+  });
   const [drawMode, setDrawMode] = useState<"paint" | "erase" | null>(null);
+
+  useEffect(() => {
+    localStorage.setItem("sfont_config", JSON.stringify(config));
+  }, [config]);
+
+  useEffect(() => {
+    localStorage.setItem("sfont_data", JSON.stringify(glyphData));
+  }, [glyphData]);
 
   const setPixel = (index: number, mode: "paint" | "erase") => {
     const current =

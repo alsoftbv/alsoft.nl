@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, type KeyboardEvent } from "react";
 import type { BinaryFormat } from "@components/websocket/Client";
 import Status from "@components/websocket/Status";
 import type { MessageType } from "@components/websocket/Message";
@@ -40,7 +40,7 @@ export default function Controls({
     }
   };
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     switch (e.key) {
       case "Enter":
         e.preventDefault();
