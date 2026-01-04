@@ -28,6 +28,7 @@ export default function MultiStateButton({
   const handleClick = () => {
     if (status === "idle") {
       if (!confirmText) {
+        onAction();
         setStatus("done");
       } else {
         setStatus("confirm");
