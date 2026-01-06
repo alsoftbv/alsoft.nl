@@ -61,15 +61,16 @@ export const parseHexToGlyphs = (text: string) => {
     return { data: null, width: 0, height: 0 };
   }
 
+  const newGlyphMap: GlyphMap = {};
+
   const hexMatch = text.match(/0[xX][0-9A-Fa-f]{1,2}/g);
-  if (!hexMatch)
-    return { data: null, width: detectedWidth, height: detectedHeight };
+  if (!hexMatch) {
+    return { data: newGlyphMap, width: detectedWidth, height: detectedHeight };
+  }
 
   const bytes = hexMatch.map((h) => parseInt(h, 16));
   const bytesPerRow = Math.ceil(detectedWidth / 8);
   const bytesPerChar = bytesPerRow * detectedHeight;
-
-  const newGlyphMap: GlyphMap = {};
 
   for (let i = ASCII_START; i <= ASCII_END; i++) {
     const charIdx = i - ASCII_START;

@@ -76,7 +76,7 @@ export default function Controls({
           >
             {asciiOptions.map((code) => (
               <option key={code} value={code}>
-                @{code} - {String.fromCharCode(code)}
+                {code} - {String.fromCharCode(code)}
               </option>
             ))}
           </select>

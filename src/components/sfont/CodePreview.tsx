@@ -38,7 +38,7 @@ export default function CodePreview({
     const lines: string[] = [];
 
     lines.push(
-      `  // @${charCode} '${String.fromCharCode(charCode)}' (${width} pixels wide)`
+      `  // @${(charCode - ASCII_START) * Math.ceil(width / 8) * height} '${String.fromCharCode(charCode)}' (${width} pixels wide)`
     );
 
     for (let y = 0; y < height; y++) {
