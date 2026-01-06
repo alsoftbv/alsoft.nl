@@ -38,7 +38,7 @@ export default function CodePreview({
     const lines: string[] = [];
 
     lines.push(
-      `  // @${(charCode - ASCII_START) * Math.ceil(width / 8) * height} '${String.fromCharCode(charCode)}' (${width} pixels wide)`
+      `    // @${(charCode - ASCII_START) * Math.ceil(width / 8) * height} '${String.fromCharCode(charCode)}' (${width} pixels wide)`
     );
 
     for (let y = 0; y < height; y++) {
@@ -59,7 +59,7 @@ export default function CodePreview({
         }
         rowHex.push(`0x${byte.toString(16).toUpperCase().padStart(2, "0")}`);
       }
-      lines.push(`  ${rowHex.join(", ")}, // ${visualComment}`);
+      lines.push(`    ${rowHex.join(", ")}, // ${visualComment}`);
     }
     return lines.join("\n");
   };
@@ -67,13 +67,13 @@ export default function CodePreview({
   useEffect(() => {
     const timer = setTimeout(() => {
       let output = `#include "fonts.h"\n\n`;
-      output += `const uint8_t ${safeFontName}_Table[] = {\n`;
+      output += `const uint8_t ${safeFontName}_Table[] = {`;
 
       for (let i = ASCII_START; i <= ASCII_END; i++) {
-        output += generateHexForChar(glyphData[i], i) + "\n\n";
+        output += "\n" + generateHexForChar(glyphData[i], i) + "\n";
       }
 
-      output += `};\n\nsFONT ${safeFontName} = {\n  ${safeFontName}_Table,\n  ${width}, /* Width */\n  ${height} /* Height */\n};`;
+      output += `};\n\nsFONT ${safeFontName} = {\n    ${safeFontName}_Table,\n    ${width}, /* Width */\n    ${height} /* Height */\n};`;
 
       setLocalCode(output);
     }, 400);
