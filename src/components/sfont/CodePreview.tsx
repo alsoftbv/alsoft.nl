@@ -64,19 +64,22 @@ export default function CodePreview({
     return lines.join("\n");
   };
 
-  const fullSource = useMemo(() => {
-    let output = `#include "fonts.h"\n\n`;
-    output += `const uint8_t ${safeFontName}_Table[] = {\n`;
-    for (let i = ASCII_START; i <= ASCII_END; i++) {
-      output += generateHexForChar(glyphData[i], i) + "\n\n";
-    }
-    output += `};\n\nsFONT ${safeFontName} = {\n  ${safeFontName}_Table,\n  ${width}, /* Width */\n  ${height} /* Height */\n};`;
-    return output;
-  }, [width, height, safeFontName, glyphData]);
-
   useEffect(() => {
-    setLocalCode(fullSource);
-  }, [fullSource]);
+    const timer = setTimeout(() => {
+      let output = `#include "fonts.h"\n\n`;
+      output += `const uint8_t ${safeFontName}_Table[] = {\n`;
+
+      for (let i = ASCII_START; i <= ASCII_END; i++) {
+        output += generateHexForChar(glyphData[i], i) + "\n\n";
+      }
+
+      output += `};\n\nsFONT ${safeFontName} = {\n  ${safeFontName}_Table,\n  ${width}, /* Width */\n  ${height} /* Height */\n};`;
+
+      setLocalCode(output);
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [glyphData, width, height, safeFontName]);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(localCode);

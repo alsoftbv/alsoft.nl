@@ -38,12 +38,13 @@ export default function App() {
   });
 
   useEffect(() => {
-    localStorage.setItem("sfont_config", JSON.stringify(config));
-  }, [config]);
+    const syncTimer = setTimeout(() => {
+      localStorage.setItem("sfont_config", JSON.stringify(config));
+      localStorage.setItem("sfont_data", JSON.stringify(glyphData));
+    }, 500);
 
-  useEffect(() => {
-    localStorage.setItem("sfont_data", JSON.stringify(glyphData));
-  }, [glyphData]);
+    return () => clearTimeout(syncTimer);
+  }, [glyphData, config]);
 
   const handleResetToDefault = () => {
     setConfig({
@@ -111,6 +112,40 @@ export default function App() {
 
   return (
     <div className="app-container">
+      <main className="main-layout">
+        <div className="editor-pane">
+          <Controls
+            config={config}
+            charCode={charCode}
+            onConfigChange={handleConfigChange}
+            onCharChange={setCharCode}
+            onClear={clearCurrentGlyph}
+          />
+          <CanvasGrid
+            width={config.width}
+            height={config.height}
+            selectedChar={charCode}
+            glyphData={glyphData}
+            onGlyphUpdate={(char, newPixels) => {
+              setGlyphData((prev) => ({
+                ...prev,
+                [char]: newPixels,
+              }));
+            }}
+          />
+        </div>
+        <div className="preview-pane">
+          <CodePreview
+            width={config.width}
+            height={config.height}
+            fontName={config.fontName}
+            glyphData={glyphData}
+            onGlyphDataChange={handleGlyphDataChange}
+            onConfigChange={handleImportConfig}
+            onReset={handleResetToDefault}
+          />
+        </div>
+      </main>
       <style>
         {`
         .app-container {
@@ -195,40 +230,6 @@ export default function App() {
             }
         }`}
       </style>
-      <main className="main-layout">
-        <div className="editor-pane">
-          <Controls
-            config={config}
-            charCode={charCode}
-            onConfigChange={handleConfigChange}
-            onCharChange={setCharCode}
-            onClear={clearCurrentGlyph}
-          />
-          <CanvasGrid
-            width={config.width}
-            height={config.height}
-            selectedChar={charCode}
-            glyphData={glyphData}
-            onGlyphUpdate={(char, newPixels) => {
-              setGlyphData((prev) => ({
-                ...prev,
-                [char]: newPixels,
-              }));
-            }}
-          />
-        </div>
-        <div className="preview-pane">
-          <CodePreview
-            width={config.width}
-            height={config.height}
-            fontName={config.fontName}
-            glyphData={glyphData}
-            onGlyphDataChange={handleGlyphDataChange}
-            onConfigChange={handleImportConfig}
-            onReset={handleResetToDefault}
-          />
-        </div>
-      </main>
     </div>
   );
 }
