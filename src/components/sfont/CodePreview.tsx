@@ -73,7 +73,19 @@ export default function CodePreview({
         output += "\n" + generateHexForChar(glyphData[i], i) + "\n";
       }
 
-      output += `};\n\nsFONT ${safeFontName} = {\n    ${safeFontName}_Table,\n    ${width}, /* Width */\n    ${height} /* Height */\n};`;
+      const wStr = `${width},`;
+      const hStr = `${height},`;
+
+      const colWidth = Math.max(wStr.length, hStr.length) + 1;
+
+      const wLine = wStr.padEnd(colWidth);
+      const hLine = hStr.padEnd(colWidth);
+
+      output += `};\n\nsFONT ${safeFontName} = {\n`;
+      output += `    ${safeFontName}_Table,\n`;
+      output += `    ${wLine}/* Width */\n`;
+      output += `    ${hLine}/* Height */\n`;
+      output += `};`;
 
       setLocalCode(output);
     }, 400);
