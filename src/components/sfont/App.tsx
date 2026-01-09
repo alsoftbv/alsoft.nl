@@ -69,8 +69,12 @@ export default function App() {
     }));
   };
 
-  const handleImportConfig = (newSize: { width: number; height: number }) => {
-    setConfig((prev) => ({ ...prev, ...newSize }));
+  const handleImportConfig = (
+    width: number,
+    height: number,
+    fontName: string
+  ) => {
+    setConfig((prev) => ({ ...prev, width, height, fontName }));
   };
 
   const handleConfigChange = (key: ConfigKey, value: string | number) => {

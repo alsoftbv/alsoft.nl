@@ -11,7 +11,7 @@ interface CodePreviewProps {
   fontName: string;
   glyphData: GlyphMap;
   onGlyphDataChange: (data: GlyphMap) => void;
-  onConfigChange: (config: { width: number; height: number }) => void;
+  onConfigChange: (width: number, height: number, fontName: string) => void;
   onReset: () => void;
 }
 
@@ -98,14 +98,10 @@ export default function CodePreview({
   };
 
   const handleImport = () => {
-    const {
-      data,
-      width: dWidth,
-      height: dHeight,
-    } = parseHexToGlyphs(localCode);
+    const { data, width, height, fontName } = parseHexToGlyphs(localCode);
 
     if (data) {
-      onConfigChange({ width: dWidth, height: dHeight });
+      onConfigChange(width, height, fontName);
       onGlyphDataChange(data);
     } else {
       alert("Dimensions could not be detected");

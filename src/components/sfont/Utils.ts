@@ -36,18 +36,25 @@ export const parseRawTable = (
 export const parseHexToGlyphs = (text: string) => {
   let detectedWidth = 0;
   let detectedHeight = 0;
+  let detectedName = "";
 
   // We look for the pattern: sFONT ... { ... TableName, Width, Height ... }
   const sFontMatch = text.match(
-    /sFONT[\s\S]*?\{[\s\S]*?,[\s\S]*?(\d+)[\s\S]*?,[\s\S]*?(\d+)/
+    /sFONT\s+([a-zA-Z0-9_]+)\s*=[\s\S]*?\{[\s\S]*?,[\s\S]*?(\d+)[\s\S]*?,[\s\S]*?(\d+)/
   );
 
   if (sFontMatch) {
-    detectedWidth = parseInt(sFontMatch[1], 10);
-    detectedHeight = parseInt(sFontMatch[2], 10);
+    detectedName = sFontMatch[1]; // Capture Font24
+    detectedWidth = parseInt(sFontMatch[2], 10);
+    detectedHeight = parseInt(sFontMatch[3], 10);
   }
   // If there's no match, try to read comment headers
   else {
+    const nameMatch = text.match(
+      /(?:const\s+|uint8_t\s+)?([a-zA-Z0-9_]+)\[\]/i
+    );
+    if (nameMatch) detectedName = nameMatch[1];
+
     const widthComment = text.match(/(\d+)\s+pixels wide/i);
     const heightComment =
       text.match(/Height\s*\*?\/\s*(\d+)/i) ||
@@ -58,14 +65,19 @@ export const parseHexToGlyphs = (text: string) => {
   }
 
   if (!detectedWidth || !detectedHeight) {
-    return { data: null, width: 0, height: 0 };
+    return { data: null, width: 0, height: 0, name: detectedName };
   }
 
   const newGlyphMap: GlyphMap = {};
-
   const hexMatch = text.match(/0[xX][0-9A-Fa-f]{1,2}/g);
+
   if (!hexMatch) {
-    return { data: newGlyphMap, width: detectedWidth, height: detectedHeight };
+    return {
+      data: newGlyphMap,
+      width: detectedWidth,
+      height: detectedHeight,
+      fontName: detectedName,
+    };
   }
 
   const bytes = hexMatch.map((h) => parseInt(h, 16));
@@ -93,5 +105,10 @@ export const parseHexToGlyphs = (text: string) => {
     newGlyphMap[i] = charPixels;
   }
 
-  return { data: newGlyphMap, width: detectedWidth, height: detectedHeight };
+  return {
+    data: newGlyphMap,
+    width: detectedWidth,
+    height: detectedHeight,
+    fontName: detectedName,
+  };
 };
