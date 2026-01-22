@@ -5,7 +5,7 @@ import { tools } from "@data/tools";
 const posts = await getCollection("blog");
 
 const blogPages = Object.fromEntries(
-  posts.map(({ slug, data }) => [slug, data])
+  posts.map(({ slug, data }) => [slug, data]),
 );
 
 const pages = {
@@ -37,6 +37,6 @@ export const { getStaticPaths, GET } = OGImageRoute({
       },
     },
     fonts: ["./src/fonts/Inter.ttf"],
-    padding: 60,
+    padding: 40,
   }),
 });
