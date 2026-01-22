@@ -94,10 +94,14 @@
     "submit": "Versturen",
     "getBack": "Bedankt! We nemen binnen één werkdag contact met uw op."
   },
+  "sfont": {
+    "title": "sFONT-generator",
+    "description": "Bitmap lettertype-editor en C-codegenerator voor embedded displays. Maak aangepaste lettertypen voor microcontrollers, bewerk individuele tekens pixel voor pixel en exporteer kant-en-klare C-structs."
+  },
   "websocket": {
     "client": "WebSocket-client",
     "title": "Online WebSocket-client",
-    "description": "Online WebSocket-client om realtime API’s te testen. Verzend tekst- of binaire berichten, bekijk hex-uitvoer en inspecteer live WebSocket-verkeer rechtstreeks in je browser.",
+    "description": "Online WebSocket-client om realtime API's te testen. Verzend tekst- of binaire berichten, bekijk hex-uitvoer en inspecteer live WebSocket-verkeer rechtstreeks in je browser.",
     "send": "Verstuur",
     "connect": "Verbind",
     "disconnect": "Verbreek",
