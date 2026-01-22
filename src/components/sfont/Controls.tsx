@@ -28,7 +28,8 @@ export default function Controls({
     e: ChangeEvent<HTMLInputElement>
   ) => {
     const val = parseInt(e.target.value, 10);
-    onConfigChange(key, isNaN(val) ? 1 : val);
+    const clamped = Math.max(1, Math.min(64, isNaN(val) ? 1 : val));
+    onConfigChange(key, clamped);
   };
 
   return (

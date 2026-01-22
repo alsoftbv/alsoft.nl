@@ -30,7 +30,7 @@ At the wire level, the WebSocket protocol ([RFC 6455](https://www.rfc-editor.org
 
 ## The Tool That Speaks "Embedded"
 
-We built our [online WebSocket tool](https://alsoft.nl/tools/websocket) because we needed a client that treats binary data as a first-class citizen, not an afterthought.
+We built our [online WebSocket tool](/tools/websocket) because we needed a client that treats binary data as a first-class citizen, not an afterthought.
 
 ### 1. Transparent Receipt
 
@@ -68,7 +68,7 @@ Having a tool that understands binary data is the difference between a 5-minute 
 
 If you're developing an embedded system and your WebSocket frames just aren't lining up, we can help. We specialize in the "messy" middle ground where hardware meets the web.
 
-- **Try the tool:** [Online WebSocket Client](https://alsoft.nl/tools/websocket)
+- **Try the tool:** [Online WebSocket Client](/tools/websocket)
 - **Consulting:** From protocol design to firmware implementation, we help you get connected.
 
 📧 **Contact us at [altug@alsoft.nl](mailto:altug@alsoft.nl)**
