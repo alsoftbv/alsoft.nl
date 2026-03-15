@@ -48,13 +48,6 @@ export async function getLocalizedPosts(
   return (await getCollection("blog"))
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
     .filter((p) => {
-      return lang === "nl" ? p.slug.startsWith("nl") : !p.slug.startsWith("nl");
-    })
-    .map((p) => ({
-      ...p,
-      slug:
-        lang === "nl"
-          ? `/${p.slug.replace("nl/", "nl/blog/")}`
-          : `/blog/${p.slug}`,
-    }));
+      return lang === "nl" ? p.id.startsWith("nl") : !p.id.startsWith("nl");
+    });
 }

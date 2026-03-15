@@ -1,20 +1,21 @@
 {
   "name": "alsoft.nl",
   "type": "module",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "scripts": {
     "dev": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "astro": "astro"
+    "astro": "astro",
+    "add-cert": "npx tsx scripts/add-cert.ts"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/react": "^4.4.2",
-    "@astrojs/sitemap": "^3.7.0",
+    "@astrojs/check": "^0.9.7",
+    "@astrojs/react": "^5.0.0",
+    "@astrojs/sitemap": "^3.7.1",
     "@types/react-dom": "^19.2.3",
-    "astro": "^5.16.13",
+    "astro": "^6.0.4",
     "astro-og-canvas": "^0.7.2",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",

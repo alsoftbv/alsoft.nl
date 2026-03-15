@@ -37,7 +37,7 @@ const posts = await getLocalizedPosts(Astro.params.lang);
             .replace(/\//g, "-")}
         </small>
         <h1>
-          <a href={post.slug}>
+          <a href={post.id.includes("/") ? `/${post.id.replace("nl/", "nl/blog/")}` : `/blog/${post.id}`}>
             <Underline>{post.data.title}</Underline>
           </a>
         </h1>

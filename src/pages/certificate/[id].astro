@@ -1,0 +1,230 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import logoIcon from "@images/logo.png";
+import { certificates, trainingParts } from "@data/certificates";
+
+export function getStaticPaths() {
+  return certificates.map((cert) => ({
+    params: { id: cert.id },
+    props: cert,
+  }));
+}
+
+const { id, name, date } = Astro.props;
+
+const title = `Certificate of Completion — ${name}`;
+const description = `${name} completed the Software Engineering in Practice training at alsoft`;
+const canonical = `https://alsoft.nl/certificate/${id}`;
+const image = `https://alsoft.nl/og/certificate/${id}.png`;
+const issueDate = new Date(date);
+const linkedInUrl = `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${encodeURIComponent("Software Engineering in Practice")}&organizationName=${encodeURIComponent("alsoft")}&issueYear=${issueDate.getFullYear()}&issueMonth=${issueDate.getMonth() + 1}&certUrl=${encodeURIComponent(canonical)}&certId=${id}`;
+
+const formattedDate = issueDate.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  image={image}
+>
+  <div class="certificate-page">
+    <div class="certificate">
+      <Image src={logoIcon} alt="alsoft" class="logo" />
+      <p class="date">{formattedDate}</p>
+
+      <p class="label">Certificate of Completion</p>
+
+      <p class="presented">This is to certify that</p>
+      <h1 class="name">{name}</h1>
+
+      <p class="details">has successfully completed the</p>
+      <h2 class="training">Software Engineering in Practice</h2>
+      <p class="training-sub">training</p>
+
+      <div class="parts">
+        {
+          trainingParts.map((part) => (
+            <div class="part">
+              <h3>{part.title}</h3>
+              <ul>
+                {part.topics.map((topic) => (
+                  <li>{topic}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="cert-id">Certificate ID: {id}</p>
+    </div>
+
+    <a
+      href={linkedInUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="linkedin-button"
+    >
+      Add to LinkedIn Profile
+    </a>
+  </div>
+</BaseLayout>
+
+<style>
+  .certificate-page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .certificate {
+    position: relative;
+    width: 100%;
+    border: 2px solid #ff9100;
+    border-radius: 12px;
+    padding: 2.5rem 2.5rem 2rem;
+    text-align: center;
+    background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
+  }
+
+  .logo {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.5rem;
+    height: 48px;
+    width: auto;
+  }
+
+  .label {
+    font-size: 1.1rem;
+    color: #ff9100;
+    margin: 0 0 1.25rem;
+    font-weight: 600;
+  }
+
+  .presented {
+    font-size: 0.95rem;
+    color: #aaa;
+    margin: 0 0 0.25rem;
+  }
+
+  .name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ff9100;
+    margin: 0 0 1rem;
+  }
+
+  .details {
+    font-size: 0.95rem;
+    color: #aaa;
+    margin: 0 0 0.25rem;
+  }
+
+  .training {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .training-sub {
+    font-size: 0.95rem;
+    color: #aaa;
+    margin: 0.25rem 0 1rem;
+  }
+
+  .date {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    font-size: 0.85rem;
+    color: #aaa;
+    margin: 0;
+  }
+
+  .parts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    text-align: left;
+    justify-content: center;
+  }
+
+  .part {
+    flex: 1 1 180px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    background: transparent;
+  }
+
+  .part h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: #ff9100;
+  }
+
+  .part ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .part li {
+    font-size: 0.8rem;
+    color: #ccc;
+    padding: 0.2rem 0;
+    line-height: 1.4;
+  }
+
+  .cert-id {
+    font-size: 0.7rem;
+    color: #555;
+    margin: 1.25rem 0 0;
+    font-family: monospace;
+  }
+
+  .linkedin-button {
+    display: inline-block;
+    background: #0a66c2;
+    color: #fff;
+    padding: 0.75em 1.5em;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition:
+      background 0.2s ease,
+      transform 0.1s ease;
+  }
+
+  .linkedin-button:hover {
+    background: #0b7ad4;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .certificate {
+      padding: 2rem 1.25rem;
+    }
+
+    .name {
+      font-size: 1.6rem;
+    }
+
+    .training {
+      font-size: 1.1rem;
+    }
+  }
+</style>

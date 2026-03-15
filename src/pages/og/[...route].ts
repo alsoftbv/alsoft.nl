@@ -1,16 +1,28 @@
 import { getCollection } from "astro:content";
 import { OGImageRoute } from "astro-og-canvas";
 import { tools } from "@data/tools";
+import { certificates } from "@data/certificates";
 
 const posts = await getCollection("blog");
 
 const blogPages = Object.fromEntries(
-  posts.map(({ slug, data }) => [slug, data]),
+  posts.map(({ id, data }) => [id, data]),
+);
+
+const certificatePages = Object.fromEntries(
+  certificates.map((cert) => [
+    `certificate/${cert.id}`,
+    {
+      title: "Certificate of Completion",
+      description: `${cert.name} — Software Engineering in Practice`,
+    },
+  ]),
 );
 
 const pages = {
   ...blogPages,
   ...tools,
+  ...certificatePages,
 };
 
 export const { getStaticPaths, GET } = OGImageRoute({
