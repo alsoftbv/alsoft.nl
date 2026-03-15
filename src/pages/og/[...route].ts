@@ -5,9 +5,7 @@ import { certificates } from "@data/certificates";
 
 const posts = await getCollection("blog");
 
-const blogPages = Object.fromEntries(
-  posts.map(({ id, data }) => [id, data]),
-);
+const blogPages = Object.fromEntries(posts.map(({ id, data }) => [id, data]));
 
 const certificatePages = Object.fromEntries(
   certificates.map((cert) => [
@@ -25,7 +23,7 @@ const pages = {
   ...certificatePages,
 };
 
-export const { getStaticPaths, GET } = OGImageRoute({
+export const { getStaticPaths, GET } = await OGImageRoute({
   param: "route",
   pages: pages,
 
