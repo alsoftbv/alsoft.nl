@@ -35,10 +35,11 @@ const formattedDate = issueDate.toLocaleDateString("en-US", {
 >
   <div class="certificate-page">
     <div class="certificate">
-      <Image src={logoIcon} alt="alsoft" class="logo" />
-      <p class="date">{formattedDate}</p>
-
-      <p class="label">Certificate of Completion</p>
+      <div class="header">
+        <Image src={logoIcon} alt="alsoft" class="logo" />
+        <p class="label">Certificate of Completion</p>
+        <p class="date">{formattedDate}</p>
+      </div>
 
       <p class="presented">This is to certify that</p>
       <h1 class="name">{name}</h1>
@@ -97,10 +98,20 @@ const formattedDate = issueDate.toLocaleDateString("en-US", {
     background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
   }
 
+  .header {
+    position: relative;
+    margin-bottom: 1.25rem;
+    text-align: center;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .logo {
     position: absolute;
-    top: 1.25rem;
-    left: 1.5rem;
+    left: 0;
+    top: 0;
     height: 48px;
     width: auto;
   }
@@ -108,7 +119,7 @@ const formattedDate = issueDate.toLocaleDateString("en-US", {
   .label {
     font-size: 1.1rem;
     color: #ff9100;
-    margin: 0 0 1.25rem;
+    margin: 0;
     font-weight: 600;
   }
 
@@ -145,8 +156,8 @@ const formattedDate = issueDate.toLocaleDateString("en-US", {
 
   .date {
     position: absolute;
-    top: 1.25rem;
-    right: 1.5rem;
+    right: 0;
+    top: 0;
     font-size: 0.85rem;
     color: #aaa;
     margin: 0;
@@ -176,8 +187,8 @@ const formattedDate = issueDate.toLocaleDateString("en-US", {
   }
 
   .part ul {
-    list-style: none;
-    padding: 0;
+    list-style: disc;
+    padding: 0 0 0 1.1rem;
     margin: 0;
   }
 
@@ -216,7 +227,30 @@ const formattedDate = issueDate.toLocaleDateString("en-US", {
 
   @media (max-width: 768px) {
     .certificate {
-      padding: 2rem 1.25rem;
+      padding: 1.5rem 1.25rem;
+    }
+
+    .header {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      min-height: auto;
+    }
+
+    .logo {
+      position: static;
+      height: 36px;
+    }
+
+    .date {
+      position: static;
+      font-size: 0.75rem;
+      margin-left: auto;
+    }
+
+    .label {
+      order: 2;
+      width: 100%;
+      text-align: center;
     }
 
     .name {
