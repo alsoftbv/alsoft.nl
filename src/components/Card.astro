@@ -10,8 +10,9 @@ const { class: className = "", id } = Astro.props;
   .card {
     padding: 2rem;
     gap: 2rem;
-    border-radius: 8px;
-    background: #202020;
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1px solid var(--border);
     box-sizing: border-box;
   }
 

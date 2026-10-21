@@ -16,7 +16,8 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
             gap: 2rem;
             padding: 2rem;
             border-radius: 8px;
-            background: #202020;
+            background: var(--surface);
+            border: 1px solid var(--border);
             box-sizing: border-box;
           }
 

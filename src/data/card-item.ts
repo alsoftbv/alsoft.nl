@@ -1,4 +1,5 @@
 export interface CardItem {
   id: string;
-  image: ImageMetadata;
+  image?: ImageMetadata;
+  icon?: ImageMetadata;
 }

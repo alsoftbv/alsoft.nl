@@ -1,213 +1,185 @@
 ---
 import { Image } from "astro:assets";
 import type { CardItem } from "@data/card-item";
-import left from "@images/cards/left.svg";
-import right from "@images/cards/right.svg";
 import en from "@locales/en.json";
 import nl from "@locales/nl.json";
 
 interface Props {
   title: string;
+  eyebrow?: string;
+  intro?: string;
   page: string;
   items: CardItem[];
+  contactTile?: string;
+  columns?: 3 | 4;
 }
 
-const { title, page, items } = Astro.props as Props;
+const {
+  title,
+  eyebrow,
+  intro,
+  page,
+  items,
+  contactTile,
+  columns = 4,
+} = Astro.props as Props;
 const t = Astro.currentLocale === "nl" ? nl : en;
 ---
 
-<section class="card-slider-section">
-  <h2>{title}</h2>
-  <div class="slider-wrapper">
-    <button class="scroll-btn left" aria-label="Scroll left"
-      ><Image src={left} alt="Left arrow" /></button
-    >
-    <div class="card-slider">
-      {
-        items.map((item: CardItem) => {
-          const anchor = item.id;
-          const translated = t.cards[item.id as keyof typeof t.cards];
-
-          return (
-            <a href={`${page}#${anchor}`}>
-              <div class="card-item">
-                <Image src={item.image} alt={translated.title} />
-                <h3>{translated.title}</h3>
-                <p>{translated.description}</p>
-              </div>
-            </a>
-          );
-        })
-      }
-    </div>
-
-    <button class="scroll-btn right" aria-label="Scroll right"
-      ><Image src={right} alt="Right arrow" /></button
-    >
+<div class="cards-section">
+  <div class="cards-heading">
+    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+    <h2>{title}</h2>
+    {intro && <p class="muted">{intro}</p>}
   </div>
-</section>
+  <div class={`card-grid cols-${columns}`}>
+    {
+      items.map((item: CardItem) => {
+        const translated = t.cards[item.id as keyof typeof t.cards];
+
+        return (
+          <a class="card-item" href={`${page}#${item.id}`}>
+            {item.image && (
+              <Image src={item.image} alt="" width={480} loading="lazy" />
+            )}
+            <div class="card-body">
+              {item.icon && (
+                <Image
+                  class="icon"
+                  src={item.icon}
+                  alt=""
+                  width={32}
+                  height={32}
+                />
+              )}
+              <h3>{translated.title}</h3>
+              <p>{translated.description}</p>
+              <span class="more" aria-hidden="true">
+                →
+              </span>
+            </div>
+          </a>
+        );
+      })
+    }
+    {
+      contactTile && (
+        <a class="card-item contact-tile" href={contactTile}>
+          <div class="card-body">
+            <h3>{t.notSure.title}</h3>
+            <p>{t.notSure.description}</p>
+            <span class="more" aria-hidden="true">
+              {t.getInTouch} →
+            </span>
+          </div>
+        </a>
+      )
+    }
+  </div>
+</div>
 
 <style>
-  a {
-    height: 100%;
-    text-decoration: none;
-    flex-shrink: 0;
-    display: flex;
+  .cards-heading {
+    max-width: 640px;
+    margin-bottom: 2rem;
   }
 
-  .card-slider-section h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
+  .cards-heading h2 {
+    margin-bottom: 0.75rem;
   }
 
-  .slider-wrapper {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    padding: 0 1rem;
+  .cards-heading p {
+    margin: 0;
   }
 
-  .scroll-btn {
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    border: none;
-    font-size: 2rem;
-    border-radius: 50%;
-    width: 2.5rem;
-    height: 2.5rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    position: absolute;
-    top: 50%;
-    z-index: 10;
-    text-align: center;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    padding: 0;
+  .card-grid {
+    display: grid;
+    gap: 1.25rem;
   }
 
-  .scroll-btn.left {
-    left: 0.25rem;
+  .cols-4 {
+    grid-template-columns: repeat(4, 1fr);
   }
 
-  .scroll-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+  .cols-3 {
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  .scroll-btn.right {
-    right: 0.25rem;
+  @media (max-width: 900px) {
+    .card-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
-  .card-slider {
-    display: flex;
-    gap: 1.5rem;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 1rem;
-    width: 100%;
-    scrollbar-width: none;
-    justify-content: flex-start;
-    mask: linear-gradient(
-      to right,
-      transparent,
-      black 7%,
-      black 93%,
-      transparent
-    );
+  @media (max-width: 560px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   .card-item {
-    width: 300px;
-    background: #202020;
-    border-radius: 8px;
-    padding: 2rem 1rem;
-    transition:
-      box-shadow 0.2s,
-      transform 0.2s;
-    display: grid;
-    grid-template-rows: 50% 20% 30%;
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     overflow: hidden;
+    text-decoration: none;
+    transition:
+      border-color 0.2s ease,
+      transform 0.2s ease;
   }
 
   .card-item:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
-    cursor: pointer;
+    border-color: var(--accent);
+    transform: translateY(-4px);
   }
 
-  .card-item img {
-    width: 90%;
-    aspect-ratio: 16 / 9;
-    max-height: 180px;
+  .card-item img:not(.icon) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
-    border-radius: 8px;
-    margin: 0.5rem 0;
-    align-self: center;
-    justify-self: center;
+    display: block;
   }
 
-  .card-item h3 {
-    font-size: 1.15rem;
-    font-weight: 700;
-    align-self: start;
-    justify-self: center;
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem;
+    flex: 1;
   }
 
-  .card-item p {
+  .icon {
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-tile {
+    border-style: dashed;
+    background: transparent;
+  }
+
+  .card-body h3 {
     margin: 0;
-    justify-self: center;
+    font-size: 1.1rem;
   }
 
-  @media (max-width: 768px) {
-    .card-item {
-      width: 200px;
-      padding: 1rem 0.5rem;
-      grid-template-rows: 40% 25% 35%;
-    }
+  .card-body p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
 
-    .card-item img {
-      max-height: 120px;
-    }
+  .more {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    color: var(--accent);
+    font-weight: 600;
+    transition: transform 0.2s ease;
+  }
 
-    .scroll-btn {
-      display: none;
-    }
-
-    .card-slider {
-      mask: linear-gradient(
-        to right,
-        transparent,
-        black 10%,
-        black 90%,
-        transparent
-      );
-    }
+  .card-item:hover .more {
+    transform: translateX(4px);
   }
 </style>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const sliders = document.querySelectorAll(".card-slider-section");
-    sliders.forEach((section) => {
-      const slider = section.querySelector(".card-slider");
-      const leftBtn = section.querySelector(".scroll-btn.left");
-      const rightBtn = section.querySelector(".scroll-btn.right");
-
-      const scrollAmount = 300;
-
-      leftBtn?.addEventListener("click", () => {
-        slider?.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-      });
-
-      rightBtn?.addEventListener("click", () => {
-        slider?.scrollBy({ left: scrollAmount, behavior: "smooth" });
-      });
-    });
-  });
-</script>

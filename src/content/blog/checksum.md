@@ -1,6 +1,6 @@
 ---
 title: "When CRC16 is not Enough"
-description: "Learn how to reverse-engineer unknown CRC checksums using real data and crccalc.com — fast, practical, and essential for embedded developers."
+description: "Learn how to reverse-engineer unknown CRC checksums using real data and crccalc.com. Fast, practical, and essential for embedded developers."
 date: 2025-11-24
 ---
 
@@ -93,7 +93,7 @@ A single captured packet is often enough to fully identify the CRC.
 
 Reverse-engineering checksums doesn’t have to be trial and error. Tools like [crccalc.com](https://crccalc.com) make it easy to explore CRC parameters interactively.
 
-If you’re stuck with “CRC mismatch” errors or a vague _CRC16_ line in a datasheet, try this method—or reach out if you need help analyzing a tricky protocol.
+If you’re stuck with “CRC mismatch” errors or a vague _CRC16_ line in a datasheet, try this method, or reach out if you need help analyzing a tricky protocol.
 
 ![Computer that needs help](images/checksum/help.png)
 

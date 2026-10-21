@@ -3,10 +3,9 @@ import Button from "./Button.astro";
 import { Image } from "astro:assets";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
+import logoImage from "@images/logo.png";
 import linkedinImage from "@images/footer/linkedin.png";
 import githubImage from "@images/footer/github.png";
-import kvkImage from "@images/footer/kvk.jpg";
-import btwImage from "@images/footer/btw.jpg";
 import locationImage from "@images/footer/location.svg";
 import mailImage from "@images/footer/mail.svg";
 
@@ -15,43 +14,45 @@ import nl from "@locales/nl.json";
 
 const locale = Astro.currentLocale ?? "en";
 const t = Astro.currentLocale === "nl" ? nl : en;
+const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
   <div class="content">
     <div class="footer-left">
+      <Image class="logo" src={logoImage} alt="alsoft" loading="lazy" />
+      <p class="tagline">{t.indexHeader}</p>
       <div class="icon-text">
-        <Image src={kvkImage} alt="KvK" loading="lazy" /><p>96553863</p>
-      </div>
-      <div class="icon-text">
-        <Image src={btwImage} alt="BTW" loading="lazy" />
-        <p>NL867658472B01</p>
-      </div>
-      <div class="icon-text">
-        <Image src={locationImage} alt="Location" loading="lazy" />
-        <p>{t.address}</p>
-      </div>
-      <div class="icon-text">
-        <Image src={mailImage} alt="e-mail" loading="lazy" />
+        <Image src={mailImage} alt="" loading="lazy" />
         <a href="mailto:info@alsoft.nl?subject=Get%20In%20Touch"
           >info@alsoft.nl</a
         >
       </div>
+      <div class="icon-text">
+        <Image src={locationImage} alt="" loading="lazy" />
+        <p>{t.address}</p>
+      </div>
       <div class="links">
-        <div class="icon-text">
-          <Image src={linkedinImage} alt="LinkedIn" loading="lazy" />
-          <a href="https://www.linkedin.com/company/alsoftbv" target="_blank"
-            >alsoftbv</a
-          >
-        </div>
-        <div class="icon-text">
-          <Image src={githubImage} alt="GitHub" loading="lazy" />
-          <a href="https://github.com/alsoftbv" target="_blank">alsoftbv</a>
-        </div>
+        <a
+          class="icon-text"
+          href="https://www.linkedin.com/company/alsoftbv"
+          target="_blank"
+          rel="noopener"
+        >
+          <Image src={linkedinImage} alt="" loading="lazy" />LinkedIn
+        </a>
+        <a
+          class="icon-text"
+          href="https://github.com/alsoftbv"
+          target="_blank"
+          rel="noopener"
+        >
+          <Image src={githubImage} alt="" loading="lazy" />GitHub
+        </a>
       </div>
     </div>
 
-    <div class="footer-right">
+    <nav class="footer-right" aria-label="Footer">
       <a href={getRelativeLocaleUrl(locale, "/services")}>{t.services.header}</a
       >
       <a href={getRelativeLocaleUrl(locale, "/industries")}
@@ -59,37 +60,36 @@ const t = Astro.currentLocale === "nl" ? nl : en;
       >
       <a href={getRelativeLocaleUrl(locale, "/blog")}>{t.blog.header}</a>
       <a href={getRelativeLocaleUrl(locale, "/tools")}>{t.tools.header}</a>
-      <Button
-        href={getRelativeLocaleUrl(Astro.currentLocale ?? "en", "/contact")}
-        class="small-button">{t.getInTouch}</Button
+      <Button href={getRelativeLocaleUrl(locale, "/contact")} class="contact"
+        >{t.getInTouch}</Button
       >
-    </div>
+    </nav>
+  </div>
+
+  <div class="legal">
+    <p>© {year} alsoft · KvK 96553863 · BTW NL867658472B01</p>
   </div>
 </footer>
 
 <style>
   p,
-  a,
-  br {
-    line-height: 1em;
-    margin: 0;
-  }
-
-  br {
-    height: 1em;
-  }
-
   a {
-    text-decoration: none;
-    transition: text-decoration 0.2s ease;
+    margin: 0;
+    line-height: 1.4;
   }
 
-  a:hover {
-    text-decoration: underline;
+  a:not(.btn) {
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 0.2s ease;
+  }
+
+  a:not(.btn):hover {
+    color: var(--text);
   }
 
   img {
-    height: 1.5rem;
+    height: 1.1rem;
     width: auto;
     display: block;
     margin: 0;
@@ -97,33 +97,53 @@ const t = Astro.currentLocale === "nl" ? nl : en;
   }
 
   .footer {
-    background-color: #000000;
+    background-color: var(--bg);
+    border-top: 1px solid var(--border);
   }
 
   .content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 1.5rem 1rem;
-    max-width: 960px;
+    gap: 2rem;
+    padding: 3rem 1.5rem 2rem;
+    max-width: var(--container);
     margin: 0 auto;
   }
 
-  .footer-left,
-  .footer-right {
-    display: grid;
-    grid-template-rows: repeat(5, 1fr);
-    gap: 0.3rem;
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .footer-left .logo {
+    height: 2.5rem;
+    border-radius: 0;
+  }
+
+  .tagline {
+    color: var(--muted);
+    margin-bottom: 0.5rem;
   }
 
   .footer-right {
-    justify-items: end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+  }
+
+  .contact {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
   }
 
   .links {
     display: flex;
     flex-direction: row;
-    gap: 1em;
+    gap: 1.25rem;
   }
 
   .icon-text {
@@ -131,28 +151,28 @@ const t = Astro.currentLocale === "nl" ? nl : en;
     flex-direction: row;
     align-items: center;
     gap: 0.5em;
+    color: var(--muted);
   }
 
-  .small-button {
-    font-size: 0.7rem;
+  .legal {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem 2rem;
+    border-top: 1px solid var(--border);
   }
 
-  .small-button:hover {
-    text-decoration: none;
+  .legal p {
+    color: var(--muted);
+    font-size: 0.8rem;
   }
 
   @media (max-width: 768px) {
-    p,
-    a {
-      font-size: 0.7rem;
+    .content {
+      flex-direction: column;
     }
 
-    img {
-      height: 1rem;
-    }
-
-    .small-button {
-      font-size: 0.5rem;
+    .footer-right {
+      align-items: flex-start;
     }
   }
 </style>

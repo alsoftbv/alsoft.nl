@@ -1,19 +1,14 @@
-import rtosImage from "@images/services/rtos.jpg";
-import linuxImage from "@images/services/linux.jpg";
-import iotImage from "@images/services/iot.jpg";
+import developmentIcon from "@images/index/icons/development.svg";
+import pencilIcon from "@images/index/icons/pencil.svg";
+import reliabilityIcon from "@images/index/icons/reliability.svg";
+import adjustmentIcon from "@images/index/icons/adjustment.svg";
+import performanceIcon from "@images/index/icons/performance.svg";
 import type { CardItem } from "./card-item";
 
 export const services: CardItem[] = [
-  {
-    id: "rtos",
-    image: rtosImage,
-  },
-  {
-    id: "linux",
-    image: linuxImage,
-  },
-  {
-    id: "iot",
-    image: iotImage,
-  },
+  { id: "hardware", icon: pencilIcon },
+  { id: "firmware", icon: developmentIcon },
+  { id: "updates", icon: reliabilityIcon },
+  { id: "modernization", icon: adjustmentIcon },
+  { id: "ai", icon: performanceIcon },
 ];

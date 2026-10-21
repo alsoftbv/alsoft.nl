@@ -19,16 +19,15 @@ export async function getStaticPaths() {
         post,
         slug: post.id,
         data: post.data,
-        canonical: isDutch ? `nl/blog/${cleanSlug}` : `blog/${cleanSlug}`,
       },
     };
   });
 }
 
-const { slug, data, post, canonical } = Astro.props;
+const { slug, data, post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BlogLayout {slug} {data} {canonical}>
+<BlogLayout {slug} {data}>
   <Content />
 </BlogLayout>

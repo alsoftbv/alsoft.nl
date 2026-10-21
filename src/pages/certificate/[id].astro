@@ -13,7 +13,7 @@ export function getStaticPaths() {
 
 const { id, name, date } = Astro.props;
 
-const title = `Certificate of Completion — ${name}`;
+const title = `Certificate of Completion: ${name}`;
 const description = `${name} completed the Software Engineering in Practice training at alsoft`;
 const canonical = `https://alsoft.nl/certificate/${id}`;
 const image = `https://alsoft.nl/og/certificate/${id}.png`;
@@ -32,6 +32,7 @@ const formattedDate = issueDate.toLocaleDateString("en-US", {
   description={description}
   canonical={canonical}
   image={image}
+  translated={false}
 >
   <div class="certificate-page">
     <div class="certificate">

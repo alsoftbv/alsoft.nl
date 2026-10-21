@@ -25,7 +25,7 @@ export default function MessageList({ messages }: Props) {
       style={{
         height: "400px",
         overflowY: "auto",
-        border: "1px solid #3f3f3f",
+        border: "1px solid var(--border)",
         borderRadius: "8px",
         padding: "1rem",
         listStyle: "none",
@@ -56,14 +56,14 @@ export default function MessageList({ messages }: Props) {
                 style={{
                   flex: 1,
                   height: "1px",
-                  backgroundColor: "#3f3f3f",
+                  backgroundColor: "var(--surface-2)",
                   margin: "0 1rem",
                 }}
               />
               <span
                 style={{
                   fontSize: "0.75rem",
-                  color: "#999",
+                  color: "var(--muted)",
                   whiteSpace: "nowrap",
                 }}
               >
@@ -73,7 +73,7 @@ export default function MessageList({ messages }: Props) {
                 style={{
                   flex: 1,
                   height: "1px",
-                  backgroundColor: "#3f3f3f",
+                  backgroundColor: "var(--surface-2)",
                   margin: "0 1rem",
                 }}
               />
@@ -91,8 +91,9 @@ export default function MessageList({ messages }: Props) {
           >
             <div
               style={{
-                backgroundColor: msg.type === "sent" ? "#ff9100" : "#3f3f3f",
-                color: "#ffffff",
+                backgroundColor:
+                  msg.type === "sent" ? "var(--accent)" : "var(--surface-2)",
+                color: msg.type === "sent" ? "#000000" : "var(--text)",
                 padding: "0.5rem 1rem",
                 borderRadius: "16px",
                 maxWidth: "70%",

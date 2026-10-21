@@ -220,7 +220,7 @@ export default function App() {
             flex-grow: 1;
             font-family: monospace;
             padding: 15px;
-            background: #3f3f3f;
+            background: var(--surface-2);
             resize: none;
         }
         

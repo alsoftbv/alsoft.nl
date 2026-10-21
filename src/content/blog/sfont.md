@@ -132,7 +132,7 @@ For wider fonts (9-16 pixels), each row takes 2 bytes. The tool handles all this
 
 Here's a trick that isn't obvious from the format: you can use sFONT glyphs to create multi-colored graphics on displays that support color.
 
-The technique is simple. Instead of designing a single icon, you split it into layers—one for each color. Store each layer as a separate character in your font. Then render them at the same position, each in a different color.
+The technique is simple. Instead of designing a single icon, you split it into layers, one for each color. Store each layer as a separate character in your font. Then render them at the same position, each in a different color.
 
 ![Layered Icon Technique](images/sfont/layered-icons.jpg)
 
@@ -158,7 +158,7 @@ if (battery_low) {
 }
 ```
 
-This approach keeps the memory footprint tiny while giving you colorful, pixel-perfect icons. The sFONT Generator makes it easy to design these layers visually—just create each layer as a separate character and align them by eye.
+This approach keeps the memory footprint tiny while giving you colorful, pixel-perfect icons. The sFONT Generator makes it easy to design these layers visually: just create each layer as a separate character and align them by eye.
 
 ---
 

@@ -12,7 +12,7 @@ const certificatePages = Object.fromEntries(
     `certificate/${cert.id}`,
     {
       title: "Certificate of Completion",
-      description: `${cert.name} — Software Engineering in Practice`,
+      description: `${cert.name}, Software Engineering in Practice`,
     },
   ]),
 );

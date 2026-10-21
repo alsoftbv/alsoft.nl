@@ -5,18 +5,18 @@ import { Image } from "astro:assets";
 import brokenDevice from "@images/404/broken.png";
 ---
 
-<BaseLayout title="Could Not Compute!">
+<BaseLayout title="Could Not Compute!" translated={false}>
   <section class="not-found">
     <div class="text-content">
       <h1>Oops, something went wrong.</h1>
       <p>
-        We couldn’t find the page you were looking for. Don’t worry — your
+        We couldn’t find the page you were looking for. Don’t worry, your
         device isn’t broken, just this link.
       </p>
       <p class="sub">
-        Let’s get you back on track to building something amazing.
+        Head back home and we’ll get you where you were going.
       </p>
-      <Button href="/">Go back home</Button>
+      <Button href="/" class="home-button">Go back home</Button>
     </div>
     <Image src={brokenDevice} alt="Lost device" loading="eager" />
   </section>
@@ -52,6 +52,7 @@ import brokenDevice from "@images/404/broken.png";
 
   .text-content .sub {
     font-size: 0.9rem;
+    color: var(--muted);
   }
 
   img {
@@ -60,7 +61,7 @@ import brokenDevice from "@images/404/broken.png";
     border-radius: 8px;
   }
 
-  Button {
+  .home-button {
     margin-top: 1.5rem;
   }
 

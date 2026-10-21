@@ -1,6 +1,6 @@
 ---
 title: "Wanneer CRC16 niet genoeg is"
-description: "Leer hoe je onbekende CRC-controles kunt terugrekenen met echte data en crccalc.com — snel, praktisch en onmisbaar voor embedded ontwikkelaars."
+description: "Leer hoe u onbekende CRC-controles kunt terugrekenen met echte data en crccalc.com. Snel, praktisch en onmisbaar voor embedded ontwikkelaars."
 date: 2025-11-24
 ---
 
@@ -16,9 +16,9 @@ Documentatie? Misschien als ik er zin in heb. Waar had ik die initial value ook 
 
 > Hij maakt verbinding op mijn apparaat!
 
-Als je lang genoeg met embedded apparaten werkt, klinkt dit verhaal vast herkenbaar:
+Als u lang genoeg met embedded apparaten werkt, klinkt dit verhaal vast herkenbaar:
 
-De documentatie zegt _“CRC16-checksum”_, misschien vermeldt het polynoom als je geluk hebt, maar dat is alles. Geen details over bytevolgorde, reflectie, initial value of final XOR. Je implementeert wat redelijk lijkt, maar de firmware blijft je pakketten afwijzen.
+De documentatie zegt _“CRC16-checksum”_, misschien vermeldt het polynoom als u geluk heeft, maar dat is alles. Geen details over bytevolgorde, reflectie, initial value of final XOR. U implementeert wat redelijk lijkt, maar de firmware blijft uw pakketten afwijzen.
 
 ---
 
@@ -42,18 +42,18 @@ Zelfs twee CRC16-implementaties die hetzelfde polynoom gebruiken, kunnen verschi
 
 ## Een eenvoudige truc: laat de data het werk doen
 
-In plaats van te raden, kun je een pakket met een echte CRC gebruiken om de juiste variant te identificeren.
+In plaats van te raden, kunt u een pakket met een echte CRC gebruiken om de juiste variant te identificeren.
 
 1. Leg een pakket vast met zowel de ruwe data als de daadwerkelijke CRC.
 2. Ga naar [crccalc.com](https://crccalc.com).
-3. Plak je data en probeer de verschillende CRC16-varianten.
+3. Plak uw data en probeer de verschillende CRC16-varianten.
 4. Vergelijk de berekende checksum met de verwachte waarde totdat ze overeenkomen.
 
 ![crccalc Example Screenshot](../images/checksum/crccalc-screenshot.png)
 
-> crccalc.com laat je CRC16-varianten testen op basis van een bekend pakket.
+> crccalc.com laat u CRC16-varianten testen op basis van een bekend pakket.
 
-Je kunt experimenteren met instellingen zoals reflectie, polynoom of initial value. crccalc werkt in real-time, waardoor trial-and-error veel sneller gaat.
+U kunt experimenteren met instellingen zoals reflectie, polynoom of initial value. crccalc werkt in real-time, waardoor trial-and-error veel sneller gaat.
 
 ---
 
@@ -65,7 +65,7 @@ Bij een recent project moesten we het communicatieprotocol van een oude snackaut
 
 > Ah, bedankt.
 
-Gelukkig konden we het eerste bericht van het apparaat opvangen zonder dat er aan onze kant een CRC nodig was. Door het frame in crccalc.com te plakken en varianten te testen, ontdekten we al snel dat het **CRC16-ARC** was, big-endian. Toen we dat eenmaal wisten, verifieerden we het in de code — en de communicatie werkte perfect.
+Gelukkig konden we het eerste bericht van het apparaat opvangen zonder dat er aan onze kant een CRC nodig was. Door het frame in crccalc.com te plakken en varianten te testen, ontdekten we al snel dat het **CRC16-ARC** was, big-endian. Toen we dat eenmaal wisten, verifieerden we het in de code, en de communicatie werkte perfect.
 
 ![Connected](../images/checksum/connected.png)
 
@@ -75,7 +75,7 @@ Gelukkig konden we het eerste bericht van het apparaat opvangen zonder dat er aa
 
 ## Waarom dit belangrijk is
 
-Deze aanpak is onmisbaar wanneer je werkt met:
+Deze aanpak is onmisbaar wanneer u werkt met:
 
 - **Onderdocumenteerde apparaten van derden**
 - **Proprietaire protocollen**
@@ -93,7 +93,7 @@ Eén enkel vastgelegd pakket is vaak al genoeg om de correcte CRC te identificer
 
 Het reverse-engineeren van checksums hoeft geen gokwerk te zijn. Tools zoals [crccalc.com](https://crccalc.com) maken het eenvoudig om CRC-parameters interactief te onderzoeken.
 
-Als je vastloopt met “CRC-mismatch” fouten of een vage _CRC16_-vermelding in een datasheet, probeer dan deze methode — of neem contact op als je hulp nodig hebt bij een lastig protocol.
+Als u vastloopt met “CRC-mismatch” fouten of een vage _CRC16_-vermelding in een datasheet, probeer dan deze methode, of neem contact op als u hulp nodig heeft bij een lastig protocol.
 
 ![Computer that needs help](../images/checksum/help.png)
 
@@ -103,11 +103,11 @@ Als je vastloopt met “CRC-mismatch” fouten of een vage _CRC16_-vermelding in
 
 ## Hulp nodig bij CRC-problemen?
 
-Als je werkt met **ondocumenteerde protocollen**, **CRC-mismatches**, of gewoon een snellere manier zoekt om checksums te analyseren, kunnen wij helpen.
+Als u werkt met **ondocumenteerde protocollen**, **CRC-mismatches**, of gewoon een snellere manier zoekt om checksums te analyseren, kunnen wij helpen.
 
-- We kunnen je pakketten analyseren en de juiste CRC-variant bepalen.
+- We kunnen uw pakketten analyseren en de juiste CRC-variant bepalen.
 - We bieden embedded-softwareconsultancy bij complexe hardware-integraties.
-- We helpen je CRC-checks betrouwbaar te implementeren in je firmware.
+- We helpen u CRC-checks betrouwbaar te implementeren in uw firmware.
 
 📧 **Neem contact op via [altug@alsoft.nl](mailto:altug@alsoft.nl)**
 

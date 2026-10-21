@@ -16,35 +16,37 @@ const contactText =
 
 <section class="contact-section">
   <Card class="content">
-    <div class="contact-form">
-      <h2>{t.contact.yourName}</h2>
-      <input type="text" />
-      <h2>{t.contact.tellUs}</h2>
-      <textarea></textarea>
-      <Button id="submit-contact">{t.contact.submit}</Button>
-      <p class="get-back">
-        {t.contact.getBack}
+    <form class="contact-form" id="contact-form">
+      <label for="contact-name">{t.contact.yourName}</label>
+      <input id="contact-name" name="name" type="text" autocomplete="name" />
+      <label for="contact-message">{t.contact.tellUs}</label>
+      <textarea id="contact-message" name="message" required></textarea>
+      <Button type="submit" class="submit">{t.contact.submit}</Button>
+      <p class="note">
+        {t.contact.mailNote}
+        {t.contact.orEmail}
+        <a href="mailto:info@alsoft.nl">info@alsoft.nl</a>
       </p>
-    </div>
+    </form>
     <div class="contact-image">
-      <Image src={logoImage} alt="Logo" loading="eager" />
+      <Image src={logoImage} alt="" loading="eager" />
     </div>
   </Card>
 </section>
 
 <style>
   .contact-section {
-    padding: 1.5rem 1rem;
+    padding: 3rem 1.5rem;
   }
 
   .content {
-    padding: 2rem;
+    padding: 2.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: 3rem;
-    max-width: 960px;
+    max-width: var(--container);
     margin: 0 auto;
   }
 
@@ -54,32 +56,25 @@ const contactText =
     width: 100%;
   }
 
+  .contact-form label {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
   .contact-form input,
   .contact-form textarea {
     width: 100%;
     box-sizing: border-box;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: none;
-    border-radius: 8px;
-    background-color: #3f3f3f;
-    font: inherit;
-    outline: none;
-    resize: none;
-    transition:
-      background-color 0.2s ease,
-      box-shadow 0.2s ease;
+    margin-bottom: 1.5rem;
   }
 
   .contact-form textarea {
-    min-height: 8rem;
-    margin-bottom: 2rem;
+    min-height: 10rem;
   }
 
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    filter: brightness(1.2);
-    box-shadow: 0 0 0 2px #ff9100;
+  .submit {
+    align-self: flex-start;
   }
 
   .contact-image {
@@ -91,19 +86,23 @@ const contactText =
     height: auto;
   }
 
-  .get-back {
-    display: block;
-    font-size: 0.9em;
-    text-align: center;
+  .note {
+    margin: 1.25rem 0 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .note a {
+    color: var(--accent);
   }
 
   @media (max-width: 768px) {
     .content {
-      padding: 1rem;
+      padding: 1.25rem;
     }
 
     .contact-section {
-      padding: 0.5rem;
+      padding: 1.5rem 1rem;
     }
 
     .contact-image {
@@ -112,22 +111,23 @@ const contactText =
 
     .contact-form textarea {
       min-height: 12rem;
-      margin-bottom: 2rem;
     }
   }
 </style>
 
 <script is:inline define:vars={{ contactText }}>
-  document.getElementById("submit-contact")?.addEventListener("click", () => {
-    const nameInput = document.querySelector("input");
-    const messageInput = document.querySelector("textarea");
+  document.getElementById("contact-form")?.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-    const name = nameInput.value || "";
-    const message = messageInput.value || "";
+    const form = e.currentTarget;
+    const name = form.elements.name.value.trim();
+    const message = form.elements.message.value;
 
-    const subject = encodeURIComponent(`${contactText} - ${name}`);
+    const subject = encodeURIComponent(
+      name ? `${contactText} - ${name}` : contactText
+    );
     const body = encodeURIComponent(message);
 
-    window.location.href = `mailto:altug@alsoft.nl?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@alsoft.nl?subject=${subject}&body=${body}`;
   });
 </script>

@@ -1,34 +1,31 @@
 {
   "indexHeader": "Firmware die uw hardware laat schitteren.",
-  "indexFirst": "We helpen u betrouwbare en efficiënte embedded systemen te bouwen, of u nu vroege prototypes ontwikkelt of volledig productieklare producten.",
-  "indexSecond": "Bij alsoft zorgen we ervoor dat uw apparaat doet waarvoor het bedoeld is: verzamelen, verbinden en presteren, zonder de crashes of eigenaardigheden die geweldige hardware tegenhouden.",
+  "indexFirst": "PCB-ontwerp, board bring-up, firmware en veilige updates: één engineer van schema tot productie, gevestigd in de regio Eindhoven.",
+  "indexSecond": "We nemen het hele traject voor onze rekening, van het eerste schema tot apparaten die zichzelf in het veld updaten, zodat u met één team werkt in plaats van drie.",
   "indexButton": "Laten we het goed laten werken",
-  "benefitFirst": "Geen willekeurige bugs meer",
-  "benefitSecond": "Slimmer gebruik van middelen",
-  "benefitThird": "Vlottere ontwikkeling",
+  "benefitFirst": "Hardware en firmware onder één dak",
+  "benefitSecond": "Updates die een apparaat niet bricken",
+  "benefitThird": "Klaar voor de Cyber Resilience Act",
   "problemsHeader": "U heeft geweldige hardware gebouwd.",
   "problemsText": "Maar wanneer het vastloopt, zich vreemd gedraagt of niet met andere apparaten wil communiceren, denken mensen dat het hele apparaat slecht is. We begrijpen het. Firmware debuggen onder druk is niet leuk, en die kleine problemen kunnen het succes van uw product maken of breken.",
-  "problemsHighlight": "We willen mensen laten zien hoe geweldig uw product is.",
+  "problemsHighlight": "Wij zorgen dat de firmware uw hardware recht doet.",
   "solutionHeader": "We besteden dezelfde zorg aan uw firmware als u aan uw hardware.",
   "solutionStepsDesign": {
     "label": "Ontwerpen",
-    "desc": "We ontwerpen elk onderdeel totdat het solide aanvoelt."
+    "desc": "We leggen de architectuur, interfaces en faalscenario’s vast voordat we code schrijven."
   },
   "solutionStepsTest": {
     "label": "Testen",
-    "desc": "Of het nu firmware from scratch is of verbeteringen, we controleren de stabiliteit."
+    "desc": "Elke wijziging gaat door geautomatiseerde tests op een pc en op echte hardware."
   },
   "solutionStepsRefine": {
     "label": "Optimaliseren",
-    "desc": "We itereren totdat het stabiel, efficiënt en productie-klaar is."
+    "desc": "We meten geheugen, verbruik en timing, en lossen op wat de cijfers laten zien."
   },
-  "solutionText": "Van concept tot voltooiing, onze aanpak zorgt ervoor dat elke oplossing met precisie wordt ontworpen, getest op betrouwbaarheid en geoptimaliseerd voor duurzame prestaties. Of u nu een nieuw project start of bestaande systemen verbetert, wij leveren resultaten waarop u kunt vertrouwen.",
-  "proofHeader": "Vertrouwd in veeleisende sectoren.",
-  "proofText": "Van avionica tot industriële automatisering, we hebben systemen gebouwd en getest waar betrouwbaarheid geen optie is. U kunt erop vertrouwen dat wat wij voor u bouwen niet alleen werkt, maar blijft werken.",
+  "proofText": "Van betaalkiosken tot avionica: wij bouwen systemen waarin betrouwbaarheid geen optie is.",
   "moreProofHeader": "Vertrouwd door teams die dingen bouwen die ertoe doen.",
-  "moreProofSubtext": "Van prototype-labs tot productievloeren",
   "aboutHeader": "Hoi, ik ben Altuğ.",
-  "aboutText": "Ik heb jaren gewerkt aan embedded systemen in sectoren waar falen geen optie is. Tegenwoordig help ik bedrijven om hardware-ideeën om te zetten in betrouwbare producten — zonder 's nachts achter firmware-bugs aan te jagen.",
+  "aboutText": "Ik heb jaren gewerkt aan embedded systemen in sectoren waar falen geen optie is. Tegenwoordig help ik bedrijven om hardware-ideeën om te zetten in betrouwbare producten, zonder 's nachts achter firmware-bugs aan te jagen.",
   "planHeader": "Zo werken we meestal:",
   "planLabels": {
     "chat": "Chat",
@@ -44,45 +41,84 @@
   },
   "planNote": "Eenvoudig, transparant en afgestemd op uw planning.",
   "ctaHeader": "Laten we praten over uw apparaat.",
-  "ctaText": "Of u nu iets nieuws lanceert of iets bestaands verbetert, ik hoor graag wat u aan het bouwen bent.",
+  "ctaText": "Of u nu iets nieuws lanceert of iets repareert dat al in het veld staat, we horen graag wat u aan het bouwen bent.",
   "ctaButton": "Begin een gesprek",
   "ourServices": "Onze Diensten",
   "industriesWeWork": "Sectoren Waarmee We Werken",
   "cards": {
-    "rtos": {
-      "title": "RTOS Firmware-oplossingen",
-      "description": "Snelle, betrouwbare realtime prestaties voor uw embedded producten.",
-      "longDescription": "Onze RTOS-ontwikkelingsdiensten helpen u betrouwbare, realtime functionaliteit naar uw apparaten te brengen. We ontwerpen firmware die nauwkeurige timing, voorspelbare prestaties en systeemstabiliteit garandeert—waardoor uw producten vlekkeloos presteren in veeleisende omgevingen zoals robotica, industriële besturing en automotive systemen."
+    "hardware": {
+      "title": "PCB-ontwerp & board bring-up",
+      "description": "Van schema tot een board dat opstart, met hardware en firmware onder één dak.",
+      "longDescription": "We ontwerpen boards in KiCad (voedingspaden, batterijladen, USB-C, ESP32 en RP2040) en brengen ze tot leven: eerste keer aanzetten, klokken, randapparatuur en drivers. Omdat hetzelfde team de hardware en de firmware doet, hoeft niemand te raden aan welke kant een bug zit.",
+      "points": [
+        "KiCad-schema en layout, 2 en 4 lagen",
+        "Productiebestanden voor JLCPCB: Gerbers, BOM en pick-and-place",
+        "Bring-up, eerste drivers en een schriftelijk bring-up-rapport"
+      ]
     },
-    "linux": {
-      "title": "Embedded Linux-oplossingen",
-      "description": "Op maat gemaakte Linux-platformen voor prestaties, flexibiliteit en schaalbaarheid.",
-      "longDescription": "We bouwen aangepaste Linux-omgevingen die uw producten voorzien van de flexibiliteit en kracht van open-source technologie. Van het optimaliseren van opstarttijden tot het waarborgen van lange-termijn onderhoudbaarheid, wij creëren veilige, high-performance systemen die uw time-to-market verkorten en u volledige controle geven over uw embedded platform."
+    "firmware": {
+      "title": "RTOS- & embedded Linux-firmware",
+      "description": "Firmware en connectiviteit die in het veld blijven draaien.",
+      "longDescription": "FreeRTOS op Cortex-M en ESP32, embedded Linux op Raspberry Pi en eigen hardware, en de connectiviteit daartussen: Ethernet, wifi en MQTT. We schrijven de drivers, sporen de lastige bugs op (geheugen, timing, netwerk) en leveren code op die uw team kan onderhouden.",
+      "points": [
+        "Drivers, RTOS-taken en protocolstacks",
+        "Ethernet-, wifi- en MQTT-verbindingen van apparaat naar cloud",
+        "Debuggen van crashes, geheugenlekken en timingproblemen"
+      ],
+      "proof": "Kernontwikkelaars van een i.MX RT IoT-gateway in productie, met 199 releases sinds 2025."
     },
-    "iot": {
-      "title": "IoT-connectiviteit met MQTT",
-      "description": "Naadloze apparaat-tot-cloud communicatie voor uw verbonden ecosysteem.",
-      "longDescription": "Onze MQTT-integratiediensten maken efficiënte, schaalbare communicatie in uw IoT-netwerk mogelijk. We ontwerpen en implementeren oplossingen die ervoor zorgen dat uw apparaten veilig en realtime gegevens delen—waardoor u sneller inzichten krijgt, processen stroomlijnt en een basis legt voor toekomstbestendige verbonden producten."
+    "updates": {
+      "title": "Veilige updates & CRA-gereedheid",
+      "description": "Updates in het veld die een apparaat niet kunnen bricken, klaar voor de Cyber Resilience Act.",
+      "longDescription": "Sinds september 2026 moeten fabrikanten onder de Europese Cyber Resilience Act actief misbruikte kwetsbaarheden melden, en vanaf december 2027 moeten verbonden producten worden geleverd met veilige updates, een SBOM en een vastgestelde ondersteuningsperiode. Wij bouwen het updatepad (ondertekende images, A/B-slots, automatische rollback) en richten het SBOM- en kwetsbaarhedenproces eromheen in.",
+      "points": [
+        "CRA-gap-analyse met een geprioriteerde roadmap",
+        "Ondertekende A/B-updates met automatische rollback",
+        "SBOM vanuit CI en een draaiboek voor kwetsbaarheden"
+      ],
+      "proof": "Bouwde bootloader- en firmware-updates over the air voor een IoT-gateway in productie, en een A/B-loader met automatische rollback voor een vloot Raspberry Pi-kiosken."
+    },
+    "modernization": {
+      "title": "Firmware-modernisering",
+      "description": "Maak verouderde firmware testbaar, onderhoudbaar en veilig om aan te passen.",
+      "longDescription": "Oude toolchains, geen tests en één persoon die de code begrijpt. Wij auditen verouderde firmware, zetten die stap voor stap om naar modern C++ (of Rust waar het past) en voegen tests toe die op een pc en op echte hardware in CI draaien, zodat wijzigingen niet langer eng zijn.",
+      "points": [
+        "Code-audit met een geprioriteerd rapport",
+        "Unittests op de pc en hardware-in-the-loop-tests in CI",
+        "Stapsgewijze herschrijving naar modern C++ of Rust"
+      ],
+      "proof": "Bouwden hardware-in-the-loop-updatetests die bij elke wijziging aan een IoT-gateway in productie in Jenkins draaien."
+    },
+    "ai": {
+      "title": "AI voor engineeringteams",
+      "description": "Maak uw firmwareteam productief met AI-codeertools, terwijl elke wijziging op echte hardware geverifieerd blijft.",
+      "longDescription": "Praktische workshops en repository-inrichting voor embedded teams die tools als Claude Code en GitHub Copilot invoeren: projectkennisbestanden, review-vangrails en werkwijzen waarin elke wijziging door AI op echte hardware wordt geverifieerd. Ook beschikbaar: Software Engineering in Practice, een driedelige training over fundamenten, robuustheid en productie.",
+      "points": [
+        "Workshop AI-ondersteunde embedded ontwikkeling",
+        "Repository-inrichting: agentinstructies, kennisbanken en vangrails",
+        "Training Software Engineering in Practice met certificaat"
+      ],
+      "proof": "Richtten de agentinstructies en kennisbank in voor een firmwareproject in productie, dat de ontwikkelaars dagelijks gebruiken."
     },
     "fintech": {
-      "title": "FinTech & Slimme Betalingssystemen",
-      "description": "Veilige embedded oplossingen voor next-generation betaal- en verkoopapparaten.",
-      "longDescription": "We maken de toekomst van cashless betalingen mogelijk met embedded betaaltechnologieën, speciaal voor FinTech-toepassingen. Van automaten en kassasystemen tot geautomatiseerde kiosken: onze oplossingen garanderen betrouwbare, veilige en schaalbare verwerking van betalingen, voorraadtracking en inventarisbeheer—waardoor uw bedrijf voorop blijft in de digitale betalingswereld."
+      "title": "FinTech & betaalsystemen",
+      "description": "Betaalterminals, verkoopautomaten en kiosken die betrouwbaar met geld omgaan.",
+      "longDescription": "Betaal- en verkoopapparaten moeten altijd werken: een mislukte transactie kost geld en vertrouwen. Wij bouwen firmware voor betaalterminals, verkoopautomaten en selfservice-kiosken, inclusief betaalflows, voorraadregistratie, beveiligde communicatie en updates in het veld die een machine niet offline halen."
     },
     "manufacturing": {
-      "title": "Industriële & Productie Automatisering",
-      "description": "Slimme, verbonden systemen die fabrieksoperaties en productiviteit optimaliseren.",
-      "longDescription": "Onze embedded en IoT-oplossingen stellen fabrikanten in staat productiviteit te verhogen, kwaliteit te verbeteren en traceerbaarheid op de fabrieksvloer te vergroten. Door realtime data-acquisitie, voorspellend onderhoud en procesautomatisering te integreren, helpen we productielijnen te moderniseren en digitale transformatie te versnellen."
+      "title": "Industrie & productie",
+      "description": "Verbonden machines die laten zien wat ze doen en blijven draaien.",
+      "longDescription": "Fabrieksapparatuur draait jarenlang en kan niet stilvallen door een firmwarebug. Wij bouwen controllers en gateways die machinedata verzamelen, die via Ethernet of MQTT versturen en blijven draaien bij stroomuitval, netwerkstoringen en updates."
     },
     "defense": {
-      "title": "Defensie & Lucht- en Ruimtevaart Systemen",
-      "description": "Kritieke embedded oplossingen ontworpen voor betrouwbaarheid, veiligheid en precisie.",
-      "longDescription": "We ontwikkelen hoogbetrouwbare embedded systemen die voldoen aan de veeleisende standaarden van de defensie- en lucht- en ruimtevaartsector. Onze expertise omvat realtime besturing, veilige communicatie en robuuste hardware-integratie, waardoor betrouwbare prestaties voor kritieke operaties en veeleisende omgevingen worden gegarandeerd."
+      "title": "Defensie & luchtvaart",
+      "description": "Voorspelbare, verifieerbare software voor kritieke programma’s.",
+      "longDescription": "In defensie en luchtvaart moet software voorspelbaar, getest en gedocumenteerd zijn. Wij brengen ervaring uit avionicaprogramma’s (deterministisch realtime gedrag, grondig testen en traceerbare documentatie) mee naar elk project."
     },
     "automotive": {
-      "title": "Automotive & Mobiliteit",
-      "description": "Embedded intelligentie die innovatie in voertuigen en mobiliteit aandrijft.",
-      "longDescription": "Van geavanceerde rijhulpsystemen (ADAS) tot in-voertuig connectiviteit en diagnostiek, wij leveren software die de volgende generatie automobieltechnologie aandrijft. Onze oplossingen richten zich op veiligheid, prestaties en realtime reactievermogen, waardoor fabrikanten slimmere, meer verbonden en efficiëntere voertuigen kunnen bouwen."
+      "title": "Automotive & mobiliteit",
+      "description": "Firmware en labtooling voor voertuigontwikkeling.",
+      "longDescription": "Voertuigontwikkeling draait op tooling die altijd moet werken: flashen, netbooten en testbanken. Onze open-source TFTP-server en -client worden gebruikt door automotive-engineers, en wij bouwen firmware en labtooling met oog voor realtime- en betrouwbaarheidseisen."
     }
   },
   "getInTouch": "Neem contact op",
@@ -92,7 +128,8 @@
     "yourName": "Uw naam",
     "tellUs": "Vertel ons over uw project",
     "submit": "Versturen",
-    "getBack": "Bedankt! We nemen binnen één werkdag contact met uw op."
+    "mailNote": "Bij verzenden opent uw e-mailapp met uw bericht al ingevuld. We reageren binnen één werkdag.",
+    "orEmail": "Liever direct mailen?"
   },
   "sfont": {
     "title": "sFONT-generator",
@@ -112,13 +149,13 @@
   },
   "services": {
     "header": "Diensten",
-    "title": "Embedded softwarediensten voor firmwareontwikkeling",
-    "description": "Wij bieden professionele diensten op het gebied van RTOS, Linux en IoT, inclusief firmwareontwerp, debugging en maatwerk embedded oplossingen."
+    "title": "Embedded engineering: PCB-ontwerp, firmware en veilige updates",
+    "description": "PCB-ontwerp en board bring-up, RTOS- en embedded Linux-firmware, veilige OTA-updates en CRA-gereedheid, firmware-modernisering en AI voor engineeringteams."
   },
   "industries": {
     "header": "Sectoren",
     "title": "Expertise in embedded software voor diverse sectoren",
-    "description": "Wij leveren embedded softwareoplossingen voor fintech, productie, defensie en automotive, met betrouwbare firmware en systeemintegratie."
+    "description": "Firmware voor betaal- en verkoopapparaten, industriële machines, defensie- en luchtvaartsystemen en tooling voor automotive-ontwikkeling."
   },
   "blog": {
     "header": "Blog",
@@ -129,5 +166,128 @@
     "header": "Tools",
     "title": "Embedded softwaretools voor firmware-ontwikkelaars",
     "description": "Een verzameling webgebaseerde tools voor embedded- en firmwareontwikkeling, zoals CRC-calculators, protocoltools en hulpmiddelen voor debugging."
+  },
+  "eyebrows": {
+    "hero": "Embedded firmware-ontwikkeling",
+    "problem": "Het probleem",
+    "approach": "De aanpak",
+    "services": "Diensten",
+    "industries": "Sectoren",
+    "clients": "Klanten",
+    "about": "Over",
+    "process": "Werkwijze",
+    "contact": "Contact"
+  },
+  "caseStudies": {
+    "eyebrow": "Cases",
+    "header": "Recent werk",
+    "challenge": "Uitdaging",
+    "work": "Wat we deden",
+    "result": "Resultaat",
+    "items": {
+      "kiosk": {
+        "tag": "Selfservice-kiosken · Raspberry Pi",
+        "title": "Updates in het veld die een apparaat niet kunnen bricken",
+        "challenge": "Een vloot Raspberry Pi-kiosken had updates en provisioning op afstand nodig, zonder iemand ter plaatse om een apparaat te herstellen als een update misgaat.",
+        "work": "We bouwden de loader die de kiosksoftware bewaakt: A/B-app-slots met automatische rollback na herhaalde fouten, een provisioningscript van 21 stappen dat veilig opnieuw kan draaien, een systemd-watchdog en een Jenkins + Docker-pipeline die elke release controleert voordat die uitgaat.",
+        "result": "18 releases in 18 maanden, elk op afstand uitgerold en automatisch teruggedraaid als het misgaat.",
+        "stats": [
+          "18 releases",
+          "A/B-rollback",
+          "Watchdog-herstel"
+        ]
+      },
+      "tftpd": {
+        "tag": "Open source · Rust",
+        "title": "Een TFTP-server waar automotive-engineers op bouwen",
+        "challenge": "Netbooten via U-Boot en boards flashen vraagt om een kleine, betrouwbare TFTP-server en -client die op elke machine in het lab draait.",
+        "work": "Schreven rs-tftpd vanaf nul in pure Rust, met ondersteuning voor de opties uit RFC 2347–2349 en 7440 en een bijbehorende client, en onderhouden het als open-sourceproject.",
+        "result": "Opgenomen in NixOS en openSUSE, met bijdragen van engineers van Renault Software Labs, Ampere en Nokia. Renault gebruikt de client als library, en de optie voor dubbele pakketten bracht een netwerkboot van Apache NuttX terug van 4 minuten naar 20 seconden.",
+        "stats": [
+          "220k+ downloads",
+          "In NixOS & openSUSE",
+          "33 community-PR’s gemerged"
+        ],
+        "link": "Bekijk op GitHub"
+      }
+    }
+  },
+  "proofLabel": "Bewijs",
+  "notSure": {
+    "title": "Twijfelt u wat past?",
+    "description": "Vertel ons over uw apparaat, dan stellen we voor waar we beginnen."
+  },
+  "cra": {
+    "header": "CRA-zelftest",
+    "title": "Cyber Resilience Act-zelftest voor firmware",
+    "description": "Een gratis check van 15 vragen over hoe klaar de firmware van uw verbonden product is voor de Europese Cyber Resilience Act: updates, SBOM, kwetsbaarheden melden en veilige standaardinstellingen.",
+    "intro": "Vijftien vragen over één product. Uw antwoorden blijven in uw browser en worden nergens naartoe gestuurd.",
+    "answers": {
+      "yes": "Ja",
+      "partly": "Deels",
+      "no": "Nee",
+      "unsure": "Weet ik niet"
+    },
+    "answered": "beantwoord",
+    "resultHeader": "Uw resultaat",
+    "resultIncomplete": "Beantwoord alle vragen om uw volledige resultaat te zien.",
+    "levels": {
+      "low": "Grote hiaten",
+      "medium": "Deels klaar",
+      "high": "Goed op weg"
+    },
+    "criticalGaps": "Pak deze eerst aan",
+    "otherGaps": "Ook de moeite waard",
+    "noGaps": "Geen hiaten gevonden. Houd de SBOM, het meldproces en de ondersteuningsperiode bij elke release actueel.",
+    "reset": "Opnieuw beginnen",
+    "ctaText": "Hulp nodig bij het dichten van deze hiaten? Wij bouwen veilige updatepaden, SBOM-pipelines en processen voor kwetsbaarheden voor embedded producten.",
+    "ctaButton": "Neem contact op",
+    "readMore": "Lees: wat de CRA betekent voor uw firmware",
+    "disclaimer": "Deze check is een startpunt, geen juridisch advies. De CRA stelt meer eisen dan deze vragen behandelen."
+  },
+  "sbom": {
+    "header": "SBOM-viewer",
+    "title": "Online SBOM-viewer voor CycloneDX en SPDX",
+    "description": "Open een CycloneDX- of SPDX-SBOM in JSON in uw browser: bekijk componenten en licenties, en zie welke vermeldingen geen versie, licentie, leverancier of package-URL hebben.",
+    "intro": "Sleep een CycloneDX- of SPDX-bestand in JSON hierheen, of plak het hieronder. Het bestand wordt in uw browser gelezen en nooit geüpload.",
+    "drop": "Sleep een SBOM-bestand hierheen of klik om er een te kiezen",
+    "paste": "Of plak JSON",
+    "load": "Openen",
+    "example": "Voorbeeld laden",
+    "clear": "Wissen",
+    "errorParse": "Dit is geen geldige JSON.",
+    "errorFormat": "Dit lijkt geen CycloneDX- of SPDX-SBOM te zijn.",
+    "components": "Componenten",
+    "licenses": "Licenties",
+    "missingVersion": "Geen versie",
+    "missingLicense": "Geen licentie",
+    "missingSupplier": "Geen leverancier",
+    "missingPurl": "Geen package-URL",
+    "licenseBreakdown": "Licenties per type",
+    "search": "Zoek componenten",
+    "onlyIssues": "Toon alleen componenten met hiaten",
+    "name": "Naam",
+    "version": "Versie",
+    "license": "Licentie",
+    "supplier": "Leverancier",
+    "hint": "Package-URL’s (purl) en versies zijn waar kwetsbaarhedenscanners op matchen. Vermeldingen zonder deze gegevens blijven onzichtbaar voor CVE-monitoring.",
+    "missing": "ontbreekt"
+  },
+  "toolsOpenSource": {
+    "header": "Open source",
+    "intro": "Tools die we openbaar bouwen en onderhouden.",
+    "tftpd": {
+      "title": "rs-tftpd",
+      "description": "Een TFTP-server en -client in pure Rust voor netbooten en het flashen van boards. 220k+ downloads, opgenomen in NixOS en openSUSE."
+    },
+    "topicLab": {
+      "title": "MQTT Topic Lab",
+      "description": "Een desktop-MQTT-client voor Windows, Linux en macOS met opgeslagen commandoknoppen, variabelen en TLS."
+    }
+  },
+  "aboutElektor": {
+    "before": "Ik schreef ook voor ",
+    "link": "Elektor",
+    "after": "."
   }
 }

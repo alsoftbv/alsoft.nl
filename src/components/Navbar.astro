@@ -10,11 +10,11 @@ import nlFlag from "@images/nav/nl.svg";
 
 const locale = Astro.currentLocale ?? "en";
 
-const currentPath = Astro.url.pathname;
-const targetPath =
-  locale === "nl"
-    ? currentPath.replace("nl/", "")
-    : getRelativeLocaleUrl("nl", currentPath);
+const enPath = Astro.url.pathname.replace(/^\/nl(\/|$)/, "/");
+const targetLocale = locale === "nl" ? "en" : "nl";
+const targetPath = locale === "nl" ? enPath : `/nl${enPath}`;
+const languageLabel =
+  targetLocale === "nl" ? "Bekijk in het Nederlands" : "View in English";
 
 const flag = locale === "nl" ? enFlag : nlFlag;
 const t = locale === "nl" ? nl : en;
@@ -31,7 +31,7 @@ const links = [
   <div class="content">
     <div class="logo">
       <a href={getRelativeLocaleUrl(locale)}
-        ><Image src={logoImage} alt="Logo" loading="eager" /></a
+        ><Image src={logoImage} alt="alsoft home" loading="eager" /></a
       >
     </div>
     <ul class="nav-links" id="nav-links">
@@ -43,11 +43,15 @@ const links = [
         ))
       }
       <li>
-        <a href={targetPath} class="mobile-flag"
+        <a
+          href={targetPath}
+          hreflang={targetLocale}
+          aria-label={languageLabel}
+          class="mobile-flag"
           ><Image
             class="change-language"
             src={flag}
-            alt="Change language"
+            alt=""
             loading="eager"
           /></a
         >
@@ -58,16 +62,27 @@ const links = [
         >
       </li>
     </ul>
-    <div class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+    <button
+      type="button"
+      class="menu-toggle"
+      id="menu-toggle"
+      aria-label="Menu"
+      aria-controls="nav-links"
+      aria-expanded="false"
+    >
       <span></span>
       <span></span>
       <span></span>
-    </div>
-    <a href={targetPath} class="desktop-flag"
-      ><Image
+    </button>
+    <a
+          href={targetPath}
+          hreflang={targetLocale}
+          aria-label={languageLabel}
+          class="desktop-flag"
+          ><Image
         class="change-language"
         src={flag}
-        alt="Change language"
+        alt=""
         loading="eager"
       /></a
     >
@@ -83,10 +98,21 @@ const links = [
   const navLinks = document.getElementById("nav-links");
 
   if (toggle && navLinks) {
+    const setOpen = (open: boolean) => {
+      navLinks.classList.toggle("show", open);
+      navLinks.classList.toggle("active", open);
+      toggle.classList.toggle("active", open);
+      toggle.setAttribute("aria-expanded", String(open));
+    };
+
     toggle.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-      navLinks.classList.toggle("active");
-      toggle.classList.toggle("active");
+      setOpen(!toggle.classList.contains("active"));
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+      }
     });
 
     document.addEventListener("click", (e) => {
@@ -95,9 +121,7 @@ const links = [
       }
 
       if (!toggle.contains(e.target) && !navLinks.contains(e.target)) {
-        toggle.classList.remove("active");
-        navLinks.classList.remove("show");
-        navLinks.classList.remove("active");
+        setOpen(false);
       }
     });
   }
@@ -108,15 +132,17 @@ const links = [
     position: sticky;
     top: 0;
     z-index: 100;
-    background-color: #000000;
+    background-color: rgba(13, 14, 16, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
   }
 
   .content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 1rem;
-    max-width: 960px;
+    padding: 0.5rem 1.5rem;
+    max-width: var(--container);
     margin: 0 auto;
   }
 
@@ -127,14 +153,21 @@ const links = [
     align-items: center;
     width: 45px;
     height: 45px;
+    padding: 0;
+    background: none;
     cursor: pointer;
+  }
+
+  .menu-toggle:hover {
+    background: none;
+    transform: none;
   }
 
   .menu-toggle span {
     display: block;
     width: 30px;
     height: 3px;
-    background-color: #ffffff;
+    background-color: var(--text);
     margin: 4px 0;
     border-radius: 8px;
     transition:
@@ -167,9 +200,15 @@ const links = [
     border-radius: 8px;
   }
 
-  .nav-links a {
+  .nav-links a:not(.btn) {
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    color: var(--muted);
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:not(.btn):hover {
+    color: var(--text);
   }
 
   .change-language {
@@ -199,8 +238,9 @@ const links = [
       margin: 0;
       position: absolute;
       top: 4rem;
-      right: 0;
-      background: #000000;
+      right: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
       flex-direction: column;
       gap: 1.5rem;
       align-items: end;

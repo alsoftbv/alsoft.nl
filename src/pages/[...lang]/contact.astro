@@ -11,7 +11,7 @@ export function getStaticPaths() {
 const t = useTranslations(Astro.params.lang);
 ---
 
-<BaseLayout>
+<BaseLayout title={`${t.contactUs} | alsoft`} description={t.ctaText}>
   <Header>{t.contactUs}</Header>
   <ContactForm />
 </BaseLayout>

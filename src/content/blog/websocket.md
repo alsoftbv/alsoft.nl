@@ -34,7 +34,7 @@ We built our [online WebSocket tool](/tools/websocket) because we needed a clien
 
 ### 1. Transparent Receipt
 
-When your device sends a binary frame, we show it to you in a dedicated hexadecimal message. No "guessing" the encoding, no broken characters—just the raw reality of your data.
+When your device sends a binary frame, we show it to you in a dedicated hexadecimal message. No "guessing" the encoding, no broken characters, just the raw reality of your data.
 
 ![Screenshot of our WebSocket tool](images/websocket/binary.png)
 

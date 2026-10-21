@@ -1,0 +1,123 @@
+---
+import en from "@locales/en.json";
+import nl from "@locales/nl.json";
+
+const t = Astro.currentLocale === "nl" ? nl : en;
+
+const studies: { id: keyof typeof t.caseStudies.items; href?: string }[] = [
+  { id: "kiosk" },
+  { id: "tftpd", href: "https://github.com/altugbakan/rs-tftpd" },
+];
+---
+
+<div class="case-studies">
+  {
+    studies.map(({ id, href }) => {
+      const study = t.caseStudies.items[id];
+
+      return (
+        <article class="case">
+          <span class="tag">{study.tag}</span>
+          <h3>{study.title}</h3>
+          <ul class="stats">
+            {study.stats.map((stat) => (
+              <li>{stat}</li>
+            ))}
+          </ul>
+          <dl>
+            <dt>{t.caseStudies.challenge}</dt>
+            <dd>{study.challenge}</dd>
+            <dt>{t.caseStudies.work}</dt>
+            <dd>{study.work}</dd>
+            <dt>{t.caseStudies.result}</dt>
+            <dd>{study.result}</dd>
+          </dl>
+          {href && "link" in study && (
+            <a class="link" href={href} target="_blank" rel="noopener">
+              {study.link} →
+            </a>
+          )}
+        </article>
+      );
+    })
+  }
+</div>
+
+<style>
+  .case-studies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .case {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .tag {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  h3 {
+    margin: 0.5rem 0 1.25rem;
+    font-size: 1.4rem;
+  }
+
+  .stats {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0 0 1.5rem;
+    padding: 0;
+  }
+
+  .stats li {
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  dl {
+    margin: 0;
+  }
+
+  dt {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  dd {
+    margin: 0.25rem 0 1.25rem;
+    line-height: 1.6;
+  }
+
+  .link {
+    margin-top: auto;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .case {
+      padding: 1.25rem;
+    }
+  }
+</style>

@@ -1,22 +1,22 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
 import { Image } from "astro:assets";
 
 import BaseLayout from "@layouts/BaseLayout.astro";
 import CardsSection from "@components/CardsSection.astro";
+import CaseStudies from "@components/CaseStudies.astro";
+import LogoRow, { type Logo } from "@components/LogoRow.astro";
+import Underline from "@components/Underline.astro";
+import Button from "@components/Button.astro";
 
 import { services } from "@data/services";
 import { industries } from "@data/industries";
-import Button from "@components/Button.astro";
 
 import headerImage from "@images/index/header-image.jpg";
-import agreement from "@images/index/agreement.png";
 import me from "@images/index/me.jpg";
 import iai from "@images/index/companies/iai.svg";
 import idd from "@images/index/companies/idd.png";
 import valinso from "@images/index/companies/valinso.svg";
 import renault from "@images/index/companies/renault.png";
-import sony from "@images/index/companies/sony.svg";
 
 import reliabilityIcon from "@images/index/icons/reliability.svg";
 import performanceIcon from "@images/index/icons/performance.svg";
@@ -24,8 +24,6 @@ import developmentIcon from "@images/index/icons/development.svg";
 import pencilIcon from "@images/index/icons/pencil.svg";
 import checkIcon from "@images/index/icons/check.svg";
 import adjustmentIcon from "@images/index/icons/adjustment.svg";
-import Carousel, { type CarouselImage } from "@components/Carousel.astro";
-import Underline from "@components/Underline.astro";
 import {
   getLanguage,
   getPath,
@@ -37,8 +35,7 @@ export function getStaticPaths() {
   return getTranslationPaths();
 }
 
-const carouselImages: CarouselImage[] = [
-  { src: sony, href: "https://www.sony.com", name: "Sony" },
+const logos: Logo[] = [
   { src: renault, href: "https://www.renaultgroup.com", name: "Renault" },
   { src: valinso, href: "https://valinso.nl", name: "Valinso" },
   { src: idd, href: "https://idend.nl", name: "ID&D" },
@@ -47,311 +44,439 @@ const carouselImages: CarouselImage[] = [
 
 const lang = getLanguage(Astro.params.lang);
 const t = useTranslations(lang);
+
+const benefits = [
+  { icon: reliabilityIcon, text: t.benefitFirst },
+  { icon: performanceIcon, text: t.benefitSecond },
+  { icon: developmentIcon, text: t.benefitThird },
+];
+
+const steps = [
+  { icon: pencilIcon, ...t.solutionStepsDesign },
+  { icon: checkIcon, ...t.solutionStepsTest },
+  { icon: adjustmentIcon, ...t.solutionStepsRefine },
+];
+
+const plan = (["chat", "plan", "agree", "build"] as const).map((key) => ({
+  label: t.planLabels[key],
+  text: t.planSteps[key],
+}));
 ---
 
-<BaseLayout>
-  <section class="header">
-    <div class="header-info">
-      <div class="header-text">
-        <h1>{t.indexHeader}</h1>
-        <p>{t.indexFirst}</p>
-        <p class="sub">{t.indexSecond}</p>
-      </div>
-      <Button class="work-button" href="#plan">{t.indexButton}</Button>
+<BaseLayout
+  title={`alsoft | ${t.indexHeader.replace(/\.$/, "")}`}
+  description={t.indexFirst}
+>
+  <section class="hero container">
+    <div class="hero-info">
+      <span class="eyebrow">{t.eyebrows.hero}</span>
+      <h1>{t.indexHeader}</h1>
+      <p class="lead">{t.indexFirst}</p>
+      <p class="muted">{t.indexSecond}</p>
+      <Button href="#plan">{t.indexButton}</Button>
     </div>
-    <div class="header-img">
+    <div class="hero-img">
       <Image
         src={headerImage}
-        alt="IoT device"
-        layout="full-width"
+        alt=""
+        widths={[480, 720, 1040]}
+        sizes="(max-width: 768px) 100vw, 480px"
         loading="eager"
       />
     </div>
   </section>
 
-  <section class="solution-tease">
-    <div class="benefit">
-      <Image
-        src={reliabilityIcon}
-        alt="Reliability"
-        width={32}
-        height={32}
-        loading="eager"
-      />
-      <p>{t.benefitFirst}</p>
-    </div>
-    <div class="benefit">
-      <Image
-        src={performanceIcon}
-        alt="Performance"
-        width={32}
-        height={32}
-        loading="eager"
-      />
-      <p>{t.benefitSecond}</p>
-    </div>
-    <div class="benefit">
-      <Image
-        src={developmentIcon}
-        alt="Development"
-        width={32}
-        height={32}
-        loading="eager"
-      />
-      <p>{t.benefitThird}</p>
+  <div class="container">
+    <ul class="benefits">
+      {
+        benefits.map((benefit) => (
+          <li>
+            <Image src={benefit.icon} alt="" width={28} height={28} />
+            {benefit.text}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <section class="band">
+    <div class="container narrow">
+      <span class="eyebrow">{t.eyebrows.problem}</span>
+      <h2>{t.problemsHeader}</h2>
+      <p class="large">{t.problemsText}</p>
+      <Underline class="highlight">{t.problemsHighlight}</Underline>
     </div>
   </section>
 
-  <section class="problems">
-    <h2>{t.problemsHeader}</h2>
-    <p>{t.problemsText}</p>
-    <Underline>{t.problemsHighlight}</Underline>
-  </section>
-
-  <section class="solution">
-    <h2>{t.solutionHeader}</h2>
-    <div class="solution-steps">
-      <div class="solution-box">
-        <Image
-          src={pencilIcon}
-          alt="Design"
-          width={32}
-          height={32}
-          loading="lazy"
-        />
-        <div class="step">
-          <h3 class="label">{t.solutionStepsDesign.label}</h3>
-          <p class="desc">{t.solutionStepsDesign.desc}</p>
-        </div>
-      </div>
-
-      <div class="solution-box">
-        <Image
-          src={checkIcon}
-          alt="Test"
-          width={32}
-          height={32}
-          loading="lazy"
-        />
-        <div class="step">
-          <h3 class="label">{t.solutionStepsTest.label}</h3>
-          <p class="desc">{t.solutionStepsTest.desc}</p>
-        </div>
-      </div>
-
-      <div class="solution-box">
-        <Image
-          src={adjustmentIcon}
-          alt="Refine"
-          width={32}
-          height={32}
-          loading="lazy"
-        />
-        <div class="step">
-          <h3 class="label">{t.solutionStepsRefine.label}</h3>
-          <p class="desc">{t.solutionStepsRefine.desc}</p>
-        </div>
-      </div>
+  <section class="container">
+    <div class="section-heading">
+      <span class="eyebrow">{t.eyebrows.approach}</span>
+      <h2>{t.solutionHeader}</h2>
     </div>
-    <p>{t.solutionText}</p>
+    <div class="steps">
+      {
+        steps.map((step) => (
+          <div class="step">
+            <Image src={step.icon} alt="" width={32} height={32} />
+            <h3>{step.label}</h3>
+            <p>{step.desc}</p>
+          </div>
+        ))
+      }
+    </div>
   </section>
 
-  <section class="proof">
-    <h2>{t.proofHeader}</h2>
-    <p>{t.proofText}</p>
+  <section class="container">
+    <div class="section-heading">
+      <span class="eyebrow">{t.caseStudies.eyebrow}</span>
+      <h2>{t.caseStudies.header}</h2>
+    </div>
+    <CaseStudies />
   </section>
 
-  <section class="cards-container">
+  <section class="container">
     <CardsSection
+      eyebrow={t.eyebrows.services}
       title={t.ourServices}
       page={getPath(lang, "/services")}
       items={services}
+      contactTile={getPath(lang, "/contact")}
+      columns={3}
     />
+  </section>
+
+  <section class="container">
     <CardsSection
+      eyebrow={t.eyebrows.industries}
       title={t.industriesWeWork}
+      intro={t.proofText}
       page={getPath(lang, "/industries")}
       items={industries}
     />
   </section>
 
-  <section class="more-proof">
-    <h2>{t.moreProofHeader}</h2>
-    <Carousel images={carouselImages} />
-    <Underline class="proof-text">{t.moreProofSubtext}</Underline>
+  <section class="container clients">
+    <div class="section-heading">
+      <span class="eyebrow">{t.eyebrows.clients}</span>
+      <h2>{t.moreProofHeader}</h2>
+    </div>
+    <LogoRow logos={logos} />
   </section>
 
-  <section class="about">
-    <Image src={me} alt="My Image" loading="lazy" />
-    <div class="about-text">
-      <h2>{t.aboutHeader}</h2>
-      <p>{t.aboutText}</p>
+  <section class="container">
+    <div class="about">
+      <Image src={me} alt="Altuğ Bakan" width={400} loading="lazy" />
+      <div>
+        <span class="eyebrow">{t.eyebrows.about}</span>
+        <h2>{t.aboutHeader}</h2>
+        <p class="large">
+          {t.aboutText}
+          {t.aboutElektor.before}<a
+            href="https://www.elektormagazine.com/news/a-controller-for-spotify"
+            target="_blank"
+            rel="noopener">{t.aboutElektor.link}</a
+          >{t.aboutElektor.after}
+        </p>
+      </div>
     </div>
   </section>
 
-  <section id="plan" class="plan">
-    <div class="plan-text">
+  <section id="plan" class="container">
+    <div class="section-heading">
+      <span class="eyebrow">{t.eyebrows.process}</span>
       <h2>{t.planHeader}</h2>
-      <ol>
-        <li><strong>{t.planLabels.chat}:</strong> {t.planSteps.chat}</li>
-        <li><strong>{t.planLabels.plan}:</strong> {t.planSteps.plan}</li>
-        <li><strong>{t.planLabels.agree}:</strong> {t.planSteps.agree}</li>
-        <li><strong>{t.planLabels.build}:</strong> {t.planSteps.build}</li>
-      </ol>
-      <i>{t.planNote}</i>
     </div>
-    <Image src={agreement} alt="Agreement" />
+    <ol class="plan">
+      {
+        plan.map((step, index) => (
+          <li>
+            <span class="number">{String(index + 1).padStart(2, "0")}</span>
+            <h3>{step.label}</h3>
+            <p>{step.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="muted after-grid">{t.planNote}</p>
   </section>
 
-  <section class="cta">
-    <h2>{t.ctaHeader}</h2>
-    <p>{t.ctaText}</p>
-    <Button href={getPath(lang, "/contact")}>{t.ctaButton}</Button>
+  <section class="container">
+    <div class="cta">
+      <span class="eyebrow">{t.eyebrows.contact}</span>
+      <h2>{t.ctaHeader}</h2>
+      <p>{t.ctaText}</p>
+      <Button href={getPath(lang, "/contact")}>{t.ctaButton}</Button>
+    </div>
   </section>
 </BaseLayout>
 
 <style>
-  section {
-    max-width: 960px;
+  .container {
+    max-width: var(--container);
     margin: 0 auto;
-    padding: 3rem 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    box-sizing: border-box;
+  }
+
+  .narrow {
+    max-width: 800px;
+  }
+
+  section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: clamp(2.5rem, 6vw, 4.25rem);
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    margin: 0 0 1.5rem;
   }
 
-  h1,
   h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     font-weight: 700;
-    margin-top: 0;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem;
   }
 
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-
-  .header-info {
-    flex: 1 1 320px;
-  }
-
-  .header-img {
-    flex: 1 1 320px;
-    text-align: center;
-  }
-
-  .header-img img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-
-  .solution-tease {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1.5rem;
-    text-align: left;
-  }
-
-  .solution-steps {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    text-align: left;
-  }
-
-  .solution-box {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: start;
-    margin: 1rem 0;
-    gap: 0 1rem;
-  }
-
-  .solution-steps h3 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-  }
-
-  .solution-steps p {
+  h3 {
+    font-size: 1.1rem;
     margin: 0;
   }
 
-  .benefit {
-    display: flex;
-    flex-direction: row;
+  .lead,
+  .large {
+    font-size: 1.15rem;
+  }
+
+  .section-heading {
+    max-width: 720px;
+    margin-bottom: 2.5rem;
+  }
+
+  .after-grid {
+    max-width: 720px;
+    margin: 2rem 0 0;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    flex: 1 1 280px;
+    gap: 3rem;
+    padding-top: 6rem;
+  }
+
+  .hero-info p {
+    margin: 0 0 1rem;
+  }
+
+  .hero-info :global(.btn) {
+    margin-top: 1rem;
+  }
+
+  .hero-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+
+  .benefits {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  .benefits li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    font-weight: 500;
+  }
+
+  .benefits li + li {
+    border-left: 1px solid var(--border);
+  }
+
+  .band {
+    margin-top: 5rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .band p {
+    margin: 0 0 1.5rem;
+  }
+
+  .highlight {
+    font-size: 1.15rem;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
   }
 
   .step {
-    max-width: 200px;
+    padding: 1.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
   }
 
-  .cards-container {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+  .step h3 {
+    margin: 1rem 0 0.5rem;
   }
 
-  .proof-text {
-    font-size: 0.9em;
-    text-align: center;
-    display: block;
-    margin-top: 1rem;
-    font-weight: normal;
+  .step p {
+    margin: 0;
+    color: var(--muted);
   }
 
   .about {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 260px 1fr;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    gap: 3rem;
+    padding: 2.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
   }
 
   .about img {
-    max-height: 240px;
-    width: auto;
-    border-radius: 100%;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .about p {
+    margin: 0;
+  }
+
+  .about a {
+    color: var(--accent);
   }
 
   .plan {
-    scroll-margin-top: 1rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    counter-reset: none;
   }
 
-  .plan ol {
-    padding-left: 1.2rem;
-    line-height: 1.8;
+  .plan li {
+    padding-top: 1.25rem;
+    border-top: 2px solid var(--border);
   }
 
-  .plan img {
-    height: 15rem;
-    width: auto;
+  .plan li:first-child {
+    border-top-color: var(--accent);
+  }
+
+  .number {
+    display: block;
+    color: var(--accent);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+  }
+
+  .plan p {
+    margin: 0.5rem 0 0;
+    color: var(--muted);
   }
 
   .cta {
     text-align: center;
-    border-radius: 0.75rem;
-    padding: 4rem 2rem;
+    padding: 4.5rem 2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background:
+      radial-gradient(ellipse at top, var(--accent-soft), transparent 70%),
+      var(--surface);
+  }
+
+  .cta p {
+    max-width: 560px;
+    margin: 0 auto 2rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 900px) {
+    .plan {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem 1.25rem;
+    }
   }
 
   @media (max-width: 768px) {
+    section {
+      padding-top: 3.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding-top: 3rem;
+    }
+
+    .benefits,
+    .steps {
+      grid-template-columns: 1fr;
+    }
+
+    .benefits li + li {
+      border-left: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .band {
+      margin-top: 3.5rem;
+    }
+
+    .about {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+      gap: 1.5rem;
+      padding: 1.5rem;
+    }
+
     .about img {
-      max-height: 120px;
+      width: 160px;
+    }
+
+    .plan {
+      grid-template-columns: 1fr;
+    }
+
+    .cta {
+      padding: 3rem 1.25rem;
     }
   }
 </style>

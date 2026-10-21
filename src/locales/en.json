@@ -1,34 +1,31 @@
 {
   "indexHeader": "Firmware that makes your hardware shine.",
-  "indexFirst": "We help you build reliable and efficient embedded systems, whether you are developing early prototypes or full production-ready products.",
-  "indexSecond": "At alsoft, we make sure your device does what it’s meant to do: collect, connect, and perform, without the crashes or quirks that hold great hardware back.",
+  "indexFirst": "PCB design, board bring-up, firmware and secure updates: one engineer from schematic to production, based in the Eindhoven region.",
+  "indexSecond": "We take on the whole path, from the first schematic to devices updating themselves in the field, so you work with one team instead of three.",
   "indexButton": "Let’s make it work right",
-  "benefitFirst": "No more random bugs",
-  "benefitSecond": "Smarter use of resources",
-  "benefitThird": "Smoother development",
+  "benefitFirst": "Hardware and firmware under one roof",
+  "benefitSecond": "Updates that can’t brick a device",
+  "benefitThird": "Ready for the Cyber Resilience Act",
   "problemsHeader": "You’ve built great hardware.",
-  "problemsText": "But when it freezes, misbehaves, or just won’t talk to other devices — people assume the whole thing is bad. We get it. Debugging firmware under pressure isn’t fun, and those little issues can make or break your product’s reputation.",
-  "problemsHighlight": "We want to show people how great your product is.",
+  "problemsText": "But when it freezes, misbehaves, or just won’t talk to other devices, people assume the whole thing is bad. We get it. Debugging firmware under pressure isn’t fun, and those little issues can make or break your product’s reputation.",
+  "problemsHighlight": "We make sure the firmware does your hardware justice.",
   "solutionHeader": "We bring the same care to your firmware that you bring to your hardware.",
   "solutionStepsDesign": {
     "label": "Design",
-    "desc": "We design every part until it feels solid."
+    "desc": "We agree on the architecture, interfaces and failure modes before writing code."
   },
   "solutionStepsTest": {
     "label": "Test",
-    "desc": "Whether firmware from scratch or improvements, we check stability."
+    "desc": "Every change runs through automated tests on a PC and on real hardware."
   },
   "solutionStepsRefine": {
     "label": "Refine",
-    "desc": "We iterate until it’s stable, efficient, and production-ready."
+    "desc": "We measure memory, power and timing, and fix what the numbers show."
   },
-  "solutionText": "From concept to completion, our approach ensures every solution is designed with precision, tested for reliability, and refined for lasting performance. Whether you are starting a new project or improving existing systems, we deliver results you can trust.",
-  "proofHeader": "Trusted in high-stakes industries.",
-  "proofText": "From avionics to industrial automation, we have built and tested systems where reliability isn’t optional. You can trust that what we build for you won’t just work, it will keep working.",
+  "proofText": "From payment kiosks to avionics, we build systems where reliability isn’t optional.",
   "moreProofHeader": "Trusted by teams who build things that matter.",
-  "moreProofSubtext": "From prototype labs to production floors",
   "aboutHeader": "Hey, I’m Altuğ.",
-  "aboutText": "I’ve spent years working on embedded systems in industries where failure isn’t an option. These days, I help companies turn hardware ideas into dependable products — without chasing firmware bugs at midnight.",
+  "aboutText": "I’ve spent years working on embedded systems in industries where failure isn’t an option. These days, I help companies turn hardware ideas into dependable products, without chasing firmware bugs at midnight.",
   "planHeader": "Here’s how we usually work:",
   "planLabels": {
     "chat": "Chat",
@@ -44,45 +41,84 @@
   },
   "planNote": "Simple, transparent, and built around your timeline.",
   "ctaHeader": "Let’s talk about your device.",
-  "ctaText": "Whether you’re launching something new or improving what you already have, I’d love to hear what you’re building.",
+  "ctaText": "Whether you’re launching something new or fixing what’s already in the field, we’d like to hear what you’re building.",
   "ctaButton": "Start a conversation",
   "ourServices": "Our Services",
   "industriesWeWork": "Industries We Work With",
   "cards": {
-    "rtos": {
-      "title": "RTOS Firmware Solutions",
-      "description": "Delivering fast, reliable real-time performance for your embedded products.",
-      "longDescription": "Our RTOS development services help you bring reliable, real-time functionality to your devices. We design firmware that ensures precision timing, predictable performance, and system stability—helping your products perform flawlessly in demanding environments like robotics, industrial control, and automotive systems."
+    "hardware": {
+      "title": "PCB Design & Board Bring-up",
+      "description": "From schematic to a board that boots, with hardware and firmware under one roof.",
+      "longDescription": "We design boards in KiCad (power paths, battery charging, USB-C, ESP32 and RP2040) and bring them up: first power-on, clocks, peripherals and drivers. Because the same team does the hardware and the firmware, nobody has to guess which side a bug is on.",
+      "points": [
+        "KiCad schematic and layout, 2 and 4 layers",
+        "Production files for JLCPCB: Gerbers, BOM and pick-and-place",
+        "Bring-up, first drivers and a written bring-up report"
+      ]
     },
-    "linux": {
-      "title": "Embedded Linux Solutions",
-      "description": "Custom Linux platforms built for performance, flexibility, and scalability.",
-      "longDescription": "We build tailored Linux environments that empower your products with the flexibility and power of open-source technology. From optimizing boot times to ensuring long-term maintainability, we create secure, high-performance systems that reduce your time to market and give you full control over your embedded platform."
+    "firmware": {
+      "title": "RTOS & Embedded Linux Firmware",
+      "description": "Firmware and connectivity that stay up in the field.",
+      "longDescription": "FreeRTOS on Cortex-M and ESP32, embedded Linux on Raspberry Pi and custom hardware, and the connectivity in between: Ethernet, Wi-Fi and MQTT. We write the drivers, chase down the hard bugs (memory, timing, networking) and leave you with code your team can maintain.",
+      "points": [
+        "Drivers, RTOS tasks and protocol stacks",
+        "Ethernet, Wi-Fi and MQTT device-to-cloud links",
+        "Debugging crashes, memory leaks and timing issues"
+      ],
+      "proof": "Core developers of a production i.MX RT IoT gateway, with 199 releases shipped since 2025."
     },
-    "iot": {
-      "title": "IoT Connectivity with MQTT",
-      "description": "Seamless device-to-cloud communication for your connected ecosystem.",
-      "longDescription": "Our MQTT integration services enable efficient, scalable communication across your IoT network. We design and implement solutions that ensure your devices share data securely and in real time—helping you gain insights faster, streamline operations, and build a foundation for future-ready connected products."
+    "updates": {
+      "title": "Secure Updates & CRA Readiness",
+      "description": "Field updates that can’t brick a device, ready for the Cyber Resilience Act.",
+      "longDescription": "Since September 2026 the EU Cyber Resilience Act requires manufacturers to report actively exploited vulnerabilities, and from December 2027 connected products must ship with secure updates, an SBOM and a defined support period. We build the update path (signed images, A/B slots, automatic rollback) and set up the SBOM and vulnerability-handling process around it.",
+      "points": [
+        "CRA gap assessment with a prioritized roadmap",
+        "Signed A/B updates with automatic rollback",
+        "SBOM generated in CI and a vulnerability-handling runbook"
+      ],
+      "proof": "Built over-the-air bootloader and firmware updates for a production IoT gateway, and an A/B loader with automatic rollback for a Raspberry Pi kiosk fleet."
+    },
+    "modernization": {
+      "title": "Firmware Modernization",
+      "description": "Make legacy firmware testable, maintainable and safe to change.",
+      "longDescription": "Old toolchains, no tests, and one person who understands the code. We audit legacy firmware, move it step by step to modern C++ (or Rust where it fits), and add tests that run on a PC and on real hardware in CI, so changes stop being scary.",
+      "points": [
+        "Code audit with a prioritized report",
+        "Host-side unit tests and hardware-in-the-loop tests in CI",
+        "Incremental rewrites to modern C++ or Rust"
+      ],
+      "proof": "Built hardware-in-the-loop update tests that run in Jenkins on every change to a production IoT gateway."
+    },
+    "ai": {
+      "title": "AI for Engineering Teams",
+      "description": "Get your firmware team productive with AI coding tools, with every change still verified on real hardware.",
+      "longDescription": "Hands-on workshops and repository setup for embedded teams adopting tools like Claude Code and GitHub Copilot: project knowledge files, review guardrails, and workflows where every AI-made change is verified on real hardware. Also available: Software Engineering in Practice, a three-part training on foundations, resilience and production.",
+      "points": [
+        "Workshop on AI-assisted embedded development",
+        "Repository setup: agent instructions, knowledge bases and guardrails",
+        "Software Engineering in Practice training with certificates"
+      ],
+      "proof": "Set up the agent instructions and knowledge base for a production firmware project, now used day to day by its developers."
     },
     "fintech": {
-      "title": "FinTech & Smart Payment Systems",
-      "description": "Secure embedded solutions powering next-generation payment and vending devices.",
-      "longDescription": "We enable the future of cashless transactions through embedded payment technologies tailored for FinTech applications. From vending machines and point-of-sale systems to automated kiosks, our solutions ensure reliable, secure, and scalable handling of payments, item tracking, and inventory management—helping your business stay ahead in the digital payments landscape."
+      "title": "FinTech & Payment Systems",
+      "description": "Payment terminals, vending machines and kiosks that handle money reliably.",
+      "longDescription": "Payment and vending devices have to work every time: a failed transaction costs money and trust. We build firmware for payment terminals, vending machines and self-service kiosks, covering payment flows, stock tracking, secure communication and field updates that don’t take a machine offline."
     },
     "manufacturing": {
-      "title": "Industrial & Manufacturing Automation",
-      "description": "Smart, connected systems that optimize factory operations and production efficiency.",
-      "longDescription": "Our embedded and IoT solutions empower manufacturers to increase productivity, enhance quality, and improve traceability across the factory floor. By integrating real-time data acquisition, predictive maintenance, and process automation, we help modernize production lines and accelerate digital transformation in industrial environments."
+      "title": "Industrial & Manufacturing",
+      "description": "Connected machines that report what they’re doing and keep running.",
+      "longDescription": "Factory equipment runs for years and can’t stop for a firmware bug. We build controllers and gateways that collect machine data, send it over Ethernet or MQTT, and keep running through power cuts, network drops and updates."
     },
     "defense": {
-      "title": "Defense & Aerospace Systems",
-      "description": "Mission-critical embedded solutions built for reliability, security, and precision.",
-      "longDescription": "We develop high-assurance embedded systems designed to meet the demanding standards of the defense and aerospace sectors. Our expertise includes real-time control, secure communications, and ruggedized hardware integration, delivering dependable performance for critical operations and high-stakes environments."
+      "title": "Defense & Aerospace",
+      "description": "Predictable, verifiable software for high-stakes programs.",
+      "longDescription": "In defense and aerospace, software has to be predictable, tested and documented. We bring experience from avionics programs (deterministic real-time behaviour, rigorous testing and traceable documentation) to every project."
     },
     "automotive": {
       "title": "Automotive & Mobility",
-      "description": "Embedded intelligence driving innovation in vehicles and mobility systems.",
-      "longDescription": "From advanced driver assistance systems (ADAS) to in-vehicle connectivity and diagnostics, we deliver software that powers the next generation of automotive technology. Our solutions focus on safety, performance, and real-time responsiveness, helping manufacturers build smarter, more connected, and more efficient vehicles."
+      "description": "Firmware and lab tooling for vehicle development.",
+      "longDescription": "Vehicle development runs on tooling that has to work every time: flashing, netbooting and test benches. Our open-source TFTP server and client are used by automotive engineers, and we build firmware and lab tooling with real-time and reliability requirements in mind."
     }
   },
   "getInTouch": "Get in touch",
@@ -92,7 +128,8 @@
     "yourName": "Your name",
     "tellUs": "Tell us about your project",
     "submit": "Submit",
-    "getBack": "Thanks! We will get back to you within one business day."
+    "mailNote": "Submitting opens your email app with your message filled in. We reply within one business day.",
+    "orEmail": "Prefer to write directly?"
   },
   "sfont": {
     "title": "sFONT Generator",
@@ -112,13 +149,13 @@
   },
   "services": {
     "header": "Services",
-    "title": "Embedded Software Services for Firmware Development",
-    "description": "Offering professional services in RTOS, Linux, and IoT development, including firmware design, debugging, and custom embedded solutions."
+    "title": "Embedded Engineering Services: PCB Design, Firmware and Secure Updates",
+    "description": "PCB design and board bring-up, RTOS and embedded Linux firmware, secure OTA updates and CRA readiness, firmware modernization, and AI enablement for engineering teams."
   },
   "industries": {
     "header": "Industries",
     "title": "Embedded Software Expertise Across Industries",
-    "description": "We provide embedded software solutions for fintech, manufacturing, defense, and automotive sectors, delivering reliable firmware and system integration."
+    "description": "Firmware for payment and vending devices, industrial machines, defense and aerospace systems, and automotive development tooling."
   },
   "blog": {
     "header": "Blog",
@@ -129,5 +166,128 @@
     "header": "Tools",
     "title": "Embedded Software Tools for Firmware Engineers",
     "description": "A collection of web-based tools for embedded and firmware development, including CRC calculators, protocol utilities, and debugging helpers."
+  },
+  "eyebrows": {
+    "hero": "Embedded firmware engineering",
+    "problem": "The problem",
+    "approach": "The approach",
+    "services": "Services",
+    "industries": "Industries",
+    "clients": "Clients",
+    "about": "About",
+    "process": "Process",
+    "contact": "Contact"
+  },
+  "caseStudies": {
+    "eyebrow": "Case studies",
+    "header": "Recent work",
+    "challenge": "Challenge",
+    "work": "What we did",
+    "result": "Result",
+    "items": {
+      "kiosk": {
+        "tag": "Self-service kiosks · Raspberry Pi",
+        "title": "Field updates that can’t brick a device",
+        "challenge": "A fleet of Raspberry Pi kiosks needed remote updates and provisioning, with nobody on site to recover a device when an update goes wrong.",
+        "work": "Built the loader that supervises the kiosk software: A/B app slots with automatic rollback after repeated failures, a 21-step provisioning script that is safe to re-run, a systemd watchdog, and a Jenkins + Docker pipeline that checks every release before it ships.",
+        "result": "18 releases over 18 months, each rolled out remotely and rolled back automatically if it fails.",
+        "stats": [
+          "18 releases",
+          "A/B rollback",
+          "Watchdog recovery"
+        ]
+      },
+      "tftpd": {
+        "tag": "Open source · Rust",
+        "title": "A TFTP server automotive engineers build on",
+        "challenge": "U-Boot netbooting and board flashing need a small, dependable TFTP server and client that runs on any machine in the lab.",
+        "work": "Wrote rs-tftpd from scratch in pure Rust, with RFC 2347–2349 and 7440 option support and a matching client, and maintain it as an open-source project.",
+        "result": "Packaged for NixOS and openSUSE, with contributions from engineers at Renault Software Labs, Ampere and Nokia. Renault uses the client as a library, and its duplicate-packets option cut an Apache NuttX network boot from 4 minutes to 20 seconds.",
+        "stats": [
+          "220k+ downloads",
+          "In NixOS & openSUSE",
+          "33 merged community PRs"
+        ],
+        "link": "View on GitHub"
+      }
+    }
+  },
+  "proofLabel": "Proof",
+  "notSure": {
+    "title": "Not sure which fits?",
+    "description": "Tell us about your device and we’ll suggest where to start."
+  },
+  "cra": {
+    "header": "CRA Self-Check",
+    "title": "Cyber Resilience Act Self-Check for Firmware",
+    "description": "A free 15-question check of how ready your connected product’s firmware is for the EU Cyber Resilience Act: updates, SBOM, vulnerability reporting and secure defaults.",
+    "intro": "Fifteen questions about one product. Answers stay in your browser, nothing is sent anywhere.",
+    "answers": {
+      "yes": "Yes",
+      "partly": "Partly",
+      "no": "No",
+      "unsure": "Not sure"
+    },
+    "answered": "answered",
+    "resultHeader": "Your result",
+    "resultIncomplete": "Answer all questions to see your full result.",
+    "levels": {
+      "low": "Significant gaps",
+      "medium": "Partly ready",
+      "high": "In good shape"
+    },
+    "criticalGaps": "Fix these first",
+    "otherGaps": "Also worth fixing",
+    "noGaps": "No gaps found. Keep the SBOM, reporting process and support period up to date with every release.",
+    "reset": "Start over",
+    "ctaText": "Want help closing these gaps? We build secure update paths, SBOM pipelines and vulnerability-handling processes for embedded products.",
+    "ctaButton": "Talk to us",
+    "readMore": "Read: what the CRA means for your firmware",
+    "disclaimer": "This check is a starting point, not legal advice. The CRA has more requirements than these questions cover."
+  },
+  "sbom": {
+    "header": "SBOM Viewer",
+    "title": "Online SBOM Viewer for CycloneDX and SPDX",
+    "description": "Open a CycloneDX or SPDX JSON SBOM in your browser: list components and licenses, and spot entries missing a version, license, supplier or package URL.",
+    "intro": "Drop a CycloneDX or SPDX JSON file, or paste it below. The file is read in your browser and never uploaded.",
+    "drop": "Drop an SBOM file here or click to choose one",
+    "paste": "Or paste JSON",
+    "load": "Open",
+    "example": "Load example",
+    "clear": "Clear",
+    "errorParse": "That isn’t valid JSON.",
+    "errorFormat": "This doesn’t look like a CycloneDX or SPDX SBOM.",
+    "components": "Components",
+    "licenses": "Licenses",
+    "missingVersion": "No version",
+    "missingLicense": "No license",
+    "missingSupplier": "No supplier",
+    "missingPurl": "No package URL",
+    "licenseBreakdown": "License breakdown",
+    "search": "Search components",
+    "onlyIssues": "Only show components with gaps",
+    "name": "Name",
+    "version": "Version",
+    "license": "License",
+    "supplier": "Supplier",
+    "hint": "Package URLs (purl) and versions are what vulnerability scanners match against. Entries without them are invisible to CVE monitoring.",
+    "missing": "missing"
+  },
+  "toolsOpenSource": {
+    "header": "Open source",
+    "intro": "Tools we build and maintain in the open.",
+    "tftpd": {
+      "title": "rs-tftpd",
+      "description": "A TFTP server and client in pure Rust for netbooting and flashing boards. 220k+ downloads, packaged for NixOS and openSUSE."
+    },
+    "topicLab": {
+      "title": "MQTT Topic Lab",
+      "description": "A desktop MQTT client for Windows, Linux and macOS with saved command buttons, variables and TLS."
+    }
+  },
+  "aboutElektor": {
+    "before": "I’ve also written for ",
+    "link": "Elektor",
+    "after": " magazine."
   }
 }

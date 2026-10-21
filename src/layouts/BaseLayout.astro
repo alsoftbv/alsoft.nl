@@ -6,31 +6,54 @@ const {
   title = "alsoft",
   description = "Firmware that makes your hardware shine",
   image = "/logo.png",
-  canonical = "https://alsoft.nl",
+  canonical,
   type = "website",
   locale = Astro.currentLocale ?? "en",
+  translated = true,
 } = Astro.props;
+
+const site = Astro.site ?? Astro.url;
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, site).href;
+const imageUrl = new URL(image, site).href;
+
+// Every localized page exists at /path (en) and /nl/path (nl)
+const enPath = Astro.url.pathname.replace(/^\/nl(\/|$)/, "/");
+const nlPath = `/nl${enPath}`;
+const alternates = translated
+  ? [
+      { lang: "en", href: new URL(enPath, site).href },
+      { lang: "nl", href: new URL(nlPath, site).href },
+      { lang: "x-default", href: new URL(enPath, site).href },
+    ]
+  : [];
 ---
 
 <html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d0e10" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    <link rel="canonical" href={canonicalUrl} />
+    {
+      alternates.map((alt) => (
+        <link rel="alternate" hreflang={alt.lang} href={alt.href} />
+      ))
+    }
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={imageUrl} />
     <meta property="og:type" content={type} />
-    <meta property="og:url" content={canonical} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={locale === "nl" ? "nl_NL" : "en_US"} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image" content={imageUrl} />
 
     <link rel="stylesheet" href="/globals.css" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />

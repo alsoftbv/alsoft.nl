@@ -16,7 +16,7 @@ interface Props {
   description: string;
 }
 
-const { pageTitle = "test", data, title, description }: Props = Astro.props;
+const { pageTitle, data, title, description }: Props = Astro.props;
 const t = Astro.currentLocale === "nl" ? nl : en;
 ---
 
@@ -26,23 +26,52 @@ const t = Astro.currentLocale === "nl" ? nl : en;
     {
       data.map((item: CardItem, index: number) => {
         const translated = t.cards[item.id as keyof typeof t.cards];
+        const details =
+          "points" in translated
+            ? {
+                points: translated.points,
+                proof: "proof" in translated ? translated.proof : undefined,
+              }
+            : undefined;
 
         return (
           <Card
             class={`content-wrapper ${index % 2 !== 0 ? "reverse" : ""}`}
             id={item.id}
           >
-            <div class="image-wrapper">
-              <Image
-                class="content-image"
-                src={item.image}
-                alt={translated.title}
-                decoding="async"
-                loading={index === 0 ? "eager" : "lazy"}
-              />
-            </div>
+            {item.image && (
+              <div class="image-wrapper">
+                <Image
+                  class="content-image"
+                  src={item.image}
+                  alt=""
+                  width={720}
+                  decoding="async"
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+              </div>
+            )}
+            {details && (
+              <div class="details">
+                <ul>
+                  {details.points.map((point) => (
+                    <li>{point}</li>
+                  ))}
+                </ul>
+                {details.proof && (
+                  <p class="proof">
+                    <span class="eyebrow">{t.proofLabel}</span>
+                    {details.proof}
+                  </p>
+                )}
+              </div>
+            )}
             <div class="text-content">
+              {item.icon && (
+                <Image src={item.icon} alt="" width={32} height={32} />
+              )}
               <h2>{translated.title}</h2>
+              <p class="lead">{translated.description}</p>
               <p class="content-description">{translated.longDescription}</p>
               <Button
                 href={getRelativeLocaleUrl(
@@ -68,14 +97,16 @@ const t = Astro.currentLocale === "nl" ? nl : en;
     gap: 2rem;
     align-items: center;
     justify-content: center;
-    padding: 3rem 2rem;
+    padding: 3rem 1.5rem 5rem;
     margin: 0 auto;
-    max-width: 960px;
+    max-width: var(--container);
   }
 
   .content-wrapper {
     display: flex;
     align-items: center;
+    width: 100%;
+    gap: 3rem;
     scroll-margin-top: 5rem;
   }
 
@@ -84,7 +115,8 @@ const t = Astro.currentLocale === "nl" ? nl : en;
   }
 
   .image-wrapper {
-    width: 50%;
+    width: 45%;
+    flex-shrink: 0;
     border-radius: 8px;
     overflow: hidden;
   }
@@ -93,6 +125,55 @@ const t = Astro.currentLocale === "nl" ? nl : en;
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  .details {
+    width: 42%;
+    flex-shrink: 0;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1.75rem;
+    box-sizing: border-box;
+    background: var(--surface-2);
+    border-radius: 8px;
+  }
+
+  .details ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .details li {
+    position: relative;
+    padding-left: 1.75rem;
+    line-height: 1.5;
+  }
+
+  .details li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .proof {
+    margin: 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .proof .eyebrow {
+    margin-bottom: 0.4rem;
   }
 
   .text-content {
@@ -108,18 +189,26 @@ const t = Astro.currentLocale === "nl" ? nl : en;
 
   .text-content h2 {
     margin: 0;
-    font-size: 3rem;
-    text-align: center;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .lead {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .content-description {
+    color: var(--muted);
   }
 
   .get-in-touch {
     width: fit-content;
-    margin: 0 auto;
+    margin-top: 0.5rem;
   }
 
   @media (max-width: 768px) {
     .content-section {
-      padding: 1rem 0.5rem;
+      padding: 1.5rem 1rem 3rem;
     }
 
     .content-wrapper {
@@ -128,12 +217,14 @@ const t = Astro.currentLocale === "nl" ? nl : en;
       padding: 1rem;
     }
 
-    .text-content h2 {
-      font-size: 2rem;
+    .image-wrapper,
+    .details {
+      width: 100%;
     }
 
-    .image-wrapper {
-      width: 100%;
+    .details {
+      order: 1;
+      padding: 1.25rem;
     }
   }
 </style>
