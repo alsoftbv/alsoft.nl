@@ -18,6 +18,8 @@ Een update raakt de draaiende versie nooit aan. Die wordt naar het reserveslot g
 
 Komt de nieuwe versie niet op, dan schakelt de loader terug. Het apparaat draait dan de laatste versie die werkte in plaats van een half geïnstalleerde.
 
+![Loader start slot A terwijl een update naar reserveslot B wordt geschreven](../images/ab-updates/slots-diagram-nl.png)
+
 > Het doel is niet dat updates nooit mislukken. Het doel is dat een mislukte update nooit een bezoek ter plaatse nodig heeft.
 
 ---
@@ -54,6 +56,8 @@ def run(state):
         save_state(state)
 ```
 
+![Drie mislukte starts leiden tot een rollback, één crash niet](../images/ab-updates/rollback-diagram-nl.png)
+
 De details tellen. De teller gaat terug naar nul na een gezonde run, zodat een crash om de paar weken nooit optelt tot een rollback. En de loader controleert eerst of het andere slot wel een werkende installatie bevat voordat hij ernaar overschakelt.
 
 ---
@@ -72,6 +76,8 @@ De loader bewaart zijn status (actief slot, aantal fouten, geïnstalleerde versi
 2. Flush het naar schijf.
 3. Hernoem het over het oude bestand heen; dat is atomair op Linux.
 4. Bewaar een `.bak`-kopie van de laatste goede status en val daarop terug als het hoofdbestand niet leesbaar is.
+
+![Atomair wegschrijven van status: tijdelijk bestand, flush, hernoemen, met een back-upkopie](../images/ab-updates/atomic-diagram-nl.png)
 
 ### De loader blijft klein
 

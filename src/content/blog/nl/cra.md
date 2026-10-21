@@ -17,9 +17,13 @@ De CRA (Verordening (EU) 2024/2847) wordt in fasen ingevoerd. Voor firmwareteams
 - **11 september 2026: meldplicht.** Fabrikanten moeten actief misbruikte kwetsbaarheden en ernstige beveiligingsincidenten melden bij hun nationale CSIRT en ENISA. U stuurt binnen 24 uur een vroege waarschuwing en binnen 72 uur een uitgebreidere melding, gevolgd door een eindrapport uiterlijk 14 dagen nadat er een oplossing of mitigatie beschikbaar is. Dit geldt ook voor producten die **al op de markt zijn**, niet alleen voor nieuwe.
 - **11 december 2027: volledige toepassing.** Vanaf dat moment moeten producten met digitale elementen die op de Europese markt komen voldoen aan de essentiële cyberbeveiligingseisen uit de verordening.
 
+![Tijdlijn van Cyber Resilience Act-data voor firmwareteams](../images/cra/timeline-diagram-nl.png)
+
 Wie de essentiële eisen niet naleeft, riskeert boetes tot **€15 miljoen of 2,5% van de wereldwijde jaaromzet**, afhankelijk van wat hoger is.
 
 > De meldplicht geldt al. Wordt een kwetsbaarheid in een apparaat dat u jaren geleden heeft geleverd vandaag misbruikt, dan loopt de klok nu.
+
+![Meldtermijnen: vroege waarschuwing na 24 uur, melding na 72 uur, eindrapport 14 dagen na de fix](../images/cra/reporting-diagram-nl.png)
 
 ---
 
@@ -83,8 +87,12 @@ Niets hiervan is exotisch. Het meeste is goed vakmanschap dat door een deadline 
 
 We hebben twee gratis tools gemaakt waarmee u een eerste beeld krijgt:
 
-- **[CRA-zelfcheck](/nl/tools/cra-check):** een korte vragenlijst die laat zien waar uw product staat en waar u het eerst aan moet werken.
+- **[CRA-zelftest](/nl/tools/cra-check):** een korte vragenlijst die laat zien waar uw product staat en waar u het eerst aan moet werken.
 - **[SBOM-viewer](/nl/tools/sbom):** sleep er een CycloneDX- of SPDX-bestand in en zie wat er echt in uw firmware zit.
+
+![Resultaatscherm van de CRA-zelftest met geprioriteerde hiaten](../images/cra/cra-check-screenshot-nl.png)
+
+![SBOM-viewer met componenten, licenties en ontbrekende velden](../images/cra/sbom-viewer-screenshot-nl.png)
 
 Wilt u hulp met de firmwarekant (veilige updatemechanismen, SBOM-generatie in CI, of een gap-analyse voor een specifiek product), bekijk dan onze dienst [veilige updates en CRA-gereedheid](/nl/services#updates).
 

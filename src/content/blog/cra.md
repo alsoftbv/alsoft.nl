@@ -17,9 +17,13 @@ The CRA (Regulation (EU) 2024/2847) is rolling out in stages. Two dates matter f
 - **11 September 2026: reporting obligations.** Manufacturers must report actively exploited vulnerabilities and severe security incidents to their national CSIRT and ENISA. You send an early warning within 24 hours and a fuller notification within 72 hours, followed by a final report no later than 14 days after a fix or mitigation is available. This applies to products **already on the market**, not only to new ones.
 - **11 December 2027: full application.** From this date, products with digital elements placed on the EU market must meet the essential cybersecurity requirements in the regulation.
 
+![Timeline of Cyber Resilience Act dates for firmware teams](images/cra/timeline-diagram-en.png)
+
 Penalties for breaking the essential requirements can reach **€15 million or 2.5% of worldwide annual turnover**, whichever is higher.
 
 > The reporting duty is already live. If a vulnerability in a device you shipped years ago is being exploited today, the clock starts now.
+
+![Reporting deadlines: early warning at 24 hours, notification at 72 hours, final report 14 days after the fix](images/cra/reporting-diagram-en.png)
 
 ---
 
@@ -85,6 +89,10 @@ We've built two free tools to help you get a first picture:
 
 - **[CRA self-check](/tools/cra-check):** a short questionnaire that shows where your product stands and what to work on first.
 - **[SBOM viewer](/tools/sbom):** drop in a CycloneDX or SPDX file to see what's actually inside your firmware.
+
+![Result screen of the CRA self-check with prioritized gaps](images/cra/cra-check-screenshot-en.png)
+
+![SBOM viewer showing components, licenses and missing fields](images/cra/sbom-viewer-screenshot-en.png)
 
 If you want help with the firmware side (secure update mechanisms, SBOM generation in CI, or a gap assessment for a specific product), take a look at our [secure updates and CRA readiness service](/services#updates).
 

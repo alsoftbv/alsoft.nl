@@ -18,6 +18,8 @@ An update never touches the running version. It is written to the spare slot, an
 
 If the new version doesn't come up, the loader switches back. The device ends up running the last version that worked instead of a half-installed one.
 
+![Loader starting slot A while an update is written to spare slot B](images/ab-updates/slots-diagram-en.png)
+
 > The goal is not that updates never fail. The goal is that a failed update never needs a site visit.
 
 ---
@@ -54,6 +56,8 @@ def run(state):
         save_state(state)
 ```
 
+![Three failed starts trigger a rollback, a single crash does not](images/ab-updates/rollback-diagram-en.png)
+
 The details matter. The counter resets after a healthy run, so a crash every few weeks never adds up to a rollback. The loader also checks that the other slot actually holds a working installation before switching to it.
 
 ---
@@ -72,6 +76,8 @@ The loader keeps its state (active slot, failure count, installed versions) in a
 2. Flush it to disk.
 3. Rename it over the old file, which is atomic on Linux.
 4. Keep a `.bak` copy of the last good state and fall back to it if the main file can't be read.
+
+![Atomic state write: temp file, flush, rename, with a backup copy](images/ab-updates/atomic-diagram-en.png)
 
 ### The Loader Stays Small
 

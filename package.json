@@ -8,7 +8,9 @@
     "preview": "astro preview",
     "check": "astro check",
     "astro": "astro",
-    "add-cert": "npx tsx scripts/add-cert.ts"
+    "add-cert": "npx tsx scripts/add-cert.ts",
+    "test": "playwright test",
+    "test:update": "docker run --rm --platform linux/arm64 --ipc=host -v \"$PWD\":/work -v alsoft-node-modules-arm64:/work/node_modules -w /work mcr.microsoft.com/playwright:v1.63.0-noble /bin/bash -c \"npm ci && npm run build && npx playwright test --update-snapshots\""
   },
   "dependencies": {
     "@astrojs/check": "^0.9.7",
@@ -22,6 +24,7 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
     "@types/react": "^19.2.7"
   }
 }
