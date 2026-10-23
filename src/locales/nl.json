@@ -566,7 +566,7 @@
     "loading": "De veldsolver wordt geladen…",
     "solving": "Bezig met rekenen…",
     "solved": "Berekend in {ms} ms in uw browser, {n} panelen.",
-    "failed": "De veldsolver kon niet starten. Hij heeft WebAssembly en een recente browser nodig, en moet een klein bestand downloaden (ongeveer 80 kB).",
+    "failed": "De veldsolver kon niet starten. Hij heeft WebAssembly en een recente browser nodig, en moet een klein bestand downloaden (minder dan 200 kB).",
     "retry": "Probeer opnieuw",
     "badInput": "Vul in elk gemarkeerd veld een positief getal in.",
     "unreachable": "Geen enkele waarde van die afmeting haalt de doelimpedantie bij deze opbouw. Probeer een ander doel, of pas een andere afmeting aan.",
@@ -580,7 +580,7 @@
       },
       {
         "title": "Draait in uw browser",
-        "text": "De solver is dezelfde als op onze eigen boards, gecompileerd naar WebAssembly: een module van ongeveer 80 kB die uw browser eenmalig downloadt en lokaal draait. Wat u invoert verlaat de pagina niet, en er is geen server om op te wachten."
+        "text": "De solver is dezelfde als op onze eigen boards, gecompileerd naar WebAssembly: een module van minder dan 200 kB die uw browser eenmalig downloadt en lokaal draait. Wat u invoert verlaat de pagina niet, en er is geen server om op te wachten."
       },
       {
         "title": "Waar de formule afwijkt",

@@ -566,7 +566,7 @@
     "loading": "Loading the field solver…",
     "solving": "Solving…",
     "solved": "Solved in {ms} ms in your browser, {n} panels.",
-    "failed": "The field solver could not start. It needs WebAssembly and a current browser, and it has to download a small file (about 80 kB).",
+    "failed": "The field solver could not start. It needs WebAssembly and a current browser, and it has to download a small file (under 200 kB).",
     "retry": "Try again",
     "badInput": "Enter a positive number in every highlighted field.",
     "unreachable": "No value of that dimension reaches the target for this stack-up. Try a different target, or change another dimension.",
@@ -580,7 +580,7 @@
       },
       {
         "title": "Running in your browser",
-        "text": "The solver is the one we use on our own boards, compiled to WebAssembly: a module of about 80 kB that your browser downloads once and runs locally. Nothing you type leaves the page, and there is no server to wait for."
+        "text": "The solver is the one we use on our own boards, compiled to WebAssembly: a module of under 200 kB that your browser downloads once and runs locally. Nothing you type leaves the page, and there is no server to wait for."
       },
       {
         "title": "Where the formula goes wrong",
