@@ -470,5 +470,128 @@
       "top": "Bovenkant van het Paper Calendar-board",
       "angle": "Het Paper Calendar-board onder een hoek"
     }
+  },
+  "impedance": {
+    "header": "Impedantiecalculator voor printbanen",
+    "title": "Gratis impedantiecalculator voor PCB-banen met een echte veldsolver",
+    "description": "Bereken de impedantie van PCB-banen met een 2D-veldsolver in plaats van een formule: microstrip, stripline, differentiële paren en coplanaire golfgeleider. Alles draait in uw browser en er wordt niets verstuurd.",
+    "lead": "De meeste online calculators rekenen een formule uit die op een handvol gevallen is gefit. Deze berekent het elektromagnetische veld van uw exacte dwarsdoorsnede, inclusief kopperdikte en soldeermasker, met dezelfde veldsolver als op onze eigen boards.",
+    "badges": [
+      "Draait in uw browser",
+      "Er wordt niets verstuurd",
+      "Gratis, zonder account"
+    ],
+    "layerLabel": "Waar de baan loopt",
+    "pairLabel": "Enkele baan of paar",
+    "unitsLabel": "Eenheden",
+    "modeLabel": "Wat u wilt berekenen",
+    "layers": {
+      "outer": "Buitenlaag",
+      "inner": "Binnenlaag",
+      "cpw": "Coplanair"
+    },
+    "single": "Enkele baan",
+    "differential": "Differentieel paar",
+    "kinds": {
+      "microstrip": "Microstrip (buitenlaag, één vlak eronder)",
+      "microstrip_pair": "Gekoppeld microstrip-paar (buitenlaag)",
+      "stripline": "Stripline (binnenlaag, vlakken erboven en eronder)",
+      "stripline_pair": "Gekoppeld stripline-paar (binnenlaag)",
+      "cpw": "Coplanaire golfgeleider met massavlak"
+    },
+    "modeAnalyze": "Impedantie uit afmetingen",
+    "modeFind": "Afmeting voor een doelimpedantie",
+    "solveFor": "Bereken",
+    "fields": {
+      "w": "Baanbreedte",
+      "s": "Afstand tussen de banen",
+      "gap": "Afstand tot de massa",
+      "h": "Hoogte van het diëlektricum",
+      "h1": "Diëlektricum onder de baan",
+      "h2": "Diëlektricum boven de baan",
+      "t": "Kopperdikte",
+      "er": "Diëlektrische constante εr",
+      "tan_d": "Verliesfactor",
+      "mask_t": "Dikte masker",
+      "mask_er": "εr masker",
+      "f_ghz": "Frequentie",
+      "target": "Doelimpedantie"
+    },
+    "hints": {
+      "h": "baan tot het vlak eronder",
+      "h1": "baan tot het vlak eronder",
+      "h2": "baan tot het vlak erboven",
+      "gap": "rand van de baan tot de massa",
+      "s": "rand tot rand"
+    },
+    "mask": "Soldeermasker over de baan",
+    "ground": "Massavlak onder het diëlektricum",
+    "lossInputs": "Instellingen voor verlies",
+    "examples": "Voorbeelden:",
+    "presetJlc": "JLCPCB 4-lagen paar",
+    "presetThin": "Dun prepreg, kaal koper",
+    "planeLabel": "vlak",
+    "dielectricLabel": "diëlektricum",
+    "airLabel": "lucht",
+    "drawingLabel": "Dwarsdoorsnede van de baan met afmetingen",
+    "legendCopper": "Koper",
+    "legendPlane": "Referentievlak",
+    "legendMask": "Soldeermasker",
+    "result": "Resultaat",
+    "z0": "Impedantie Z0",
+    "zdiff": "Differentiële impedantie Zdiff",
+    "zcommon": "Common-mode-impedantie",
+    "zodd": "Odd-mode-impedantie (één baan)",
+    "zeven": "Even-mode-impedantie (één baan)",
+    "erEff": "Effectieve diëlektrische constante",
+    "erOdd": "Effectieve diëlektrische constante, differentieel",
+    "delay": "Looptijd",
+    "lossAt": "Verlies bij {f} GHz",
+    "lossConductor": "koper",
+    "lossDielectric": "diëlektricum",
+    "foundLabel": "De {what} die {z} Ω geeft",
+    "foundShort": "Resultaat",
+    "useSolved": "Gebruik deze {what} in de impedantieberekening",
+    "formulaTitle": "Gesloten formule",
+    "compareSame": "De gesloten formule die de meeste calculators gebruiken geeft {cf} Ω, binnen {pct} % van de veldsolver.",
+    "compareLower": "De gesloten formule die de meeste calculators gebruiken geeft {cf} Ω, dat is {pct} % lager dan de veldsolver, omdat een gefitte formule uw exacte dwarsdoorsnede maar benadert.",
+    "compareHigher": "De gesloten formule die de meeste calculators gebruiken geeft {cf} Ω, dat is {pct} % hoger dan de veldsolver, omdat een gefitte formule uw exacte dwarsdoorsnede maar benadert.",
+    "compareWidthSame": "De gesloten formule die de meeste calculators gebruiken geeft een breedte van {cf}, vrijwel hetzelfde.",
+    "compareWidthNarrower": "De gesloten formule die de meeste calculators gebruiken geeft een breedte van {cf}, dat is {pct} % smaller dan de veldsolver vindt.",
+    "compareWidthWider": "De gesloten formule die de meeste calculators gebruiken geeft een breedte van {cf}, dat is {pct} % breder dan de veldsolver vindt.",
+    "compareMask": "De formule kent geen soldeermasker, dus een deel van het verschil komt door het masker.",
+    "compareStripline": "De striplineformule gaat uit van een baan zonder dikte, dus een deel van het verschil komt door het koper.",
+    "formulaNone": "De formule dekt deze afmetingen niet.",
+    "formulaWaiting": "Wachten op de solver.",
+    "loading": "De veldsolver wordt geladen…",
+    "solving": "Bezig met rekenen…",
+    "solved": "Berekend in {ms} ms in uw browser, {n} panelen.",
+    "failed": "De veldsolver kon niet starten. Hij heeft WebAssembly en een recente browser nodig, en moet een klein bestand downloaden (ongeveer 80 kB).",
+    "retry": "Probeer opnieuw",
+    "badInput": "Vul in elk gemarkeerd veld een positief getal in.",
+    "unreachable": "Geen enkele waarde van die afmeting haalt de doelimpedantie bij deze opbouw. Probeer een ander doel, of pas een andere afmeting aan.",
+    "solverError": "De solver kon deze afmetingen niet verwerken.",
+    "noscript": "Deze calculator heeft JavaScript nodig.",
+    "howHeader": "Hoe het werkt",
+    "how": [
+      {
+        "title": "Een veldsolver, geen formule",
+        "text": "Uw dwarsdoorsnede wordt langs het koper en de grenzen van het diëlektricum in kleine panelen verdeeld. De solver rekent uit hoe lading zich daarover verdeelt voor elke manier om de banen aan te sturen, en uit de gevonden capaciteit volgen impedantie, effectieve permittiviteit en looptijd."
+      },
+      {
+        "title": "Draait in uw browser",
+        "text": "De solver is dezelfde als op onze eigen boards, gecompileerd naar WebAssembly: een module van ongeveer 80 kB die uw browser eenmalig downloadt en lokaal draait. Wat u invoert verlaat de pagina niet, en er is geen server om op te wachten."
+      },
+      {
+        "title": "Waar de formule afwijkt",
+        "text": "Gesloten formules zijn curves die op een beperkt bereik zijn gefit en gaan ruwweg om met kopperdikte. Voor een paar banen van 0,2 mm met 0,15 mm tussenruimte op 0,2104 mm prepreg en 35 µm kaal koper geeft de gangbare formule 99,3 Ω differentieel en de solver 103,4 Ω. Bij een dunner diëlektricum kan het verschil oplopen tot 13 %."
+      }
+    ],
+    "limitsHeader": "Houd hier rekening mee",
+    "limits": "Het resultaat geldt voor een ideale rechthoekige baan met een constant diëlektricum. Echte boards hebben geëtste, trapeziumvormige banen, wisselend hars en glas, en fabricagetoleranties van ongeveer 10 %. Gebruik de opbouwwaarden van uw fabrikant en laat hem de uiteindelijke breedte bevestigen.",
+    "ctaHeader": "Wilt u het hele board laten controleren, niet maar één baan?",
+    "ctaText": "Dezelfde solvers draaien in onze hardwarediensten: design review, gecontroleerde impedantie, power integrity en EMC-precompliance, voordat het board naar de fabrikant gaat.",
+    "ctaButton": "Bespreek uw board",
+    "ctaLink": "Bekijk onze hardwarediensten"
   }
 }

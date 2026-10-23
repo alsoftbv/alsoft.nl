@@ -1,0 +1,196 @@
+---
+import Button from "@components/Button.astro";
+import Card from "@components/Card.astro";
+import Header from "@components/Header.astro";
+import ImpedanceCalculator from "@components/impedance/Calculator";
+import ToolLayout from "@layouts/ToolLayout.astro";
+import {
+  getLanguage,
+  getPath,
+  getTranslationPaths,
+  useTranslations,
+} from "@locales/utils";
+
+export function getStaticPaths() {
+  return getTranslationPaths();
+}
+
+const lang = getLanguage(Astro.params.lang);
+const t = useTranslations(lang).impedance;
+---
+
+<ToolLayout title={t.title} description={t.description}>
+  <Header>{t.header}</Header>
+  <div class="page">
+    <p class="lead">{t.lead}</p>
+    <ul class="badges">
+      {t.badges.map((badge) => <li>{badge}</li>)}
+    </ul>
+
+    <Card class="calculator">
+      <ImpedanceCalculator lang={lang} client:load />
+    </Card>
+
+    <section class="how">
+      <h2>{t.howHeader}</h2>
+      <div class="how-grid">
+        {
+          t.how.map((item) => (
+            <div class="how-item">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          ))
+        }
+      </div>
+      <h3 class="limits-header">{t.limitsHeader}</h3>
+      <p class="limits">{t.limits}</p>
+    </section>
+
+    <section class="cta">
+      <h2>{t.ctaHeader}</h2>
+      <p>{t.ctaText}</p>
+      <div class="cta-links">
+        <Button href={getPath(lang, "/contact")}>{t.ctaButton}</Button>
+        <a href={getPath(lang, "/hardware")}>{t.ctaLink} →</a>
+      </div>
+    </section>
+  </div>
+</ToolLayout>
+
+<style>
+  .page {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .lead {
+    margin: 0 0 1rem;
+    max-width: 46rem;
+    color: var(--muted);
+    font-size: 1.1rem;
+  }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+  }
+
+  .badges li {
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .badges li::before {
+    content: "";
+    display: inline-block;
+    width: 0.45rem;
+    height: 0.45rem;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent);
+    vertical-align: 0.05em;
+  }
+
+  .how {
+    margin-top: 4rem;
+  }
+
+  .how h2,
+  .cta h2 {
+    margin: 0 0 1.5rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .how-item {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  .how-item h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+  }
+
+  .how-item p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .limits-header {
+    margin: 2rem 0 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .limits {
+    margin: 0;
+    max-width: 46rem;
+    color: var(--muted);
+  }
+
+  .cta {
+    margin-top: 4rem;
+    padding: 2rem;
+    border-radius: var(--radius);
+    background:
+      radial-gradient(ellipse at top left, var(--accent-soft), transparent 70%),
+      var(--surface);
+    border: 1px solid var(--border);
+  }
+
+  .cta h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .cta p {
+    margin: 0 0 1.5rem;
+    max-width: 42rem;
+  }
+
+  .cta-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+  }
+
+  .cta-links a:not(.btn) {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  @media (max-width: 900px) {
+    .how-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page {
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .cta {
+      padding: 1.5rem 1rem;
+    }
+  }
+</style>

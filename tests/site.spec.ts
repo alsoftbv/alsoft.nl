@@ -18,6 +18,8 @@ const pages = [
   { name: "tool-sbom", path: "/tools/sbom/" },
   { name: "tool-websocket", path: "/tools/websocket/" },
   { name: "tool-sfont", path: "/tools/sfont/" },
+  { name: "tool-impedance", path: "/tools/impedance/", fullPage: true },
+  { name: "tool-impedance-nl", path: "/nl/tools/impedance/", fullPage: true },
   { name: "not-found", path: "/this-page-does-not-exist/" },
 ];
 
@@ -67,6 +69,11 @@ for (const { name, path, fullPage } of pages) {
   test(`${name} renders cleanly`, async ({ page }) => {
     const errors = trackErrors(page);
     await loadFully(page, path);
+    if (name.startsWith("tool-impedance")) {
+      // the solver's answer (and the loss behind it) changes what is on the page: capture after it
+      await expect(page.getByTestId("zdiff")).toContainText("Ω");
+      await expect(page.getByTestId("loss")).not.toHaveText("–");
+    }
 
     const layout = await page.evaluate(() => ({
       overflow: document.documentElement.scrollWidth - window.innerWidth,
@@ -140,4 +147,60 @@ test("pages link their translation", async ({ page }) => {
     "href",
     "https://alsoft.nl/services/"
   );
+});
+
+// The impedance calculator runs the field solver as WebAssembly. The numbers below are the native solver's
+// (mesh 4, the calculator's setting) for the same geometry; the module is proven equal to it digit for digit.
+test("impedance calculator matches the native solver", async ({ page }) => {
+  const errors = trackErrors(page);
+  await page.goto("/tools/impedance/");
+  await expect(page.getByTestId("zdiff")).toContainText("Ω"); // the default pair, solved
+
+  // bare copper, no mask: the case where the closed-form formula reads low
+  await page.getByLabel("Solder mask over the trace").uncheck();
+  await expect(page.getByTestId("zdiff")).toHaveText("103.6 Ω");
+  await expect(page.getByTestId("zeven")).toHaveText("82.2 Ω");
+  await expect(page.getByTestId("zodd")).toHaveText("51.8 Ω");
+  await expect(page.getByTestId("zcm")).toHaveText("41.1 Ω");
+  await expect(page.getByTestId("closed-value")).toHaveText("99.3 Ω");
+  await expect(page.getByTestId("compare")).toContainText("4.1 % lower");
+  await expect(page.locator(".imp-meta")).toContainText(/Solved in \d+ ms/);
+
+  // the thin-prepreg example, in mil too
+  await page.getByRole("button", { name: "Thin prepreg, bare copper" }).click();
+  await expect(page.getByTestId("zdiff")).toHaveText("103.9 Ω");
+  await page.getByRole("button", { name: "mil", exact: true }).click();
+  await expect(page.getByLabel("Trace width")).toHaveValue("5");
+  await expect(page.getByTestId("zdiff")).toHaveText("103.9 Ω");
+  expect(errors).toEqual([]);
+});
+
+test("impedance synthesis round-trips", async ({ page }) => {
+  await page.goto("/tools/impedance/");
+  await page.getByLabel("Solder mask over the trace").uncheck();
+  await page.getByRole("button", { name: "Dimension for a target impedance" }).click();
+  await page.getByLabel("Target impedance").fill("100");
+  const found = page.getByTestId("found");
+  await expect(found).toHaveText(/^0\.\d{3} mm$/);
+  await expect(page.locator(".imp-hero-sub")).toContainText(/Zdiff 100\.0 Ω/);
+
+  await page.getByRole("button", { name: /Use this trace width/ }).click();
+  await expect(page.getByTestId("zdiff")).toHaveText(/^(99\.9|100\.0|100\.1) Ω$/);
+});
+
+test("impedance calculator: Dutch page and a target nobody reaches", async ({ page }) => {
+  await page.goto("/nl/tools/impedance/");
+  await expect(page.getByTestId("zdiff")).toContainText(/\d,\d Ω/);
+  await page.getByRole("button", { name: "Afmeting voor een doelimpedantie" }).click();
+  await page.getByLabel("Doelimpedantie").fill("900");
+  // the solver widens its search until it knows the target is out of reach: a few seconds on a slow CI machine
+  await expect(page.getByRole("alert")).toContainText("Geen enkele waarde", { timeout: 30_000 });
+});
+
+test("impedance calculator fails gracefully without the solver", async ({ page }) => {
+  await page.route("**/wasm/bk-em.wasm*", (route) => route.abort());
+  await page.goto("/tools/impedance/");
+  await expect(page.getByRole("alert")).toContainText("could not start");
+  await expect(page.getByTestId("zdiff")).toHaveText("–");
+  await expect(page.locator("svg.imp-xs")).toBeVisible();
 });

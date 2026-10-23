@@ -470,5 +470,128 @@
       "top": "Top side of the Paper Calendar board",
       "angle": "The Paper Calendar board at an angle"
     }
+  },
+  "impedance": {
+    "header": "Trace impedance calculator",
+    "title": "Free PCB Trace Impedance Calculator with a Real Field Solver",
+    "description": "Calculate the impedance of PCB traces with a 2D field solver, not a formula: microstrip, stripline, differential pairs and coplanar waveguide. It runs in your browser and nothing is sent anywhere.",
+    "lead": "Most online calculators evaluate a closed-form formula fitted to a handful of cases. This one solves the electromagnetic field of your exact cross-section, copper thickness and solder mask included, with the same field solver we use on our own boards.",
+    "badges": [
+      "Runs in your browser",
+      "Nothing is sent anywhere",
+      "Free, no sign-up"
+    ],
+    "layerLabel": "Where the trace runs",
+    "pairLabel": "Single trace or pair",
+    "unitsLabel": "Units",
+    "modeLabel": "What to calculate",
+    "layers": {
+      "outer": "Outer layer",
+      "inner": "Inner layer",
+      "cpw": "Coplanar"
+    },
+    "single": "Single trace",
+    "differential": "Differential pair",
+    "kinds": {
+      "microstrip": "Microstrip (outer layer, one plane below)",
+      "microstrip_pair": "Edge-coupled microstrip pair (outer layer)",
+      "stripline": "Stripline (inner layer, planes above and below)",
+      "stripline_pair": "Edge-coupled stripline pair (inner layer)",
+      "cpw": "Coplanar waveguide with ground"
+    },
+    "modeAnalyze": "Impedance from dimensions",
+    "modeFind": "Dimension for a target impedance",
+    "solveFor": "Solve for",
+    "fields": {
+      "w": "Trace width",
+      "s": "Gap between the traces",
+      "gap": "Gap to the ground pours",
+      "h": "Dielectric height",
+      "h1": "Dielectric below the trace",
+      "h2": "Dielectric above the trace",
+      "t": "Copper thickness",
+      "er": "Dielectric constant εr",
+      "tan_d": "Loss tangent",
+      "mask_t": "Mask thickness",
+      "mask_er": "Mask εr",
+      "f_ghz": "Frequency",
+      "target": "Target impedance"
+    },
+    "hints": {
+      "h": "trace to the plane below",
+      "h1": "trace to the plane below",
+      "h2": "trace to the plane above",
+      "gap": "edge of the trace to the ground",
+      "s": "edge to edge"
+    },
+    "mask": "Solder mask over the trace",
+    "ground": "Ground plane below the dielectric",
+    "lossInputs": "Loss settings",
+    "examples": "Examples:",
+    "presetJlc": "JLCPCB 4-layer pair",
+    "presetThin": "Thin prepreg, bare copper",
+    "planeLabel": "plane",
+    "dielectricLabel": "dielectric",
+    "airLabel": "air",
+    "drawingLabel": "Cross-section of the trace with its dimensions",
+    "legendCopper": "Copper",
+    "legendPlane": "Reference plane",
+    "legendMask": "Solder mask",
+    "result": "Result",
+    "z0": "Impedance Z0",
+    "zdiff": "Differential impedance Zdiff",
+    "zcommon": "Common-mode impedance",
+    "zodd": "Odd-mode impedance (one trace)",
+    "zeven": "Even-mode impedance (one trace)",
+    "erEff": "Effective dielectric constant",
+    "erOdd": "Effective dielectric constant, differential",
+    "delay": "Propagation delay",
+    "lossAt": "Loss at {f} GHz",
+    "lossConductor": "copper",
+    "lossDielectric": "dielectric",
+    "foundLabel": "The {what} that gives {z} Ω",
+    "foundShort": "Result",
+    "useSolved": "Use this {what} in the impedance calculation",
+    "formulaTitle": "Closed-form formula",
+    "compareSame": "The closed-form formula most calculators use gives {cf} Ω, within {pct} % of the field solver.",
+    "compareLower": "The closed-form formula most calculators use gives {cf} Ω, which is {pct} % lower than the field solver, because a fitted formula only approximates your exact cross-section.",
+    "compareHigher": "The closed-form formula most calculators use gives {cf} Ω, which is {pct} % higher than the field solver, because a fitted formula only approximates your exact cross-section.",
+    "compareWidthSame": "The closed-form formula most calculators use would give a width of {cf}, almost the same.",
+    "compareWidthNarrower": "The closed-form formula most calculators use would give a width of {cf}, which is {pct} % narrower than the field solver finds.",
+    "compareWidthWider": "The closed-form formula most calculators use would give a width of {cf}, which is {pct} % wider than the field solver finds.",
+    "compareMask": "The formula has no solder mask, so part of the difference is the mask.",
+    "compareStripline": "The stripline formula assumes a strip of zero thickness, so part of the difference is the copper.",
+    "formulaNone": "The formula does not cover these dimensions.",
+    "formulaWaiting": "Waiting for the solver.",
+    "loading": "Loading the field solver…",
+    "solving": "Solving…",
+    "solved": "Solved in {ms} ms in your browser, {n} panels.",
+    "failed": "The field solver could not start. It needs WebAssembly and a current browser, and it has to download a small file (about 80 kB).",
+    "retry": "Try again",
+    "badInput": "Enter a positive number in every highlighted field.",
+    "unreachable": "No value of that dimension reaches the target for this stack-up. Try a different target, or change another dimension.",
+    "solverError": "The solver could not handle these dimensions.",
+    "noscript": "This calculator needs JavaScript.",
+    "howHeader": "How it works",
+    "how": [
+      {
+        "title": "A field solver, not a formula",
+        "text": "Your cross-section is cut into small panels along the copper and the dielectric boundaries. The solver computes how charge spreads over them for each way of driving the traces, and impedance, effective permittivity and delay follow from the capacitance it finds."
+      },
+      {
+        "title": "Running in your browser",
+        "text": "The solver is the one we use on our own boards, compiled to WebAssembly: a module of about 80 kB that your browser downloads once and runs locally. Nothing you type leaves the page, and there is no server to wait for."
+      },
+      {
+        "title": "Where the formula goes wrong",
+        "text": "Closed-form formulas are curves fitted to a limited range, and they treat copper thickness roughly. For a 0.2 mm trace pair with a 0.15 mm gap on 0.2104 mm prepreg and 35 µm bare copper, the common formula gives 99.3 Ω differential and the solver 103.4 Ω. With a thinner dielectric the gap can reach 13 %."
+      }
+    ],
+    "limitsHeader": "What to keep in mind",
+    "limits": "The result is for an ideal rectangular trace with a constant dielectric. Real boards have etched, trapezoidal traces, resin and glass that vary, and fab tolerances of around 10 %. Use your fab’s stack-up values, and let them confirm the final width.",
+    "ctaHeader": "Want the whole board checked, not just one trace?",
+    "ctaText": "The same solvers run through our hardware services: design review, controlled impedance, power integrity and EMC pre-compliance, before the board goes to the fab.",
+    "ctaButton": "Talk about your board",
+    "ctaLink": "See our hardware services"
   }
 }
