@@ -584,7 +584,7 @@
       },
       {
         "title": "Where the formula goes wrong",
-        "text": "Closed-form formulas are curves fitted to a limited range, and they treat copper thickness roughly. For a 0.2 mm trace pair with a 0.15 mm gap on 0.2104 mm prepreg and 35 µm bare copper, the common formula gives 99.3 Ω differential and the solver 103.4 Ω. With a thinner dielectric the gap can reach 13 %."
+        "text": "Closed-form formulas are curves fitted to a limited range, and they treat copper thickness roughly. For a 0.2 mm trace pair with a 0.15 mm gap on 0.2104 mm prepreg and 35 µm bare copper, the common formula gives 99.3 Ω differential and the solver 103.6 Ω. With a thinner dielectric the gap can reach 13 %."
       }
     ],
     "limitsHeader": "What to keep in mind",
