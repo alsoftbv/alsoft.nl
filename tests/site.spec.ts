@@ -6,6 +6,8 @@ const pages = [
   { name: "home-nl", path: "/nl/" },
   { name: "services", path: "/services/", fullPage: true },
   { name: "services-nl", path: "/nl/services/" },
+  { name: "hardware", path: "/hardware/", fullPage: true },
+  { name: "hardware-nl", path: "/nl/hardware/" },
   { name: "industries", path: "/industries/" },
   { name: "contact", path: "/contact/" },
   { name: "blog", path: "/blog/" },

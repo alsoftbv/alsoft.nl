@@ -82,6 +82,17 @@ const t = Astro.currentLocale === "nl" ? nl : en;
               >
                 {t.getInTouch}
               </Button>
+              {item.page && (
+                <a
+                  class="learn-more"
+                  href={getRelativeLocaleUrl(
+                    Astro.currentLocale ?? "en",
+                    item.page
+                  )}
+                >
+                  {t.hardware.learnMore} →
+                </a>
+              )}
             </div>
           </Card>
         );
@@ -204,6 +215,17 @@ const t = Astro.currentLocale === "nl" ? nl : en;
   .get-in-touch {
     width: fit-content;
     margin-top: 0.5rem;
+  }
+
+  .learn-more {
+    width: fit-content;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .learn-more:hover {
+    text-decoration: underline;
   }
 
   @media (max-width: 768px) {

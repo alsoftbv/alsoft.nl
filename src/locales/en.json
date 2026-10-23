@@ -289,5 +289,174 @@
     "before": "I’ve also written for ",
     "link": "Elektor",
     "after": " magazine."
+  },
+  "hardware": {
+    "nav": "Hardware",
+    "title": "Hardware Services: Design Review, PCB Design, Firmware Emulation and EMC Pre-compliance",
+    "description": "Design review in 48 hours, idea to orderable board, firmware tested before the board exists and EMC, SI and PI pre-compliance, with our own in-house toolchain.",
+    "eyebrow": "Hardware services",
+    "heroTitle": "Hardware that is checked before it is built.",
+    "heroLead": "Design review, board design, firmware testing and EMC pre-compliance, all done with our own in-house toolchain: every board is simulated, run against its own firmware and screened before it goes to the fab.",
+    "heroPrimary": "Talk about your board",
+    "heroSecondary": "See the case study",
+    "heroCaption": "The Paper Calendar, our own 4-layer ESP32-S3 board, rendered from its design files.",
+    "stats": [
+      {
+        "value": "48 h",
+        "label": "design review turnaround, fixed price"
+      },
+      {
+        "value": "61",
+        "label": "firmware assertions passing in the emulator against the Paper Calendar’s circuit"
+      },
+      {
+        "value": "4",
+        "label": "field solvers of our own: cross-sections, power planes, return currents, 3D full wave"
+      },
+      {
+        "value": "5",
+        "label": "microcontroller families emulated, each core checked against QEMU"
+      }
+    ],
+    "servicesEyebrow": "What we do",
+    "servicesTitle": "Four ways we take risk out of your board.",
+    "items": {
+      "review": {
+        "label": "Design review in 48 hours",
+        "lead": "A second pair of eyes on your schematic and layout, with the datasheets open.",
+        "text": "Send us your KiCad project, or the schematic and Gerbers. Within 48 hours you get a written review of the schematic, the layout and an EMC pre-compliance pass. Every finding names the part, the pin or the board location, cites the datasheet line it rests on and says how to fix it. The price is fixed and agreed before we start.",
+        "points": [
+          "Schematic checked against the datasheets: pin functions, ratings, strap pins, supply sequencing",
+          "Layout checked for power paths, return paths, decoupling, fab rules and assembly",
+          "EMC pre-compliance screening with located findings",
+          "A written report with coordinates and a fix for each finding"
+        ],
+        "proof": "On the Paper Calendar the EMC pass found 7 warnings on a board that already had no errors, each with its coordinates and a fix.",
+        "callouts": [
+          "A via where an SPI line changes layer, 7 mm from the nearest return-path capacitor",
+          "42 mm of board edge without a ground via",
+          "The e-paper booster loop, about 2.6 nH"
+        ]
+      },
+      "board": {
+        "label": "Idea to orderable board",
+        "lead": "From a requirements description to files you can send to the fab.",
+        "text": "Describe what the board has to do. We turn it into a verified design: a schematic with checked parts, a routed layout and fabrication files designed to order with the fab’s standard options, so nothing special has to be explained to the fab. Prototypes can come assembled.",
+        "points": [
+          "ERC and DRC clean, with schematic and board proven to match",
+          "Design-for-manufacture checks against JLCPCB’s capabilities",
+          "EMC screening before release",
+          "Gerbers, BOM and placement files, with parts picked from what is in stock",
+          "An assembled prototype delivered to you"
+        ],
+        "proof": "The Paper Calendar: a 4-layer ESP32-S3 board with a 50-pin e-paper connector, charger, fuel gauge and audio amplifier, in manufacturing at JLCPCB since October 2026.",
+        "steps": [
+          "Schematic",
+          "Four copper layers",
+          "The finished board, bottom side"
+        ]
+      },
+      "firmware": {
+        "label": "Firmware tested before the board exists",
+        "lead": "Your real firmware, running against your circuit, weeks before boards arrive.",
+        "text": "Our emulator runs the firmware image you will flash on a model of the microcontroller, wired to a model of your board built from its circuit: pull-ups, buttons, regulators, fuel gauge, display controller. Scripted scenarios press buttons, drain the battery, cut the network or let days pass, and assert what the pins, buses, console and display did. Each CPU core is checked instruction by instruction against QEMU.",
+        "points": [
+          "ESP32-S3 and ESP32-C3, RP2040, i.MX RT1024 with Ethernet, AVR",
+          "Scenarios for power, buttons, network and display",
+          "Pixel-exact checks of what the display shows",
+          "Runs headless, so it becomes a check in your CI"
+        ],
+        "proof": "The Paper Calendar’s production firmware boots end to end in the emulator: 7 scenarios and 61 assertions pass, including the exact image on the e-paper.",
+        "caption": "What the real firmware drew on the emulated e-paper at first boot, and the console behind it."
+      },
+      "emc": {
+        "label": "EMC, SI and PI pre-compliance",
+        "lead": "Find what the compliance lab would find, while a fix is still cheap.",
+        "text": "Our own field solvers, written for circuit boards, look at what rules of thumb miss: 2D cross-sections for impedance and crosstalk, the impedance of a power plane pair with your real decoupling capacitors, return current around slots and plane gaps, and a GPU 3D full-wave solver for the critical regions. Findings come with exact locations and fixes. These are pre-compliance estimates that reduce the risk of a lab visit. They are not certification.",
+        "points": [
+          "Trace impedance and crosstalk from the real stackup",
+          "Power-network impedance against a target, with the capacitors you placed",
+          "Return current and the loop inductance a slot adds",
+          "3D full-wave fields for the regions that matter"
+        ],
+        "proof": "Measured against references: trace impedance within 0.3 % of the closed forms, plane resonances within 0.06 % of the analytic cavity.",
+        "slotTitle": "Return current under a trace",
+        "slotCaption": "A trace crossing a 20 mm slot in the ground plane (synthetic example). The current detours around the slot: it adds 2.3 nH and 0.15 V of noise for a 3.3 V, 1 ns edge.",
+        "pdnTitle": "Power-network impedance",
+        "pdnCaption": "The 3V3 rail seen from the ESP32-S3 with the board’s real decoupling: above the 0.66 ohm target from 136 MHz, peaking at 2.3 ohm.",
+        "fdtdTitle": "Near field, full wave",
+        "fdtdCaption": "Electric field 0.8 mm above the board around the EPD_SCK layer change, from our 3D full-wave solver."
+      }
+    },
+    "mapEyebrow": "Every finding, located",
+    "mapTitle": "The whole board, screened.",
+    "mapText": "The EMC screen of the Paper Calendar on its real copper: seven numbered warnings and twenty information items, each at its coordinates. Nothing is a guess about “the board”: every finding points at a place you can open in your layout tool.",
+    "mapLegend": [
+      "Warning",
+      "Information",
+      "Top copper",
+      "Bottom copper"
+    ],
+    "caseEyebrow": "Case study",
+    "caseTitle": "The Paper Calendar",
+    "caseLead": "Our own e-paper calendar: ESP32-S3, 4 layers, in manufacturing at JLCPCB.",
+    "caseText": "We built it with the toolchain we use for customers, so we know what it finds and what it misses. The design came out of our checks with no errors. Its firmware runs end to end in the emulator against its own circuit. Its EMC screen then found what a normal review would not look for.",
+    "caseFacts": [
+      {
+        "value": "4",
+        "label": "copper layers"
+      },
+      {
+        "value": "7 / 61",
+        "label": "scenarios / assertions passing in the emulator"
+      },
+      {
+        "value": "7",
+        "label": "EMC warnings, each with coordinates and a fix"
+      }
+    ],
+    "findingsTitle": "What the EMC screen found",
+    "findings": [
+      "Five vias where the e-paper SPI lines change layer are 6.2 to 9.5 mm from the nearest stitching capacitor (limit 3 mm at a 1 ns edge). Fix: a 100 nF capacitor within 3 mm of each, or one routing layer.",
+      "42 mm of the top edge has no ground via. Fix: two or three ground vias.",
+      "The 3V3 plane impedance first exceeds its 0.66 ohm target at 136 MHz at the ESP32-S3, where the module’s own decoupling takes over."
+    ],
+    "checkedTitle": "Checked and fine",
+    "checked": [
+      "No fast net crosses a gap in its reference plane",
+      "Every supply pin has its capacitor within 5 mm",
+      "The e-paper booster loops are about 2.6 nH and return in the plane"
+    ],
+    "caseNote": "The warnings assume a 1 ns edge, the screen’s floor. Measuring the real edge on the first boards settles them, and that is how we hand findings over: what is known, what is assumed and how to settle it.",
+    "caseImages": [
+      "Top side",
+      "Bottom side"
+    ],
+    "processEyebrow": "How it works",
+    "processTitle": "Simple, fixed and written down.",
+    "process": [
+      {
+        "label": "Chat",
+        "text": "A short call about your board, your deadline and what worries you."
+      },
+      {
+        "label": "Fixed price",
+        "text": "A written scope and a fixed price before any work starts."
+      },
+      {
+        "label": "Build and verify",
+        "text": "Review, design, emulation or field solving, with every result traceable to a check."
+      },
+      {
+        "label": "Hand over",
+        "text": "A report or the design files, with locations and fixes, and a call to walk through them."
+      }
+    ],
+    "honestyTitle": "Pre-compliance, not certification",
+    "honesty": "Our EMC, SI and PI results are estimates to find problems early and to make a lab visit less of a gamble. Only an accredited lab can certify a product. We say what is calculated, what is assumed and what only a measurement can settle.",
+    "ctaHeader": "Have a board to review, or an idea to build?",
+    "ctaText": "Tell us what you are making and when you need it. We reply within one business day.",
+    "ctaButton": "Start a conversation",
+    "learnMore": "See hardware services"
   }
 }

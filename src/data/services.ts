@@ -6,7 +6,7 @@ import performanceIcon from "@images/index/icons/performance.svg";
 import type { CardItem } from "./card-item";
 
 export const services: CardItem[] = [
-  { id: "hardware", icon: pencilIcon },
+  { id: "hardware", icon: pencilIcon, page: "/hardware" },
   { id: "firmware", icon: developmentIcon },
   { id: "updates", icon: reliabilityIcon },
   { id: "modernization", icon: adjustmentIcon },
