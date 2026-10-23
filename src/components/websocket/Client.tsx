@@ -133,7 +133,7 @@ export default function WebSocketClient({ lang }: Props) {
     }
   };
 
-  const encodeBinary = (input: string, format: BinaryFormat): Uint8Array => {
+  const encodeBinary = (input: string, format: BinaryFormat): Uint8Array<ArrayBuffer> => {
     switch (format) {
       case "hex": {
         const cleaned = input.replace(/\s+/g, "");
