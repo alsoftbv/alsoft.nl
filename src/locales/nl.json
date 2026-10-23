@@ -584,7 +584,7 @@
       },
       {
         "title": "Waar de formule afwijkt",
-        "text": "Gesloten formules zijn curves die op een beperkt bereik zijn gefit en gaan ruwweg om met kopperdikte. Voor een paar banen van 0,2 mm met 0,15 mm tussenruimte op 0,2104 mm prepreg en 35 µm kaal koper geeft de gangbare formule 99,3 Ω differentieel en de solver 103,4 Ω. Bij een dunner diëlektricum kan het verschil oplopen tot 13 %."
+        "text": "Gesloten formules zijn curves die op een beperkt bereik zijn gefit en gaan ruwweg om met kopperdikte. Voor een paar banen van 0,2 mm met 0,15 mm tussenruimte op 0,2104 mm prepreg en 35 µm kaal koper geeft de gangbare formule 99,3 Ω differentieel en de solver 103,6 Ω. Bij een dunner diëlektricum kan het verschil oplopen tot 13 %."
       }
     ],
     "limitsHeader": "Houd hier rekening mee",
