@@ -10,21 +10,21 @@
     "astro": "astro",
     "add-cert": "npx tsx scripts/add-cert.ts",
     "test": "playwright test",
-    "test:update": "docker run --rm --platform linux/arm64 --ipc=host -v \"$PWD\":/work -v alsoft-node-modules-arm64:/work/node_modules -w /work mcr.microsoft.com/playwright:v1.63.0-noble /bin/bash -c \"npm ci && npm run build && npx playwright test --update-snapshots\""
+    "test:update": "docker run --rm --platform linux/arm64 --ipc=host -v \"$PWD\":/work -v alsoft-node-modules-arm64:/work/node_modules -w /work mcr.microsoft.com/playwright:v1.64.1-noble /bin/bash -c \"npm ci && npm run build && npx playwright test --update-snapshots\""
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",
-    "@astrojs/react": "^5.0.7",
+    "@astrojs/react": "^7.1.1",
     "@astrojs/sitemap": "^3.7.4",
     "@types/react-dom": "^19.3.0",
-    "astro": "^6.4.8",
-    "astro-og-canvas": "^0.10.1",
+    "astro": "^7.4.2",
+    "astro-og-canvas": "^0.13.2",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "@playwright/test": "1.63.0",
+    "@playwright/test": "1.64.1",
     "@types/react": "^19.3.0"
   },
   "allowScripts": {

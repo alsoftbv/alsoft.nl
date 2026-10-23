@@ -17,7 +17,7 @@ jobs:
     # baselines rendered natively on Apple silicon
     runs-on: ubuntu-24.04-arm
     container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
       options: --user 1001
     steps:
       - name: Checkout your repository using git
