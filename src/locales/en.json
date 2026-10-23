@@ -306,7 +306,7 @@
         "label": "design review turnaround, fixed price"
       },
       {
-        "value": "61",
+        "value": "68",
         "label": "firmware assertions passing in the emulator against the Paper Calendar’s circuit"
       },
       {
@@ -331,7 +331,7 @@
           "EMC pre-compliance screening with located findings",
           "A written report with coordinates and a fix for each finding"
         ],
-        "proof": "On the Paper Calendar the EMC pass found 7 warnings on a board that already had no errors, each with its coordinates and a fix.",
+        "proof": "On the Paper Calendar the EMC pass found 6 warnings on a board that already had no errors, each with its coordinates and a fix.",
         "callouts": [
           "A via where an SPI line changes layer, 7 mm from the nearest return-path capacitor",
           "42 mm of board edge without a ground via",
@@ -353,7 +353,7 @@
         "steps": [
           "Schematic",
           "Four copper layers",
-          "The finished board, bottom side"
+          "The finished board, top side"
         ]
       },
       "firmware": {
@@ -366,8 +366,11 @@
           "Pixel-exact checks of what the display shows",
           "Runs headless, so it becomes a check in your CI"
         ],
-        "proof": "The Paper Calendar’s production firmware boots end to end in the emulator: 7 scenarios and 61 assertions pass, including the exact image on the e-paper.",
-        "caption": "What the real firmware drew on the emulated e-paper at first boot, and the console behind it."
+        "proof": "The Paper Calendar’s production firmware boots end to end in the emulator: 7 scenarios and 68 assertions pass, including the exact image on the e-paper.",
+        "caption": "What the real firmware drew on the emulated e-paper at first boot, and its console output.",
+        "screenLabel": "The 800 × 480 image the circuit’s panel model received, pixel for pixel",
+        "consoleTitle": "ESP32-S3 console, emulated first boot",
+        "consolePass": "first_boot: 14 assertions passed, 0 findings"
       },
       "emc": {
         "label": "EMC, SI and PI pre-compliance",
@@ -379,18 +382,18 @@
           "Return current and the loop inductance a slot adds",
           "3D full-wave fields for the regions that matter"
         ],
-        "proof": "Measured against references: trace impedance within 0.3 % of the closed forms, plane resonances within 0.06 % of the analytic cavity.",
+        "proof": "Measured against references: single traces within 0.3 % of the textbook formulas, stripline within 0.001 % of the exact solution, plane resonances within 0.06 % of the analytic cavity. On differential pairs with real copper it showed that the common closed-form formula reads 4 to 13 % low, confirmed with openEMS.",
         "slotTitle": "Return current under a trace",
         "slotCaption": "A trace crossing a 20 mm slot in the ground plane (synthetic example). The current detours around the slot: it adds 2.3 nH and 0.15 V of noise for a 3.3 V, 1 ns edge.",
         "pdnTitle": "Power-network impedance",
         "pdnCaption": "The 3V3 rail seen from the ESP32-S3 with the board’s real decoupling: above the 0.66 ohm target from 136 MHz, peaking at 2.3 ohm.",
         "fdtdTitle": "Near field, full wave",
-        "fdtdCaption": "Electric field 0.8 mm above the board around the EPD_SCK layer change, from our 3D full-wave solver."
+        "fdtdCaption": "The electric field 0.8 mm above the board at 1 GHz, where the EPD_SCK line changes layer, from our own 3D full-wave solver (the inner planes simplified as solid)."
       }
     },
     "mapEyebrow": "Every finding, located",
     "mapTitle": "The whole board, screened.",
-    "mapText": "The EMC screen of the Paper Calendar on its real copper: seven numbered warnings and twenty information items, each at its coordinates. Nothing is a guess about “the board”: every finding points at a place you can open in your layout tool.",
+    "mapText": "The EMC screen of the Paper Calendar on its real copper: six numbered warnings and 23 information items, each at its coordinates. Nothing is a guess about “the board”: every finding points at a place you can open in your layout tool.",
     "mapLegend": [
       "Warning",
       "Information",
@@ -407,11 +410,11 @@
         "label": "copper layers"
       },
       {
-        "value": "7 / 61",
+        "value": "7 / 68",
         "label": "scenarios / assertions passing in the emulator"
       },
       {
-        "value": "7",
+        "value": "6",
         "label": "EMC warnings, each with coordinates and a fix"
       }
     ],
@@ -429,8 +432,7 @@
     ],
     "caseNote": "The warnings assume a 1 ns edge, the screen’s floor. Measuring the real edge on the first boards settles them, and that is how we hand findings over: what is known, what is assumed and how to settle it.",
     "caseImages": [
-      "Top side",
-      "Bottom side"
+      "Detail: the KEY, BOOT and PWR buttons"
     ],
     "processEyebrow": "How it works",
     "processTitle": "Simple, fixed and written down.",
@@ -457,6 +459,16 @@
     "ctaHeader": "Have a board to review, or an idea to build?",
     "ctaText": "Tell us what you are making and when you need it. We reply within one business day.",
     "ctaButton": "Start a conversation",
-    "learnMore": "See hardware services"
+    "learnMore": "See hardware services",
+    "alts": {
+      "hero": "3D render of the Paper Calendar board: an ESP32-S3 module, a 50-pin e-paper connector and three buttons",
+      "layers": "The four copper layers of the Paper Calendar side by side",
+      "schematic": "A sheet of the Paper Calendar schematic: the e-paper booster",
+      "detail": "Close-up render of the KEY, BOOT and PWR buttons on the Paper Calendar",
+      "epaper": "A month calendar for October 2026 with the weather and events, as the firmware drew it on the emulated e-paper",
+      "map": "The Paper Calendar's copper with the numbered EMC findings",
+      "top": "Top side of the Paper Calendar board",
+      "angle": "The Paper Calendar board at an angle"
+    }
   }
 }

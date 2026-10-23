@@ -9,19 +9,20 @@ import {
   useTranslations,
 } from "@locales/utils";
 
-import hero from "@images/hardware/hero.webp";
-import boardTop from "@images/hardware/board_top.webp";
-import boardBottom from "@images/hardware/board_bottom.webp";
-import espDetail from "@images/hardware/esp.webp";
-import calloutVia from "@images/hardware/callout_via.webp";
-import calloutEdge from "@images/hardware/callout_edge.webp";
-import calloutLoop from "@images/hardware/callout_loop.webp";
-import layers from "@images/hardware/process_layers.webp";
-import schematic from "@images/hardware/process_schematic.webp";
-import emulator from "@images/hardware/emulator.webp";
-import slot from "@images/hardware/slot_current.webp";
-import pdn from "@images/hardware/pdn_3v3.webp";
-import emcMap from "@images/hardware/emc_map.webp";
+import hero from "@images/hardware/hero.png";
+import heroLow from "@images/hardware/hero_low.png";
+import boardTop from "@images/hardware/board_top.png";
+import espDetail from "@images/hardware/esp.png";
+import calloutVia from "@images/hardware/callout_via.png";
+import calloutEdge from "@images/hardware/callout_edge.png";
+import calloutLoop from "@images/hardware/callout_loop.png";
+import layers from "@images/hardware/process_layers.png";
+import schematic from "@images/hardware/process_schematic.png";
+import slot from "@images/hardware/slot_current.png";
+import pdn from "@images/hardware/pdn_3v3.png";
+import emcMap from "@images/hardware/emc_map.png";
+// served as it is: a 1-bit display image must not be resampled or re-encoded (thin glyph strokes vanish)
+import epaper from "@images/hardware/epaper.png?url";
 
 export function getStaticPaths() {
   return getTranslationPaths();
@@ -34,12 +35,32 @@ const contact = getPath(lang, "/contact");
 // The near-field map comes from a long solver run: the page shows it when its image is there
 const fdtd = Object.values(
   import.meta.glob<{ default: ImageMetadata }>(
-    "../../images/hardware/fdtd_near.webp",
+    "../../images/hardware/fdtd_near.png",
     { eager: true }
   )
 )[0]?.default;
 
 const formats: ("avif" | "webp")[] = ["avif", "webp"];
+// renders are photographs; plots, maps and copper are line art, kept close to lossless
+const photo = 80;
+const lineArt = 92;
+
+// the first-boot console of the emulated Paper Calendar (build/fw/first_boot/console.txt, a selection)
+const consoleLines = [
+  "I (51) cpu_start: Multicore app",
+  "I (114) app_init: Project name:     paper-calendar",
+  "I (225) main_task: Calling app_main()",
+  "I (235) STATE: No remembered state (first boot or power loss)",
+  "I (275) NETWORK: Wi-Fi Started, calling connect...",
+  "I (2465) NETWORK: Got IP: 192.168.1.57",
+  "I (2875) NETWORK: Got time: 2026-10-21",
+  "I (4055) NETWORK: Got 10 calendar dates",
+  "I (7595) NETWORK: Got weather, Min: 8, Max: 14, Code: 7",
+  "I (7595) APP: Redrawing display",
+  "I (7625) POWER: Enabled display power",
+  "I (28285) POWER: Disabled display power",
+  "I (28285) APP: Sleeping for 602 seconds (timer 602000 ms, sleep timer 0 ppm)",
+];
 
 const order = ["review", "board", "firmware", "emc"] as const;
 const callouts = [calloutVia, calloutEdge, calloutLoop];
@@ -59,11 +80,12 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
     <figure class="hero-figure">
       <Picture
         src={hero}
-        alt=""
+        alt={t.alts.hero}
         formats={formats}
         fallbackFormat="jpg"
+        quality={photo}
         widths={[900, 1400, 2000, 2400]}
-        sizes="(max-width: 900px) 100vw, 1440px"
+        sizes="(max-width: 768px) 150vw, (max-width: 1440px) 100vw, 1440px"
         loading="eager"
         fetchpriority="high"
       />
@@ -133,11 +155,12 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
                   <li>
                     <Picture
                       src={img}
-                      alt=""
+                      alt={t.items.review.callouts[k]}
                       formats={formats}
                       fallbackFormat="jpg"
-                      widths={[360, 432]}
-                      sizes="(max-width: 700px) 100vw, 330px"
+                      quality={lineArt}
+                      widths={[400, 700, 864]}
+                      sizes="(max-width: 768px) 100vw, 330px"
                       loading="lazy"
                     />
                     <span>{t.items.review.callouts[k]}</span>
@@ -151,55 +174,74 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
                 <figure class="wide">
                   <Picture
                     src={layers}
-                    alt=""
+                    alt={t.alts.layers}
                     formats={formats}
                     fallbackFormat="jpg"
-                    widths={[800, 1400, 2200]}
-                    sizes="(max-width: 1100px) 100vw, 1040px"
+                    quality={lineArt}
+                    widths={[800, 1400, 2200, 3000]}
+                    sizes="(max-width: 1100px) 100vw, 1000px"
                     loading="lazy"
                   />
-                  <figcaption>{item.steps[1]}</figcaption>
+                  <figcaption>{t.items.board.steps[1]}</figcaption>
                 </figure>
                 <div class="pair">
                   <figure>
                     <Picture
                       src={schematic}
-                      alt=""
+                      alt={t.alts.schematic}
                       formats={formats}
                       fallbackFormat="jpg"
-                      widths={[600, 783]}
-                      sizes="(max-width: 700px) 100vw, 510px"
+                      quality={lineArt}
+                      widths={[600, 1000, 1504]}
+                      sizes="(max-width: 768px) 100vw, 610px"
                       loading="lazy"
                     />
-                    <figcaption>{item.steps[0]}</figcaption>
+                    <figcaption>{t.items.board.steps[0]}</figcaption>
                   </figure>
                   <figure>
                     <Picture
-                      src={boardBottom}
-                      alt=""
+                      src={boardTop}
+                      alt={t.alts.top}
                       formats={formats}
                       fallbackFormat="jpg"
-                      widths={[500, 900]}
-                      sizes="(max-width: 700px) 100vw, 330px"
+                      quality={photo}
+                      widths={[400, 800, 1170]}
+                      sizes="(max-width: 768px) 100vw, 380px"
                       loading="lazy"
                     />
-                    <figcaption>{item.steps[2]}</figcaption>
+                    <figcaption>{t.items.board.steps[2]}</figcaption>
                   </figure>
                 </div>
               </div>
             )}
 
             {id === "firmware" && (
-              <figure class="wide">
-                <Picture
-                  src={emulator}
-                  alt=""
-                  formats={formats}
-                  fallbackFormat="jpg"
-                  widths={[800, 1200, 1500]}
-                  sizes="(max-width: 1100px) 100vw, 1040px"
-                  loading="lazy"
-                />
+              <figure class="wide emu">
+                <div class="emu-stage">
+                  <div class="device">
+                    <div class="screen">
+                      <img
+                        src={epaper}
+                        width="800"
+                        height="480"
+                        alt={t.alts.epaper}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <span class="device-label">{t.items.firmware.screenLabel}</span>
+                  </div>
+                  <div class="console">
+                    <div class="console-bar">
+                      <i />
+                      <i />
+                      <i />
+                      <span>{t.items.firmware.consoleTitle}</span>
+                    </div>
+                    <pre>{consoleLines.join("\n")}</pre>
+                    <p class="console-pass">{t.items.firmware.consolePass}</p>
+                  </div>
+                </div>
                 <figcaption>{t.items.firmware.caption}</figcaption>
               </figure>
             )}
@@ -209,11 +251,12 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
                 <figure class="big">
                   <Picture
                     src={slot}
-                    alt=""
+                    alt={t.items.emc.slotTitle}
                     formats={formats}
                     fallbackFormat="jpg"
-                    widths={[700, 1100, 1600]}
-                    sizes="(max-width: 900px) 100vw, 640px"
+                    quality={lineArt}
+                    widths={[700, 1100, 1500, 1848]}
+                    sizes={fdtd ? "(max-width: 768px) 100vw, 500px" : "(max-width: 1100px) 100vw, 1000px"}
                     loading="lazy"
                   />
                   <figcaption>
@@ -225,11 +268,12 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
                   <figure class="big">
                     <Picture
                       src={fdtd}
-                      alt=""
+                      alt={t.items.emc.fdtdTitle}
                       formats={formats}
                       fallbackFormat="jpg"
-                      widths={[700, 1100, 1600]}
-                      sizes="(max-width: 900px) 100vw, 640px"
+                      quality={lineArt}
+                      widths={[700, 1100, 1600, 1980]}
+                      sizes="(max-width: 768px) 100vw, 500px"
                       loading="lazy"
                     />
                     <figcaption>
@@ -241,11 +285,12 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
                 <figure class="wide">
                   <Picture
                     src={pdn}
-                    alt=""
+                    alt={t.items.emc.pdnTitle}
                     formats={formats}
                     fallbackFormat="jpg"
-                    widths={[700, 1100, 1400]}
-                    sizes="(max-width: 1100px) 100vw, 1040px"
+                    quality={lineArt}
+                    widths={[700, 1100, 1440]}
+                    sizes="(max-width: 1100px) 100vw, 1000px"
                     loading="lazy"
                   />
                   <figcaption>
@@ -273,11 +318,12 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
     <figure class="map-figure">
       <Picture
         src={emcMap}
-        alt=""
+        alt={t.alts.map}
         formats={formats}
         fallbackFormat="jpg"
-        widths={[500, 800, 1100]}
-        sizes="(max-width: 900px) 100vw, 420px"
+        quality={lineArt}
+        widths={[500, 900, 1200, 1520]}
+        sizes="(max-width: 1000px) min(100vw, 420px), 420px"
         loading="lazy"
       />
     </figure>
@@ -305,27 +351,16 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
         <div class="case-boards">
           <figure>
             <Picture
-              src={boardTop}
-              alt=""
+              src={espDetail}
+              alt={t.alts.detail}
               formats={formats}
               fallbackFormat="jpg"
-              widths={[400, 700, 900]}
-              sizes="(max-width: 900px) 50vw, 250px"
+              quality={photo}
+              widths={[450, 900, 1300, 1600]}
+              sizes="(max-width: 1000px) min(100vw, 420px), 420px"
               loading="lazy"
             />
             <figcaption>{t.caseImages[0]}</figcaption>
-          </figure>
-          <figure>
-            <Picture
-              src={boardBottom}
-              alt=""
-              formats={formats}
-              fallbackFormat="jpg"
-              widths={[400, 700, 900]}
-              sizes="(max-width: 900px) 50vw, 250px"
-              loading="lazy"
-            />
-            <figcaption>{t.caseImages[1]}</figcaption>
           </figure>
         </div>
         <div class="findings">
@@ -338,12 +373,13 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
       </div>
       <figure class="detail">
         <Picture
-          src={espDetail}
-          alt=""
+          src={heroLow}
+          alt={t.alts.angle}
           formats={formats}
           fallbackFormat="jpg"
-          widths={[600, 1000, 1400]}
-          sizes="(max-width: 1100px) 100vw, 1040px"
+          quality={photo}
+          widths={[800, 1400, 2000, 2400]}
+          sizes="(max-width: 1100px) 100vw, 1000px"
           loading="lazy"
         />
       </figure>
@@ -512,7 +548,8 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
     text-align: center;
     color: var(--muted);
     font-size: 0.85rem;
-    margin-top: -1rem;
+    margin-top: 0.75rem;
+    padding: 0 1rem;
     position: relative;
   }
 
@@ -649,7 +686,7 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
   }
 
   .feature-text {
-    padding-top: 1.5rem;
+    padding-top: 2.6rem;
     grid-column: 1;
   }
 
@@ -804,12 +841,120 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
     margin-top: 0.5rem;
   }
 
+  /* the emulator: the e-paper as the panel model received it, and the console as text */
+  .emu-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background:
+      radial-gradient(ellipse at 30% 0%, var(--accent-soft), transparent 60%),
+      var(--surface-2);
+  }
+
+  .device {
+    width: min(100%, 836px);
+    box-sizing: border-box;
+    padding: 18px 18px 12px;
+    border-radius: 22px;
+    background: linear-gradient(160deg, #2a2d33, #16181b);
+    border: 1px solid #34373d;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  }
+
+  .screen {
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .screen img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  /* shown at exactly 800 CSS pixels: whole device pixels, so the one-pixel strokes stay sharp */
+  @media (min-width: 900px) {
+    .screen img {
+      width: 800px;
+      image-rendering: pixelated;
+    }
+  }
+
+  .device-label {
+    display: block;
+    margin-top: 0.6rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .console {
+    width: min(100%, 836px);
+    box-sizing: border-box;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #0b0c0e;
+    overflow: hidden;
+  }
+
+  .console-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.55rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .console-bar i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #3a3d43;
+  }
+
+  .console-bar span {
+    margin-left: 0.5rem;
+  }
+
+  .console pre {
+    margin: 0;
+    padding: 0.9rem 1rem 0.4rem;
+    overflow-x: auto;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #d6d8dc;
+  }
+
+  .console-pass {
+    margin: 0;
+    padding: 0 1rem 0.9rem;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.8rem;
+    color: #3ddc97;
+  }
+
   /* the whole-board map */
   .map {
     display: grid;
     grid-template-columns: 1fr 420px;
     gap: 3rem;
-    align-items: center;
+    align-items: start;
+  }
+
+  .map-text {
+    position: sticky;
+    top: 7rem;
   }
 
   .legend {
@@ -871,9 +1016,7 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
   }
 
   .case-boards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    max-width: 420px;
   }
 
   .findings h3 {
@@ -997,6 +1140,10 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
       max-width: 420px;
     }
 
+    .map-text {
+      position: static;
+    }
+
     .toc,
     .plan {
       grid-template-columns: repeat(2, 1fr);
@@ -1058,6 +1205,25 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
     .badge {
       font-size: 3.5rem;
       top: -2rem;
+    }
+
+    .feature-text {
+      padding-top: 1.9rem;
+    }
+
+    .emu-stage {
+      padding: 1rem 0.75rem;
+    }
+
+    .device {
+      padding: 10px 10px 8px;
+      border-radius: 14px;
+    }
+
+    .console pre {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-size: 0.72rem;
     }
 
     .details {

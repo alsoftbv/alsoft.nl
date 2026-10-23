@@ -296,8 +296,8 @@
     "description": "Design review in 48 uur, van idee tot bestelbaar board, firmware testen voordat het board bestaat en EMC-, SI- en PI-precompliance, met onze eigen toolchain.",
     "eyebrow": "Hardwarediensten",
     "heroTitle": "Hardware die gecontroleerd is voordat hij gebouwd wordt.",
-    "heroLead": "Design review, boardontwerp, firmwaretests en EMC-precompliance, allemaal met onze eigen toolchain: elk board wordt gesimuleerd, met zijn eigen firmware gedraaid en doorgelicht voordat het naar de fabriek gaat.",
-    "heroPrimary": "Praat over uw board",
+    "heroLead": "Design review, boardontwerp, firmwaretests en EMC-precompliance, allemaal met onze eigen toolchain: elk board wordt gesimuleerd, met zijn eigen firmware gedraaid en doorgelicht voordat het naar de fabrikant gaat.",
+    "heroPrimary": "Bespreek uw board",
     "heroSecondary": "Bekijk de casestudy",
     "heroCaption": "De Paper Calendar, ons eigen 4-lagen ESP32-S3-board, gerenderd uit de ontwerpbestanden.",
     "stats": [
@@ -306,7 +306,7 @@
         "label": "doorlooptijd design review, vaste prijs"
       },
       {
-        "value": "61",
+        "value": "68",
         "label": "firmwarecontroles die slagen in de emulator tegen het circuit van de Paper Calendar"
       },
       {
@@ -327,11 +327,11 @@
         "text": "Stuur ons uw KiCad-project, of het schema en de Gerbers. Binnen 48 uur krijgt u een schriftelijke review van het schema, de layout en een EMC-precompliancecontrole. Elke bevinding noemt het onderdeel, de pin of de plek op het board, verwijst naar de datasheetregel waarop ze rust en zegt hoe u het oplost. De prijs staat vast en wordt afgesproken voordat we beginnen.",
         "points": [
           "Schema getoetst aan de datasheets: pinfuncties, maximale waarden, strap-pins, volgorde van de voedingen",
-          "Layout getoetst op voedingspaden, retourpaden, ontkoppeling, fabrieksregels en assemblage",
+          "Layout getoetst op voedingspaden, retourpaden, ontkoppeling, fabricageregels en assemblage",
           "EMC-precompliancecontrole met bevindingen op een exacte plek",
           "Een schriftelijk rapport met coördinaten en een oplossing per bevinding"
         ],
-        "proof": "Bij de Paper Calendar vond de EMC-controle 7 waarschuwingen op een board dat al geen fouten had, elk met coördinaten en een oplossing.",
+        "proof": "Bij de Paper Calendar vond de EMC-controle 6 waarschuwingen op een board dat al geen fouten had, elk met coördinaten en een oplossing.",
         "callouts": [
           "Een via waar een SPI-lijn van laag wisselt, 7 mm van de dichtstbijzijnde condensator voor het retourpad",
           "42 mm boardrand zonder massavia",
@@ -340,20 +340,20 @@
       },
       "board": {
         "label": "Van idee tot bestelbaar board",
-        "lead": "Van een beschrijving van de eisen naar bestanden die u naar de fabriek kunt sturen.",
-        "text": "Beschrijf wat het board moet doen. Wij maken er een geverifieerd ontwerp van: een schema met gecontroleerde onderdelen, een geroute layout en productiebestanden die zo zijn ontworpen dat ze met de standaardopties van de fabriek te bestellen zijn, zodat er niets bijzonders uitgelegd hoeft te worden. Prototypes kunnen bestukt geleverd worden.",
+        "lead": "Van een beschrijving van de eisen naar bestanden die u naar de fabrikant kunt sturen.",
+        "text": "Beschrijf wat het board moet doen. Wij maken er een geverifieerd ontwerp van: een schema met gecontroleerde onderdelen, een gerouteerde layout en productiebestanden die zo zijn ontworpen dat ze met de standaardopties van de fabrikant te bestellen zijn, zodat er niets bijzonders uitgelegd hoeft te worden. Prototypes kunnen bestukt geleverd worden.",
         "points": [
           "ERC en DRC schoon, met aangetoond dat schema en board overeenkomen",
           "Design-for-manufacture-controles tegen de mogelijkheden van JLCPCB",
           "EMC-controle voor de vrijgave",
           "Gerbers, BOM en plaatsingsbestanden, met onderdelen die op voorraad zijn",
-          "Een bestukt prototype bij u thuis geleverd"
+          "Een bestukt prototype bij u afgeleverd"
         ],
         "proof": "De Paper Calendar: een 4-lagen ESP32-S3-board met een 50-polige e-paper-connector, lader, fuel gauge en audioversterker, sinds oktober 2026 in productie bij JLCPCB.",
         "steps": [
           "Schema",
           "Vier koperlagen",
-          "Het board, onderkant"
+          "Het afgewerkte board, bovenkant"
         ]
       },
       "firmware": {
@@ -366,12 +366,15 @@
           "Pixelnauwkeurige controle van wat het display toont",
           "Draait headless, dus het wordt een controle in uw CI"
         ],
-        "proof": "De productiefirmware van de Paper Calendar start van begin tot eind in de emulator: 7 scenario’s en 61 controles slagen, inclusief het exacte beeld op het e-paper.",
-        "caption": "Wat de echte firmware bij de eerste start op het geëmuleerde e-paper tekende, en de console erachter."
+        "proof": "De productiefirmware van de Paper Calendar draait van begin tot eind in de emulator: 7 scenario’s en 68 controles slagen, inclusief het exacte beeld op het e-paper.",
+        "caption": "Wat de echte firmware bij de eerste start op het geëmuleerde e-paper tekende, en de console-uitvoer.",
+        "screenLabel": "Het beeld van 800 × 480 dat het panelmodel van het circuit ontving, pixel voor pixel",
+        "consoleTitle": "ESP32-S3-console, geëmuleerde eerste start",
+        "consolePass": "first_boot: 14 assertions passed, 0 findings"
       },
       "emc": {
         "label": "EMC-, SI- en PI-precompliance",
-        "lead": "Vind wat het keuringslab zou vinden, terwijl een oplossing nog goedkoop is.",
+        "lead": "Vind wat het testlab zou vinden, terwijl een oplossing nog goedkoop is.",
         "text": "Onze eigen veldsolvers, geschreven voor printplaten, kijken naar wat vuistregels missen: 2D-dwarsdoorsneden voor impedantie en overspraak, de impedantie van een voedingsvlakpaar met uw echte ontkoppelcondensatoren, retourstroom rond sleuven en onderbrekingen in het vlak, en een 3D full-wave-solver op de GPU voor de kritieke gebieden. Bevindingen komen met exacte plekken en oplossingen. Dit zijn precompliance-schattingen die het risico van een labbezoek verkleinen. Het is geen certificering.",
         "points": [
           "Spoorimpedantie en overspraak uit de echte opbouw van het board",
@@ -379,18 +382,18 @@
           "Retourstroom en de lusinductantie die een sleuf toevoegt",
           "3D full-wave-velden voor de gebieden die ertoe doen"
         ],
-        "proof": "Gemeten tegen referenties: spoorimpedantie binnen 0,3 % van de gesloten formules, vlakresonanties binnen 0,06 % van de analytische caviteit.",
+        "proof": "Gemeten tegen referenties: losse sporen binnen 0,3 % van de standaardformules, stripline binnen 0,001 % van de exacte oplossing, vlakresonanties binnen 0,06 % van de analytische caviteit. Bij differentiële paren met echt koper liet de solver zien dat de gangbare gesloten formule 4 tot 13 % te laag uitkomt, bevestigd met openEMS.",
         "slotTitle": "Retourstroom onder een spoor",
         "slotCaption": "Een spoor dat een sleuf van 20 mm in het massavlak kruist (synthetisch voorbeeld). De stroom loopt om de sleuf heen: dat voegt 2,3 nH en 0,15 V ruis toe bij een flank van 1 ns op 3,3 V.",
         "pdnTitle": "Impedantie van het voedingsnetwerk",
         "pdnCaption": "De 3V3-rail gezien vanaf de ESP32-S3 met de echte ontkoppeling van het board: boven de doelwaarde van 0,66 ohm vanaf 136 MHz, met een piek van 2,3 ohm.",
-        "fdtdTitle": "Nabije veld, full-wave",
-        "fdtdCaption": "Elektrisch veld 0,8 mm boven het board rond de laagwissel van EPD_SCK, uit onze 3D full-wave-solver."
+        "fdtdTitle": "Nabij veld, full-wave",
+        "fdtdCaption": "Het elektrisch veld 0,8 mm boven het board bij 1 GHz, waar de EPD_SCK-lijn van laag wisselt, uit onze eigen 3D full-wave-solver (de binnenste vlakken vereenvoudigd als massief)."
       }
     },
     "mapEyebrow": "Elke bevinding, op locatie",
     "mapTitle": "Het hele board, doorgelicht.",
-    "mapText": "De EMC-controle van de Paper Calendar op het echte koper: zeven genummerde waarschuwingen en twintig informatieve punten, elk op zijn coördinaten. Niets is een gok over “het board”: elke bevinding wijst een plek aan die u in uw layouttool kunt openen.",
+    "mapText": "De EMC-controle van de Paper Calendar op het echte koper: zes genummerde waarschuwingen en 23 informatieve punten, elk op zijn coördinaten. Niets is een gok over “het board”: elke bevinding wijst een plek aan die u in uw layouttool kunt openen.",
     "mapLegend": [
       "Waarschuwing",
       "Informatie",
@@ -407,11 +410,11 @@
         "label": "koperlagen"
       },
       {
-        "value": "7 / 61",
+        "value": "7 / 68",
         "label": "scenario’s / controles die slagen in de emulator"
       },
       {
-        "value": "7",
+        "value": "6",
         "label": "EMC-waarschuwingen, elk met coördinaten en een oplossing"
       }
     ],
@@ -427,10 +430,9 @@
       "Elke voedingspin heeft zijn condensator binnen 5 mm",
       "De boosterlussen van het e-paper zijn ongeveer 2,6 nH en lopen terug in het vlak"
     ],
-    "caseNote": "De waarschuwingen gaan uit van een flank van 1 ns, de ondergrens van de controle. De echte flank meten op de eerste boards beslecht ze, en zo leveren we bevindingen op: wat bekend is, wat is aangenomen en hoe u het beslecht.",
+    "caseNote": "De waarschuwingen gaan uit van een flank van 1 ns, de ondergrens van de controle. Een meting van de echte flank op de eerste boards maakt duidelijk welke overblijven. Zo leveren we bevindingen op: wat bekend is, wat is aangenomen en hoe u het zeker weet.",
     "caseImages": [
-      "Bovenkant",
-      "Onderkant"
+      "Detail: de knoppen KEY, BOOT en PWR"
     ],
     "processEyebrow": "Zo werkt het",
     "processTitle": "Eenvoudig, vast en opgeschreven.",
@@ -453,10 +455,20 @@
       }
     ],
     "honestyTitle": "Precompliance, geen certificering",
-    "honesty": "Onze EMC-, SI- en PI-resultaten zijn schattingen om problemen vroeg te vinden en een labbezoek minder een gok te maken. Alleen een geaccrediteerd lab kan een product certificeren. We zeggen wat berekend is, wat is aangenomen en wat alleen een meting kan beslechten.",
+    "honesty": "Onze EMC-, SI- en PI-resultaten zijn schattingen om problemen vroeg te vinden en een labbezoek minder een gok te maken. Alleen een geaccrediteerd lab kan een product certificeren. We zeggen wat berekend is, wat is aangenomen en wat alleen een meting kan uitwijzen.",
     "ctaHeader": "Een board om te reviewen, of een idee om te bouwen?",
     "ctaText": "Vertel ons wat u maakt en wanneer u het nodig heeft. We reageren binnen één werkdag.",
     "ctaButton": "Start een gesprek",
-    "learnMore": "Bekijk de hardwarediensten"
+    "learnMore": "Bekijk de hardwarediensten",
+    "alts": {
+      "hero": "3D-render van het Paper Calendar-board: een ESP32-S3-module, een 50-polige e-paper-connector en drie knoppen",
+      "layers": "De vier koperlagen van de Paper Calendar naast elkaar",
+      "schematic": "Een blad van het schema van de Paper Calendar: de e-paper-booster",
+      "detail": "Close-up-render van de knoppen KEY, BOOT en PWR op de Paper Calendar",
+      "epaper": "Een maandkalender voor oktober 2026 met het weer en afspraken, zoals de firmware die op het geëmuleerde e-paper tekende",
+      "map": "Het koper van de Paper Calendar met de genummerde EMC-bevindingen",
+      "top": "Bovenkant van het Paper Calendar-board",
+      "angle": "Het Paper Calendar-board onder een hoek"
+    }
   }
 }

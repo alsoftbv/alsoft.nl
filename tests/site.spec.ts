@@ -37,10 +37,11 @@ async function loadFully(page: Page, path: string) {
   await page.evaluate(async () => {
     // Scroll through the page so lazy images load, then return to the top
     for (let y = 0; y < document.body.scrollHeight; y += 600) {
-      window.scrollTo(0, y);
+      window.scrollTo({ top: y, behavior: "instant" });
       await new Promise((resolve) => setTimeout(resolve, 50));
     }
-    window.scrollTo(0, 0);
+    // instant: the site scrolls smoothly, and a capture taken mid-scroll is a different picture
+    window.scrollTo({ top: 0, behavior: "instant" });
 
     // Load every image now, so broken ones are caught and screenshots are complete
     const images = [...document.images];
@@ -55,6 +56,8 @@ async function loadFully(page: Page, path: string) {
             })
       )
     );
+    // and decoded: a big AVIF can be complete but not yet painted, so two full-page captures differ
+    await Promise.all(images.map((img) => img.decode().catch(() => null)));
     await document.fonts.ready;
   });
   await page.waitForLoadState("networkidle");
@@ -83,6 +86,8 @@ for (const { name, path, fullPage } of pages) {
     await expect(page).toHaveScreenshot(`${name}.png`, {
       fullPage,
       mask: [page.locator(".legal")],
+      // a long image-led page needs two full-page captures that agree, which takes longer than the default 5 s
+      timeout: 30_000,
     });
   });
 }
