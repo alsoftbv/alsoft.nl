@@ -1,7 +1,7 @@
 {
   "indexHeader": "Firmware die uw hardware laat schitteren.",
-  "indexFirst": "PCB-ontwerp, board bring-up, firmware en veilige updates: één engineer van schema tot productie, gevestigd in de regio Eindhoven.",
-  "indexSecond": "We nemen het hele traject voor onze rekening, van het eerste schema tot apparaten die zichzelf in het veld updaten, zodat u met één team werkt in plaats van drie.",
+  "indexFirst": "We schrijven firmware voor apparaten die moeten blijven werken, of het nu om uw eerste prototype gaat of om een product dat al in het veld staat. We zitten in de regio Eindhoven.",
+  "indexSecond": "Nog geen board? Dat kunnen we ook ontwerpen, zodat u met één engineer werkt, van het eerste schema tot de updates in het veld.",
   "indexButton": "Laten we het goed laten werken",
   "benefitFirst": "Hardware en firmware onder één dak",
   "benefitSecond": "Updates die een apparaat niet bricken",
@@ -43,6 +43,14 @@
   "ctaHeader": "Laten we praten over uw apparaat.",
   "ctaText": "Of u nu iets nieuws lanceert of iets repareert dat al in het veld staat, we horen graag wat u aan het bouwen bent.",
   "ctaButton": "Begin een gesprek",
+  "homeCra": {
+    "eyebrow": "Cyber Resilience Act",
+    "title": "De CRA is er al.",
+    "text": "Verkoopt u verbonden apparaten in de EU? Dan moet u actief misbruikte kwetsbaarheden nu binnen 24 uur melden. Vanaf december 2027 hebben uw producten ook veilige updates, een SBOM en nog een paar andere dingen nodig. Dat klinkt als veel, maar het meeste werk komt op de firmware neer, en daar kunnen we helpen.",
+    "check": "Bekijk waar u staat",
+    "read": "Wat de CRA betekent voor firmware",
+    "note": "De self-check is vijftien vragen, en uw antwoorden verlaten uw browser niet."
+  },
   "ourServices": "Onze Diensten",
   "industriesWeWork": "Sectoren Waarmee We Werken",
   "cards": {

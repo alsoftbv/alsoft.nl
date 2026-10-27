@@ -1,7 +1,7 @@
 {
   "indexHeader": "Firmware that makes your hardware shine.",
-  "indexFirst": "PCB design, board bring-up, firmware and secure updates: one engineer from schematic to production, based in the Eindhoven region.",
-  "indexSecond": "We take on the whole path, from the first schematic to devices updating themselves in the field, so you work with one team instead of three.",
+  "indexFirst": "We write firmware for devices that have to keep working, whether it’s your first prototype or a product that’s already out in the field. We’re based in the Eindhoven region.",
+  "indexSecond": "Don’t have a board yet? We can design that too, so you work with one engineer from the first schematic to the updates in the field.",
   "indexButton": "Let’s make it work right",
   "benefitFirst": "Hardware and firmware under one roof",
   "benefitSecond": "Updates that can’t brick a device",
@@ -43,6 +43,14 @@
   "ctaHeader": "Let’s talk about your device.",
   "ctaText": "Whether you’re launching something new or fixing what’s already in the field, we’d like to hear what you’re building.",
   "ctaButton": "Start a conversation",
+  "homeCra": {
+    "eyebrow": "Cyber Resilience Act",
+    "title": "The CRA is already here.",
+    "text": "If you sell connected devices in the EU, exploited vulnerabilities now have to be reported within 24 hours. From December 2027 your products also need secure updates, an SBOM and a few other things. It sounds like a lot, but most of the work lands on the firmware, and that’s where we can help.",
+    "check": "Check where you stand",
+    "read": "What the CRA means for firmware",
+    "note": "The self-check is fifteen questions, and your answers never leave your browser."
+  },
   "ourServices": "Our Services",
   "industriesWeWork": "Industries We Work With",
   "cards": {

@@ -135,6 +135,19 @@ const plan = (["chat", "plan", "agree", "build"] as const).map((key) => ({
   </section>
 
   <section class="container">
+    <div class="cra">
+      <span class="eyebrow">{t.homeCra.eyebrow}</span>
+      <h2>{t.homeCra.title}</h2>
+      <p class="large">{t.homeCra.text}</p>
+      <div class="actions">
+        <Button href={getPath(lang, "/tools/cra-check")}>{t.homeCra.check}</Button>
+        <a class="ghost" href={getPath(lang, "/blog/cra")}>{t.homeCra.read}</a>
+      </div>
+      <p class="note">{t.homeCra.note}</p>
+    </div>
+  </section>
+
+  <section class="container">
     <CardsSection
       eyebrow={t.eyebrows.services}
       title={t.ourServices}
@@ -323,6 +336,47 @@ const plan = (["chat", "plan", "agree", "build"] as const).map((key) => ({
     font-size: 1.15rem;
   }
 
+  .cra {
+    padding: 3rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  .cra p {
+    max-width: 720px;
+    margin: 0 0 1.5rem;
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .ghost {
+    padding: 0.75em 1.5em;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .ghost:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .cra .note {
+    margin: 1.5rem 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
   .steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -477,6 +531,10 @@ const plan = (["chat", "plan", "agree", "build"] as const).map((key) => ({
 
     .cta {
       padding: 3rem 1.25rem;
+    }
+
+    .cra {
+      padding: 2rem 1.25rem;
     }
   }
 </style>
