@@ -4,9 +4,9 @@ description: "How we built an update loader for a fleet of Raspberry Pi kiosks t
 date: 2026-10-21
 ---
 
-An update that works on your desk proves very little. The real test is a device hours away, with a flaky network, a power cut in the middle of an install, and nobody nearby who knows what an SD card is.
+An update that works on your desk doesn't prove much. The real test is a device hours away, with a flaky network, a power cut in the middle of an install, and nobody nearby who knows what an SD card is.
 
-We built the update loader for a fleet of Raspberry Pi kiosks. These are the design decisions that kept it working when things went wrong.
+We built the update loader for a fleet of Raspberry Pi kiosks. Here's what kept it working when things went wrong.
 
 ---
 
@@ -20,7 +20,7 @@ If the new version doesn't come up, the loader switches back. The device ends up
 
 ![Loader starting slot A while an update is written to spare slot B](images/ab-updates/slots-diagram-en.png)
 
-> The goal is not that updates never fail. The goal is that a failed update never needs a site visit.
+> Updates will fail sometimes. What matters is that a failed update never means someone has to drive out to the device.
 
 ---
 
@@ -58,19 +58,17 @@ def run(state):
 
 ![Three failed starts trigger a rollback, a single crash does not](images/ab-updates/rollback-diagram-en.png)
 
-The details matter. The counter resets after a healthy run, so a crash every few weeks never adds up to a rollback. The loader also checks that the other slot actually holds a working installation before switching to it.
+Two small details make a big difference here. The counter resets after a healthy run, so a crash every few weeks never adds up to a rollback. The loader also checks that the other slot actually holds a working installation before switching to it.
 
 ---
 
 ## The Loader Is the Weak Point
 
-A/B slots give the application a backup. The loader that picks between them has no backup. There is only one, and if it breaks, both slots are useless.
-
-That changes how you write it.
+A/B slots give the application a backup, but the loader that picks between them doesn't have one. If it breaks, both slots are useless, so you have to write it with a lot more care.
 
 ### State Is Written Atomically
 
-The loader keeps its state (active slot, failure count, installed versions) in a small JSON file. A power cut in the middle of writing it must not leave a corrupt file. So we never edit it in place:
+The loader keeps its state (active slot, failure count, installed versions) in a small JSON file. A power cut in the middle of writing it must not leave a corrupt file. So we never edit it in place.
 
 1. Write the new state to a temporary file.
 2. Flush it to disk.
@@ -95,7 +93,7 @@ Updates aren't only about the application. Over time, the devices also need syst
 
 We split this into **numbered, versioned setup steps**. Each step records that it has run and checks whether its work is already done. If nothing has changed, it does nothing.
 
-This has two benefits:
+That gives you two things.
 
 - A setup run interrupted by a power cut can simply start again from the top.
 - A device that has been offline for months catches up by running only the steps it missed.

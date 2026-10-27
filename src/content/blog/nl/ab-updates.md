@@ -4,9 +4,9 @@ description: "Hoe we een updateloader bouwden voor een vloot Raspberry Pi-kioske
 date: 2026-10-21
 ---
 
-Een update die op uw bureau werkt, bewijst weinig. De echte test is een apparaat uren verderop, met een wankel netwerk, een stroomstoring midden in een installatie en niemand in de buurt die weet wat een SD-kaart is.
+Een update die op uw bureau werkt, zegt nog niet veel. De echte test is een apparaat uren verderop, met een wankel netwerk, een stroomstoring midden in een installatie en niemand in de buurt die weet wat een SD-kaart is.
 
-Wij bouwden de updateloader voor een vloot Raspberry Pi-kiosken. Dit zijn de ontwerpkeuzes die ervoor zorgden dat het bleef werken als er iets misging.
+Wij bouwden de updateloader voor een vloot Raspberry Pi-kiosken. Dit is wat ervoor zorgde dat het bleef werken als er iets misging.
 
 ---
 
@@ -20,7 +20,7 @@ Komt de nieuwe versie niet op, dan schakelt de loader terug. Het apparaat draait
 
 ![Loader start slot A terwijl een update naar reserveslot B wordt geschreven](../images/ab-updates/slots-diagram-nl.png)
 
-> Het doel is niet dat updates nooit mislukken. Het doel is dat een mislukte update nooit een bezoek ter plaatse nodig heeft.
+> Updates mislukken soms. Waar het om gaat, is dat er na een mislukte update nooit iemand naar het apparaat hoeft te rijden.
 
 ---
 
@@ -58,19 +58,17 @@ def run(state):
 
 ![Drie mislukte starts leiden tot een rollback, één crash niet](../images/ab-updates/rollback-diagram-nl.png)
 
-De details tellen. De teller gaat terug naar nul na een gezonde run, zodat een crash om de paar weken nooit optelt tot een rollback. En de loader controleert eerst of het andere slot wel een werkende installatie bevat voordat hij ernaar overschakelt.
+Twee kleine details maken hier veel verschil. De teller gaat terug naar nul na een gezonde run, zodat een crash om de paar weken nooit optelt tot een rollback. En de loader controleert eerst of het andere slot wel een werkende installatie bevat voordat hij ernaar overschakelt.
 
 ---
 
 ## De loader is de zwakke plek
 
-A/B-slots geven de applicatie een back-up. De loader die tussen die slots kiest, heeft geen back-up. Er is er maar één, en als die stuk gaat, zijn beide slots onbruikbaar.
-
-Dat verandert hoe u hem schrijft.
+A/B-slots geven de applicatie een back-up, maar de loader die tussen die slots kiest, heeft er geen. Gaat hij stuk, dan zijn beide slots onbruikbaar, dus schrijft u hem met veel meer zorg.
 
 ### Status wordt atomair weggeschreven
 
-De loader bewaart zijn status (actief slot, aantal fouten, geïnstalleerde versies) in een klein JSON-bestand. Een stroomstoring tijdens het schrijven mag geen corrupt bestand achterlaten. Daarom passen we het nooit ter plekke aan:
+De loader bewaart zijn status (actief slot, aantal fouten, geïnstalleerde versies) in een klein JSON-bestand. Een stroomstoring tijdens het schrijven mag geen corrupt bestand achterlaten. Daarom passen we het nooit ter plekke aan.
 
 1. Schrijf de nieuwe status naar een tijdelijk bestand.
 2. Flush het naar schijf.
@@ -95,7 +93,7 @@ Updates gaan niet alleen over de applicatie. Na verloop van tijd hebben de appar
 
 Dat splitsen we op in **genummerde, geversioneerde setupstappen**. Elke stap legt vast dat hij gedraaid heeft en controleert of zijn werk al gedaan is. Is er niets veranderd, dan doet hij niets.
 
-Dat heeft twee voordelen:
+Dat levert u twee dingen op.
 
 - Een setup die door een stroomstoring wordt onderbroken, kan gewoon opnieuw vanaf het begin starten.
 - Een apparaat dat maanden offline is geweest, haalt de achterstand in door alleen de stappen te draaien die het gemist heeft.

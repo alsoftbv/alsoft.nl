@@ -12,11 +12,11 @@
   "solutionHeader": "We besteden dezelfde zorg aan uw firmware als u aan uw hardware.",
   "solutionStepsDesign": {
     "label": "Ontwerpen",
-    "desc": "We leggen de architectuur, interfaces en faalscenario’s vast voordat we code schrijven."
+    "desc": "Voordat we code schrijven, spreken we af hoe het moet werken en wat er gebeurt als er iets misgaat."
   },
   "solutionStepsTest": {
     "label": "Testen",
-    "desc": "Elke wijziging gaat door geautomatiseerde tests op een pc en op echte hardware."
+    "desc": "Elke wijziging wordt automatisch getest, op een pc en op de echte hardware."
   },
   "solutionStepsRefine": {
     "label": "Optimaliseren",
@@ -56,8 +56,8 @@
   "cards": {
     "hardware": {
       "title": "PCB-ontwerp & board bring-up",
-      "description": "Van schema tot een board dat opstart, met hardware en firmware onder één dak.",
-      "longDescription": "We ontwerpen boards in KiCad (voedingspaden, batterijladen, USB-C, ESP32 en RP2040) en brengen ze tot leven: eerste keer aanzetten, klokken, randapparatuur en drivers. Omdat hetzelfde team de hardware en de firmware doet, hoeft niemand te raden aan welke kant een bug zit.",
+      "description": "Van het schema tot een board dat opstart, ontworpen door dezelfde mensen die de firmware schrijven.",
+      "longDescription": "We ontwerpen boards in KiCad, meestal rond een ESP32 of RP2040 met USB-C en batterijladen, en brengen ze daarna tot leven: de eerste keer aanzetten, klokken, randapparatuur en de eerste drivers. Omdat hetzelfde team de hardware en de firmware doet, hoeft niemand te raden aan welke kant een bug zit.",
       "points": [
         "KiCad-schema en layout, 2 en 4 lagen",
         "Productiebestanden voor JLCPCB: Gerbers, BOM en pick-and-place",
@@ -67,66 +67,66 @@
     "firmware": {
       "title": "RTOS- & embedded Linux-firmware",
       "description": "Firmware en connectiviteit die in het veld blijven draaien.",
-      "longDescription": "FreeRTOS op Cortex-M en ESP32, embedded Linux op Raspberry Pi en eigen hardware, en de connectiviteit daartussen: Ethernet, wifi en MQTT. We schrijven de drivers, sporen de lastige bugs op (geheugen, timing, netwerk) en leveren code op die uw team kan onderhouden.",
+      "longDescription": "Dit is het grootste deel van ons werk. FreeRTOS op Cortex-M en ESP32, embedded Linux op Raspberry Pi en eigen boards, en ze laten praten via Ethernet, wifi en MQTT. We schrijven de drivers, sporen de vervelende bugs in geheugen, timing en netwerk op, en laten code achter die uw team echt kan onderhouden.",
       "points": [
         "Drivers, RTOS-taken en protocolstacks",
         "Ethernet-, wifi- en MQTT-verbindingen van apparaat naar cloud",
         "Debuggen van crashes, geheugenlekken en timingproblemen"
       ],
-      "proof": "Kernontwikkelaars van een i.MX RT IoT-gateway in productie, met 199 releases sinds 2025."
+      "proof": "We zijn kernontwikkelaars van een i.MX RT IoT-gateway in productie, die sinds 2025 199 releases heeft uitgebracht."
     },
     "updates": {
       "title": "Veilige updates & CRA-gereedheid",
       "description": "Updates in het veld die een apparaat niet kunnen bricken, klaar voor de Cyber Resilience Act.",
-      "longDescription": "Sinds september 2026 moeten fabrikanten onder de Europese Cyber Resilience Act actief misbruikte kwetsbaarheden melden, en vanaf december 2027 moeten verbonden producten worden geleverd met veilige updates, een SBOM en een vastgestelde ondersteuningsperiode. Wij bouwen het updatepad (ondertekende images, A/B-slots, automatische rollback) en richten het SBOM- en kwetsbaarhedenproces eromheen in.",
+      "longDescription": "Een apparaat in het veld updaten mag geen gok zijn. Sinds september 2026 moet u onder de Cyber Resilience Act ook misbruikte kwetsbaarheden melden, en vanaf december 2027 hebben verbonden producten veilige updates, een SBOM en een ondersteuningsperiode nodig. Wij bouwen het updatepad, met ondertekende images, A/B-slots en automatische rollback, en richten de SBOM en de omgang met kwetsbaarheden eromheen in.",
       "points": [
         "CRA-gap-analyse met een geprioriteerde roadmap",
         "Ondertekende A/B-updates met automatische rollback",
         "SBOM vanuit CI en een draaiboek voor kwetsbaarheden"
       ],
-      "proof": "Bouwde bootloader- en firmware-updates over the air voor een IoT-gateway in productie, en een A/B-loader met automatische rollback voor een vloot Raspberry Pi-kiosken."
+      "proof": "We bouwden de bootloader- en firmware-updates over the air voor een IoT-gateway in productie, en een A/B-loader met automatische rollback voor een vloot Raspberry Pi-kiosken."
     },
     "modernization": {
       "title": "Firmware-modernisering",
-      "description": "Maak verouderde firmware testbaar, onderhoudbaar en veilig om aan te passen.",
-      "longDescription": "Oude toolchains, geen tests en één persoon die de code begrijpt. Wij auditen verouderde firmware, zetten die stap voor stap om naar modern C++ (of Rust waar het past) en voegen tests toe die op een pc en op echte hardware in CI draaien, zodat wijzigingen niet langer eng zijn.",
+      "description": "Oude firmware weer getest en makkelijk aan te passen.",
+      "longDescription": "Oude toolchains, geen tests en maar één persoon die de code echt begrijpt. Klinkt bekend? We lopen de firmware door, zetten die stap voor stap om naar modern C++ (of Rust waar dat zinvol is) en voegen tests toe die op een pc en op echte hardware in CI draaien. Daarna zijn wijzigingen niet meer eng.",
       "points": [
         "Code-audit met een geprioriteerd rapport",
         "Unittests op de pc en hardware-in-the-loop-tests in CI",
         "Stapsgewijze herschrijving naar modern C++ of Rust"
       ],
-      "proof": "Bouwden hardware-in-the-loop-updatetests die bij elke wijziging aan een IoT-gateway in productie in Jenkins draaien."
+      "proof": "We bouwden hardware-in-the-loop-updatetests voor een IoT-gateway in productie. Ze draaien in Jenkins bij elke wijziging."
     },
     "ai": {
       "title": "AI voor engineeringteams",
-      "description": "Maak uw firmwareteam productief met AI-codeertools, terwijl elke wijziging op echte hardware geverifieerd blijft.",
-      "longDescription": "Praktische workshops en repository-inrichting voor embedded teams die tools als Claude Code en GitHub Copilot invoeren: projectkennisbestanden, review-vangrails en werkwijzen waarin elke wijziging door AI op echte hardware wordt geverifieerd. Ook beschikbaar: Software Engineering in Practice, een driedelige training over fundamenten, robuustheid en productie.",
+      "description": "Help uw firmwareteam echt iets te halen uit AI-codeertools, zonder het testen op echte hardware over te slaan.",
+      "longDescription": "AI-codeertools als Claude Code en GitHub Copilot kunnen een embedded team veel tijd besparen, maar alleen als ze uw project kennen en hun wijzigingen nog steeds op echte hardware getest worden. We geven praktische workshops en richten uw repository daarvoor in, met projectkennisbestanden en reviewregels. Daarnaast geven we Software Engineering in Practice, een driedelige training over fundamenten, robuustheid en productie.",
       "points": [
         "Workshop AI-ondersteunde embedded ontwikkeling",
         "Repository-inrichting: agentinstructies, kennisbanken en vangrails",
         "Training Software Engineering in Practice met certificaat"
       ],
-      "proof": "Richtten de agentinstructies en kennisbank in voor een firmwareproject in productie, dat de ontwikkelaars dagelijks gebruiken."
+      "proof": "We richtten de agentinstructies en kennisbank in voor een firmwareproject in productie, en de ontwikkelaars gebruiken die elke dag."
     },
     "fintech": {
       "title": "FinTech & betaalsystemen",
       "description": "Betaalterminals, verkoopautomaten en kiosken die betrouwbaar met geld omgaan.",
-      "longDescription": "Betaal- en verkoopapparaten moeten altijd werken: een mislukte transactie kost geld en vertrouwen. Wij bouwen firmware voor betaalterminals, verkoopautomaten en selfservice-kiosken, inclusief betaalflows, voorraadregistratie, beveiligde communicatie en updates in het veld die een machine niet offline halen."
+      "longDescription": "Als een betaalapparaat faalt, verliest iemand geld, en meestal ook wat vertrouwen. Wij bouwen firmware voor betaalterminals, verkoopautomaten en selfservice-kiosken, van de betaalflow en voorraadregistratie tot beveiligde communicatie en updates die een machine niet offline halen."
     },
     "manufacturing": {
       "title": "Industrie & productie",
       "description": "Verbonden machines die laten zien wat ze doen en blijven draaien.",
-      "longDescription": "Fabrieksapparatuur draait jarenlang en kan niet stilvallen door een firmwarebug. Wij bouwen controllers en gateways die machinedata verzamelen, die via Ethernet of MQTT versturen en blijven draaien bij stroomuitval, netwerkstoringen en updates."
+      "longDescription": "Fabrieksmachines draaien jarenlang, en niemand wil dat een lijn stilvalt door een firmwarebug. Wij bouwen controllers en gateways die machinedata verzamelen, die via Ethernet of MQTT versturen en blijven draaien bij stroomuitval, netwerkstoringen en updates."
     },
     "defense": {
       "title": "Defensie & luchtvaart",
-      "description": "Voorspelbare, verifieerbare software voor kritieke programma’s.",
-      "longDescription": "In defensie en luchtvaart moet software voorspelbaar, getest en gedocumenteerd zijn. Wij brengen ervaring uit avionicaprogramma’s (deterministisch realtime gedrag, grondig testen en traceerbare documentatie) mee naar elk project."
+      "description": "Voorspelbare software, met de tests en documentatie om dat te onderbouwen.",
+      "longDescription": "Software in defensie en luchtvaart moet zich elke keer hetzelfde gedragen, en u heeft de tests en documentatie nodig om dat aan te tonen. We hebben aan avionicaprogramma’s gewerkt en nemen diezelfde discipline mee naar elk project, in welke sector ook."
     },
     "automotive": {
       "title": "Automotive & mobiliteit",
       "description": "Firmware en labtooling voor voertuigontwikkeling.",
-      "longDescription": "Voertuigontwikkeling draait op tooling die altijd moet werken: flashen, netbooten en testbanken. Onze open-source TFTP-server en -client worden gebruikt door automotive-engineers, en wij bouwen firmware en labtooling met oog voor realtime- en betrouwbaarheidseisen."
+      "longDescription": "Veel voertuigontwikkeling gebeurt op labtafels, waar de hele dag boards geflasht en genetboot worden, en die tooling moet gewoon werken. Automotive-engineers gebruiken onze open-source TFTP-server en -client, en wij bouwen firmware en labtools met dezelfde eisen aan realtime gedrag en betrouwbaarheid in gedachten."
     }
   },
   "getInTouch": "Neem contact op",
@@ -168,7 +168,7 @@
   "blog": {
     "header": "Blog",
     "title": "Inzichten in Embedded Software Engineering",
-    "description": "Artikelen en tutorials over embedded systemen, RTOS, Linux, IoT en best practices voor firmwareontwikkeling, met praktische inzichten uit echte projecten."
+    "description": "Artikelen en tutorials over embedded systemen, RTOS, Linux, IoT en firmware, gebaseerd op wat we tegenkomen in echte projecten."
   },
   "tools": {
     "header": "Tools",
@@ -197,8 +197,8 @@
         "tag": "Selfservice-kiosken · Raspberry Pi",
         "title": "Updates in het veld die een apparaat niet kunnen bricken",
         "challenge": "Een vloot Raspberry Pi-kiosken had updates en provisioning op afstand nodig, zonder iemand ter plaatse om een apparaat te herstellen als een update misgaat.",
-        "work": "We bouwden de loader die de kiosksoftware bewaakt: A/B-app-slots met automatische rollback na herhaalde fouten, een provisioningscript van 21 stappen dat veilig opnieuw kan draaien, een systemd-watchdog en een Jenkins + Docker-pipeline die elke release controleert voordat die uitgaat.",
-        "result": "18 releases in 18 maanden, elk op afstand uitgerold en automatisch teruggedraaid als het misgaat.",
+        "work": "We bouwden de loader die over de kiosksoftware waakt. Die houdt twee app-slots bij en rolt zelf terug als een nieuwe versie blijft falen. Daaromheen zit een provisioningscript van 21 stappen dat u veilig opnieuw kunt draaien, een systemd-watchdog en een Jenkins- en Docker-pipeline die elke release controleert voordat die uitgaat.",
+        "result": "18 releases in 18 maanden, allemaal op afstand uitgerold. Als er één misgaat, rolt de kiosk zichzelf terug.",
         "stats": [
           "18 releases",
           "A/B-rollback",
@@ -208,9 +208,9 @@
       "tftpd": {
         "tag": "Open source · Rust",
         "title": "Een TFTP-server waar automotive-engineers op bouwen",
-        "challenge": "Netbooten via U-Boot en boards flashen vraagt om een kleine, betrouwbare TFTP-server en -client die op elke machine in het lab draait.",
-        "work": "Schreven rs-tftpd vanaf nul in pure Rust, met ondersteuning voor de opties uit RFC 2347–2349 en 7440 en een bijbehorende client, en onderhouden het als open-sourceproject.",
-        "result": "Opgenomen in NixOS en openSUSE, met bijdragen van engineers van Renault Software Labs, Ampere en Nokia. Renault gebruikt de client als library, en de optie voor dubbele pakketten bracht een netwerkboot van Apache NuttX terug van 4 minuten naar 20 seconden.",
+        "challenge": "Netbooten met U-Boot en boards flashen vraagt om een kleine TFTP-server en -client waarop u kunt vertrouwen, op elke machine in het lab.",
+        "work": "We schreven rs-tftpd vanaf nul in pure Rust, met een bijbehorende client en ondersteuning voor de opties uit RFC 2347–2349 en 7440, en we onderhouden het als open-sourceproject.",
+        "result": "Het zit in NixOS en openSUSE, en engineers van Renault Software Labs, Ampere en Nokia hebben eraan bijgedragen. Renault gebruikt de client als library, en de optie voor dubbele pakketten bracht een netwerkboot van Apache NuttX terug van 4 minuten naar 20 seconden.",
         "stats": [
           "220k+ downloads",
           "In NixOS & openSUSE",
@@ -248,7 +248,7 @@
     "otherGaps": "Ook de moeite waard",
     "noGaps": "Geen hiaten gevonden. Houd de SBOM, het meldproces en de ondersteuningsperiode bij elke release actueel.",
     "reset": "Opnieuw beginnen",
-    "ctaText": "Hulp nodig bij het dichten van deze hiaten? Wij bouwen veilige updatepaden, SBOM-pipelines en processen voor kwetsbaarheden voor embedded producten.",
+    "ctaText": "Hulp nodig bij het dichten van deze hiaten? We kunnen het updatepad, de SBOM-pipeline en de omgang met kwetsbaarheden voor uw product bouwen.",
     "ctaButton": "Neem contact op",
     "readMore": "Lees: wat de CRA betekent voor uw firmware",
     "disclaimer": "Deze check is een startpunt, geen juridisch advies. De CRA stelt meer eisen dan deze vragen behandelen."
@@ -303,8 +303,8 @@
     "title": "Hardwarediensten: design review, PCB-ontwerp, firmware-emulatie en EMC-precompliance",
     "description": "Design review in 48 uur, van idee tot bestelbaar board, firmware testen voordat het board bestaat en EMC-, SI- en PI-precompliance, met onze eigen toolchain.",
     "eyebrow": "Hardwarediensten",
-    "heroTitle": "Hardware die gecontroleerd is voordat hij gebouwd wordt.",
-    "heroLead": "Design review, boardontwerp, firmwaretests en EMC-precompliance, allemaal met onze eigen toolchain: elk board wordt gesimuleerd, met zijn eigen firmware gedraaid en doorgelicht voordat het naar de fabrikant gaat.",
+    "heroTitle": "Boards die gecontroleerd zijn voordat ze gebouwd worden.",
+    "heroLead": "We reviewen boards, ontwerpen nieuwe, testen firmware ertegen en controleren ze op EMC-problemen, allemaal met tools die we zelf gebouwd hebben. Elk board wordt gesimuleerd, met zijn eigen firmware gedraaid en gecontroleerd voordat het naar de fabrikant gaat.",
     "heroPrimary": "Bespreek uw board",
     "heroSecondary": "Bekijk de casestudy",
     "heroCaption": "De Paper Calendar, ons eigen 4-lagen ESP32-S3-board, gerenderd uit de ontwerpbestanden.",
@@ -315,7 +315,7 @@
       },
       {
         "value": "68",
-        "label": "firmwarecontroles die slagen in de emulator tegen het circuit van de Paper Calendar"
+        "label": "firmwarecontroles die slagen in onze emulator, op het circuit van de Paper Calendar"
       },
       {
         "value": "4",
@@ -327,19 +327,19 @@
       }
     ],
     "servicesEyebrow": "Wat we doen",
-    "servicesTitle": "Vier manieren waarop we het risico uit uw board halen.",
+    "servicesTitle": "Vier manieren om problemen te vinden voordat uw boards er zijn.",
     "items": {
       "review": {
         "label": "Design review in 48 uur",
         "lead": "Een tweede paar ogen op uw schema en layout, met de datasheets erbij.",
-        "text": "Stuur ons uw KiCad-project, of het schema en de Gerbers. Binnen 48 uur krijgt u een schriftelijke review van het schema, de layout en een EMC-precompliancecontrole. Elke bevinding noemt het onderdeel, de pin of de plek op het board, verwijst naar de datasheetregel waarop ze rust en zegt hoe u het oplost. De prijs staat vast en wordt afgesproken voordat we beginnen.",
+        "text": "Stuur ons uw KiCad-project, of het schema en de Gerbers. Binnen 48 uur krijgt u een schriftelijke review van het schema en de layout, plus een EMC-precompliancecontrole. Bij elke bevinding vertellen we precies waar die zit, op welke datasheetregel die rust en hoe u het oplost. We spreken een vaste prijs af voordat we beginnen.",
         "points": [
           "Schema getoetst aan de datasheets: pinfuncties, maximale waarden, strap-pins, volgorde van de voedingen",
           "Layout getoetst op voedingspaden, retourpaden, ontkoppeling, fabricageregels en assemblage",
           "EMC-precompliancecontrole met bevindingen op een exacte plek",
           "Een schriftelijk rapport met coördinaten en een oplossing per bevinding"
         ],
-        "proof": "Bij de Paper Calendar vond de EMC-controle 6 waarschuwingen op een board dat al geen fouten had, elk met coördinaten en een oplossing.",
+        "proof": "Ons Paper Calendar-board kwam al door elke ontwerpcontrole, en de EMC-controle vond toch nog 6 waarschuwingen, elk met de plek en een oplossing.",
         "callouts": [
           "Een via waar een SPI-lijn van laag wisselt, 7 mm van de dichtstbijzijnde condensator voor het retourpad",
           "42 mm boardrand zonder massavia",
@@ -348,8 +348,8 @@
       },
       "board": {
         "label": "Van idee tot bestelbaar board",
-        "lead": "Van een beschrijving van de eisen naar bestanden die u naar de fabrikant kunt sturen.",
-        "text": "Beschrijf wat het board moet doen. Wij maken er een geverifieerd ontwerp van: een schema met gecontroleerde onderdelen, een gerouteerde layout en productiebestanden die zo zijn ontworpen dat ze met de standaardopties van de fabrikant te bestellen zijn, zodat er niets bijzonders uitgelegd hoeft te worden. Prototypes kunnen bestukt geleverd worden.",
+        "lead": "U vertelt ons wat het moet doen, en wij geven u bestanden die u naar de fabrikant kunt sturen.",
+        "text": "Beschrijf wat het board moet doen, en wij maken er een gecontroleerd ontwerp van: het schema, de layout en de productiebestanden. We houden ons aan de standaardopties van de fabrikant, dus bestellen is eenvoudig en er hoeft niets bijzonders uitgelegd te worden. Als u wilt, komen de prototypes bestukt aan.",
         "points": [
           "ERC en DRC schoon, met aangetoond dat schema en board overeenkomen",
           "Design-for-manufacture-controles tegen de mogelijkheden van JLCPCB",
@@ -357,7 +357,7 @@
           "Gerbers, BOM en plaatsingsbestanden, met onderdelen die op voorraad zijn",
           "Een bestukt prototype bij u afgeleverd"
         ],
-        "proof": "De Paper Calendar: een 4-lagen ESP32-S3-board met een 50-polige e-paper-connector, lader, fuel gauge en audioversterker, sinds oktober 2026 in productie bij JLCPCB.",
+        "proof": "Onze Paper Calendar is een 4-lagen ESP32-S3-board met een 50-polige e-paper-connector, een lader, een fuel gauge en een audioversterker. Hij is sinds oktober 2026 in productie bij JLCPCB.",
         "steps": [
           "Schema",
           "Vier koperlagen",
@@ -366,15 +366,15 @@
       },
       "firmware": {
         "label": "Firmware getest voordat het board bestaat",
-        "lead": "Uw echte firmware, draaiend tegen uw circuit, weken voordat de boards er zijn.",
-        "text": "Onze emulator draait het firmware-image dat u gaat flashen op een model van de microcontroller, aangesloten op een model van uw board dat uit het circuit is opgebouwd: pull-ups, knoppen, regelaars, fuel gauge, displaycontroller. Scenario’s drukken op knoppen, laten de batterij leeglopen, verbreken het netwerk of laten dagen verstrijken, en toetsen wat pinnen, bussen, console en display deden. Elke CPU-core is instructie voor instructie vergeleken met QEMU.",
+        "lead": "Draai uw echte firmware tegen uw circuit, weken voordat de boards er zijn.",
+        "text": "Onze emulator draait precies het firmware-image dat u gaat flashen, op een model van de microcontroller dat is aangesloten op een model van uw board, met de pull-ups, knoppen, regelaars, fuel gauge en displaycontroller. Testscripts drukken op knoppen, laten de batterij leeglopen, verbreken het netwerk of springen een paar dagen vooruit, en controleren daarna wat de pinnen, bussen, console en het display deden. Elke CPU-core is instructie voor instructie vergeleken met QEMU.",
         "points": [
           "ESP32-S3 en ESP32-C3, RP2040, i.MX RT1024 met Ethernet, AVR",
           "Scenario’s voor voeding, knoppen, netwerk en display",
           "Pixelnauwkeurige controle van wat het display toont",
           "Draait headless, dus het wordt een controle in uw CI"
         ],
-        "proof": "De productiefirmware van de Paper Calendar draait van begin tot eind in de emulator: 7 scenario’s en 68 controles slagen, inclusief het exacte beeld op het e-paper.",
+        "proof": "De productiefirmware van de Paper Calendar draait helemaal door in de emulator. Alle 7 scenario’s en 68 controles slagen, tot en met het exacte beeld op het e-paper.",
         "caption": "Wat de echte firmware bij de eerste start op het geëmuleerde e-paper tekende, en de console-uitvoer.",
         "screenLabel": "Het beeld van 800 × 480 dat het panelmodel van het circuit ontving, pixel voor pixel",
         "consoleTitle": "ESP32-S3-console, geëmuleerde eerste start",
@@ -383,16 +383,16 @@
       "emc": {
         "label": "EMC-, SI- en PI-precompliance",
         "lead": "Vind wat het testlab zou vinden, terwijl een oplossing nog goedkoop is.",
-        "text": "Onze eigen veldsolvers, geschreven voor printplaten, kijken naar wat vuistregels missen: 2D-dwarsdoorsneden voor impedantie en overspraak, de impedantie van een voedingsvlakpaar met uw echte ontkoppelcondensatoren, retourstroom rond sleuven en onderbrekingen in het vlak, en een 3D full-wave-solver op de GPU voor de kritieke gebieden. Bevindingen komen met exacte plekken en oplossingen. Dit zijn precompliance-schattingen die het risico van een labbezoek verkleinen. Het is geen certificering.",
+        "text": "Met vuistregels kom je maar zo ver, dus schreven we onze eigen veldsolvers voor printplaten. Ze berekenen spoorimpedantie en overspraak uit 2D-dwarsdoorsneden, de impedantie van uw voedingsvlakken met de ontkoppelcondensatoren die u echt geplaatst heeft, hoe retourstroom om sleuven en onderbrekingen loopt, en volledige 3D-velden op de GPU voor de kritieke plekken. Elke bevinding komt met de plek en een oplossing. Dit zijn precompliance-schattingen die het risico van een labbezoek verkleinen, geen certificering.",
         "points": [
           "Spoorimpedantie en overspraak uit de echte opbouw van het board",
           "Impedantie van het voedingsnetwerk tegen een doelwaarde, met de condensatoren die u plaatste",
           "Retourstroom en de lusinductantie die een sleuf toevoegt",
           "3D full-wave-velden voor de gebieden die ertoe doen"
         ],
-        "proof": "Gemeten tegen referenties: losse sporen binnen 0,3 % van de standaardformules, stripline binnen 0,001 % van de exacte oplossing, vlakresonanties binnen 0,06 % van de analytische caviteit. Bij differentiële paren met echt koper liet de solver zien dat de gangbare gesloten formule 4 tot 13 % te laag uitkomt, bevestigd met openEMS.",
+        "proof": "We hebben de solvers getoetst aan bekende uitkomsten. Losse sporen komen binnen 0,3 % van de standaardformules uit, stripline binnen 0,001 % van de exacte oplossing en vlakresonanties binnen 0,06 % van de analytische caviteit. Bij differentiële paren met echt koper lieten ze zien dat de gangbare gesloten formule 4 tot 13 % te laag uitkomt, wat openEMS bevestigde.",
         "slotTitle": "Retourstroom onder een spoor",
-        "slotCaption": "Een spoor dat een sleuf van 20 mm in het massavlak kruist (synthetisch voorbeeld). De stroom loopt om de sleuf heen: dat voegt 2,3 nH en 0,15 V ruis toe bij een flank van 1 ns op 3,3 V.",
+        "slotCaption": "Een spoor dat een sleuf van 20 mm in het massavlak kruist (een verzonnen voorbeeld). De retourstroom moet om de sleuf heen, en dat voegt 2,3 nH en 0,15 V ruis toe bij een flank van 1 ns op 3,3 V.",
         "pdnTitle": "Impedantie van het voedingsnetwerk",
         "pdnCaption": "De 3V3-rail gezien vanaf de ESP32-S3 met de echte ontkoppeling van het board: boven de doelwaarde van 0,66 ohm vanaf 136 MHz, met een piek van 2,3 ohm.",
         "fdtdTitle": "Nabij veld, full-wave",
@@ -401,7 +401,7 @@
     },
     "mapEyebrow": "Elke bevinding, op locatie",
     "mapTitle": "Het hele board, doorgelicht.",
-    "mapText": "De EMC-controle van de Paper Calendar op het echte koper: zes genummerde waarschuwingen en 23 informatieve punten, elk op zijn coördinaten. Niets is een gok over “het board”: elke bevinding wijst een plek aan die u in uw layouttool kunt openen.",
+    "mapText": "Dit is de EMC-controle van de Paper Calendar op het echte koper, met zes genummerde waarschuwingen en 23 informatieve punten, elk op de exacte plek. Geen vage opmerkingen over “het board”: elke bevinding wijst een plek aan die u in uw layouttool kunt openen.",
     "mapLegend": [
       "Waarschuwing",
       "Informatie",
@@ -411,7 +411,7 @@
     "caseEyebrow": "Casestudy",
     "caseTitle": "De Paper Calendar",
     "caseLead": "Onze eigen e-paper-kalender: ESP32-S3, 4 lagen, in productie bij JLCPCB.",
-    "caseText": "We bouwden hem met de toolchain die we voor klanten gebruiken, dus we weten wat die vindt en wat niet. Het ontwerp kwam zonder fouten uit de controles. De firmware draait van begin tot eind in de emulator tegen het eigen circuit. De EMC-controle vond daarna wat een gewone review niet zou zoeken.",
+    "caseText": "We bouwden hem met dezelfde tools die we voor klanten gebruiken, dus we weten wat ze vinden en wat ze missen. Het ontwerp kwam zonder fouten door al onze controles, en de firmware draait helemaal door in de emulator tegen het eigen circuit. Daarna vond de EMC-controle dingen waar een gewone review niet eens naar kijkt.",
     "caseFacts": [
       {
         "value": "4",
@@ -438,12 +438,12 @@
       "Elke voedingspin heeft zijn condensator binnen 5 mm",
       "De boosterlussen van het e-paper zijn ongeveer 2,6 nH en lopen terug in het vlak"
     ],
-    "caseNote": "De waarschuwingen gaan uit van een flank van 1 ns, de ondergrens van de controle. Een meting van de echte flank op de eerste boards maakt duidelijk welke overblijven. Zo leveren we bevindingen op: wat bekend is, wat is aangenomen en hoe u het zeker weet.",
+    "caseNote": "De waarschuwingen gaan uit van een flank van 1 ns, de snelste die de controle aanneemt. Een meting van de echte flank op de eerste boards maakt duidelijk welke overblijven. Zo leveren we elke bevinding op: wat we weten, wat we hebben aangenomen en hoe u het zeker weet.",
     "caseImages": [
       "Detail: de knoppen KEY, BOOT en PWR"
     ],
     "processEyebrow": "Zo werkt het",
-    "processTitle": "Eenvoudig, vast en opgeschreven.",
+    "processTitle": "Eenvoudig, en alles op papier.",
     "process": [
       {
         "label": "Gesprek",
@@ -455,7 +455,7 @@
       },
       {
         "label": "Bouwen en verifiëren",
-        "text": "Review, ontwerp, emulatie of veldberekening, elk resultaat herleidbaar tot een controle."
+        "text": "We doen de review, het ontwerp, de emulatie of de veldberekening, en elk resultaat is terug te voeren op een controle."
       },
       {
         "label": "Overdracht",
@@ -463,7 +463,7 @@
       }
     ],
     "honestyTitle": "Precompliance, geen certificering",
-    "honesty": "Onze EMC-, SI- en PI-resultaten zijn schattingen om problemen vroeg te vinden en een labbezoek minder een gok te maken. Alleen een geaccrediteerd lab kan een product certificeren. We zeggen wat berekend is, wat is aangenomen en wat alleen een meting kan uitwijzen.",
+    "honesty": "Onze EMC-, SI- en PI-resultaten zijn schattingen. Ze helpen u problemen vroeg te vinden en maken een labbezoek minder een gok, maar alleen een geaccrediteerd lab kan een product certificeren. We vertellen u altijd wat we berekend hebben, wat we hebben aangenomen en wat alleen een meting kan uitwijzen.",
     "ctaHeader": "Een board om te reviewen, of een idee om te bouwen?",
     "ctaText": "Vertel ons wat u maakt en wanneer u het nodig heeft. We reageren binnen één werkdag.",
     "ctaButton": "Start een gesprek",
