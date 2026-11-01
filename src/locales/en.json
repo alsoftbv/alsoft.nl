@@ -301,11 +301,11 @@
   "hardware": {
     "nav": "Hardware",
     "title": "Hardware Services: Design Review, PCB Design, Firmware Emulation and EMC Pre-compliance",
-    "description": "Design review in 48 hours, idea to orderable board, firmware tested before the board exists and EMC, SI and PI pre-compliance, with our own in-house toolchain.",
+    "description": "Send an idea for a concept and offer, get a board reviewed in 48 hours, or ask us to design, emulate and check it for EMC problems. Prices on request.",
     "eyebrow": "Hardware services",
     "heroTitle": "Boards that are checked before they’re built.",
-    "heroLead": "We review boards, design new ones, test firmware against them and check them for EMC problems, all with tools we built ourselves. Every board gets simulated, run against its own firmware and checked before it goes to the fab.",
-    "heroPrimary": "Talk about your board",
+    "heroLead": "We review boards, design new ones, test firmware against them and check them for EMC problems, all with tools we built ourselves. Send us an idea, requirements or an existing board, and we’ll agree on the next step.",
+    "heroPrimary": "Discuss your idea or board",
     "heroSecondary": "See the case study",
     "heroCaption": "The Paper Calendar, our own 4-layer ESP32-S3 board, rendered from its design files.",
     "stats": [
@@ -322,13 +322,27 @@
         "label": "field solvers of our own: cross-sections, power planes, return currents, 3D full wave"
       },
       {
-        "value": "5",
-        "label": "microcontroller families emulated, each core checked against QEMU"
+        "value": "7",
+        "label": "emulated targets: 5 microcontroller families and 2 Raspberry Pi generations"
       }
     ],
     "servicesEyebrow": "What we do",
-    "servicesTitle": "Four ways to catch problems before your boards arrive.",
+    "servicesTitle": "From an idea to a checked board. Start where you are.",
     "items": {
+      "concept": {
+        "label": "Idea to concept and offer",
+        "lead": "Send us your idea or requirements. We’ll work out what it takes to build it.",
+        "text": "Within an agreed time, you get a concept you can look through and a priced offer for the work ahead. We write down the open questions for you, so you can decide what to do next.",
+        "points": [
+          "A block diagram of the system",
+          "A checked schematic",
+          "3D renders of the proposed board",
+          "Firmware emulated against the circuit",
+          "A priced offer, with the open questions for you"
+        ],
+        "proof": "The schematic, renders and firmware model describe the same circuit. They give us something concrete to discuss before you commission the board.",
+        "cta": "Send your idea or requirements"
+      },
       "review": {
         "label": "Design review in 48 hours",
         "lead": "A second pair of eyes on your schematic and layout, with the datasheets open.",
@@ -344,7 +358,8 @@
           "A via where an SPI line changes layer, 7 mm from the nearest return-path capacitor",
           "42 mm of board edge without a ground via",
           "The e-paper booster loop, about 2.6 nH"
-        ]
+        ],
+        "cta": "Request a 48-hour review"
       },
       "board": {
         "label": "Idea to orderable board",
@@ -357,28 +372,31 @@
           "Gerbers, BOM and placement files, with parts picked from what is in stock",
           "An assembled prototype delivered to you"
         ],
-        "proof": "Our Paper Calendar is a 4-layer ESP32-S3 board with a 50-pin e-paper connector, a charger, a fuel gauge and an audio amplifier. It’s been in manufacturing at JLCPCB since October 2026.",
+        "proof": "Our Paper Calendar is a 4-layer ESP32-S3 board with a 50-pin e-paper connector, a charger, a fuel gauge and an audio amplifier. The first prototypes worked on the first spin.",
         "steps": [
           "Schematic",
           "Four copper layers",
           "The finished board, top side"
-        ]
+        ],
+        "cta": "Discuss your board design"
       },
       "firmware": {
         "label": "Firmware tested before the board exists",
         "lead": "Run your real firmware against your circuit, weeks before the boards arrive.",
-        "text": "Our emulator runs the exact firmware image you’ll flash, on a model of the microcontroller connected to a model of your board, with its pull-ups, buttons, regulators, fuel gauge and display controller. Test scripts press buttons, drain the battery, drop the network or skip ahead a few days, then check what the pins, buses, console and display did. Each CPU core is checked against QEMU, instruction by instruction.",
+        "text": "Our emulator runs the exact firmware image you’ll flash, on a model of the microcontroller connected to a model of your board, with its pull-ups, buttons, regulators, fuel gauge and display controller. Test scripts press buttons, drain the battery, drop the network or skip ahead a few days, then check what the pins, buses, console and display did. The microcontroller CPU cores are checked against QEMU, instruction by instruction.",
         "points": [
-          "ESP32-S3 and ESP32-C3, RP2040, i.MX RT1024 with Ethernet, AVR",
+          "ESP32-S3, ESP32-C3, RP2040, i.MX RT1024 (Cortex-M7) with Ethernet, and AVR",
+          "Raspberry Pi 4/CM4 and Pi 5/CM5 boot Linux to a shell, with userspace GPIO reaching the board model",
           "Scenarios for power, buttons, network and display",
           "Pixel-exact checks of what the display shows",
-          "Runs headless, so it becomes a check in your CI"
+          "We set up headless firmware checks for your CI"
         ],
         "proof": "The Paper Calendar’s production firmware boots all the way through in the emulator. All 7 scenarios and 68 checks pass, down to the exact image on the e-paper.",
         "caption": "What the real firmware drew on the emulated e-paper at first boot, and its console output.",
         "screenLabel": "The 800 × 480 image the circuit’s panel model received, pixel for pixel",
         "consoleTitle": "ESP32-S3 console, emulated first boot",
-        "consolePass": "first_boot: 14 assertions passed, 0 findings"
+        "consolePass": "first_boot: 14 assertions passed, 0 findings",
+        "cta": "Discuss your firmware tests"
       },
       "emc": {
         "label": "EMC, SI and PI pre-compliance",
@@ -396,7 +414,8 @@
         "pdnTitle": "Power-network impedance",
         "pdnCaption": "The 3V3 rail seen from the ESP32-S3 with the board’s real decoupling: above the 0.66 ohm target from 136 MHz, peaking at 2.3 ohm.",
         "fdtdTitle": "Near field, full wave",
-        "fdtdCaption": "The electric field 0.8 mm above the board at 1 GHz, where the EPD_SCK line changes layer, from our own 3D full-wave solver (the inner planes simplified as solid)."
+        "fdtdCaption": "The electric field 0.8 mm above the board at 1 GHz, where the EPD_SCK line changes layer, from our own 3D full-wave solver (the inner planes simplified as solid).",
+        "cta": "Request an EMC, SI and PI check"
       }
     },
     "mapEyebrow": "Every finding, located",
@@ -410,7 +429,7 @@
     ],
     "caseEyebrow": "Case study",
     "caseTitle": "The Paper Calendar",
-    "caseLead": "Our own e-paper calendar: ESP32-S3, 4 layers, in manufacturing at JLCPCB.",
+    "caseLead": "Our own e-paper calendar: ESP32-S3, 4 layers, first prototypes built and tested.",
     "caseText": "We built it with the same tools we use for customers, so we know what they catch and what they miss. The design passed all our checks without errors, and its firmware runs all the way through in the emulator against its own circuit. Then the EMC check found things a normal review wouldn’t even look for.",
     "caseFacts": [
       {
@@ -438,7 +457,7 @@
       "Every supply pin has its capacitor within 5 mm",
       "The e-paper booster loops are about 2.6 nH and return in the plane"
     ],
-    "caseNote": "The warnings assume a 1 ns edge, the fastest the check considers. Measuring the real edge on the first boards will settle them. That’s how we hand over every finding: what we know, what we assumed and how to find out for sure.",
+    "caseNote": "The EMC warnings above come from calculations that assume a 1 ns edge. We keep calculated findings, assumptions and measured results separate.",
     "caseImages": [
       "Detail: the KEY, BOOT and PWR buttons"
     ],
@@ -447,15 +466,15 @@
     "process": [
       {
         "label": "Chat",
-        "text": "A short call about your board, your deadline and what worries you."
+        "text": "A short call about your idea or board, your deadline and what worries you."
       },
       {
         "label": "Fixed price",
-        "text": "A written scope and a fixed price before any work starts."
+        "text": "Prices on request. We agree on the scope, timing and a fixed price before the work starts."
       },
       {
         "label": "Build and verify",
-        "text": "We do the review, design, emulation or field solving, and every result can be traced back to a check."
+        "text": "We prepare the concept, review, design, emulation or field calculation, and every result can be traced back to a check."
       },
       {
         "label": "Hand over",
@@ -477,7 +496,21 @@
       "map": "The Paper Calendar's copper with the numbered EMC findings",
       "top": "Top side of the Paper Calendar board",
       "angle": "The Paper Calendar board at an angle"
-    }
+    },
+    "heroProof": "Paper Calendar: the first prototypes worked on the first spin.",
+    "price": "Price on request.",
+    "sampleReport": {
+      "title": "Sample review report",
+      "text": "The 48-hour review gives you findings grouped by severity, with the check behind each one, its location and a suggested fix. A board map, close-ups and EMC maps show where to look. The report also lists what was not checked and why.",
+      "download": "Download the sample review report (PDF)",
+      "note": "The review of our own Paper Calendar board: the 34-page report (6 MB). The full version adds an appendix with every check record.",
+      "captions": [
+        "Page 1: summary and the board map with the priority findings",
+        "Page 2: the five priority findings, each with its close-up",
+        "Page 3: EMC overview of the whole board"
+      ]
+    },
+    "caseResult": "The first prototypes worked on the first spin."
   },
   "impedance": {
     "header": "Trace impedance calculator",

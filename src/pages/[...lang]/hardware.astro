@@ -21,6 +21,9 @@ import schematic from "@images/hardware/process_schematic.png";
 import slot from "@images/hardware/slot_current.png";
 import pdn from "@images/hardware/pdn_3v3.png";
 import emcMap from "@images/hardware/emc_map.png";
+import sampleP1 from "@images/hardware/sample_p1.png";
+import sampleP2 from "@images/hardware/sample_p2.png";
+import sampleP3 from "@images/hardware/sample_p3.png";
 // served as it is: a 1-bit display image must not be resampled or re-encoded (thin glyph strokes vanish)
 import epaper from "@images/hardware/epaper.png?url";
 
@@ -62,8 +65,10 @@ const consoleLines = [
   "I (28285) APP: Sleeping for 602 seconds (timer 602000 ms, sleep timer 0 ppm)",
 ];
 
-const order = ["review", "board", "firmware", "emc"] as const;
+const order = ["concept", "review", "board", "firmware", "emc"] as const;
 const callouts = [calloutVia, calloutEdge, calloutLoop];
+// the first three pages of the Paper Calendar review report, which lead with its most important findings
+const reportPreviews = [sampleP1, sampleP2, sampleP3];
 ---
 
 <BaseLayout title={t.title} description={t.description} image={hero.src}>
@@ -72,6 +77,7 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
       <span class="eyebrow">{t.eyebrow}</span>
       <h1>{t.heroTitle}</h1>
       <p class="lead">{t.heroLead}</p>
+      <p class="hero-proof">{t.heroProof}</p>
       <div class="actions">
         <Button href={contact}>{t.heroPrimary}</Button>
         <a class="ghost" href="#case">{t.heroSecondary}</a>
@@ -105,6 +111,64 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
     </div>
   </section>
 
+  <section class="band" id="case">
+    <div class="container">
+      <div class="case-head">
+        <span class="eyebrow">{t.caseEyebrow}</span>
+        <h2>{t.caseTitle}</h2>
+        <p class="lead accent">{t.caseLead}</p>
+        <p class="case-result">{t.caseResult}</p>
+        <p class="muted">{t.caseText}</p>
+      </div>
+      <ul class="stats compact">
+        {
+          t.caseFacts.map((f) => (
+            <li>
+              <strong>{f.value}</strong>
+              <span>{f.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="case-grid">
+        <div class="case-boards">
+          <figure>
+            <Picture
+              src={espDetail}
+              alt={t.alts.detail}
+              formats={formats}
+              fallbackFormat="jpg"
+              quality={photo}
+              widths={[450, 900, 1300, 1600]}
+              sizes="(max-width: 1000px) min(100vw, 420px), 420px"
+              loading="lazy"
+            />
+            <figcaption>{t.caseImages[0]}</figcaption>
+          </figure>
+        </div>
+        <div class="findings">
+          <h3>{t.findingsTitle}</h3>
+          <ul class="warn">{t.findings.map((f) => <li>{f}</li>)}</ul>
+          <h3>{t.checkedTitle}</h3>
+          <ul class="ok">{t.checked.map((f) => <li>{f}</li>)}</ul>
+          <p class="muted note">{t.caseNote}</p>
+        </div>
+      </div>
+      <figure class="detail">
+        <Picture
+          src={heroLow}
+          alt={t.alts.angle}
+          formats={formats}
+          fallbackFormat="jpg"
+          quality={photo}
+          widths={[800, 1400, 2000, 2400]}
+          sizes="(max-width: 1100px) 100vw, 1000px"
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </section>
+
   <section class="container intro">
     <span class="eyebrow">{t.servicesEyebrow}</span>
     <h2>{t.servicesTitle}</h2>
@@ -134,7 +198,8 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
                 <h2>{item.label}</h2>
                 <p class="lead accent">{item.lead}</p>
                 <p class="muted">{item.text}</p>
-                <Button href={contact}>{t.heroPrimary}</Button>
+                <p class="muted service-price">{t.price}</p>
+                <Button href={contact}>{item.cta}</Button>
               </div>
               <div class="details">
                 <ul>
@@ -143,11 +208,41 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
                   ))}
                 </ul>
                 <p class="proof">
-                  <span class="eyebrow">{useTranslations(lang).proofLabel}</span>
+                  {id !== "concept" && <span class="eyebrow">{useTranslations(lang).proofLabel}</span>}
                   {item.proof}
                 </p>
               </div>
             </div>
+
+            {id === "review" && (
+              <aside class="sample-report" aria-labelledby="sample-report-title">
+                <h3 id="sample-report-title">{t.sampleReport.title}</h3>
+                <p>{t.sampleReport.text}</p>
+                <p class="muted" id="sample-report-note">{t.sampleReport.note}</p>
+                <a href="/hardware/sample-review.pdf" download aria-describedby="sample-report-note">
+                  {t.sampleReport.download}
+                </a>
+                <ul class="shots three report-previews">
+                  {reportPreviews.map((img, k) => (
+                    <li>
+                      <figure>
+                        <Picture
+                          src={img}
+                          alt={t.sampleReport.captions[k]}
+                          formats={formats}
+                          fallbackFormat="jpg"
+                          quality={lineArt}
+                          widths={[320, 500, 700]}
+                          sizes="(max-width: 768px) 100vw, 330px"
+                          loading="lazy"
+                        />
+                        <figcaption>{t.sampleReport.captions[k]}</figcaption>
+                      </figure>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+            )}
 
             {id === "review" && (
               <ul class="shots three">
@@ -329,63 +424,6 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
     </figure>
   </section>
 
-  <section class="band" id="case">
-    <div class="container">
-      <div class="case-head">
-        <span class="eyebrow">{t.caseEyebrow}</span>
-        <h2>{t.caseTitle}</h2>
-        <p class="lead accent">{t.caseLead}</p>
-        <p class="muted">{t.caseText}</p>
-      </div>
-      <ul class="stats compact">
-        {
-          t.caseFacts.map((f) => (
-            <li>
-              <strong>{f.value}</strong>
-              <span>{f.label}</span>
-            </li>
-          ))
-        }
-      </ul>
-      <div class="case-grid">
-        <div class="case-boards">
-          <figure>
-            <Picture
-              src={espDetail}
-              alt={t.alts.detail}
-              formats={formats}
-              fallbackFormat="jpg"
-              quality={photo}
-              widths={[450, 900, 1300, 1600]}
-              sizes="(max-width: 1000px) min(100vw, 420px), 420px"
-              loading="lazy"
-            />
-            <figcaption>{t.caseImages[0]}</figcaption>
-          </figure>
-        </div>
-        <div class="findings">
-          <h3>{t.findingsTitle}</h3>
-          <ul class="warn">{t.findings.map((f) => <li>{f}</li>)}</ul>
-          <h3>{t.checkedTitle}</h3>
-          <ul class="ok">{t.checked.map((f) => <li>{f}</li>)}</ul>
-          <p class="muted note">{t.caseNote}</p>
-        </div>
-      </div>
-      <figure class="detail">
-        <Picture
-          src={heroLow}
-          alt={t.alts.angle}
-          formats={formats}
-          fallbackFormat="jpg"
-          quality={photo}
-          widths={[800, 1400, 2000, 2400]}
-          sizes="(max-width: 1100px) 100vw, 1000px"
-          loading="lazy"
-        />
-      </figure>
-    </div>
-  </section>
-
   <section class="container">
     <div class="section-heading">
       <span class="eyebrow">{t.processEyebrow}</span>
@@ -496,6 +534,38 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
     position: relative;
     max-width: 860px;
     text-align: center;
+  }
+
+  .hero-proof {
+    position: relative;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+
+  .sample-report {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+  }
+
+  .sample-report h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .report-previews {
+    margin-top: 1.5rem;
+  }
+
+  /* report pages keep their A4 shape so the whole page is readable */
+  .sample-report .report-previews :global(img) {
+    aspect-ratio: 210 / 297;
+    object-fit: cover;
+    object-position: top;
+    background: #fff;
   }
 
   .hero-text .lead {
@@ -620,7 +690,7 @@ const callouts = [calloutVia, calloutEdge, calloutLoop];
     margin: 2rem 0 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
     text-align: left;
   }
