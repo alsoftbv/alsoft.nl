@@ -301,11 +301,11 @@
   "hardware": {
     "nav": "Hardware",
     "title": "Hardwarediensten: design review, PCB-ontwerp, firmware-emulatie en EMC-precompliance",
-    "description": "Design review in 48 uur, van idee tot bestelbaar board, firmware testen voordat het board bestaat en EMC-, SI- en PI-precompliance, met onze eigen toolchain.",
+    "description": "Stuur uw idee voor een concept en offerte, laat uw board binnen 48 uur reviewen of vraag ons om het te ontwerpen, emuleren en op EMC-problemen te controleren. Prijzen op aanvraag.",
     "eyebrow": "Hardwarediensten",
     "heroTitle": "Boards die gecontroleerd zijn voordat ze gebouwd worden.",
-    "heroLead": "We reviewen boards, ontwerpen nieuwe, testen firmware ertegen en controleren ze op EMC-problemen, allemaal met tools die we zelf gebouwd hebben. Elk board wordt gesimuleerd, met zijn eigen firmware gedraaid en gecontroleerd voordat het naar de fabrikant gaat.",
-    "heroPrimary": "Bespreek uw board",
+    "heroLead": "We reviewen boards, ontwerpen nieuwe, testen firmware ertegen en controleren ze op EMC-problemen, allemaal met tools die we zelf gebouwd hebben. Stuur ons een idee, uw eisen of een bestaand board, dan spreken we samen de volgende stap af.",
+    "heroPrimary": "Bespreek uw idee of board",
     "heroSecondary": "Bekijk de casestudy",
     "heroCaption": "De Paper Calendar, ons eigen 4-lagen ESP32-S3-board, gerenderd uit de ontwerpbestanden.",
     "stats": [
@@ -322,13 +322,27 @@
         "label": "eigen veldsolvers: dwarsdoorsneden, voedingsvlakken, retourstromen, 3D full-wave"
       },
       {
-        "value": "5",
-        "label": "microcontrollerfamilies geëmuleerd, elke core vergeleken met QEMU"
+        "value": "7",
+        "label": "geëmuleerde doelplatforms: 5 microcontrollerfamilies en 2 Raspberry Pi-generaties"
       }
     ],
     "servicesEyebrow": "Wat we doen",
-    "servicesTitle": "Vier manieren om problemen te vinden voordat uw boards er zijn.",
+    "servicesTitle": "Van idee tot gecontroleerd board. Begin waar u nu staat.",
     "items": {
+      "concept": {
+        "label": "Van idee tot concept en offerte",
+        "lead": "Stuur ons uw idee of eisen. Wij zoeken uit wat er nodig is om het te bouwen.",
+        "text": "Binnen een afgesproken termijn krijgt u een concept om door te nemen en een offerte voor het vervolg. We schrijven de open vragen voor u op, zodat u kunt besluiten wat de volgende stap wordt.",
+        "points": [
+          "Een blokschema van het systeem",
+          "Een gecontroleerd schema",
+          "3D-renders van het voorgestelde board",
+          "Firmware geëmuleerd tegen het circuit",
+          "Een offerte met prijs en de open vragen voor u"
+        ],
+        "proof": "Het schema, de renders en het firmwaremodel beschrijven hetzelfde circuit. Zo hebben we iets concreets om te bespreken voordat u opdracht geeft voor het board.",
+        "cta": "Stuur uw idee of eisen"
+      },
       "review": {
         "label": "Design review in 48 uur",
         "lead": "Een tweede paar ogen op uw schema en layout, met de datasheets erbij.",
@@ -344,7 +358,8 @@
           "Een via waar een SPI-lijn van laag wisselt, 7 mm van de dichtstbijzijnde condensator voor het retourpad",
           "42 mm boardrand zonder massavia",
           "De lus van de e-paper-booster, ongeveer 2,6 nH"
-        ]
+        ],
+        "cta": "Vraag een review binnen 48 uur aan"
       },
       "board": {
         "label": "Van idee tot bestelbaar board",
@@ -357,28 +372,31 @@
           "Gerbers, BOM en plaatsingsbestanden, met onderdelen die op voorraad zijn",
           "Een bestukt prototype bij u afgeleverd"
         ],
-        "proof": "Onze Paper Calendar is een 4-lagen ESP32-S3-board met een 50-polige e-paper-connector, een lader, een fuel gauge en een audioversterker. Hij is sinds oktober 2026 in productie bij JLCPCB.",
+        "proof": "Onze Paper Calendar is een 4-lagen ESP32-S3-board met een 50-polige e-paper-connector, een lader, een fuel gauge en een audioversterker. De eerste prototypes werkten in één keer.",
         "steps": [
           "Schema",
           "Vier koperlagen",
           "Het afgewerkte board, bovenkant"
-        ]
+        ],
+        "cta": "Bespreek uw boardontwerp"
       },
       "firmware": {
         "label": "Firmware getest voordat het board bestaat",
         "lead": "Draai uw echte firmware tegen uw circuit, weken voordat de boards er zijn.",
-        "text": "Onze emulator draait precies het firmware-image dat u gaat flashen, op een model van de microcontroller dat is aangesloten op een model van uw board, met de pull-ups, knoppen, regelaars, fuel gauge en displaycontroller. Testscripts drukken op knoppen, laten de batterij leeglopen, verbreken het netwerk of springen een paar dagen vooruit, en controleren daarna wat de pinnen, bussen, console en het display deden. Elke CPU-core is instructie voor instructie vergeleken met QEMU.",
+        "text": "Onze emulator draait precies het firmware-image dat u gaat flashen, op een model van de microcontroller dat is aangesloten op een model van uw board, met de pull-ups, knoppen, regelaars, fuel gauge en displaycontroller. Testscripts drukken op knoppen, laten de batterij leeglopen, verbreken het netwerk of springen een paar dagen vooruit, en controleren daarna wat de pinnen, bussen, console en het display deden. De CPU-cores van de microcontrollers zijn instructie voor instructie vergeleken met QEMU.",
         "points": [
-          "ESP32-S3 en ESP32-C3, RP2040, i.MX RT1024 met Ethernet, AVR",
+          "ESP32-S3, ESP32-C3, RP2040, i.MX RT1024 (Cortex-M7) met Ethernet en AVR",
+          "Raspberry Pi 4/CM4 en Pi 5/CM5 starten Linux op tot een shell, met GPIO vanuit userspace verbonden met het boardmodel",
           "Scenario’s voor voeding, knoppen, netwerk en display",
           "Pixelnauwkeurige controle van wat het display toont",
-          "Draait headless, dus het wordt een controle in uw CI"
+          "We richten headless firmwarecontroles in voor uw CI"
         ],
         "proof": "De productiefirmware van de Paper Calendar draait helemaal door in de emulator. Alle 7 scenario’s en 68 controles slagen, tot en met het exacte beeld op het e-paper.",
         "caption": "Wat de echte firmware bij de eerste start op het geëmuleerde e-paper tekende, en de console-uitvoer.",
         "screenLabel": "Het beeld van 800 × 480 dat het panelmodel van het circuit ontving, pixel voor pixel",
         "consoleTitle": "ESP32-S3-console, geëmuleerde eerste start",
-        "consolePass": "first_boot: 14 assertions passed, 0 findings"
+        "consolePass": "first_boot: 14 assertions passed, 0 findings",
+        "cta": "Bespreek uw firmwaretests"
       },
       "emc": {
         "label": "EMC-, SI- en PI-precompliance",
@@ -396,7 +414,8 @@
         "pdnTitle": "Impedantie van het voedingsnetwerk",
         "pdnCaption": "De 3V3-rail gezien vanaf de ESP32-S3 met de echte ontkoppeling van het board: boven de doelwaarde van 0,66 ohm vanaf 136 MHz, met een piek van 2,3 ohm.",
         "fdtdTitle": "Nabij veld, full-wave",
-        "fdtdCaption": "Het elektrisch veld 0,8 mm boven het board bij 1 GHz, waar de EPD_SCK-lijn van laag wisselt, uit onze eigen 3D full-wave-solver (de binnenste vlakken vereenvoudigd als massief)."
+        "fdtdCaption": "Het elektrisch veld 0,8 mm boven het board bij 1 GHz, waar de EPD_SCK-lijn van laag wisselt, uit onze eigen 3D full-wave-solver (de binnenste vlakken vereenvoudigd als massief).",
+        "cta": "Vraag een EMC-, SI- en PI-controle aan"
       }
     },
     "mapEyebrow": "Elke bevinding, op locatie",
@@ -410,7 +429,7 @@
     ],
     "caseEyebrow": "Casestudy",
     "caseTitle": "De Paper Calendar",
-    "caseLead": "Onze eigen e-paper-kalender: ESP32-S3, 4 lagen, in productie bij JLCPCB.",
+    "caseLead": "Onze eigen e-paper-kalender: ESP32-S3, 4 lagen, de eerste prototypes zijn gebouwd en getest.",
     "caseText": "We bouwden hem met dezelfde tools die we voor klanten gebruiken, dus we weten wat ze vinden en wat ze missen. Het ontwerp kwam zonder fouten door al onze controles, en de firmware draait helemaal door in de emulator tegen het eigen circuit. Daarna vond de EMC-controle dingen waar een gewone review niet eens naar kijkt.",
     "caseFacts": [
       {
@@ -438,7 +457,7 @@
       "Elke voedingspin heeft zijn condensator binnen 5 mm",
       "De boosterlussen van het e-paper zijn ongeveer 2,6 nH en lopen terug in het vlak"
     ],
-    "caseNote": "De waarschuwingen gaan uit van een flank van 1 ns, de snelste die de controle aanneemt. Een meting van de echte flank op de eerste boards maakt duidelijk welke overblijven. Zo leveren we elke bevinding op: wat we weten, wat we hebben aangenomen en hoe u het zeker weet.",
+    "caseNote": "De EMC-waarschuwingen hierboven komen uit berekeningen die uitgaan van een flank van 1 ns. We houden berekende bevindingen, aannames en meetresultaten uit elkaar.",
     "caseImages": [
       "Detail: de knoppen KEY, BOOT en PWR"
     ],
@@ -447,15 +466,15 @@
     "process": [
       {
         "label": "Gesprek",
-        "text": "Een kort gesprek over uw board, uw deadline en waar u zich zorgen over maakt."
+        "text": "Een kort gesprek over uw idee of board, uw deadline en waar u zich zorgen over maakt."
       },
       {
         "label": "Vaste prijs",
-        "text": "Een schriftelijke scope en een vaste prijs voordat het werk begint."
+        "text": "Prijzen op aanvraag. We spreken de scope, doorlooptijd en een vaste prijs af voordat het werk begint."
       },
       {
         "label": "Bouwen en verifiëren",
-        "text": "We doen de review, het ontwerp, de emulatie of de veldberekening, en elk resultaat is terug te voeren op een controle."
+        "text": "We werken het concept, de review, het ontwerp, de emulatie of de veldberekening uit, en elk resultaat is terug te voeren op een controle."
       },
       {
         "label": "Overdracht",
@@ -477,7 +496,21 @@
       "map": "Het koper van de Paper Calendar met de genummerde EMC-bevindingen",
       "top": "Bovenkant van het Paper Calendar-board",
       "angle": "Het Paper Calendar-board onder een hoek"
-    }
+    },
+    "heroProof": "Paper Calendar: de eerste prototypes werkten in één keer.",
+    "price": "Prijs op aanvraag.",
+    "sampleReport": {
+      "title": "Voorbeeldrapport van een review",
+      "text": "De review binnen 48 uur levert bevindingen op, gegroepeerd naar ernst, met bij elke bevinding de onderliggende controle, de locatie en een voorgestelde oplossing. Een overzicht van het board, detailbeelden en EMC-kaarten laten zien waar u moet kijken. Het rapport vermeldt ook wat niet is gecontroleerd en waarom.",
+      "download": "Download het voorbeeldrapport (PDF)",
+      "note": "De review van ons eigen Paper Calendar-board: het rapport van 34 pagina's (6 MB). De volledige versie heeft ook een bijlage met elk controleverslag.",
+      "captions": [
+        "Pagina 1: samenvatting en het boardoverzicht met de belangrijkste bevindingen",
+        "Pagina 2: de vijf belangrijkste bevindingen, elk met een detailbeeld",
+        "Pagina 3: EMC-overzicht van het hele board"
+      ]
+    },
+    "caseResult": "De eerste prototypes werkten in één keer."
   },
   "impedance": {
     "header": "Impedantiecalculator voor printbanen",
