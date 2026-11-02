@@ -353,7 +353,7 @@
           "EMC pre-compliance screening with located findings",
           "A written report with coordinates and a fix for each finding"
         ],
-        "proof": "Our Paper Calendar board already passed every design check, and the EMC check still found 6 warnings, each with its location and a fix.",
+        "proof": "Our Paper Calendar board already passed every design check, and the EMC check still found 4 warnings, each with its location and a fix.",
         "callouts": [
           "A via where an SPI line changes layer, 7 mm from the nearest return-path capacitor",
           "42 mm of board edge without a ground via",
@@ -420,7 +420,7 @@
     },
     "mapEyebrow": "Every finding, located",
     "mapTitle": "The whole board, screened.",
-    "mapText": "This is the EMC check of the Paper Calendar on its real copper, with six numbered warnings and 23 information items, each at its exact spot. No vague notes about “the board”: every finding points at a place you can open in your layout tool.",
+    "mapText": "This is the EMC check of the Paper Calendar on its real copper, with four numbered warnings and 23 information items, each at its exact spot. No vague notes about “the board”: every finding points at a place you can open in your layout tool.",
     "mapLegend": [
       "Warning",
       "Information",
@@ -441,13 +441,13 @@
         "label": "scenarios / assertions passing in the emulator"
       },
       {
-        "value": "6",
+        "value": "4",
         "label": "EMC warnings, each with coordinates and a fix"
       }
     ],
     "findingsTitle": "What the EMC screen found",
     "findings": [
-      "Five vias where the e-paper SPI lines change layer are 6.2 to 9.5 mm from the nearest stitching capacitor (limit 3 mm at a 1 ns edge). Fix: a 100 nF capacitor within 3 mm of each, or one routing layer.",
+      "Three vias where the e-paper SPI lines change layer are 6.2 to 7.1 mm from the nearest stitching capacitor (limit 3 mm at a 1 ns edge). Fix: a 100 nF capacitor within 3 mm of each, or one routing layer.",
       "42 mm of the top edge has no ground via. Fix: two or three ground vias.",
       "The 3V3 plane impedance first exceeds its 0.66 ohm target at 136 MHz at the ESP32-S3, where the module’s own decoupling takes over."
     ],
