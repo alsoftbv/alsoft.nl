@@ -353,7 +353,7 @@
           "EMC-precompliancecontrole met bevindingen op een exacte plek",
           "Een schriftelijk rapport met coördinaten en een oplossing per bevinding"
         ],
-        "proof": "Ons Paper Calendar-board kwam al door elke ontwerpcontrole, en de EMC-controle vond toch nog 6 waarschuwingen, elk met de plek en een oplossing.",
+        "proof": "Ons Paper Calendar-board kwam al door elke ontwerpcontrole, en de EMC-controle vond toch nog 4 waarschuwingen, elk met de plek en een oplossing.",
         "callouts": [
           "Een via waar een SPI-lijn van laag wisselt, 7 mm van de dichtstbijzijnde condensator voor het retourpad",
           "42 mm boardrand zonder massavia",
@@ -420,7 +420,7 @@
     },
     "mapEyebrow": "Elke bevinding, op locatie",
     "mapTitle": "Het hele board, doorgelicht.",
-    "mapText": "Dit is de EMC-controle van de Paper Calendar op het echte koper, met zes genummerde waarschuwingen en 23 informatieve punten, elk op de exacte plek. Geen vage opmerkingen over “het board”: elke bevinding wijst een plek aan die u in uw layouttool kunt openen.",
+    "mapText": "Dit is de EMC-controle van de Paper Calendar op het echte koper, met vier genummerde waarschuwingen en 23 informatieve punten, elk op de exacte plek. Geen vage opmerkingen over “het board”: elke bevinding wijst een plek aan die u in uw layouttool kunt openen.",
     "mapLegend": [
       "Waarschuwing",
       "Informatie",
@@ -441,13 +441,13 @@
         "label": "scenario’s / controles die slagen in de emulator"
       },
       {
-        "value": "6",
+        "value": "4",
         "label": "EMC-waarschuwingen, elk met coördinaten en een oplossing"
       }
     ],
     "findingsTitle": "Wat de EMC-controle vond",
     "findings": [
-      "Vijf via’s waar de SPI-lijnen van het e-paper van laag wisselen, liggen 6,2 tot 9,5 mm van de dichtstbijzijnde stitching-condensator (grens 3 mm bij een flank van 1 ns). Oplossing: een condensator van 100 nF binnen 3 mm van elke via, of één routeringslaag.",
+      "Drie via’s waar de SPI-lijnen van het e-paper van laag wisselen, liggen 6,2 tot 7,1 mm van de dichtstbijzijnde stitching-condensator (grens 3 mm bij een flank van 1 ns). Oplossing: een condensator van 100 nF binnen 3 mm van elke via, of één routeringslaag.",
       "42 mm van de bovenrand heeft geen massavia. Oplossing: twee of drie massavia’s.",
       "De impedantie van het 3V3-vlak overschrijdt zijn doelwaarde van 0,66 ohm voor het eerst bij 136 MHz bij de ESP32-S3, waar de eigen ontkoppeling van de module het overneemt."
     ],
