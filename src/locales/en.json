@@ -503,7 +503,7 @@
       "title": "Sample review report",
       "text": "The 48-hour review gives you findings grouped by severity, with the check behind each one, its location and a suggested fix. A board map, close-ups and EMC maps show where to look. The report also lists what was not checked and why.",
       "download": "Download the sample review report (PDF)",
-      "note": "The review of our own Paper Calendar board: the 34-page report (6 MB). The full version adds an appendix with every check record.",
+      "note": "The review of our own Paper Calendar board: the 34-page report (4 MB). The full version adds an appendix with every check record.",
       "captions": [
         "Page 1: summary and the board map with the priority findings",
         "Page 2: the five priority findings, each with its close-up",
